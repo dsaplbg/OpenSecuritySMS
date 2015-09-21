@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by root on 19/09/15.
  *
- * This class is use for set an adapter of a list of conversation (in the main activity)
+ * This class is used to set an adapter of a list of conversation (in the main activity)
  * it's a child of ArrayAdapter.
  */
 public class ArrayConversAdapter extends ArrayAdapter {
@@ -34,7 +34,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
 
     /**
      * position : position in the list of  conversations..
-     * convertView : give by the system for recycling or recalculate rowView witch has just appeared (by scrolling for example)
+     * convertView : given by the system to recycle or recalculate rowView wich  has just appeared (by scrolling for example)
      *
      * permet la récupération de la vue personnalisée d'une ligne (rowView) qui
      * contiendra, grâce au XML, nos deux élements de textes que nous pourront
@@ -53,7 +53,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
     @Override
     public View getView (int position, View convertView, ViewGroup parent) {
 
-        ViewHolder holder;  //use this class for keep element when one of them disappear (by scrolling for example)
+        ViewHolder holder;  //use this class to keep element when one of them disappear (by scrolling for example)
         rowView = convertView;
 
         //if the parameter convertView is null, we have to recalculate rowview thanks to the following lines.
