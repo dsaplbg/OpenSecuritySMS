@@ -33,18 +33,18 @@ public class ArrayConversAdapter extends ArrayAdapter {
 
 
     /**
-     * position : position in the list of conversation.
-     * convertView : give by the system to recycling or recalculate rowView witch has just appear (by scrolling for example)
+     * position : position in the list of  conversations..
+     * convertView : give by the system for recycling or recalculate rowView witch has just appeared (by scrolling for example)
      *
      * permet la récupération de la vue personnalisée d'une ligne (rowView) qui
      * contiendra, grâce au XML, nos deux élements de textes que nous pourront
      * exploiter afin de pouvoir y personnaliser. La méthode getView est appelée
      * pour générer chaque lignes de l'écran.
      *
-     * This method is a redefinition of getView in class ArrayAdapter witch is use for
+     * This method is a redefinition of getView in class ArrayAdapter witch is used for
      * calculate one element of our list of widget rowView created by us.
      * permit the recycling (or calculate) and return the personalized view of a line (rowView) witch
-     * will be composed of, thanks to XML, tow entities of TextView. (ref to R.layout.listofconvers.xml)
+     * will be composed of, thanks to XML, tow entities of the TextView. (ref to R.layout.listofconvers.xml)
      *this method is called every time the program need to generate a rowview.
      *
      * If you want to improve the design of the listOfConvers activity (main activity) refer to
