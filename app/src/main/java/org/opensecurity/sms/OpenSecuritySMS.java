@@ -28,6 +28,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_security_sms);
 
+        //create a ArrayList of ConversationLine object.
         convers = new ArrayList<ConversationLine>();
         listeConversations = (ListView)findViewById(R.id.listeConvers);
         convers.add(new ConversationLine("Contact Name", "LatestMessage"));
@@ -36,6 +37,9 @@ public class OpenSecuritySMS extends AppCompatActivity {
         convers.add(new ConversationLine("Contact Name", "LatestMessage"));
         convers.add(new ConversationLine("Contact Name", "LatestMessage"));
         //ArrayConversAdapter est une class héritée de ArrayAdapter
+        /*the listView listeConversations will be showed in the activity thanks to the
+        Override of child class ArrayConversAdapter and getView method. and convers is
+        the support. */
         listeConversations.setAdapter(new ArrayConversAdapter(this, convers));
 
     }

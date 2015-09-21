@@ -4,7 +4,10 @@ package org.opensecurity.sms;
  * Created by root on 19/09/15.
  * object used to show a line of conversation
  * in the main activity
-
+ *A ConversationLine is a class witch just implements
+ *the contents of a rowView.
+ *latestMessage will be the last message so display in the rowView
+ *contactName will be the name of a Contact in the rowView
  */
 public class ConversationLine {
     private String contactName;
