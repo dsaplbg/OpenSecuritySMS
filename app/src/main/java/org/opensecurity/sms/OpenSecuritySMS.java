@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,34 +20,28 @@ import static org.opensecurity.sms.RSA.generateKey;
 
 public class OpenSecuritySMS extends AppCompatActivity {
     private ListView list;
+    private ListView listeConversations;
     private ListView vue;
+    private List<ConversationLine> convers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_security_sms);
 
-        vue = (ListView) findViewById(R.id.vue);
-        String [][] repertoire = new String[][] {   {"Contact Name", "Text of the latest message"},
-                                                    {"Contact Name", "Text of the latest message"},
-                                                    {"Contact Name", "Text of the latest message"},
-                                                    {"Contact Name", "Text of the latest message"},
-                                                    {"Contact Name", "Text of the latest message"},
-                                                    {"Contact Name", "Text of the latest message"},
-                                                    {"Contact Name", "Text of the latest message"},
-                                                    {"Contact Name", "Text of the latest message"}};
-        List<HashMap<String, String>> liste = new ArrayList<HashMap<String,String>>();
-        HashMap<String,String> element;
+        //create a ArrayList of ConversationLine object.
+        convers = new ArrayList<ConversationLine>();
+        listeConversations = (ListView)findViewById(R.id.listeConvers);
+        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
+        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
+        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
+        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
+        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
+        //ArrayConversAdapter est une class héritée de ArrayAdapter
+        /*the listView listeConversations will be showed in the activity thanks to the
+        Override of child class ArrayConversAdapter and getView method. and convers is
+        the support(data of conversationLine information). */
+        listeConver sations.setAdapter(new ArrayConversAdapter(this, convers));
 
-        for(int i=0; i<repertoire.length; i++) {
-            element = new HashMap<String,String>();
-            element.put("text1", repertoire[i][0]);
-            element.put("text2", repertoire[i][1]);
-            liste.add(element);
-        }
-        ListAdapter listeWidget = new SimpleAdapter(this, liste, android.R.layout.simple_list_item_2, new String[]{"text1","text2"},
-                                                    new int[] {android.R.id.text1, android.R.id.text2});
-
-        vue.setAdapter(listeWidget);
     }
 
     @Override
