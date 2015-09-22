@@ -40,7 +40,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
         /*the listView listeConversations will be showed in the activity thanks to the
         Override of child class ArrayConversAdapter and getView method. and convers is
         the support(data of conversationLine information). */
-        listeConver sations.setAdapter(new ArrayConversAdapter(this, convers));
+        listeConversations.setAdapter(new ArrayConversAdapter(this, convers));
 
     }
 
