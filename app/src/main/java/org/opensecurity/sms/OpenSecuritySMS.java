@@ -1,22 +1,21 @@
 package org.opensecurity.sms;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
+import org.opensecurity.sms.fonctionnalKernel.ArrayConversAdapter;
+import org.opensecurity.sms.fonctionnalKernel.ConversationLine;
+
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import static org.opensecurity.sms.RSA.areKeysPresent;
-import static org.opensecurity.sms.RSA.generateKey;
 
 public class OpenSecuritySMS extends AppCompatActivity {
     private ListView list;
@@ -31,17 +30,52 @@ public class OpenSecuritySMS extends AppCompatActivity {
         //create a ArrayList of ConversationLine object.
         convers = new ArrayList<ConversationLine>();
         listeConversations = (ListView)findViewById(R.id.listeConvers);
-        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
-        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
-        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
-        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
-        convers.add(new ConversationLine("Contact Name", "LatestMessage"));
         //ArrayConversAdapter est une class héritée de ArrayAdapter
         /*the listView listeConversations will be showed in the activity thanks to the
         Override of child class ArrayConversAdapter and getView method. and convers is
         the support(data of conversationLine information). */
-        listeConversations.setAdapter(new ArrayConversAdapter(this, convers));
 
+        ContentResolver cr = this.getContentResolver();
+        // We want to get the sms in the inbox with all their attributes
+        Cursor cursor = cr.query(Uri.parse("content://sms/inbox"),
+                null,
+                null,
+                null,
+                null);
+        List<String> phoneNumbers = new ArrayList<String>();
+        // While there is a message
+        while (cursor.moveToNext()) {
+            // We get the phoneNumber and the type of the message
+            String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow("address"));
+            int type = cursor.getInt(cursor.getColumnIndexOrThrow("type"));
+            // if we don't already have this phoneNumber in the list and the message is not a draft
+            if ((!phoneNumbers.contains(phoneNumber)) && (type != 3) && (phoneNumber.length()>=1)) {
+                String name = null;
+                // we get the smsContent and the date
+                String smsContent = cursor.getString(cursor.getColumnIndexOrThrow("body"));
+                Date date = new Date(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
+                Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
+                // in order to get the contact name, we do a query
+                Cursor localCursor = cr.query(personUri,
+                        new String[]{ContactsContract.Contacts.DISPLAY_NAME},
+                        null,
+                        null,
+                        null);
+                if (localCursor.getCount() != 0) {
+                    localCursor.moveToFirst();
+                    name = localCursor.getString(localCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                }
+                localCursor.close();
+                phoneNumbers.add(phoneNumber);
+                name = (name == null)?"Unknown":name;
+                String[] sms = new String []{name, phoneNumber, smsContent, date.toString()};
+                // we add a new ConversationLine
+                convers.add(new ConversationLine(name, smsContent));
+            }
+        }
+        cursor.close();
+
+        listeConversations.setAdapter(new ArrayConversAdapter(this, convers));
     }
 
     @Override

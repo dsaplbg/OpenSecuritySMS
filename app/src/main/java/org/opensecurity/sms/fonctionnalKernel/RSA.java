@@ -1,4 +1,4 @@
-package org.opensecurity.sms;
+package org.opensecurity.sms.fonctionnalKernel;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package org.opensecurity.sms;
+package org.opensecurity.sms.fonctionnalKernel;
 
 /**
  * Object used to show a line of conversation
@@ -19,6 +19,7 @@ public class ConversationLine {
 
 
     public void setLatestMessage(String latestMessage) {
+        latestMessage = (latestMessage.length() > 100)?(latestMessage.substring(0, 97) + "..."):latestMessage;
         this.latestMessage = latestMessage;
     }
 
