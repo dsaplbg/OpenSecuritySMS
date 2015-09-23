@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OpenSecuritySMS">
-        <ListView
-            android:minHeight="@dimen/activity_vertical_margin"
-            android:scrollIndicators="bottom"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listeConvers">
-       </ListView>
+    <ListView
+        android:minHeight="@dimen/activity_vertical_margin"
+        android:scrollIndicators="bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listeConvers">
+    </ListView>
 </RelativeLayout>

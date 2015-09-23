@@ -13,8 +13,9 @@
             android:id="@+id/nameContact"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_marginLeft="15px"
             android:textStyle="bold"
-            android:textSize="30sp"/>
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/latestMessage"
@@ -23,5 +24,13 @@
             android:layout_height="fill_parent"
             android:layout_below="@+id/nameContact"
             android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/latestMessage"
+            android:textSize="10sp"
+            android:layout_marginLeft="15px"/>
     </RelativeLayout>
 </LinearLayout>
