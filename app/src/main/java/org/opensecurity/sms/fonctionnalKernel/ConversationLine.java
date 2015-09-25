@@ -11,12 +11,13 @@ package org.opensecurity.sms.fonctionnalKernel;
 public class ConversationLine {
     private String contactName;
     private String latestMessage;
+    private String date;
 
-    public ConversationLine(String contactName, String latestMessage){
+    public ConversationLine(String contactName, String latestMessage, String date){
         setContactName(contactName);
         setLatestMessage(latestMessage);
+        setDate(date);
     }
-
 
     public void setLatestMessage(String latestMessage) {
         latestMessage = (latestMessage.length() > 100)?(latestMessage.substring(0, 97) + "..."):latestMessage;
@@ -27,6 +28,9 @@ public class ConversationLine {
         this.contactName = contactName;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
     public final String getContactName() {
         return this.contactName;
     }
@@ -35,4 +39,7 @@ public class ConversationLine {
         return this.latestMessage;
     }
 
+    public  final String getDate() {
+        return this.date;
+    }
 }

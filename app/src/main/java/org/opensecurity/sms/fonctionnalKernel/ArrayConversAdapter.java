@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
     static class ViewHolder {
         public TextView name;
         public TextView latestCon;
+        public TextView date;
     }
     public ArrayConversAdapter(Context context, List<ConversationLine> rep){
         super(context, R.layout.listofconvers, rep);
@@ -70,7 +72,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
 
             holder.name = (TextView) rowView.findViewById(R.id.nameContact);
             holder.latestCon = (TextView) rowView.findViewById(R.id.latestMessage);
-
+            holder.date = (TextView) rowView.findViewById(R.id.date);
             rowView.setTag(holder);
         }
         //else, the parameter convertView exists so the element can be save with the convertView passed by the system
@@ -81,6 +83,8 @@ public class ArrayConversAdapter extends ArrayAdapter {
         ConversationLine convers = mRepertoire.get(position);
         holder.name.setText(convers.getContactName());
         holder.latestCon.setText(convers.getLatestMessage());
+        holder.date.setText(convers.getDate());
+
         return rowView;
     }
 }

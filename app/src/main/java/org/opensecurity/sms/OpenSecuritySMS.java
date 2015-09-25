@@ -1,6 +1,7 @@
 package org.opensecurity.sms;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -8,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.opensecurity.sms.fonctionnalKernel.ArrayConversAdapter;
 import org.opensecurity.sms.fonctionnalKernel.ConversationLine;
@@ -18,9 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OpenSecuritySMS extends AppCompatActivity {
-    private ListView list;
     private ListView listeConversations;
-    private ListView vue;
     private List<ConversationLine> convers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,15 +69,27 @@ public class OpenSecuritySMS extends AppCompatActivity {
                 }
                 localCursor.close();
                 phoneNumbers.add(phoneNumber);
-                name = (name == null)?"Unknown":name;
+                name = (name == null)?phoneNumber:name;
                 String[] sms = new String []{name, phoneNumber, smsContent, date.toString()};
                 // we add a new ConversationLine
-                convers.add(new ConversationLine(name, smsContent));
+                convers.add(new ConversationLine(name, smsContent, sms[3]));
             }
         }
         cursor.close();
 
+
         listeConversations.setAdapter(new ArrayConversAdapter(this, convers));
+
+        //starting the new activity when clicking on one of rowview.
+        listeConversations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(OpenSecuritySMS.this, convers.get(position).getContactName(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
