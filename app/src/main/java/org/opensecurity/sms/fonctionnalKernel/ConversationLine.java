@@ -1,5 +1,7 @@
 package org.opensecurity.sms.fonctionnalKernel;
 
+import java.io.Serializable;
+
 /**
  * Object used to show a line of conversation
  * in the main activity
@@ -8,7 +10,7 @@ package org.opensecurity.sms.fonctionnalKernel;
  * latestMessage will be the last message so display in the rowView
  * contactName will be the name of a Contact in the rowView
  */
-public class ConversationLine {
+public class ConversationLine implements Serializable {
     private String contactName;
     private String latestMessage;
     private String date;
