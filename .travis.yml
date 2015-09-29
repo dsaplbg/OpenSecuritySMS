@@ -6,5 +6,5 @@ android:
         - android-15
         - platform-tools
 
-    before_install:
-        - chmod +x gradlew
+before_install:
+    - chmod +x gradlew
