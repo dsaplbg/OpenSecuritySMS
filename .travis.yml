@@ -1,7 +1,11 @@
 language: android
+android:
+    components:
+        - android-23
+        - build-tools-23.0.1
 
 before_install:
     - chmod +x gradlew
 
 script:
-  - ./gradlew assembleDebug --stacktrace
+    - ./gradlew assembleDebug --stacktrace
