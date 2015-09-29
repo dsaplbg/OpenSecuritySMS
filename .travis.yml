@@ -2,7 +2,7 @@ language: android
 android:
     components:
         - tools
-        - build-tools-25
+        - build-tools-15
         - android-15
         - platform-tools
 
