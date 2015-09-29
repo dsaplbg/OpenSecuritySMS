@@ -6,8 +6,5 @@ android:
         - android-15
         - platform-tools
 
-    before_script:
+    before_install:
         - chmod +x gradlew
-
-    script:
-            - ./gradlew assembleDebug --stacktrace
