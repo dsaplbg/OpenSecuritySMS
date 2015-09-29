@@ -6,7 +6,7 @@ android:
         - android-15
         - platform-tools
 
-    sudo: false
+    sudo: required
 
     before_script:
         - chmod +x gradlew
