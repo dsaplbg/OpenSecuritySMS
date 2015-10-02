@@ -41,17 +41,15 @@ public class OpenSecuritySMS extends AppCompatActivity {
             this.restore(savedInstanceState);
         }
 
-
         listeConversations.setAdapter(new ArrayConversAdapter(this, convers));
 
         //starting the new activity when clicking on one of rowview.
         listeConversations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(OpenSecuritySMS.this, convers.get(position).getContactName(), Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
-                startActivity(intent);
+                intent.putExtra("Name", convers.get(position).getContactName());
+                startActivityForResult(intent, 0);
             }
         });
     }
@@ -140,7 +138,6 @@ public class OpenSecuritySMS extends AppCompatActivity {
         }
         cursor.close();
     }
-
 
 
 

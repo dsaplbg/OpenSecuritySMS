@@ -1,19 +1,33 @@
 package org.opensecurity.sms;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.opensecurity.sms.fonctionnalKernel.Bubble;
+
+import java.util.ArrayList;
 
 public class ConversationActivity extends AppCompatActivity {
-
+    private ArrayList<Bubble> bubbleData;
+    private ListView bubbleList;
+    private String convName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conversation);
-        TextView t = (TextView) findViewById(R.id.textActiv2);
-        t.setText("Welcome on the new activity");
+
+        bubbleData = new ArrayList<>();
+        bubbleList = (ListView) findViewById(R.id.bubbleList);
+
+        Intent intent = getIntent();
+
+        convName = intent.getStringExtra("Name");
+        Toast.makeText(this, convName, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -37,4 +51,5 @@ public class ConversationActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    
 }
