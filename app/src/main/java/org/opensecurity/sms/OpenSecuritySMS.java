@@ -48,7 +48,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
-                intent.putExtra("Name", convers.get(position).getContactName());
+                intent.putExtra("ID", convers.get(position).getId());
                 startActivityForResult(intent, 0);
             }
         });
@@ -132,8 +132,8 @@ public class OpenSecuritySMS extends AppCompatActivity {
                 phoneNumbers.add(phoneNumber);
                 name = (name == null) ? phoneNumber : name;
                 String[] sms = new String[]{name, phoneNumber, smsContent, date.toString()};
-                // we add a new ConversationLine
-                convers.add(new ConversationLine(name, smsContent, sms[3]));
+                // we add a new ConversationLine with an id to send to the conversationActivity.
+                convers.add(new ConversationLine(name, smsContent, sms[3], cursor.getString(cursor.getColumnIndexOrThrow("thread_id"))));
             }
         }
         cursor.close();

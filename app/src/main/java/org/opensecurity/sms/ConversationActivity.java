@@ -1,6 +1,9 @@
 package org.opensecurity.sms;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,11 +15,12 @@ import android.widget.Toast;
 import org.opensecurity.sms.fonctionnalKernel.Bubble;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ConversationActivity extends AppCompatActivity {
     private ArrayList<Bubble> bubbleData;
     private ListView bubbleList;
-    private String convName;
+    private String contID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +30,9 @@ public class ConversationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        convName = intent.getStringExtra("Name");
-        Toast.makeText(this, convName, Toast.LENGTH_LONG).show();
+        contID = intent.getStringExtra("ID");
+        Toast.makeText(this, contID, Toast.LENGTH_LONG).show();
+        this.displayMessages();
     }
 
     @Override
@@ -51,5 +56,21 @@ public class ConversationActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    
+private void displayMessages() {
+        ContentResolver cr = this.getContentResolver();
+
+        try {
+            Cursor cursor = cr.query(Uri.parse("content://sms"), null, this.contID + " = thread_id" , null, "date ASC");
+
+            while (cursor.moveToNext()) {
+                System.out.println("Number: " + cursor.getString(cursor.getColumnIndexOrThrow("address")));
+                System.out.println("Body : " + cursor.getString(cursor.getColumnIndexOrThrow("body")));
+            }
+            cursor.close();
+
+        }
+        catch (Exception e) {
+            System.out.print("ERREUR");
+        }
+    }
 }
