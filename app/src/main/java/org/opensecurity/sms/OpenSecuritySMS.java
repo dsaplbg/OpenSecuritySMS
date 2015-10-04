@@ -18,6 +18,7 @@ import android.widget.Toast;
 import org.opensecurity.sms.fonctionnalKernel.ArrayConversAdapter;
 import org.opensecurity.sms.fonctionnalKernel.ConversationLine;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,17 +42,15 @@ public class OpenSecuritySMS extends AppCompatActivity {
             this.restore(savedInstanceState);
         }
 
-
         listeConversations.setAdapter(new ArrayConversAdapter(this, convers));
 
         //starting the new activity when clicking on one of rowview.
         listeConversations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(OpenSecuritySMS.this, convers.get(position).getContactName(), Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
-                startActivity(intent);
+                intent.putExtra("Contact",  convers.get(position));
+                startActivityForResult(intent, 0);
             }
         });
     }
@@ -134,13 +133,12 @@ public class OpenSecuritySMS extends AppCompatActivity {
                 phoneNumbers.add(phoneNumber);
                 name = (name == null) ? phoneNumber : name;
                 String[] sms = new String[]{name, phoneNumber, smsContent, date.toString()};
-                // we add a new ConversationLine
-                convers.add(new ConversationLine(name, smsContent, sms[3]));
+                // we add a new ConversationLine with an id to send to the conversationActivity.
+                convers.add(new ConversationLine(name, smsContent, sms[3], cursor.getString(cursor.getColumnIndexOrThrow("thread_id"))));
             }
         }
         cursor.close();
     }
-
 
 
 
