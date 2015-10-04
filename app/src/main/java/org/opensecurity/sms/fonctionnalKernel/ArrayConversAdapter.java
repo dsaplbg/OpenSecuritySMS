@@ -32,7 +32,6 @@ public class ArrayConversAdapter extends ArrayAdapter {
         super(context, R.layout.listofconvers, rep);
         this.mRepertoire = rep;
         this.mLayoutInflater = LayoutInflater.from(context);
-
     }
 
 

@@ -10,7 +10,7 @@
         android:layout_marginLeft="30px">
 
         <TextView
-            android:id="@+id/contenu"
+            android:id="@+id/b_contenu"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginLeft="15px"
@@ -18,11 +18,11 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/b_date"
             android:layout_marginLeft="15px"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_below="@+id/nameContact"
+            android:layout_above="@+id/b_contenu"
             android:textSize="15sp"/>
     </RelativeLayout>
 </LinearLayout>
