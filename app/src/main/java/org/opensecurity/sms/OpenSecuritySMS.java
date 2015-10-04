@@ -18,6 +18,7 @@ import android.widget.Toast;
 import org.opensecurity.sms.fonctionnalKernel.ArrayConversAdapter;
 import org.opensecurity.sms.fonctionnalKernel.ConversationLine;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
-                intent.putExtra("ID", convers.get(position).getId());
+                intent.putExtra("Contact",  convers.get(position));
                 startActivityForResult(intent, 0);
             }
         });

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.opensecurity.sms.fonctionnalKernel.Bubble;
+import org.opensecurity.sms.fonctionnalKernel.ConversationLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 public class ConversationActivity extends AppCompatActivity {
     private ArrayList<Bubble> bubbleData;
     private ListView bubbleList;
-    private String contID;
+    private ConversationLine cont;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +31,8 @@ public class ConversationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        contID = intent.getStringExtra("ID");
-        Toast.makeText(this, contID, Toast.LENGTH_LONG).show();
+        cont = (ConversationLine) intent.getSerializableExtra("Contact");
+        Toast.makeText(this, cont.getContactName(), Toast.LENGTH_LONG).show();
         this.displayMessages();
     }
 
@@ -58,13 +59,20 @@ public class ConversationActivity extends AppCompatActivity {
     }
 private void displayMessages() {
         ContentResolver cr = this.getContentResolver();
-
+        
         try {
-            Cursor cursor = cr.query(Uri.parse("content://sms"), null, this.contID + " = thread_id" , null, "date ASC");
+            Cursor cursor = cr.query(Uri.parse("content://sms"), null, this.cont.getThread_ID() + " = thread_id" , null, "date ASC");
 
             while (cursor.moveToNext()) {
+                //if it's a recevied message :
+                if ((cursor.getString(cursor.getColumnIndexOrThrow("person")) != null)) {
+                    System.out.println("Message from " + this.cont.getContactName());
+                }
+                else {
+                    System.out.println("Message from moi");
+                }
                 System.out.println("Number: " + cursor.getString(cursor.getColumnIndexOrThrow("address")));
-                System.out.println("Body : " + cursor.getString(cursor.getColumnIndexOrThrow("body")));
+                System.out.println("Body : " + cursor.getString(cursor.getColumnIndexOrThrow("body"))+"\n");
             }
             cursor.close();
 

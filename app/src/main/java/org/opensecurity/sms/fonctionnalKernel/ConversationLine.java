@@ -14,21 +14,21 @@ public class ConversationLine implements Serializable {
     private String contactName;
     private String latestMessage;
     private String date;
-    private String id;
+    private String thread_ID;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public ConversationLine(String contactName, String latestMessage, String date, String id){
+    public ConversationLine(String contactName, String latestMessage, String date, String th_id){
         setContactName(contactName);
         setLatestMessage(latestMessage);
         setDate(date);
-        setId(id);
+        setThread_id(th_id);
+    }
+
+    public String getThread_ID() {
+        return thread_ID;
+    }
+
+    public void setThread_id(String ID) {
+        this.thread_ID = ID;
     }
 
     public void setLatestMessage(String latestMessage) {
