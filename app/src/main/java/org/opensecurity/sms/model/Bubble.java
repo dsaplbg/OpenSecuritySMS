@@ -1,4 +1,4 @@
-package org.opensecurity.sms.fonctionnalKernel;
+package org.opensecurity.sms.model;
 
 
 public class Bubble {

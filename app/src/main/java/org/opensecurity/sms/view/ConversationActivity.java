@@ -1,4 +1,4 @@
-package org.opensecurity.sms;
+package org.opensecurity.sms.view;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -9,16 +9,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.opensecurity.sms.fonctionnalKernel.ArrayBubbleAdapter;
-import org.opensecurity.sms.fonctionnalKernel.Bubble;
-import org.opensecurity.sms.fonctionnalKernel.ConversationLine;
-import org.opensecurity.sms.fonctionnalKernel.ArrayBubbleAdapter;
+import org.opensecurity.sms.R;
+import org.opensecurity.sms.model.ArrayBubbleAdapter;
+import org.opensecurity.sms.model.Bubble;
+import org.opensecurity.sms.model.ConversationLine;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ConversationActivity extends AppCompatActivity {
     private ArrayList<Bubble> bubbleData;

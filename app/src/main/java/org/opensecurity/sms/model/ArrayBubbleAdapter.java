@@ -1,12 +1,10 @@
-package org.opensecurity.sms.fonctionnalKernel;
+package org.opensecurity.sms.model;
 
 import android.content.Context;
-import android.provider.Telephony;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;

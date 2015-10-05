@@ -1,4 +1,4 @@
-package org.opensecurity.sms.fonctionnalKernel;
+package org.opensecurity.sms.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
-import org.w3c.dom.Text;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.opensecurity.sms.fonctionnalKernel;
+package org.opensecurity.sms.model;
 
 import java.io.Serializable;
 
@@ -43,6 +43,7 @@ public class ConversationLine implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
+
     public final String getContactName() {
         return this.contactName;
     }
