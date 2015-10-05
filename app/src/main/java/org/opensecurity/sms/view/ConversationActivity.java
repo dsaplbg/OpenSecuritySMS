@@ -1,9 +1,6 @@
 package org.opensecurity.sms.view;
 
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,22 +20,23 @@ public class ConversationActivity extends AppCompatActivity {
     private ArrayList<Bubble> bubbleData;
     private ListView bubbleList;
     private ConversationLine cont;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_conversation);
 
-        bubbleData = new ArrayList<>();
-        bubbleList = (ListView) findViewById(R.id.bubbleList);
-        System.out.println((bubbleList == null) + "\n" + (bubbleData == null));
+        setBubbleData(new ArrayList<Bubble>());
+        setBubbleList((ListView) findViewById(R.id.bubbleList));
+        System.out.println((getBubbleList() == null) + "\n" + (getBubbleData() == null));
         Intent intent = getIntent();
 
-        cont = (ConversationLine) intent.getSerializableExtra("Contact");
-        Toast.makeText(this, cont.getContactName(), Toast.LENGTH_LONG).show();
+        setCont((ConversationLine) intent.getSerializableExtra("Contact"));
+        Toast.makeText(this, getCont().getContactName(), Toast.LENGTH_LONG).show();
 
-        bubbleData = Controller.loadMessages(this.getContentResolver(), cont);
+        setBubbleData(Controller.loadMessages(this.getContentResolver(), getCont()));
 
-        bubbleList.setAdapter(new ArrayBubbleAdapter(this, bubbleData));
+        getBubbleList().setAdapter(new ArrayBubbleAdapter(this, getBubbleData()));
     }
 
     @Override
@@ -61,5 +59,29 @@ public class ConversationActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public ArrayList<Bubble> getBubbleData() {
+        return bubbleData;
+    }
+
+    public void setBubbleData(ArrayList<Bubble> bubbleData) {
+        this.bubbleData = bubbleData;
+    }
+
+    public ListView getBubbleList() {
+        return bubbleList;
+    }
+
+    public void setBubbleList(ListView bubbleList) {
+        this.bubbleList = bubbleList;
+    }
+
+    public ConversationLine getCont() {
+        return cont;
+    }
+
+    public void setCont(ConversationLine cont) {
+        this.cont = cont;
     }
 }
