@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import org.opensecurity.sms.R;
+import org.opensecurity.sms.controller.Controller;
 import org.opensecurity.sms.model.ArrayBubbleAdapter;
 import org.opensecurity.sms.model.Bubble;
 import org.opensecurity.sms.model.ConversationLine;
@@ -34,7 +35,8 @@ public class ConversationActivity extends AppCompatActivity {
 
         cont = (ConversationLine) intent.getSerializableExtra("Contact");
         Toast.makeText(this, cont.getContactName(), Toast.LENGTH_LONG).show();
-        this.displayMessages();
+
+        bubbleData = Controller.loadMessages(this.getContentResolver(), cont);
 
         bubbleList.setAdapter(new ArrayBubbleAdapter(this, bubbleData));
     }
@@ -59,38 +61,5 @@ public class ConversationActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-private void displayMessages() {
-        ContentResolver cr = this.getContentResolver();
-        String date;
-        String content;
-        boolean isMe;
-
-        try {
-            Cursor cursor = cr.query(Uri.parse("content://sms"), null, this.cont.getThread_ID() + " = thread_id" , null, "date ASC");
-
-            while (cursor.moveToNext()) {
-                //if it's a recevied message :
-                if ((cursor.getString(cursor.getColumnIndexOrThrow("person")) != null)) {
-                    isMe = false;
-                    //System.out.println("Message from " + this.cont.getContactName());
-                }
-                else {
-                    isMe = true;
-                    //System.out.println("Message from moi");
-                }
-                content = cursor.getString(cursor.getColumnIndexOrThrow("body"));
-                date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
-             //   System.out.println("Number: " + cursor.getString(cursor.getColumnIndexOrThrow("address")));
-             //   System.out.println("Body : " + content + "\n");
-
-                this.bubbleData.add(new Bubble(content, date, isMe));
-            }
-            cursor.close();
-
-        }
-        catch (Exception e) {
-            System.out.print("ERREUR");
-        }
     }
 }

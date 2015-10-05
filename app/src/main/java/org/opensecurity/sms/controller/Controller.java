@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 
+import org.opensecurity.sms.model.Bubble;
 import org.opensecurity.sms.model.ConversationLine;
 
 import java.sql.Date;
@@ -23,13 +24,12 @@ public class Controller {
      * @param contentResolver the contentResolver of the activity
      * @return an ArrayList of ConversationLine containing every last message for every contact
      */
-    static public ArrayList<ConversationLine> initLastMessage(ContentResolver contentResolver){
+    static public ArrayList<ConversationLine> loadLastMessages(ContentResolver contentResolver){
         //create a ArrayList of ConversationLine object.
         ArrayList<ConversationLine> conversationLines = new ArrayList<>();
 
-        ContentResolver cr = contentResolver;
         // We want to get the sms in the inbox with all their attributes
-        Cursor cursor = cr.query(Uri.parse("content://sms/inbox"),
+        Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox"),
                 null,
                 null,
                 null,
@@ -48,7 +48,7 @@ public class Controller {
                 Date date = new Date(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
                 Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
                 // in order to get the contact name, we do a query
-                Cursor localCursor = cr.query(personUri,
+                Cursor localCursor = contentResolver.query(personUri,
                         new String[]{ContactsContract.Contacts.DISPLAY_NAME},
                         null,
                         null,
@@ -68,6 +68,40 @@ public class Controller {
         cursor.close();
 
         return conversationLines;
+    }
+
+    static public ArrayList<Bubble> loadMessages(ContentResolver contentResolver, ConversationLine conversationLine){
+        ArrayList<Bubble> bubbleData = new ArrayList<>();
+        String date;
+        String content;
+        boolean isMe;
+
+        try {
+            Cursor cursor = contentResolver.query(Uri.parse("content://sms"), null, conversationLine.getThread_ID() + " = thread_id" , null, "date ASC");
+
+            while (cursor.moveToNext()) {
+                //if it's a recevied message :
+                if ((cursor.getString(cursor.getColumnIndexOrThrow("person")) != null)) {
+                    isMe = false;
+                    //System.out.println("Message from " + this.cont.getContactName());
+                }
+                else {
+                    isMe = true;
+                    //System.out.println("Message from moi");
+                }
+                content = cursor.getString(cursor.getColumnIndexOrThrow("body"));
+                date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
+                //   System.out.println("Number: " + cursor.getString(cursor.getColumnIndexOrThrow("address")));
+                //   System.out.println("Body : " + content + "\n");
+
+                bubbleData.add(new Bubble(content, date, isMe));
+            }
+            cursor.close();
+        } catch (Exception e) {
+            System.out.print("ERROR : Loading messages !");
+        }
+
+        return bubbleData;
     }
 
 }

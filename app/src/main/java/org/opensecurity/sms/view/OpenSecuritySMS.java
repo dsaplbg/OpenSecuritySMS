@@ -27,7 +27,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
         setConversationList((ListView) findViewById(R.id.listeConvers));
 
         if(savedInstanceState == null) {
-            setConversationLines(Controller.initLastMessage(this.getContentResolver()));
+            setConversationLines(Controller.loadLastMessages(this.getContentResolver()));
         }
         else {
             this.restore(savedInstanceState);
