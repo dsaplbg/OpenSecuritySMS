@@ -1,6 +1,7 @@
 package org.opensecurity.sms.model;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,12 +41,17 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             holder.messageDate = (TextView) bubbleView.findViewById(R.id.b_date);
 
             bubbleView.setTag(holder);
-        }
-        else {
+        } else {
             holder = (ViewHolder) bubbleView.getTag();
         }
+
+        if(mBubbles.get(position).isSendByMe()) {
+            bubbleView.setBackgroundColor(Color.BLUE);
+        } else {
+            bubbleView.setBackgroundColor(Color.RED);
+        }
         Bubble bubble = mBubbles.get(position);
-        holder.messageDate.setText(bubble.getDate());
+        holder.messageDate.setText(bubble.getDate().toString());
         holder.messageBody.setText(bubble.getContenu());
 
         return bubbleView;

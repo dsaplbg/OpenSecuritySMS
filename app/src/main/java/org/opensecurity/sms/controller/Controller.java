@@ -72,7 +72,7 @@ public class Controller {
 
     static public ArrayList<Bubble> loadMessages(ContentResolver contentResolver, ConversationLine conversationLine){
         ArrayList<Bubble> bubbleData = new ArrayList<>();
-        String date;
+        Date date;
         String content;
         boolean isMe;
 
@@ -81,18 +81,14 @@ public class Controller {
 
             while (cursor.moveToNext()) {
                 //if it's a recevied message :
-                if ((cursor.getString(cursor.getColumnIndexOrThrow("person")) != null)) {
+                if (cursor.getInt(cursor.getColumnIndexOrThrow("type")) == 1 || cursor.getString(cursor.getColumnIndexOrThrow("person")) != null) {
                     isMe = false;
-                    //System.out.println("Message from " + this.cont.getContactName());
                 }
                 else {
                     isMe = true;
-                    //System.out.println("Message from moi");
                 }
                 content = cursor.getString(cursor.getColumnIndexOrThrow("body"));
-                date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
-                //   System.out.println("Number: " + cursor.getString(cursor.getColumnIndexOrThrow("address")));
-                //   System.out.println("Body : " + content + "\n");
+                date = new Date(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
 
                 bubbleData.add(new Bubble(content, date, isMe));
             }
