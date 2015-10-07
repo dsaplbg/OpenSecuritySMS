@@ -1,12 +1,14 @@
 package org.opensecurity.sms.model;
 
 
+import java.sql.Date;
+
 public class Bubble {
     private String contenu;
-    private String date;
+    private Date date;
     private boolean sendByMe;
 
-    public Bubble(String contenu, String date, boolean sendByMe) {
+    public Bubble(String contenu, Date date, boolean sendByMe) {
         setContenu(contenu);
         setDate(date);
         setSendByMe(sendByMe);
@@ -20,11 +22,11 @@ public class Bubble {
         this.contenu = contenu;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
