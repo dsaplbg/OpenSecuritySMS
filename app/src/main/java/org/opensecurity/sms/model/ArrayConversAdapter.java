@@ -1,6 +1,7 @@
 package org.opensecurity.sms.model;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +79,8 @@ public class ArrayConversAdapter extends ArrayAdapter {
             holder = (ViewHolder) rowView.getTag();
         }
 
+        Color c = new Color();
+        rowView.setBackgroundColor(c.argb(50,250,250,190));
         ConversationLine convers = mRepertoire.get(position);
         holder.name.setText(convers.getContactName());
         holder.latestCon.setText(convers.getLatestMessage());

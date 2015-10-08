@@ -81,12 +81,8 @@ public class Controller {
 
             while (cursor.moveToNext()) {
                 //if it's a recevied message :
-                if (cursor.getInt(cursor.getColumnIndexOrThrow("type")) == 1 || cursor.getString(cursor.getColumnIndexOrThrow("person")) != null) {
-                    isMe = false;
-                }
-                else {
-                    isMe = true;
-                }
+                isMe = !(cursor.getInt(cursor.getColumnIndexOrThrow("type")) == 1 || cursor.getString(cursor.getColumnIndexOrThrow("person")) != null);
+
                 content = cursor.getString(cursor.getColumnIndexOrThrow("body"));
                 date = new Date(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
 
