@@ -4,10 +4,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
@@ -40,24 +43,27 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             bubbleView = this.mLayoutInflater.inflate(R.layout.bubble_list, null);
             holder = new ViewHolder();
             holder.messageBody = (TextView) bubbleView.findViewById(R.id.b_contenu);
-            holder.messageDate = (TextView) bubbleView.findViewById(R.id.b_date);
+          //  holder.messageDate = (TextView) bubbleView.findViewById(R.id.b_date);
 
             bubbleView.setTag(holder);
         } else {
             holder = (ViewHolder) bubbleView.getTag();
         }
-        Color c = new Color();
-        if(mBubbles.get(position).isSendByMe()) {
-            bubbleView.setBackgroundColor(c.argb(100, 150,170,180));
-        } else {
-            bubbleView.setBackgroundColor(c.argb(100, 200,200,150));
-        }
-
 
         Bubble bubble = mBubbles.get(position);
-        holder.messageDate.setText(bubble.getDate().toString());
+       // holder.messageDate.setText(bubble.getDate().toString());
         holder.messageBody.setText(bubble.getContenu());
 
+
+        LinearLayout linearLayout = (LinearLayout) bubbleView.findViewById(R.id.layoutRelativeBubble);
+        if(mBubbles.get(position).isSendByMe()) {
+            holder.messageBody.setBackgroundResource(R.drawable.bulle_me);
+            linearLayout.setGravity(Gravity.RIGHT);
+        } else {
+            holder.messageBody.setBackgroundResource(R.drawable.bulle_not_me);
+            linearLayout.setGravity(Gravity.LEFT);
+        }
+        bubbleView.setPadding(0,10,0,10);
         return bubbleView;
     }
 
