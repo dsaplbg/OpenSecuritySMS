@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
@@ -51,15 +52,16 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         holder.messageBody.setText(bubble.getContenu());
 
 
-        LinearLayout linearLayout = (LinearLayout) bubbleView.findViewById(R.id.layoutRelativeBubble);
+        RelativeLayout relativeLayout = (RelativeLayout) bubbleView.findViewById(R.id.layoutRelativeBubble);
         if(mBubbles.get(position).isSendByMe()) {
             holder.messageBody.setBackgroundResource(R.drawable.bulle_me);
-            linearLayout.setGravity(Gravity.RIGHT);
+            relativeLayout.setGravity(Gravity.RIGHT);
         } else {
             holder.messageBody.setBackgroundResource(R.drawable.bulle_not_me);
-            linearLayout.setGravity(Gravity.LEFT);
+            relativeLayout.setGravity(Gravity.LEFT);
         }
         bubbleView.setPadding(0,10,0,10);
+
         return bubbleView;
     }
 

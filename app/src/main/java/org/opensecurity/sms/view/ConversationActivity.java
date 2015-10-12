@@ -37,6 +37,7 @@ public class ConversationActivity extends AppCompatActivity {
         setBubbleData(Controller.loadMessages(this.getContentResolver(), getCont()));
 
         getBubbleList().setStackFromBottom(true);
+        getBubbleList().setDividerHeight(0);
         getBubbleList().setAdapter(new ArrayBubbleAdapter(this, getBubbleData()));
     }
 

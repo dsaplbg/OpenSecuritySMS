@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layoutRelativeBubble"
@@ -18,5 +18,14 @@
             android:paddingBottom="10px"
             android:textSize="15sp"
             />
-    </LinearLayout>
+        <TextView
+            android:id="@+id/b_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10px"
+            android:paddingBottom="10px"
+            android:layout_alignRight="@id/b_contenu"
+            android:textSize="15sp"
+            />
+    </RelativeLayout>
 </LinearLayout>
