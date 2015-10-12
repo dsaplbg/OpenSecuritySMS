@@ -7,6 +7,22 @@
         android:scrollIndicators="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="44dp"
         android:id="@+id/bubbleList">
     </ListView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_alignBottom="@+id/bubbleList"
+        android:layout_toLeftOf="@+id/sendButton"
+        android:id="@+id/textMessage" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:id="@+id/sendButton"
+        android:layout_alignBottom="@id/textMessage"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

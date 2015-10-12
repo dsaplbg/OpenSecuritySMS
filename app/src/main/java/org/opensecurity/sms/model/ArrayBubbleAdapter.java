@@ -1,16 +1,12 @@
 package org.opensecurity.sms.model;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
@@ -30,7 +26,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         private TextView messageDate;
     }
     public ArrayBubbleAdapter(Context c, ArrayList<Bubble> mb) {
-        super(c, R.layout.bubble_list, mb);
+        super(c, R.layout.bubble_item, mb);
         mBubbles = mb;
         mLayoutInflater = LayoutInflater.from(c);
     }
@@ -40,7 +36,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         ViewHolder holder;
         bubbleView = convertView;
         if (convertView == null) {
-            bubbleView = this.mLayoutInflater.inflate(R.layout.bubble_list, null);
+            bubbleView = this.mLayoutInflater.inflate(R.layout.bubble_item, null);
             holder = new ViewHolder();
             holder.messageBody = (TextView) bubbleView.findViewById(R.id.b_contenu);
           //  holder.messageDate = (TextView) bubbleView.findViewById(R.id.b_date);
