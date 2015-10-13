@@ -1,5 +1,6 @@
 package org.opensecurity.sms.model;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
+import org.opensecurity.sms.view.ConversationActivity;
+import org.opensecurity.sms.view.OpenSecuritySMS;
 
 import java.util.ArrayList;
 
@@ -51,7 +54,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
        // holder.messageDate.setText(bubble.getDate().toString());
         holder.messageBody.setText(bubble.getContenu());
 
-
+        holder.messageBody.setMaxWidth((int) (parent.getWidth() * 0.9));
         RelativeLayout relativeLayout = (RelativeLayout) bubbleView.findViewById(R.id.layoutRelativeBubble);
         if(mBubbles.get(position).isSendByMe()) {
             holder.messageBody.setBackgroundResource(R.drawable.bulle_me);
