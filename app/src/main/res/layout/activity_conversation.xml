@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:layout_alignBottom="@+id/bubbleList"
+        android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/sendButton"
         android:id="@+id/textMessage" />
     <Button

@@ -26,14 +26,14 @@ public class ConversationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_conversation);
 
+
         setBubbleData(new ArrayList<Bubble>());
         setBubbleList((ListView) findViewById(R.id.bubbleList));
         System.out.println((getBubbleList() == null) + "\n" + (getBubbleData() == null));
         Intent intent = getIntent();
 
         setCont((ConversationLine) intent.getSerializableExtra("Contact"));
-        Toast.makeText(this, getCont().getContactName(), Toast.LENGTH_LONG).show();
-
+        this.setTitle(getCont().getContactName());
         setBubbleData(Controller.loadMessages(this.getContentResolver(), getCont()));
 
         getBubbleList().setStackFromBottom(true);
