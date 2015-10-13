@@ -63,7 +63,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             holder.messageBody.setBackgroundResource(R.drawable.bulle_not_me);
             relativeLayout.setGravity(Gravity.LEFT);
         }
-        bubbleView.setPadding(0,10,0,10);
+        holder.messageBody.setPadding(50,50,50,50);
 
         return bubbleView;
     }

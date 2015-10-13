@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="10px"
             android:paddingBottom="10px"
-            android:textSize="15sp"
+            android:textSize="17sp"
             />
         <TextView
             android:id="@+id/b_date"
