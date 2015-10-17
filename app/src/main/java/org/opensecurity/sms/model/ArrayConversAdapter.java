@@ -79,13 +79,15 @@ public class ArrayConversAdapter extends ArrayAdapter {
             holder = (ViewHolder) rowView.getTag();
         }
 
-        Color c = new Color();
-        rowView.setBackgroundColor(c.argb(50,250,250,190));
+        //Color c = new Color();
+        //rowView.setBackgroundColor(c.argb(50,250,250,190));
+
         ConversationLine convers = mRepertoire.get(position);
         holder.name.setText(convers.getContactName());
         holder.latestCon.setText(convers.getLatestMessage());
         holder.date.setText(convers.getDate());
 
+        holder.latestCon.setPadding(5,10,0,15);
         return rowView;
     }
 }
