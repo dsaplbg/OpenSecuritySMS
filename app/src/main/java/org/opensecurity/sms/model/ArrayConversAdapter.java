@@ -2,10 +2,12 @@ package org.opensecurity.sms.model;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
@@ -27,6 +29,8 @@ public class ArrayConversAdapter extends ArrayAdapter {
         public TextView name;
         public TextView latestCon;
         public TextView date;
+        public ImageView photo;
+
     }
     public ArrayConversAdapter(Context context, List<ConversationLine> rep){
         super(context, R.layout.listofconvers, rep);
@@ -68,7 +72,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
             /*initialization of holder, because convertView is null so holder couldn't know
             members assignment. We have to recreate it with the following lines*/
             holder = new ViewHolder();
-
+            holder.photo = (ImageView) rowView.findViewById(R.id.photoContact);
             holder.name = (TextView) rowView.findViewById(R.id.nameContact);
             holder.latestCon = (TextView) rowView.findViewById(R.id.latestMessage);
             holder.date = (TextView) rowView.findViewById(R.id.date);
@@ -83,6 +87,8 @@ public class ArrayConversAdapter extends ArrayAdapter {
         //rowView.setBackgroundColor(c.argb(50,250,250,190));
 
         ConversationLine convers = mRepertoire.get(position);
+        if (convers.hasPhoto()) holder.photo.setImageURI(Uri.parse(convers.getPhotoUrl()));   //TODO caching bitmap !
+        else holder.photo.setImageBitmap(null);
         holder.name.setText(convers.getContactName());
         holder.latestCon.setText(convers.getLatestMessage());
         holder.date.setText(convers.getDate());
