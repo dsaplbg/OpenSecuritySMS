@@ -15,12 +15,16 @@ public class ConversationLine implements Serializable {
     private String latestMessage;
     private String date;
     private String thread_ID;
+    private String photoUrl;
+    private String number;
 
-    public ConversationLine(String contactName, String latestMessage, String date, String th_id){
+    public ConversationLine(String contactName, String latestMessage, String date, String th_id, String photoUrl, String number){
         setContactName(contactName);
         setLatestMessage(latestMessage);
         setDate(date);
         setThread_id(th_id);
+        setPhotoUrl(photoUrl);
+        setNumber(number);
     }
 
     public String getThread_ID() {
@@ -44,6 +48,14 @@ public class ConversationLine implements Serializable {
         this.date = date;
     }
 
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
     public final String getContactName() {
         return this.contactName;
     }
@@ -54,5 +66,17 @@ public class ConversationLine implements Serializable {
 
     public  final String getDate() {
         return this.date;
+    }
+
+    public final String getPhotoUrl() {
+        return this.photoUrl;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public boolean hasPhoto() {
+        return this.photoUrl != null && !this.photoUrl.isEmpty();
     }
 }
