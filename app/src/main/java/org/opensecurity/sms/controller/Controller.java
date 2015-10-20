@@ -34,9 +34,10 @@ public class Controller {
         ArrayList<ConversationLine> conversationLines = new ArrayList<>();
 
         // We want to get the sms in the inbox with all their attributes
-        Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox"),
-                null,
-                null,
+        //      SELECT DISTINCT address, body, type, date, thread_id FROM sms WHERE (type=1) AND (address IS NOT NULL) GROUP BY (address) ORDER BY date DESC
+        Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
+                new String[]{"DISTINCT address", "body", "type", "date", "thread_id"},
+                "address IS NOT NULL) GROUP BY (address",
                 null,
                 null);
         List<String> phoneNumbers = new ArrayList<>();
