@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
@@ -42,9 +43,6 @@ public class ConversationActivity extends AppCompatActivity {
 	private ListView bubbleList;
 	private ConversationLine cont;
 
-	private TextView contactName;
-	private ImageView photoContact;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,11 +53,13 @@ public class ConversationActivity extends AppCompatActivity {
 		System.out.println((getBubbleList() == null) + "\n" + (getBubbleData() == null));
 		Intent intent = getIntent();
 
+		//catching the contact sent from main Activity and set the title of this activity at the name of the contact.
 		setCont((ConversationLine) intent.getSerializableExtra("Contact"));
 		this.setTitle(cont.getContactName());
 
 		setBubbleData(Controller.loadMessages(this.getContentResolver(), getCont()));
 
+		//the listView has to start from the bottom.
 		getBubbleList().setStackFromBottom(true);
 		getBubbleList().setDividerHeight(0);
 		getBubbleList().setAdapter(new ArrayBubbleAdapter(this, getBubbleData()));
@@ -70,7 +70,11 @@ public class ConversationActivity extends AppCompatActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu_conversation, menu);
 
+		//We get the button.
 		MenuItem photo = menu.getItem(0);
+
+		//if the contact has a photo, we set the îcon with the contact photo.
+		//else, it's remplaced by "Infos"
 		if (cont.hasPhoto()) {
 			try {
 				InputStream inputStream = getContentResolver().openInputStream(Uri.parse(cont.getPhotoUrl()));

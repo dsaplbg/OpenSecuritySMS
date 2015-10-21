@@ -43,7 +43,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             bubbleView = this.mLayoutInflater.inflate(R.layout.bubble_item, null);
             holder = new ViewHolder();
             holder.messageBody = (TextView) bubbleView.findViewById(R.id.b_contenu);
-          //  holder.messageDate = (TextView) bubbleView.findViewById(R.id.b_date);
+            //  holder.messageDate = (TextView) bubbleView.findViewById(R.id.b_date);
 
             bubbleView.setTag(holder);
         } else {
@@ -51,7 +51,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         }
 
         Bubble bubble = mBubbles.get(position);
-       // holder.messageDate.setText(bubble.getDate().toString());
+        // holder.messageDate.setText(bubble.getDate().toString());
         holder.messageBody.setText(bubble.getContenu());
 
         holder.messageBody.setMaxWidth((int) (parent.getWidth() * 0.9));

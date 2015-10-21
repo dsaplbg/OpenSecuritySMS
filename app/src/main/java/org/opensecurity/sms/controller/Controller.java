@@ -34,9 +34,10 @@ public class Controller {
         ArrayList<ConversationLine> conversationLines = new ArrayList<>();
 
         // We want to get the sms in the inbox with all their attributes
-        Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox"),
-                null,
-                null,
+        //      SELECT DISTINCT address, body, type, date, thread_id FROM sms WHERE (type=1) AND (address IS NOT NULL) GROUP BY (address) ORDER BY date DESC
+        Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox/"),
+                new String[]{"DISTINCT address", "body", "type", "date", "thread_id"},
+                "address IS NOT NULL) GROUP BY (address",
                 null,
                 null);
         List<String> phoneNumbers = new ArrayList<>();
@@ -47,18 +48,21 @@ public class Controller {
             int type = cursor.getInt(cursor.getColumnIndexOrThrow("type"));
             // if we don't already have this phoneNumber in the list and the message is not a draft
             if ((!phoneNumbers.contains(phoneNumber)) && (type != 3) && (phoneNumber.length() >= 1)) {
+                //initialisation to null for name and contact photo
                 String name = null;
                 String photo = null;
                 // we get the smsContent and the date
                 String smsContent = cursor.getString(cursor.getColumnIndexOrThrow("body"));
                 Date date = new Date(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
+                //In this case, personUri is the a contact associated to this phone number.
                 Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
-                // in order to get the contact name, we do a query
+                // in order to get the contact name, we do a query when we ask to keep the name and, the picture of the contact column.
                 Cursor localCursor = contentResolver.query(personUri,
                         new String[]{ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_THUMBNAIL_URI},
-                                null,
-                                null,
-                                null);
+                        null,
+                        null,
+                        null);
+                //if our localCursor contains at least one item.
                 if (localCursor.getCount() != 0) {
                     localCursor.moveToFirst();
                     name = localCursor.getString(localCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
@@ -102,5 +106,4 @@ public class Controller {
 
         return bubbleData;
     }
-
 }

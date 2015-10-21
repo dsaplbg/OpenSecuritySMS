@@ -9,6 +9,9 @@ import java.io.Serializable;
  * the contents of a rowView.
  * latestMessage will be the last message so display in the rowView
  * contactName will be the name of a Contact in the rowView
+ * date : the date of one message
+ * number : the phone number of the contact
+ * photoUrl is the picture, encoded in string
  */
 public class ConversationLine implements Serializable {
     private String contactName;
