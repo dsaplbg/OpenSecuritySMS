@@ -6,7 +6,7 @@ Fork it and pull us !!
 TO DO
 -----
 
-- [] Displaying of last message in the main activity even if it was send by us
+- [ ] Displaying of last message in the main activity even if it was send by us
 
 French Version : 
 
