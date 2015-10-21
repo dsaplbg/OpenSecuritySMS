@@ -3,7 +3,10 @@ This project's goal is to help people to send SMS safely.
 
 Fork it and pull us !!
 
+TO DO
+-----
 
+-[] Displaying of last message in the main activity even if it was send by us
 French Version : 
 
 Le but de cette application est d'envoyer des SMS cryptés avec le système asymétrique RSA. 
