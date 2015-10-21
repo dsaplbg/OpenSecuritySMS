@@ -13,8 +13,9 @@ import org.opensecurity.sms.model.ConversationLine;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -52,7 +53,8 @@ public class Controller {
                 String photo = null;
                 // we get the smsContent and the date
                 String smsContent = cursor.getString(cursor.getColumnIndexOrThrow("body"));
-                Date date = new Date(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
+                Calendar date = Calendar.getInstance();
+                date.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
                 Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
                 // in order to get the contact name, we do a query
                 Cursor localCursor = contentResolver.query(personUri,
@@ -68,9 +70,8 @@ public class Controller {
                 localCursor.close();
                 phoneNumbers.add(phoneNumber);
                 name = (name == null) ? phoneNumber : name;
-                String[] sms = new String[]{name, phoneNumber, smsContent, date.toString()};
                 // we add a new ConversationLine with an id to send to the conversationActivity.
-                conversationLines.add(new ConversationLine(name, smsContent, sms[3], cursor.getString(cursor.getColumnIndexOrThrow("thread_id")), photo, phoneNumber));
+                conversationLines.add(new ConversationLine(name, smsContent, date, cursor.getString(cursor.getColumnIndexOrThrow("thread_id")), photo, phoneNumber));
             }
         }
         cursor.close();
@@ -80,7 +81,6 @@ public class Controller {
 
     static public ArrayList<Bubble> loadMessages(ContentResolver contentResolver, ConversationLine conversationLine){
         ArrayList<Bubble> bubbleData = new ArrayList<>();
-        Date date;
         String content;
         boolean isMe;
 
@@ -92,7 +92,8 @@ public class Controller {
                 isMe = !(cursor.getInt(cursor.getColumnIndexOrThrow("type")) == 1 || cursor.getString(cursor.getColumnIndexOrThrow("person")) != null);
 
                 content = cursor.getString(cursor.getColumnIndexOrThrow("body"));
-                date = new Date(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
+                Calendar date = Calendar.getInstance();
+                date.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
 
                 bubbleData.add(new Bubble(content, date, isMe));
             }

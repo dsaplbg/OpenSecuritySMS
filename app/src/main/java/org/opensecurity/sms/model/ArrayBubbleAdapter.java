@@ -27,12 +27,23 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
 
     static class ViewHolder {
         private TextView messageBody;
-        private TextView messageDate;
     }
     public ArrayBubbleAdapter(Context c, ArrayList<Bubble> mb) {
         super(c, R.layout.bubble_item, mb);
         mBubbles = mb;
         mLayoutInflater = LayoutInflater.from(c);
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        // menu type count
+        return mBubbles.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        // current menu type
+        return position;
     }
 
     @Override
@@ -43,7 +54,6 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             bubbleView = this.mLayoutInflater.inflate(R.layout.bubble_item, null);
             holder = new ViewHolder();
             holder.messageBody = (TextView) bubbleView.findViewById(R.id.b_contenu);
-          //  holder.messageDate = (TextView) bubbleView.findViewById(R.id.b_date);
 
             bubbleView.setTag(holder);
         } else {
@@ -51,17 +61,16 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         }
 
         Bubble bubble = mBubbles.get(position);
-       // holder.messageDate.setText(bubble.getDate().toString());
         holder.messageBody.setText(bubble.getContenu());
 
         holder.messageBody.setMaxWidth((int) (parent.getWidth() * 0.9));
-        RelativeLayout relativeLayout = (RelativeLayout) bubbleView.findViewById(R.id.layoutRelativeBubble);
+        LinearLayout layout = (LinearLayout) bubbleView.findViewById(R.id.layoutBubble);
         if(mBubbles.get(position).isSendByMe()) {
             holder.messageBody.setBackgroundResource(R.drawable.bulle_me);
-            relativeLayout.setGravity(Gravity.RIGHT);
+            layout.setGravity(Gravity.RIGHT);
         } else {
             holder.messageBody.setBackgroundResource(R.drawable.bulle_not_me);
-            relativeLayout.setGravity(Gravity.LEFT);
+            layout.setGravity(Gravity.LEFT);
         }
         holder.messageBody.setPadding(50,50,50,50);
 

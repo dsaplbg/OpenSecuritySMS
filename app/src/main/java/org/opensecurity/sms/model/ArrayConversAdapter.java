@@ -91,7 +91,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
         else holder.photo.setImageBitmap(null);
         holder.name.setText(convers.getContactName());
         holder.latestCon.setText(convers.getLatestMessage());
-        holder.date.setText(convers.getDate());
+        holder.date.setText(convers.getManagedDate());
 
         holder.latestCon.setPadding(5,10,0,15);
         return rowView;

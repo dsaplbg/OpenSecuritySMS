@@ -1,6 +1,8 @@
 package org.opensecurity.sms.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Object used to show a line of conversation
@@ -13,12 +15,12 @@ import java.io.Serializable;
 public class ConversationLine implements Serializable {
     private String contactName;
     private String latestMessage;
-    private String date;
+    private Calendar date;
     private String thread_ID;
     private String photoUrl;
     private String number;
 
-    public ConversationLine(String contactName, String latestMessage, String date, String th_id, String photoUrl, String number){
+    public ConversationLine(String contactName, String latestMessage, Calendar date, String th_id, String photoUrl, String number){
         setContactName(contactName);
         setLatestMessage(latestMessage);
         setDate(date);
@@ -44,7 +46,7 @@ public class ConversationLine implements Serializable {
         this.contactName = contactName;
     }
 
-    public void setDate(String date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 
@@ -64,8 +66,36 @@ public class ConversationLine implements Serializable {
         return this.latestMessage;
     }
 
-    public  final String getDate() {
+    public  final Calendar getDate() {
         return this.date;
+    }
+
+    public String getManagedDate() {
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
+
+        Calendar dayWeek = (Calendar) today.clone();
+        dayWeek.set(Calendar.DAY_OF_WEEK, dayWeek.getFirstDayOfWeek());
+
+        Calendar dateMsg = (Calendar) getDate().clone();
+        dateMsg.set(Calendar.HOUR_OF_DAY, 0);
+        dateMsg.set(Calendar.MINUTE, 0);
+        dateMsg.set(Calendar.SECOND, 0);
+        dateMsg.set(Calendar.MILLISECOND, 0);
+
+        if (dateMsg.compareTo(today) == 0) {
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            return format.format(getDate().getTime());
+        } else if (dateMsg.compareTo(dayWeek) >= 0) {
+            SimpleDateFormat format = new SimpleDateFormat("E");
+            return format.format(getDate().getTime());
+        } else {
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/y");
+            return format.format(getDate().getTime());
+        }
     }
 
     public final String getPhotoUrl() {
