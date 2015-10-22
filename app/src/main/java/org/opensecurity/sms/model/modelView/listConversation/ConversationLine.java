@@ -1,4 +1,6 @@
-package org.opensecurity.sms.model;
+package org.opensecurity.sms.model.modelView.listConversation;
+
+import android.util.Log;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -13,27 +15,35 @@ import java.util.Calendar;
  * contactName will be the name of a Contact in the rowView
  */
 public class ConversationLine implements Serializable {
+
+    public static int LIMIT_LOAD_MESSAGE = 20;
+
     private String contactName;
     private String latestMessage;
     private Calendar date;
-    private String thread_ID;
+    private int thread_ID;
     private String photoUrl;
     private String number;
+    private int numberMessagesInTotal, numberLoaded;
+    private boolean reloaded;
 
-    public ConversationLine(String contactName, String latestMessage, Calendar date, String th_id, String photoUrl, String number){
+    public ConversationLine(String contactName, String latestMessage, Calendar date, int th_id, String photoUrl, String number, int numberMessagesInTotal){
         setContactName(contactName);
         setLatestMessage(latestMessage);
         setDate(date);
         setThread_id(th_id);
         setPhotoUrl(photoUrl);
         setNumber(number);
+        setNumberMessagesInTotal(numberMessagesInTotal);
+        setNumerLoaded(LIMIT_LOAD_MESSAGE);
+        setReloaded(false);
     }
 
-    public String getThread_ID() {
+    public int getThread_ID() {
         return thread_ID;
     }
 
-    public void setThread_id(String ID) {
+    public void setThread_id(int ID) {
         this.thread_ID = ID;
     }
 
@@ -108,5 +118,29 @@ public class ConversationLine implements Serializable {
 
     public boolean hasPhoto() {
         return this.photoUrl != null && !this.photoUrl.isEmpty();
+    }
+
+    public void setNumberMessagesInTotal(int numberMessagesInTotal) {
+        this.numberMessagesInTotal = numberMessagesInTotal;
+    }
+
+    public int getMessageInTotal() {
+        return this.numberMessagesInTotal;
+    }
+
+    public void setNumerLoaded(int numerLoaded) {
+        this.numberLoaded = numerLoaded;
+    }
+
+    public int getNumberLoaded() {
+        return this.numberLoaded;
+    }
+
+    public boolean isReloaded() {
+        return reloaded;
+    }
+
+    public void setReloaded(boolean reloaded) {
+        this.reloaded = reloaded;
     }
 }

@@ -1,7 +1,6 @@
-package org.opensecurity.sms.model;
+package org.opensecurity.sms.model.modelView.listConversation;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;

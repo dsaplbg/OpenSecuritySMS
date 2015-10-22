@@ -1,18 +1,17 @@
-package org.opensecurity.sms.model;
+package org.opensecurity.sms.model.modelView.convesation;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.SimpleTimeZone;
 
-public class Bubble {
+public class Bubble extends ConversationItem {
     private String contenu;
-    private Calendar date;
     private boolean sendByMe;
 
     public Bubble(String contenu, Calendar date, boolean sendByMe) {
+        super(date);
         setContenu(contenu);
-        setDate(date);
         setSendByMe(sendByMe);
     }
 
@@ -24,18 +23,10 @@ public class Bubble {
         this.contenu = contenu;
     }
 
-    public Calendar getDate() {
-        return date;
-    }
-
+    @Override
     public String getManagedDate() {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         return format.format(getDate().getTime());
-    }
-
-
-    public void setDate(Calendar date) {
-        this.date = date;
     }
 
     public boolean isSendByMe() {

@@ -2,18 +2,14 @@ package org.opensecurity.sms.controller;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.util.Log;
+import android.provider.Telephony;
 
-import org.opensecurity.sms.model.Bubble;
-import org.opensecurity.sms.model.ConversationLine;
+import org.opensecurity.sms.model.modelView.convesation.Bubble;
+import org.opensecurity.sms.model.modelView.convesation.ConversationItem;
+import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -36,25 +32,25 @@ public class Controller {
 
         // We want to get the sms in the inbox with all their attributes
         //      SELECT DISTINCT address, body, type, date, thread_id FROM sms WHERE (type=1) AND (address IS NOT NULL) GROUP BY (address) ORDER BY date DESC
-        Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
-                new String[]{"DISTINCT address", "body", "type", "date", "thread_id"},
-                "address IS NOT NULL) GROUP BY (address",
+        Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox"),
+                new String[]{"DISTINCT " + Telephony.Sms.ADDRESS, Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.THREAD_ID, Telephony.Sms.DATE},
+                Telephony.Sms.ADDRESS + " IS NOT NULL) GROUP BY (" + Telephony.Sms.ADDRESS,
                 null,
                 null);
         List<String> phoneNumbers = new ArrayList<>();
         // While there is a message
         while (cursor.moveToNext()) {
             // We get the phoneNumber and the type of the message
-            String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow("address"));
-            int type = cursor.getInt(cursor.getColumnIndexOrThrow("type"));
+            String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
+            int type = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE));
             // if we don't already have this phoneNumber in the list and the message is not a draft
             if ((!phoneNumbers.contains(phoneNumber)) && (type != 3) && (phoneNumber.length() >= 1)) {
                 String name = null;
                 String photo = null;
                 // we get the smsContent and the date
-                String smsContent = cursor.getString(cursor.getColumnIndexOrThrow("body"));
+                String smsContent = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
                 Calendar date = Calendar.getInstance();
-                date.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
+                date.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE))));
                 Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
                 // in order to get the contact name, we do a query
                 Cursor localCursor = contentResolver.query(personUri,
@@ -64,14 +60,18 @@ public class Controller {
                                 null);
                 if (localCursor.getCount() != 0) {
                     localCursor.moveToFirst();
-                    name = localCursor.getString(localCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                    photo = localCursor.getString(localCursor.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI));
+                    name = localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
+                    photo = localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI));
                 }
                 localCursor.close();
                 phoneNumbers.add(phoneNumber);
                 name = (name == null) ? phoneNumber : name;
                 // we add a new ConversationLine with an id to send to the conversationActivity.
-                conversationLines.add(new ConversationLine(name, smsContent, date, cursor.getString(cursor.getColumnIndexOrThrow("thread_id")), photo, phoneNumber));
+                int thID = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID)));
+               // localCursor = contentResolver.query(Uri.parse("content://sms/conversations"), new String[]{Telephony.Sms.Conversations.MESSAGE_COUNT}, thID + " = thread_id" , null, null);
+                //localCursor.moveToNext();
+                conversationLines.add(new ConversationLine(name, smsContent, date, thID, photo, phoneNumber, 0));
+                //localCursor.close();
             }
         }
         cursor.close();
@@ -79,23 +79,30 @@ public class Controller {
         return conversationLines;
     }
 
-    static public ArrayList<Bubble> loadMessages(ContentResolver contentResolver, ConversationLine conversationLine){
-        ArrayList<Bubble> bubbleData = new ArrayList<>();
+    static public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver, ConversationLine conversationLine, int offset, int limit){
+        ArrayList<ConversationItem> bubbleData = new ArrayList<>();
         String content;
         boolean isMe;
+        Calendar lastDate = Calendar.getInstance();
 
         try {
-            Cursor cursor = contentResolver.query(Uri.parse("content://sms"), null, conversationLine.getThread_ID() + " = thread_id" , null, "date ASC");
+            Cursor cursor = contentResolver.query(Uri.parse("content://sms"), new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.PERSON, Telephony.Sms.DATE}, conversationLine.getThread_ID() + " = thread_id" , null, "date ASC");// LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
 
             while (cursor.moveToNext()) {
                 //if it's a recevied message :
-                isMe = !(cursor.getInt(cursor.getColumnIndexOrThrow("type")) == 1 || cursor.getString(cursor.getColumnIndexOrThrow("person")) != null);
+                isMe = !(cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == 1 || cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.PERSON)) != null);
 
-                content = cursor.getString(cursor.getColumnIndexOrThrow("body"));
+                content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
                 Calendar date = Calendar.getInstance();
-                date.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow("date"))));
+                date.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE))));
 
-                bubbleData.add(new Bubble(content, date, isMe));
+                Bubble bubble = new Bubble(content, date, isMe);
+                if (lastDate != date && bubble.hasToManagedDate(lastDate)) {
+                    bubbleData.add(new ConversationItem(date));
+                }
+                lastDate = date;
+
+                bubbleData.add(bubble);
             }
             cursor.close();
         } catch (Exception e) {

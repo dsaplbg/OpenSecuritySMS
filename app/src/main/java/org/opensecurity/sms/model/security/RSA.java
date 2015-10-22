@@ -1,4 +1,4 @@
-package org.opensecurity.sms.model;
+package org.opensecurity.sms.model.security;
 
 import java.io.File;
 import java.io.FileNotFoundException;

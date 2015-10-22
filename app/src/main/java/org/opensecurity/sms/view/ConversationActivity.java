@@ -1,31 +1,19 @@
 package org.opensecurity.sms.view;
 
-import android.Manifest;
-import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ScaleDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.internal.view.menu.MenuView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,16 +24,17 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.controller.Controller;
-import org.opensecurity.sms.model.ArrayBubbleAdapter;
-import org.opensecurity.sms.model.Bubble;
-import org.opensecurity.sms.model.ConversationLine;
+import org.opensecurity.sms.model.modelView.convesation.ArrayBubbleAdapter;
+import org.opensecurity.sms.model.modelView.convesation.Bubble;
+import org.opensecurity.sms.model.modelView.convesation.ConversationItem;
+import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ConversationActivity extends AppCompatActivity {
-	private ArrayList<Bubble> bubbleData;
+	private ArrayList<ConversationItem> bubbleData;
 	private SwipeMenuListView bubbleList;
 	private ConversationLine cont;
 
@@ -57,7 +46,7 @@ public class ConversationActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_conversation);
 
-		setBubbleData(new ArrayList<Bubble>());
+		setBubbleData(new ArrayList<ConversationItem>());
 		setBubbleList((SwipeMenuListView) findViewById(R.id.bubbleList));
 
 		Intent intent = getIntent();
@@ -65,32 +54,62 @@ public class ConversationActivity extends AppCompatActivity {
 		setCont((ConversationLine) intent.getSerializableExtra("Contact"));
 		this.setTitle(cont.getContactName());
 
-		setBubbleData(Controller.loadMessages(this.getContentResolver(), getCont()));
+		setBubbleData(Controller.loadMessages(this.getContentResolver(), getCont(), getCont().getMessageInTotal() - getCont().getNumberLoaded(), ConversationLine.LIMIT_LOAD_MESSAGE));
 
 		getBubbleList().setStackFromBottom(true);
 		getBubbleList().setDividerHeight(0);
-		getBubbleList().setAdapter(new ArrayBubbleAdapter(this, getBubbleData()));
+        final ArrayBubbleAdapter adapter = new ArrayBubbleAdapter(this, getBubbleData());
+		getBubbleList().setAdapter(adapter);
 
         SwipeMenuCreator creator = new SwipeMenuCreator() {
 
             @Override
             public void create(SwipeMenu menu) {
-                // create "open" item
-                SwipeMenuItem openItem = new SwipeMenuItem(getApplicationContext());
-                // set item background
-                openItem.setBackground((ColorDrawable) getBubbleList().getBackground());
-                // set item width
-                openItem.setWidth(150);
-                // set item title
-                openItem.setTitle(getBubbleData().get(menu.getViewType()).getManagedDate());
-                // set item title fontsize
-                openItem.setTitleSize(13);
-                // set item title font color
-                openItem.setTitleColor(Color.BLACK);
-                // add to menu
-                menu.addMenuItem(openItem);
+                if (getBubbleData().get(menu.getViewType()) instanceof Bubble) {
+                    // create "open" item
+                    SwipeMenuItem openItem = new SwipeMenuItem(getApplicationContext());
+                    // set item background
+                    openItem.setBackground((ColorDrawable) getBubbleList().getBackground());
+                    // set item width
+                    openItem.setWidth(150);
+                    // set item title
+                    openItem.setTitle(getBubbleData().get(menu.getViewType()).getManagedDate());
+                    // set item title fontsize
+                    openItem.setTitleSize(13);
+                    // set item title font color
+                    openItem.setTitleColor(Color.BLACK);
+                    // add to menu
+                    menu.addMenuItem(openItem);
+                }
             }
         };
+
+        bubbleList.setOnScrollListener(new AbsListView.OnScrollListener() {
+            private int prevVisibleItem;
+
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int state) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (prevVisibleItem != firstVisibleItem && prevVisibleItem > firstVisibleItem && (getCont().getMessageInTotal() - getCont().getNumberLoaded() - 1) > 0) {
+                    if (firstVisibleItem == 0) {
+                        if (!getCont().isReloaded()) {
+                            /*getBubbleData().addAll(0, Controller.loadMessages(getContentResolver(), getCont(), getCont().getMessageInTotal() - getCont().getNumberLoaded(), 1));
+                            getCont().setNumerLoaded(getCont().getNumberLoaded() + 1);*/
+                            getCont().setReloaded(true);
+                            Log.i("Val", "ok" + firstVisibleItem);
+                            //adapter.notifyDataSetChanged();
+                            //bubbleList.setSelection(1);
+                            Log.i("Val", "ok" + getCont().getNumberLoaded() + "  " + firstVisibleItem);
+                        }
+                    } else getCont().setReloaded(false);
+                }
+
+                prevVisibleItem = firstVisibleItem;
+            }
+        });
 
         // set creator
         bubbleList.setMenuCreator(creator);
@@ -134,11 +153,11 @@ public class ConversationActivity extends AppCompatActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public ArrayList<Bubble> getBubbleData() {
+	public ArrayList<ConversationItem> getBubbleData() {
 		return bubbleData;
 	}
 
-	public void setBubbleData(ArrayList<Bubble> bubbleData) {
+	public void setBubbleData(ArrayList<ConversationItem> bubbleData) {
 		this.bubbleData = bubbleData;
 	}
 
