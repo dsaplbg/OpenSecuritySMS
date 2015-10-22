@@ -8,8 +8,12 @@
         android:scrollIndicators="bottom"
         android:id="@+id/bubbleList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="150px" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="150px"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal"
+        android:smoothScrollbar="true"
+        android:scrollingCache="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -21,8 +25,7 @@
         android:layout_toLeftOf="@+id/sendButton"
         android:ems="10"
         android:scrollbarSize="@dimen/activity_vertical_margin"
-        android:id="@+id/textMessage"
-        android:maxLines="3" />
+        android:id="@+id/textMessage" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

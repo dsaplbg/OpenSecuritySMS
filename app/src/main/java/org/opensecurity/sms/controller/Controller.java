@@ -83,7 +83,7 @@ public class Controller {
         ArrayList<ConversationItem> bubbleData = new ArrayList<>();
         String content;
         boolean isMe;
-        Calendar lastDate = Calendar.getInstance();
+        Calendar lastDate = Calendar.getInstance(); lastDate.set(Calendar.YEAR, 1970);
 
         try {
             Cursor cursor = contentResolver.query(Uri.parse("content://sms"), new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.PERSON, Telephony.Sms.DATE}, conversationLine.getThread_ID() + " = thread_id" , null, "date ASC");// LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));

@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +42,7 @@ public class ConversationActivity extends AppCompatActivity {
 
 	private TextView contactName;
 	private ImageView photoContact;
+    private EditText textMessage;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class ConversationActivity extends AppCompatActivity {
         final ArrayBubbleAdapter adapter = new ArrayBubbleAdapter(this, getBubbleData());
 		getBubbleList().setAdapter(adapter);
 
+        textMessage = (EditText) findViewById(R.id.textMessage);
         SwipeMenuCreator creator = new SwipeMenuCreator() {
 
             @Override
