@@ -1,7 +1,6 @@
-package org.opensecurity.sms.model;
+package org.opensecurity.sms.model.modelView.listConversation;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +90,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
         else holder.photo.setImageBitmap(null);
         holder.name.setText(convers.getContactName());
         holder.latestCon.setText(convers.getLatestMessage());
-        holder.date.setText(convers.getDate());
+        holder.date.setText(convers.getManagedDate());
 
         holder.latestCon.setPadding(5,10,0,15);
         return rowView;

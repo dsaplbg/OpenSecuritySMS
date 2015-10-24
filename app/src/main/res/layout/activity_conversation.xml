@@ -2,14 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context="org.opensecurity.sms.view.ConversationActivity">
-    <ListView
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
         android:minHeight="@dimen/activity_vertical_margin"
         android:scrollIndicators="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/bubbleList"
-        android:layout_marginBottom="150px">
-    </ListView>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="150px"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal"
+        android:smoothScrollbar="true"
+        android:scrollingCache="true" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="150px"
