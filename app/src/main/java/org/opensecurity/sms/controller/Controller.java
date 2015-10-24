@@ -109,7 +109,7 @@ public class Controller {
                     bubbleData.add(new ConversationItem(date));
                 }
                 lastDate = date;
-                
+
                 bubbleData.add(bubble);
             }
             cursor.close();
