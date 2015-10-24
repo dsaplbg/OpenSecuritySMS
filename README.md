@@ -7,6 +7,7 @@ TO DO
 -----
 
 - [x] Displaying of last message in the main activity even if it was send by us
+- [ ] Show full date when we swipe left an older message (yesterday or more)
 - [ ] Adding sending message function and listener to Send Button
 French Version : 
 
