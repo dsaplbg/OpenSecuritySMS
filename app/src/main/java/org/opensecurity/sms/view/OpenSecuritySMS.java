@@ -11,8 +11,8 @@ import android.widget.ListView;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.controller.Controller;
-import org.opensecurity.sms.model.ArrayConversAdapter;
-import org.opensecurity.sms.model.ConversationLine;
+import org.opensecurity.sms.model.modelView.listConversation.ArrayConversAdapter;
+import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.util.ArrayList;
 

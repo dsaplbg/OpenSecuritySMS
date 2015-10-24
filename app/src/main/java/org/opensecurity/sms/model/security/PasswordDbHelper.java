@@ -1,4 +1,4 @@
-package org.opensecurity.sms.model;
+package org.opensecurity.sms.model.security;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
