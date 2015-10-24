@@ -23,6 +23,11 @@ public class Bubble extends ConversationItem {
         this.contenu = contenu;
     }
 
+    /**
+     * Use it to write the date. Called from itemSwitch from ConversationActivity.
+     * Son function just to write hours and minuts.
+     * @return
+     */
     @Override
     public String getManagedDate() {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");

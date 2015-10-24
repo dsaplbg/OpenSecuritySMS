@@ -31,10 +31,9 @@ public class Controller {
         ArrayList<ConversationLine> conversationLines = new ArrayList<>();
 
         // We want to get the sms  with some of their attributes
-        //SELECT distinct ADDRESS, Body, Type, Thread_id, Date FROM content://sms/ WHERE Address is not null AND Subject is null GROUP BY Address
-        //"MAX( " + Telephony.Sms._ID + ") as maxID",  Telephony.Sms.ADDRESS, Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.THREAD_ID, Telephony.Sms.DATE
+        //SELECT distinct ADDRESS, Body, Type, Thread_id, Date FROM content://sms/ WHERE Address is not null  GROUP BY thread_id
         Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
-                null,
+                new String[]{"DISTINCT " + Telephony.Sms.ADDRESS, Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.THREAD_ID, Telephony.Sms.DATE},
                 Telephony.Sms.ADDRESS + " IS NOT NULL)" + "Group by (" + Telephony.Sms.THREAD_ID ,
                 null,
                 null);

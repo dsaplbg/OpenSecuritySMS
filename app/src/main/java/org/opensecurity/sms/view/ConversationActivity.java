@@ -65,6 +65,8 @@ public class ConversationActivity extends AppCompatActivity {
         getBubbleList().setAdapter(adapter);
 
         textMessage = (EditText) findViewById(R.id.textMessage);
+
+        //The displaying of hour when we swipe a bubble
         SwipeMenuCreator creator = new SwipeMenuCreator() {
 
             @Override

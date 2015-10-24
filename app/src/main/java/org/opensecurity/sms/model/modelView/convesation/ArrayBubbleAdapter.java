@@ -1,6 +1,7 @@
 package org.opensecurity.sms.model.modelView.convesation;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +58,11 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         }
 
         ConversationItem item = mBubbles.get(position);
+
+        /**
+         * if it's an instance of Bubble, we create an item with a messageBody, imageBubble etc...
+         * Else, We write the date.
+         */
         if (item instanceof Bubble) {
             Bubble bubble = (Bubble) item;
             holder.messageBody.setText(bubble.getContenu());
@@ -71,7 +77,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
                 layout.setGravity(Gravity.LEFT);
             }
             holder.messageBody.setPadding(50, 50, 50, 50);
-        } else {;
+        } else {
             holder.messageBody.setTextSize(13);
             holder.messageBody.setText(item.getManagedDate());
         }

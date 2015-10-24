@@ -3,6 +3,11 @@ package org.opensecurity.sms.model.modelView.convesation;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
+/**
+ * A class to keep a date of message provided from  one bubble.
+ * A mother class from Bubble
+ */
 public class ConversationItem {
 
     private Calendar date;
