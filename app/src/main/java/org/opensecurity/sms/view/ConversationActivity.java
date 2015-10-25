@@ -32,6 +32,7 @@ import org.opensecurity.sms.model.modelView.convesation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -127,16 +128,10 @@ public class ConversationActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_conversation, menu);
 
         MenuItem photo = menu.getItem(0);
-        if (cont.hasPhoto()) {
-            try {
-                InputStream inputStream = getContentResolver().openInputStream(Uri.parse(cont.getPhotoUrl()));
-                Bitmap origin = BitmapFactory.decodeStream(inputStream);
-                Bitmap b = Bitmap.createScaledBitmap(origin, 2 * origin.getWidth(), 2 * origin.getHeight(), true);
-                photo.setIcon(new BitmapDrawable(getResources(), b));
-            } catch (FileNotFoundException e) {
-                photo.setTitle("Infos");
-            }
-        } else photo.setTitle("Infos");  //no contact photo
+
+        Bitmap origin = cont.getPhoto(getContentResolver());
+        Bitmap b = Bitmap.createScaledBitmap(origin, 2 * origin.getWidth(), 2 * origin.getHeight(), true);
+        photo.setIcon(new BitmapDrawable(getResources(), b));
 
         return true;
     }
