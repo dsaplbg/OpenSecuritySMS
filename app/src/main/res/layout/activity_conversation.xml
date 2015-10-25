@@ -1,37 +1,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
     android:layout_height="fill_parent"
-    tools:context="org.opensecurity.sms.view.ConversationActivity">
+    tools:context="org.opensecurity.sms.view.ConversationActivity"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true">
 
-    <com.baoyz.swipemenulistview.SwipeMenuListView
-        android:minHeight="@dimen/activity_vertical_margin"
-        android:scrollIndicators="bottom"
-        android:id="@+id/bubbleList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="150px"
-        android:stackFromBottom="true"
-        android:transcriptMode="normal"
-        android:smoothScrollbar="true"
-        android:scrollingCache="true" />
+        <com.baoyz.swipemenulistview.SwipeMenuListView
+            android:minHeight="@dimen/activity_vertical_margin"
+            android:scrollIndicators="bottom"
+            android:id="@+id/bubbleList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stackFromBottom="true"
+            android:transcriptMode="normal"
+            android:smoothScrollbar="true"
+            android:scrollingCache="true"
+            android:layout_alignParentTop="false"
+            android:layout_above="@+id/textMessage" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="150px"
-        android:hint="Enter text here"
-        android:inputType="textMultiLine"
-        android:layout_alignBottom="@+id/bubbleList"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/sendButton"
-        android:ems="10"
-        android:scrollbarSize="@dimen/activity_vertical_margin"
-        android:id="@+id/textMessage" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send"
-        android:id="@+id/sendButton"
-        android:layout_alignBottom="@id/textMessage"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter text here"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:scrollbarSize="@dimen/activity_vertical_margin"
+            android:id="@+id/textMessage"
+            android:maxLines="3"
+            android:layout_alignParentLeft="false"
+            android:layout_toLeftOf="@+id/sendButton"
+            android:layout_alignParentBottom="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:id="@+id/sendButton"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true" />
 </RelativeLayout>
