@@ -1,6 +1,13 @@
 package org.opensecurity.sms.model.modelView.listConversation;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +30,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
     private List<ConversationLine> mRepertoire;
     private LayoutInflater mLayoutInflater;
     private View rowView;
+    private ContentResolver contentResolver;
 
     static class ViewHolder {
         public TextView name;
@@ -35,6 +43,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
         super(context, R.layout.listofconvers, rep);
         this.mRepertoire = rep;
         this.mLayoutInflater = LayoutInflater.from(context);
+        this.contentResolver = context.getContentResolver();
     }
 
 
@@ -86,8 +95,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
         //rowView.setBackgroundColor(c.argb(50,250,250,190));
 
         ConversationLine convers = mRepertoire.get(position);
-        if (convers.hasPhoto()) holder.photo.setImageURI(Uri.parse(convers.getPhotoUrl()));   //TODO caching bitmap !
-        else holder.photo.setImageBitmap(null);
+        holder.photo.setImageBitmap(convers.getPhoto(contentResolver));
         holder.name.setText(convers.getContactName());
         holder.latestCon.setText(convers.getLatestMessage());
         holder.date.setText(convers.getManagedDate());

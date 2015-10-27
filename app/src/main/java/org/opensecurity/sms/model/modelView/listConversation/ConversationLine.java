@@ -1,7 +1,18 @@
 package org.opensecurity.sms.model.modelView.listConversation;
 
+import android.content.ContentResolver;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Log;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -110,6 +121,44 @@ public class ConversationLine implements Serializable {
 
     public final String getPhotoUrl() {
         return this.photoUrl;
+    }
+
+    public final Bitmap getPhoto(ContentResolver contentResolver) {
+        Bitmap b = null;
+
+        if (hasPhoto()) {
+            try {
+                b = MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(getPhotoUrl()));
+            } catch (IOException e) {
+                Log.i("Photo error", e.getMessage());
+            }
+        }
+
+        return (b != null ? b : createLetterPhoto());
+    }
+
+    private final Bitmap createLetterPhoto() {
+        Bitmap b = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        String lettre = getContactName().substring(0, 1);
+
+        c.drawColor(Color.DKGRAY);
+
+        p.setColor(Color.WHITE);
+        p.setTextSize(35);
+        p.setShadowLayer(1f, 0f, 1f, Color.BLACK);
+        p.setTextAlign(Paint.Align.LEFT);
+
+        // draw text to the Canvas center
+        Rect bounds = new Rect();
+        p.getTextBounds(lettre, 0, lettre.length(), bounds);
+        int x = c.getClipBounds().width() / 2 - bounds.width() / 2 - bounds.left;
+        int y = c.getClipBounds().height() / 2 + bounds.height() / 2 - bounds.bottom;
+
+        c.drawText(lettre, x, y, p);
+
+        return b;
     }
 
     public String getNumber() {
