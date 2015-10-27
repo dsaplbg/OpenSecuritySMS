@@ -8,7 +8,14 @@ TO DO
 
 - [x] Displaying of last message in the main activity even if it was send by us
 - [ ] Show full date when we swipe left an older message (yesterday or more)
-- [ ] Adding sending message function and listener to Send Button
+- [x] Adding sending message function and listener to Send Button
+- [ ] Listener to recevied message 
+- [ ] Update OpenSecurity activity when we return to this (with back native button for example) to display news potentials messages
+- [ ] Generate couple of public and private keys
+- [ ] Adding transmission of public key to an other contact
+- [ ] Permit of our application to be default sms Application (choice of the user)
+
+
 French Version : 
 
 Le but de cette application est d'envoyer des SMS cryptés avec le système asymétrique RSA. 

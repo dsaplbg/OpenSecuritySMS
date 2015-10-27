@@ -9,11 +9,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,24 +37,28 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ConversationActivity extends AppCompatActivity {
     private ArrayList<ConversationItem> bubbleData;
     private SwipeMenuListView bubbleList;
     private ConversationLine cont;
-
+    private Controller controller;
     private TextView contactName;
     private ImageView photoContact;
     private EditText textMessage;
+    private Button sendButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_conversation);
 
+        controller = new Controller();
         setBubbleData(new ArrayList<ConversationItem>());
         setBubbleList((SwipeMenuListView) findViewById(R.id.bubbleList));
-
+        textMessage = (EditText) findViewById(R.id.textMessage);
+        setSendButton((Button) findViewById(R.id.sendButton));
         Intent intent = getIntent();
 
         setCont((ConversationLine) intent.getSerializableExtra("Contact"));
@@ -120,7 +126,10 @@ public class ConversationActivity extends AppCompatActivity {
 
         // set creator
         bubbleList.setMenuCreator(creator);
+        listeners();
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -154,6 +163,58 @@ public class ConversationActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     * method used to initialization of all listeners.
+     * 1st listener : sendButton onClick.
+     */
+    public void listeners() {
+        getSendButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SmsManager smsManager = SmsManager.getDefault();
+
+                try {
+                    smsManager.sendTextMessage(ConversationActivity.this.cont.getNumber(),
+                            null,
+                            ConversationActivity.this.textMessage.getEditableText().toString(),
+                            null,
+                            null);
+                } catch(Exception e) {
+                    Toast.makeText(ConversationActivity.this.getBaseContext(), "Rien à envoyer", Toast.LENGTH_SHORT).show();
+                }
+
+                //temporair solution to add our bubble just after push of sendButton consists to reload the arrayList and add a bubble to our ArrayList and reset the adapter.
+                ConversationActivity.this.setBubbleData(ConversationActivity.this.controller.loadMessages(ConversationActivity.this.getContentResolver(),
+                        ConversationActivity.this.getCont(),
+                        0,
+                        0));
+                //if we have sent a message (number of characters > 0), we add a bubble.
+                if (ConversationActivity.this.textMessage.getEditableText().toString().length() > 0) {
+                    ConversationActivity.this.getBubbleData().add(new Bubble(ConversationActivity.this.textMessage.getEditableText().toString(),
+                            Calendar.getInstance(),
+                            true));
+//                    Toast.makeText(ConversationActivity.this.getBaseContext(), ConversationActivity.this.textMessage.getEditableText().toString(), Toast.LENGTH_LONG).show();
+//                    System.out.println("Affichage de la valeur du getText() : " + ConversationActivity.this.textMessage.getText().toString());
+//                    System.out.println("taille de la chaine du getEditable : " + ConversationActivity.this.textMessage.getEditableText().toString().length());
+//                    System.out.println("Affichage du booleen du getText() : " + ConversationActivity.this.textMessage.getText().toString() == "");
+//                    System.out.println("Affichage du booleen du getEditable() : " + ConversationActivity.this.textMessage.getEditableText().toString() == "");
+//                    System.out.println("Affichage du booleen du getEditable() == getText() : " + ConversationActivity.this.textMessage.getEditableText().toString() == ConversationActivity.this.textMessage.getText().toString());
+                }
+
+                //As I have say in the precedent comment. We create a new adapter to update our activity with new bubbles.
+                final ArrayBubbleAdapter adapter = new ArrayBubbleAdapter(ConversationActivity.this, ConversationActivity.this.getBubbleData());
+                ConversationActivity.this.getBubbleList().setAdapter(adapter);
+
+                ConversationActivity.this.textMessage.setText("");
+
+            }
+        });
+    }
+
+
+
+
     public ArrayList<ConversationItem> getBubbleData() {
         return bubbleData;
     }
@@ -177,4 +238,8 @@ public class ConversationActivity extends AppCompatActivity {
     public void setCont(ConversationLine cont) {
         this.cont = cont;
     }
+
+    public void setSendButton(Button b) {this.sendButton = b;}
+
+    public Button getSendButton() {return this.sendButton;}
 }
