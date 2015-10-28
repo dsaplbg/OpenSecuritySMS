@@ -1,14 +1,20 @@
 package org.opensecurity.sms.controller;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.Telephony;
+import android.telephony.SmsManager;
+import android.widget.Toast;
 
+import org.opensecurity.sms.model.modelView.convesation.ArrayBubbleAdapter;
 import org.opensecurity.sms.model.modelView.convesation.Bubble;
 import org.opensecurity.sms.model.modelView.convesation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
+import org.opensecurity.sms.view.ConversationActivity;
+import org.opensecurity.sms.view.OpenSecuritySMS;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -117,6 +123,32 @@ public class Controller {
         }
 
         return bubbleData;
+    }
+
+    /**
+     * Function called from sendButton click event in ConversationActivity.
+     * @param c the context of ConversationActivity
+     * @param cont to get all informations about our contact
+     * @param message  to get the message body we want to send
+     *
+     * We try to send a message, but if the message does not contains text
+     * We toast a Message nothing to send.
+     */
+    static public void sendSMS(Context c, ConversationLine cont, String message) {
+        SmsManager smsManager = SmsManager.getDefault();
+
+        try {
+            ArrayList<String> messages = smsManager.divideMessage(message);
+
+            smsManager.sendMultipartTextMessage(cont.getNumber(),
+                    null,
+                    messages,
+                    null,
+                    null);
+        } catch(Exception e) {
+            Toast.makeText(c, "Nothing to send", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 }

@@ -178,45 +178,27 @@ public class ConversationActivity extends AppCompatActivity {
     /**
      * method used to initialization of all listeners.
      * 1st listener : sendButton onClick.
+     *
      */
     public void listeners() {
+
+        /**
+         * First listener. We call sendSMS function and after that, if the sms exists, we create a new
+         * bubble and we reload the Adapter.
+         */
         getSendButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SmsManager smsManager = SmsManager.getDefault();
-
-                try {
-                    System.out.println("Message : " + ConversationActivity.this.textMessage.getText().toString());
-                    ArrayList<String> messages = smsManager.divideMessage(ConversationActivity.this.textMessage.getText().toString());
-
-                    smsManager.sendMultipartTextMessage(ConversationActivity.this.cont.getNumber(),
-                            null,
-                            messages,
-                            null,
-                            null);
-                } catch(Exception e) {
-                    Toast.makeText(ConversationActivity.this.getBaseContext(), "Rien à envoyer", Toast.LENGTH_SHORT).show();
-                }
-
-                //temporair solution to add our bubble just after push of sendButton consists to reload the arrayList and add a bubble to our ArrayList and reset the adapter.
-                ConversationActivity.this.setBubbleData(ConversationActivity.this.controller.loadMessages(ConversationActivity.this.getContentResolver(),
+                Controller.sendSMS(ConversationActivity.this.getBaseContext(),
                         ConversationActivity.this.getCont(),
-                        0,
-                        0));
-                //if we have sent a message (number of characters > 0), we add a bubble.
+                        ConversationActivity.this.textMessage.getText().toString());
+
                 if (ConversationActivity.this.textMessage.getText().toString().length() > 0) {
                     ConversationActivity.this.getBubbleData().add(new Bubble(ConversationActivity.this.textMessage.getEditableText().toString(),
                             Calendar.getInstance(),
                             true));
-//                    Toast.makeText(ConversationActivity.this.getBaseContext(), ConversationActivity.this.textMessage.getEditableText().toString(), Toast.LENGTH_LONG).show();
-//                    System.out.println("Affichage de la valeur du getText() : " + ConversationActivity.this.textMessage.getText().toString());
-//                    System.out.println("taille de la chaine du getEditable : " + ConversationActivity.this.textMessage.getEditableText().toString().length());
-//                    System.out.println("Affichage du booleen du getText() : " + ConversationActivity.this.textMessage.getText().toString() == "");
-//                    System.out.println("Affichage du booleen du getEditable() : " + ConversationActivity.this.textMessage.getEditableText().toString() == "");
-//                    System.out.println("Affichage du booleen du getEditable() == getText() : " + ConversationActivity.this.textMessage.getEditableText().toString() == ConversationActivity.this.textMessage.getText().toString());
                 }
 
-                //As I have say in the precedent comment. We create a new adapter to update our activity with new bubbles.
                 final ArrayBubbleAdapter adapter = new ArrayBubbleAdapter(ConversationActivity.this, ConversationActivity.this.getBubbleData());
                 ConversationActivity.this.getBubbleList().setAdapter(adapter);
 
