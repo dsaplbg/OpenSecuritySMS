@@ -1,5 +1,6 @@
 package org.opensecurity.sms.view;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,7 +40,17 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+
+
+
 public class ConversationActivity extends AppCompatActivity {
+    /**
+     * Message set action.
+     */
+    public static final String MESSAGE_SENT_ACTION = "com.android.mms.transaction.MESSAGE_SENT";
+
+
+
     private ArrayList<ConversationItem> bubbleData;
     private SwipeMenuListView bubbleList;
     private ConversationLine cont;
@@ -175,9 +186,12 @@ public class ConversationActivity extends AppCompatActivity {
                 SmsManager smsManager = SmsManager.getDefault();
 
                 try {
-                    smsManager.sendTextMessage(ConversationActivity.this.cont.getNumber(),
+                    System.out.println("Message : " + ConversationActivity.this.textMessage.getText().toString());
+                    ArrayList<String> messages = smsManager.divideMessage(ConversationActivity.this.textMessage.getText().toString());
+
+                    smsManager.sendMultipartTextMessage(ConversationActivity.this.cont.getNumber(),
                             null,
-                            ConversationActivity.this.textMessage.getEditableText().toString(),
+                            messages,
                             null,
                             null);
                 } catch(Exception e) {
@@ -190,7 +204,7 @@ public class ConversationActivity extends AppCompatActivity {
                         0,
                         0));
                 //if we have sent a message (number of characters > 0), we add a bubble.
-                if (ConversationActivity.this.textMessage.getEditableText().toString().length() > 0) {
+                if (ConversationActivity.this.textMessage.getText().toString().length() > 0) {
                     ConversationActivity.this.getBubbleData().add(new Bubble(ConversationActivity.this.textMessage.getEditableText().toString(),
                             Calendar.getInstance(),
                             true));
