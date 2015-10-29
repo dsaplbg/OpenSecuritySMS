@@ -9,7 +9,7 @@ TO DO
 - [x] Displaying of last message in the main activity even if it was send by us
 - [ ] Show full date when we swipe left an older message (yesterday or more)
 - [x] Adding sending message function and listener to Send Button
-- [ ] Listener to recevied message 
+- [x] Listener to recevied message 
 - [ ] Update OpenSecurity activity when we return to this (with back native button for example) to display news potentials messages
 - [ ] Generate couple of public and private keys
 - [ ] Adding transmission of public key to an other contact
