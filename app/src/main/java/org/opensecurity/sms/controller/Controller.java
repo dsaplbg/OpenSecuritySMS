@@ -1,7 +1,10 @@
 package org.opensecurity.sms.controller;
 
+import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -24,6 +27,11 @@ import java.util.List;
  *
  */
 public class Controller {
+
+
+    private static final String SMS_SEND_ACTION = "CTS_SMS_SEND_ACTION";
+    private static final String SMS_DELIVERY_ACTION = "CTS_SMS_DELIVERY_ACTION";
+
 
     /**
      * This method fill an ArrayList of ConversationLine with every last
@@ -140,13 +148,28 @@ public class Controller {
         try {
             ArrayList<String> messages = smsManager.divideMessage(message);
 
+
+            ArrayList<PendingIntent> sentIntents = new ArrayList<PendingIntent>();
+            ArrayList<PendingIntent> deliveryIntents = new ArrayList<PendingIntent>();
+
+            for (int i = 0; i < messages.size(); i++)
+            {
+                sentIntents.add(PendingIntent.getBroadcast(c, 0, new Intent(SMS_SEND_ACTION), 0));
+                deliveryIntents.add(PendingIntent.getBroadcast(c, 0, new Intent(SMS_DELIVERY_ACTION), 0));
+            }
+
             smsManager.sendMultipartTextMessage(cont.getNumber(),
                     null,
                     messages,
-                    null,
-                    null);
+                    sentIntents,
+                    deliveryIntents);
         } catch(Exception e) {
-            Toast.makeText(c, "Nothing to send", Toast.LENGTH_SHORT).show();
+            System.out.println("Erreur : " + e.getLocalizedMessage());
+            if (message.length()>0) {
+                Toast.makeText(c, "Le message n'a pas pu être envoyé", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(c, "Nothing to send", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }

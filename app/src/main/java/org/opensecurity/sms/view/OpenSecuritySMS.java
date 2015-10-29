@@ -33,7 +33,6 @@ public class OpenSecuritySMS extends AppCompatActivity {
             this.restore(savedInstanceState);
         }
 
-        //ArrayConversAdapter est une class héritée de ArrayAdapter
         /**
          * The listView conversationList will be showed in the activity thanks to the
          * Override of child class ArrayConversAdapter and getView method. and conversationLines is
