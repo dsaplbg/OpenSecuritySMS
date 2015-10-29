@@ -1,7 +1,10 @@
 package org.opensecurity.sms.view;
 
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -11,6 +14,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,13 +52,12 @@ public class ConversationActivity extends AppCompatActivity {
      * Message set action.
      */
     public static final String MESSAGE_SENT_ACTION = "com.android.mms.transaction.MESSAGE_SENT";
-
-
+    public static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
+    private  ArrayBubbleAdapter adapter;
 
     private ArrayList<ConversationItem> bubbleData;
     private SwipeMenuListView bubbleList;
     private ConversationLine cont;
-    private Controller controller;
     private TextView contactName;
     private ImageView photoContact;
     private EditText textMessage;
@@ -65,7 +68,6 @@ public class ConversationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_conversation);
 
-        controller = new Controller();
         setBubbleData(new ArrayList<ConversationItem>());
         setBubbleList((SwipeMenuListView) findViewById(R.id.bubbleList));
         textMessage = (EditText) findViewById(R.id.textMessage);
@@ -79,7 +81,7 @@ public class ConversationActivity extends AppCompatActivity {
 
         getBubbleList().setStackFromBottom(true);
         getBubbleList().setDividerHeight(0);
-        final ArrayBubbleAdapter adapter = new ArrayBubbleAdapter(this, getBubbleData());
+        adapter = new ArrayBubbleAdapter(this, getBubbleData());
         getBubbleList().setAdapter(adapter);
 
         textMessage = (EditText) findViewById(R.id.textMessage);
@@ -139,6 +141,8 @@ public class ConversationActivity extends AppCompatActivity {
         bubbleList.setMenuCreator(creator);
         listeners();
 
+        IntentFilter filter = new IntentFilter(SMS_RECEIVED);
+        registerReceiver(receiver_SMS, filter);
     }
 
 
@@ -198,19 +202,68 @@ public class ConversationActivity extends AppCompatActivity {
                             Calendar.getInstance(),
                             true));
                 }
-
-                final ArrayBubbleAdapter adapter = new ArrayBubbleAdapter(ConversationActivity.this, ConversationActivity.this.getBubbleData());
-                ConversationActivity.this.getBubbleList().setAdapter(adapter);
-
+                ConversationActivity.this.updadeBubble();
                 ConversationActivity.this.textMessage.setText("");
-
             }
+
+
         });
     }
 
+    /**
+     * Listener for an incoming sms in our app.
+     * Use it when application has an incoming sms.
+     * Verify if it's an SMS,
+     * Verify if sms contains something (bundle != null)
+     *
+     */
+    BroadcastReceiver receiver_SMS = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(ConversationActivity.this,  "Message recus ! ", Toast.LENGTH_LONG).show();
+
+            if (intent.getAction().equals(SMS_RECEIVED)) {
+                Bundle bundle = intent.getExtras();
+                if (bundle != null) {
+                    Object[] pdus = (Object[]) bundle.get("pdus");
+                    SmsMessage[] messages = new SmsMessage[pdus.length];
+
+                    for (int i = 0; i < pdus.length; i++)
+                        messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
+
+                    String message = new String("");
+
+                    for (SmsMessage m : messages)
+                        message = message+m.getDisplayMessageBody();
+                    //if the message come from the current contact selected in the previous activity
+                    String currentContactAddress = ConversationActivity.this.getCont().getNumber();
+                    String receviedMessageAddress = messages[0].getOriginatingAddress();
+                    receviedMessageAddress.replace(" ", "");
+                    currentContactAddress.replace(" ", "");
+                    if (receviedMessageAddress.equals(currentContactAddress)) {
+//                        System.out.println("add 1 : " + receviedMessageAddress + "taille : " + receviedMessageAddress.length());
+//                        System.out.println("add 2 : " + currentContactAddress + "taille : " + currentContactAddress.length());
+//                        System.out.println("add 2 == add 1 : " + receviedMessageAddress.equals(currentContactAddress));
+//                        System.out.println("Taille de messages :  " + messages.length);
+
+                        receivedMessage(message);
+                    }
+                }
+            }
+        }
+    };
+
+    private void receivedMessage(String message) {
+        this.getBubbleData().add(new Bubble(message,
+                Calendar.getInstance(),
+                false));
+        this.updadeBubble();
+    }
 
 
-
+    public  void updadeBubble() {
+        final ArrayBubbleAdapter adapter = new ArrayBubbleAdapter(ConversationActivity.this, ConversationActivity.this.getBubbleData());
+        ConversationActivity.this.getBubbleList().setAdapter(adapter);
+    }
     public ArrayList<ConversationItem> getBubbleData() {
         return bubbleData;
     }
