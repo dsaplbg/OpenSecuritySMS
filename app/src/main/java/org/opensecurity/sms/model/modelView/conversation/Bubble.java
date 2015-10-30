@@ -1,9 +1,7 @@
-package org.opensecurity.sms.model.modelView.convesation;
+package org.opensecurity.sms.model.modelView.conversation;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.SimpleTimeZone;
 
 public class Bubble extends ConversationItem {
     private String contenu;

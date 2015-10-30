@@ -1,19 +1,15 @@
 package org.opensecurity.sms.view;
 
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.view.Menu;
@@ -33,14 +29,11 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.controller.Controller;
-import org.opensecurity.sms.model.modelView.convesation.ArrayBubbleAdapter;
-import org.opensecurity.sms.model.modelView.convesation.Bubble;
-import org.opensecurity.sms.model.modelView.convesation.ConversationItem;
+import org.opensecurity.sms.model.modelView.conversation.ArrayBubbleAdapter;
+import org.opensecurity.sms.model.modelView.conversation.Bubble;
+import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 

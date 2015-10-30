@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -12,12 +11,9 @@ import android.provider.Telephony;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
-import org.opensecurity.sms.model.modelView.convesation.ArrayBubbleAdapter;
-import org.opensecurity.sms.model.modelView.convesation.Bubble;
-import org.opensecurity.sms.model.modelView.convesation.ConversationItem;
+import org.opensecurity.sms.model.modelView.conversation.Bubble;
+import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
-import org.opensecurity.sms.view.ConversationActivity;
-import org.opensecurity.sms.view.OpenSecuritySMS;
 
 import java.util.ArrayList;
 import java.util.Calendar;

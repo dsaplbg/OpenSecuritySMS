@@ -1,4 +1,4 @@
-package org.opensecurity.sms.model.modelView.convesation;
+package org.opensecurity.sms.model.modelView.conversation;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
