@@ -1,8 +1,10 @@
 package org.opensecurity.sms.model.modelView.listConversation;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,6 +12,10 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
+
+import org.opensecurity.sms.R;
+import org.opensecurity.sms.view.ConversationActivity;
+import org.opensecurity.sms.view.OpenSecuritySMS;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -140,23 +146,30 @@ public class ConversationLine implements Serializable {
     private final Bitmap createLetterPhoto() {
         Bitmap b = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(b);
-        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
-        String lettre = getContactName().substring(0, 1);
-
         c.drawColor(Color.DKGRAY);
-
+        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
         p.setColor(Color.WHITE);
-        p.setTextSize(35);
-        p.setShadowLayer(1f, 0f, 1f, Color.BLACK);
-        p.setTextAlign(Paint.Align.LEFT);
 
-        // draw text to the Canvas center
-        Rect bounds = new Rect();
-        p.getTextBounds(lettre, 0, lettre.length(), bounds);
-        int x = c.getClipBounds().width() / 2 - bounds.width() / 2 - bounds.left;
-        int y = c.getClipBounds().height() / 2 + bounds.height() / 2 - bounds.bottom;
+        if (getNumber().equals(getContactName())) {
+            c.drawCircle(25, 15, 8, p);
+            c.drawCircle(25, 48, 20, p);
+            p.setColor(Color.DKGRAY);
+            c.drawRect(0, 45, 50, 50, p);
+        } else {
+            String lettre = getContactName().substring(0, 1);
 
-        c.drawText(lettre, x, y, p);
+            p.setTextSize(35);
+            p.setShadowLayer(1f, 0f, 1f, Color.BLACK);
+            p.setTextAlign(Paint.Align.LEFT);
+
+            // draw text to the Canvas center
+            Rect bounds = new Rect();
+            p.getTextBounds(lettre, 0, lettre.length(), bounds);
+            int x = c.getClipBounds().width() / 2 - bounds.width() / 2 - bounds.left;
+            int y = c.getClipBounds().height() / 2 + bounds.height() / 2 - bounds.bottom;
+
+            c.drawText(lettre, x, y, p);
+        }
 
         return b;
     }
