@@ -1,16 +1,24 @@
 package org.opensecurity.sms.controller;
 
+import android.app.Activity;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
+import android.media.RingtoneManager;
 import android.net.Uri;
+import android.opengl.Visibility;
 import android.provider.ContactsContract;
 import android.provider.Telephony;
+import android.support.v7.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
+import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.modelView.conversation.Bubble;
 import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
@@ -167,7 +175,23 @@ public class Controller {
                 Toast.makeText(c, "Nothing to send", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
 
+    static public void makeNotification(String title, String content, int icon, Activity activity) {
+        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        Intent intent = new Intent(activity, activity.getClass());
+        PendingIntent pIntent = PendingIntent.getActivity(activity, 0, intent, 0);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity);
+        mBuilder.setSmallIcon(icon);
+        mBuilder.setContentTitle(title);
+        mBuilder.setContentText(content);
+        mBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+        mBuilder.setSound(soundUri);
+        mBuilder.setVibrate(new long[]{0, 200, 200, 200, 200, 200});
+
+        NotificationManager mNotificationManager =  (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0, mBuilder.build());
+    }
 }

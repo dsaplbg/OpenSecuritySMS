@@ -212,8 +212,6 @@ public class ConversationActivity extends AppCompatActivity {
      */
     BroadcastReceiver receiver_SMS = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
-            Toast.makeText(ConversationActivity.this,  "Message recus ! ", Toast.LENGTH_LONG).show();
-
             if (intent.getAction().equals(SMS_RECEIVED)) {
                 Bundle bundle = intent.getExtras();
                 if (bundle != null) {
@@ -250,6 +248,8 @@ public class ConversationActivity extends AppCompatActivity {
                 Calendar.getInstance(),
                 false));
         this.updadeBubble();
+
+        //Controller.makeNotification(getCont().getContactName(), message.substring(0, (message.length() < 10 ? message.length() : 10)), R.drawable.bulle_not_me, this);
     }
 
 
