@@ -23,6 +23,8 @@ public class RSA {
      * Generate key which contains a pair of private and public key using 1024
      * bytes. Store the set of keys in Private.key and Public.key files.
      *
+     * Will have to change this ! Must be stored in DB now !
+     *
      * @throws NoSuchAlgorithmException
      * @throws IOException
      * @throws FileNotFoundException

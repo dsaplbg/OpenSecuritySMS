@@ -13,9 +13,6 @@ import org.opensecurity.sms.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by public on 04/10/15.
- */
 public class ArrayBubbleAdapter extends ArrayAdapter {
     private View bubbleView;
     private ArrayList<ConversationItem> mBubbles;
@@ -27,13 +24,13 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
 
     /**
      *
-     * @param c
+     * @param context
      * @param mb
      */
-    public ArrayBubbleAdapter(Context c, ArrayList<ConversationItem> mb) {
-        super(c, R.layout.bubble_item, mb);
+    public ArrayBubbleAdapter(Context context, ArrayList<ConversationItem> mb) {
+        super(context, R.layout.bubble_item, mb);
         mBubbles = mb;
-        mLayoutInflater = LayoutInflater.from(c);
+        mLayoutInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -70,7 +67,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
          */
         if (item instanceof Bubble) {
             Bubble bubble = (Bubble) item;
-            holder.messageBody.setText(bubble.getContenu());
+            holder.messageBody.setText(bubble.getContent());
 
             holder.messageBody.setMaxWidth((int) (parent.getWidth() * 0.9));
             LinearLayout layout = (LinearLayout) bubbleView.findViewById(R.id.layoutBubble);

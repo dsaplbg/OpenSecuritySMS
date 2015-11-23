@@ -4,33 +4,51 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Bubble extends ConversationItem {
-    private String contenu;
+    private String content;
     private boolean sendByMe;
 
     /**
+     * Constructor
      *
-     * @param contenu
+     * @param content
+     *          The content of the bubble
      * @param date
+     *          The date of reception of the message
      * @param sendByMe
+     *          True if send by the phone, False if not
      */
-    public Bubble(String contenu, Calendar date, boolean sendByMe) {
+    public Bubble(String content, Calendar date, boolean sendByMe) {
         super(date);
-        setContenu(contenu);
+        setContent(content);
         setSendByMe(sendByMe);
     }
 
-    public String getContenu() {
-        return contenu;
-    }
-
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    /**
+     * This method returns the content of the bubble
+     *
+     * @return
+     *          The content of the bubble
+     */
+    public String getContent() {
+        return content;
     }
 
     /**
-     * Use it to write the date. Called from itemSwitch from ConversationActivity.
-     * Son function just to write hours and minuts.
+     * This method set the content of the bubble
+     *
+     * @param content
+     *          The content of the bubble
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
+     * This method computes the date in a human readable format
+     * using hours and minutes.
+     *
      * @return
+     *          The human readable date
      */
     @Override
     public String getManagedDate() {
@@ -38,10 +56,24 @@ public class Bubble extends ConversationItem {
         return format.format(getDate().getTime());
     }
 
+    /**
+     * This method returns True if the message was sent by the phone,
+     * False if not
+     *
+     * @return
+     *          True if the message was sent by the phone,
+     *          False if not
+     */
     public boolean isSendByMe() {
         return sendByMe;
     }
 
+    /**
+     * This method sets the boolean sendByMe
+     *
+     * @param sendByMe
+     *          The message status
+     */
     public void setSendByMe(boolean sendByMe) {
         this.sendByMe = sendByMe;
     }
