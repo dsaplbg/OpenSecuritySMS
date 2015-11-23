@@ -21,8 +21,6 @@ import org.opensecurity.sms.R;
 import java.util.List;
 
 /**
- * Created by root on 19/09/15.
- *
  * This class is used to set an adapter of a list of conversation (in the main activity)
  * it's a child of ArrayAdapter.
  */
@@ -39,6 +37,12 @@ public class ArrayConversAdapter extends ArrayAdapter {
         public ImageView photo;
 
     }
+
+    /**
+     *
+     * @param context
+     * @param rep
+     */
     public ArrayConversAdapter(Context context, List<ConversationLine> rep){
         super(context, R.layout.listofconvers, rep);
         this.mRepertoire = rep;

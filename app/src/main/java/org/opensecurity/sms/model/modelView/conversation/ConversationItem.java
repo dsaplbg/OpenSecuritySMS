@@ -12,6 +12,10 @@ public class ConversationItem {
 
     private Calendar date;
 
+    /**
+     *
+     * @param date
+     */
     public ConversationItem(Calendar date) {
         setDate(date);
     }
@@ -20,6 +24,10 @@ public class ConversationItem {
         return date;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getManagedDate() {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/y - HH:mm");
         return format.format(getDate().getTime());

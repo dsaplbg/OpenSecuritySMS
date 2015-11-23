@@ -24,6 +24,12 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
     static class ViewHolder {
         private TextView messageBody;
     }
+
+    /**
+     *
+     * @param c
+     * @param mb
+     */
     public ArrayBubbleAdapter(Context c, ArrayList<ConversationItem> mb) {
         super(c, R.layout.bubble_item, mb);
         mBubbles = mb;

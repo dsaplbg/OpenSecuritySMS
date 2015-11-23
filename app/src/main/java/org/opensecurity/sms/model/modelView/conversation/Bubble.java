@@ -7,6 +7,12 @@ public class Bubble extends ConversationItem {
     private String contenu;
     private boolean sendByMe;
 
+    /**
+     *
+     * @param contenu
+     * @param date
+     * @param sendByMe
+     */
     public Bubble(String contenu, Calendar date, boolean sendByMe) {
         super(date);
         setContenu(contenu);

@@ -96,6 +96,14 @@ public class Controller {
         return conversationLines;
     }
 
+    /**
+     *
+     * @param contentResolver
+     * @param conversationLine
+     * @param offset
+     * @param limit
+     * @return
+     */
     static public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver, ConversationLine conversationLine, int offset, int limit){
         ArrayList<ConversationItem> bubbleData = new ArrayList<>();
         String content;
