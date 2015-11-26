@@ -16,6 +16,7 @@ import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.util.ArrayList;
 
+
 public class OpenSecuritySMS extends AppCompatActivity {
     private ListView conversationList;
     private ArrayList<ConversationLine> conversationLines;

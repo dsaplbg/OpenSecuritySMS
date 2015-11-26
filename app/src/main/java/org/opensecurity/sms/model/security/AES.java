@@ -14,16 +14,6 @@ public class AES {
     private static byte[] keyValue;
 
     /**
-     * Constructor
-     *
-     * @param key
-     *              The key to encrypt and decrypt data
-     */
-    public AES(String key) {
-        setKeyValue(key.getBytes());
-    }
-
-    /**
      * This method encrypts data with AES algorithm
      * using the key of the class
      *

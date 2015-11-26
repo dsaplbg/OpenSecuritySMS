@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Bubble extends ConversationItem {
+
     private String content;
     private boolean sendByMe;
 
