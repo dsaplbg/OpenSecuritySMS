@@ -1,6 +1,7 @@
 package org.opensecurity.sms.controller;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
@@ -9,22 +10,29 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.opengl.Visibility;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.Telephony;
 import android.support.v7.app.NotificationCompat;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.opensecurity.sms.R;
+import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.modelView.conversation.Bubble;
 import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -36,6 +44,26 @@ public class Controller {
     private static final String SMS_SEND_ACTION = "CTS_SMS_SEND_ACTION";
     private static final String SMS_DELIVERY_ACTION = "CTS_SMS_DELIVERY_ACTION";
 
+    private static HashMap<String, Contact> listContacts = new HashMap<>();
+
+    static public Contact getContact(String phoneNumber, ContentResolver contentResolver) {
+        if (listContacts.containsKey(phoneNumber)) return listContacts.get(phoneNumber);
+
+        Contact contact = new Contact(phoneNumber);
+        Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
+        Cursor localCursor = contentResolver.query(personUri,
+                new String[]{ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_THUMBNAIL_URI},
+                null,
+                null,
+                null);
+        if (localCursor.moveToFirst()) {
+            contact.setName(localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)));
+            contact.setPhotoURL(localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
+        }
+        localCursor.close();
+
+        return contact;
+    }
 
     /**
      * This method fill an ArrayList of ConversationLine with every last
@@ -44,7 +72,9 @@ public class Controller {
      * @param contentResolver the contentResolver of the activity
      * @return an ArrayList of ConversationLine containing every last message for every contact
      */
-    static public ArrayList<ConversationLine> loadLastMessages(ContentResolver contentResolver){
+    static public ArrayList<ConversationLine> loadLastMessages(ContentResolver contentResolver) {
+        //Empty all contacts
+        listContacts.clear();
         //create a ArrayList of ConversationLine object.
         ArrayList<ConversationLine> conversationLines = new ArrayList<>();
 
@@ -52,82 +82,70 @@ public class Controller {
         //SELECT distinct ADDRESS, Body, Type, Thread_id, Date FROM content://sms/ WHERE Address is not null  GROUP BY thread_id
         Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
                 new String[]{"DISTINCT " + Telephony.Sms.ADDRESS, Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.THREAD_ID, Telephony.Sms.DATE},
-                Telephony.Sms.ADDRESS + " IS NOT NULL)" + "Group by (" + Telephony.Sms.THREAD_ID ,
+                Telephony.Sms.ADDRESS + " IS NOT NULL)" + "Group by (" + Telephony.Sms.THREAD_ID,
                 null,
                 null);
-        List<String> phoneNumbers = new ArrayList<>();
-        // While there is a message
-        int i = 0;
-        while (cursor.moveToNext()) {
-            // We get the phoneNumber and the type of the message
 
-            /*for (i=0; i<cursor.getColumnCount();i++ ) {
-                System.out.println(cursor.getColumnName(i) + " : " + cursor.getString(cursor.getColumnIndexOrThrow(cursor.getColumnName(i))));
-            }
-            System.out.println();
-            System.out.println();*/
-            String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-            int type = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE));
-            // if we don't already have this phoneNumber in the list and the message is not a draft
-            if ((!phoneNumbers.contains(phoneNumber)) && (type != 3) && (phoneNumber.length() >= 1)) {
-                String name = null;
-                String photo = null;
-                // we get the smsContent and the date
-                String smsContent = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
-                Calendar date = Calendar.getInstance();
-                date.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE))));
-                Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
-                // in order to get the contact name, we do a query
-                Cursor localCursor = contentResolver.query(personUri,
-                        new String[]{ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_THUMBNAIL_URI},
-                        null,
-                        null,
-                        null);
-                if (localCursor.getCount() != 0) {
-                    localCursor.moveToFirst();
-                    name = localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
-                    photo = localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI));
+        // While there is a message
+        if (cursor.moveToFirst()) {
+            String phoneNumber, smsContent;
+            int type, nbMessages = cursor.getCount();
+            Contact contact;
+            do {
+                phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
+                type = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE));
+                contact = getContact(phoneNumber, contentResolver);
+                // if we don't already have this phoneNumber in the list and the message is not a draft
+                if ((!listContacts.containsKey(contact.getNumber())) && (type != 3) && (phoneNumber.length() >= 1)) {
+                    listContacts.put(contact.getNumber(), contact);
+                    // we get the smsContent and the date
+                    smsContent = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                    //nbMessages = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.MESSAGE_COUNT));
+
+                    Calendar date = Calendar.getInstance();
+                    date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
+
+                    // we add a new ConversationLine with an id to send to the conversationActivity.
+                    contact.setThreadId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID))));
+                    conversationLines.add(new ConversationLine(contact, smsContent, date, nbMessages));
                 }
-                localCursor.close();
-                phoneNumbers.add(phoneNumber);
-                name = (name == null) ? phoneNumber : name;
-                // we add a new ConversationLine with an id to send to the conversationActivity.
-                int thID = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID)));
-                // localCursor = contentResolver.query(Uri.parse("content://sms/conversations"), new String[]{Telephony.Sms.Conversations.MESSAGE_COUNT}, thID + " = thread_id" , null, null);
-                //localCursor.moveToNext();
-                conversationLines.add(new ConversationLine(name, smsContent, date, thID, photo, phoneNumber, 0));
-                //localCursor.close();
-            }
+            } while (cursor.moveToNext());
         }
         cursor.close();
 
         return conversationLines;
     }
 
-    static public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver, ConversationLine conversationLine, int offset, int limit){
+    static public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver, Contact contact, int offset, int limit){
         ArrayList<ConversationItem> bubbleData = new ArrayList<>();
         String content;
         boolean isMe;
         Calendar lastDate = Calendar.getInstance(); lastDate.set(Calendar.YEAR, 1970);
 
         try {
-            Cursor cursor = contentResolver.query(Uri.parse("content://sms"), new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.SUBJECT, Telephony.Sms.PERSON, Telephony.Sms.DATE, Telephony.Sms.ADDRESS, Telephony.Sms._ID}, conversationLine.getThread_ID() + " = thread_id" , null, "date ASC");// LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
+            Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
+                    new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.PERSON, Telephony.Sms.DATE, Telephony.Sms.ADDRESS},
+                    contact.getThreadId() + " = thread_id",
+                    null,
+                    "date ASC");// LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
 
-            while (cursor.moveToNext()) {
-                //if it's a recevied message :
-                isMe = !(cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == 1 || cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.PERSON)) != null);
+            if (cursor.moveToFirst()) {
+                do {
+                    //if it's a recevied message :
+                    isMe = !(cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == 1 || cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.PERSON)) != null);
 
-                content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
-                Calendar date = Calendar.getInstance();
-                date.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE))));
+                    content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                    Calendar date = Calendar.getInstance();
+                    date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
 
-                Bubble bubble = new Bubble(content, date, isMe);
-                if (lastDate != date && bubble.hasToManagedDate(lastDate)) {
-                    bubbleData.add(new ConversationItem(date));
-                }
-                lastDate = date;
+                    Bubble bubble = new Bubble(content, date, isMe);
+                    if (lastDate != date && bubble.hasToManagedDate(lastDate)) {
+                        bubbleData.add(new ConversationItem(date));
+                    }
+                    lastDate = date;
 
-                bubbleData.add(bubble);
+                    bubbleData.add(bubble);
+                } while (cursor.moveToNext());
             }
             cursor.close();
         } catch (Exception e) {
@@ -146,7 +164,7 @@ public class Controller {
      * We try to send a message, but if the message does not contains text
      * We toast a Message nothing to send.
      */
-    static public void sendSMS(Context c, ConversationLine cont, String message) {
+    static public boolean sendSMS(Context c, ConversationLine cont, String message) {
         SmsManager smsManager = SmsManager.getDefault();
 
         try {
@@ -156,13 +174,12 @@ public class Controller {
             ArrayList<PendingIntent> sentIntents = new ArrayList<PendingIntent>();
             ArrayList<PendingIntent> deliveryIntents = new ArrayList<PendingIntent>();
 
-            for (int i = 0; i < messages.size(); i++)
-            {
+            for (int i = 0; i < messages.size(); i++)  {
                 sentIntents.add(PendingIntent.getBroadcast(c, 0, new Intent(SMS_SEND_ACTION), 0));
                 deliveryIntents.add(PendingIntent.getBroadcast(c, 0, new Intent(SMS_DELIVERY_ACTION), 0));
             }
 
-            smsManager.sendMultipartTextMessage(cont.getNumber(),
+            smsManager.sendMultipartTextMessage(cont.getContact().getNumber(),
                     null,
                     messages,
                     sentIntents,
@@ -170,26 +187,31 @@ public class Controller {
         } catch(Exception e) {
             System.out.println("Erreur : " + e.getLocalizedMessage());
             if (message.length()>0) {
-                Toast.makeText(c, "Le message n'a pas pu être envoyé", Toast.LENGTH_LONG).show();
+                Toast.makeText(c, "Probleme to send", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(c, "Nothing to send", Toast.LENGTH_SHORT).show();
             }
+            return false;
         }
+
+        return true;
     }
 
-    static public void makeNotification(String title, String content, int icon, Activity activity) {
-        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
+    static public void makeNotification(String title, String content, Bitmap icon, Activity activity, Bundle save) {
         Intent intent = new Intent(activity, activity.getClass());
-        PendingIntent pIntent = PendingIntent.getActivity(activity, 0, intent, 0);
+        intent.putExtras(save);
+        PendingIntent pIntent = PendingIntent.getActivity(activity, (int) System.currentTimeMillis(), intent, 0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity);
-        mBuilder.setSmallIcon(icon);
+        mBuilder.setSmallIcon(R.drawable.bulle_not_me);
+        mBuilder.setLargeIcon(icon);
         mBuilder.setContentTitle(title);
         mBuilder.setContentText(content);
         mBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-        mBuilder.setSound(soundUri);
-        mBuilder.setVibrate(new long[]{0, 200, 200, 200, 200, 200});
+        mBuilder.setContentIntent(pIntent);
+        mBuilder.setAutoCancel(true);
+        mBuilder.setCategory(Notification.CATEGORY_MESSAGE);
+        mBuilder.setDefaults(Notification.DEFAULT_ALL);
 
         NotificationManager mNotificationManager =  (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(0, mBuilder.build());

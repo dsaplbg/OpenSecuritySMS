@@ -16,14 +16,21 @@ import android.widget.ListView;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.controller.Controller;
+import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.modelView.listConversation.ArrayConversAdapter;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.util.ArrayList;
 
 public class OpenSecuritySMS extends AppCompatActivity {
+
+    private static OpenSecuritySMS instance;
     private ListView conversationList;
     private ArrayList<ConversationLine> conversationLines;
+
+    public static OpenSecuritySMS getInstance() {
+        return instance;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,29 +38,14 @@ public class OpenSecuritySMS extends AppCompatActivity {
         setContentView(R.layout.activity_open_security_sms);
         setConversationList((ListView) findViewById(R.id.listeConvers));
 
-        if(savedInstanceState == null) {
-            setConversationLines(Controller.loadLastMessages(this.getContentResolver()));
-        }
-        else {
-            this.restore(savedInstanceState);
-        }
+        if(savedInstanceState != null) this.restore(savedInstanceState);
+        else update();
+    }
 
-        /**
-         * The listView conversationList will be showed in the activity thanks to the
-         * Override of child class ArrayConversAdapter and getView method. and conversationLines is
-         * the support(data of conversationLine information).
-         */
-        getConversationList().setAdapter(new ArrayConversAdapter(this, getConversationLines()));
-
-        //starting the new activity when clicking on one of rowview.
-        getConversationList().setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
-                intent.putExtra("Contact", getConversationLines().get(position));
-                startActivityForResult(intent, 0);
-            }
-        });
+    @Override
+    public void onStart() {
+        super.onStart();
+        instance = this;
     }
 
     @Override
@@ -109,7 +101,36 @@ public class OpenSecuritySMS extends AppCompatActivity {
         return conversationLines;
     }
 
+    public ConversationLine getConversationLineByContact(Contact contact) {
+        for (ConversationLine i : getConversationLines()) if (i.getContact().equals(contact)) return i;
+
+        return null;
+    }
+
     public void setConversationLines(ArrayList<ConversationLine> conversationLines) {
         this.conversationLines = conversationLines;
+    }
+
+    public void update() {
+        setConversationLines(Controller.loadLastMessages(this.getContentResolver()));
+
+        /**
+         * The listView conversationList will be showed in the activity thanks to the
+         * Override of child class ArrayConversAdapter and getView method. and conversationLines is
+         * the support(data of conversationLine information).
+         */
+        getConversationList().setAdapter(new ArrayConversAdapter(this, getConversationLines()));
+
+        //starting the new activity when clicking on one of rowview.
+        getConversationList().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
+                intent.putExtra("ConversationLine", getConversationLines().get(position));
+                startActivity(intent);
+            }
+        });
+
+        getConversationList().invalidate();
     }
 }

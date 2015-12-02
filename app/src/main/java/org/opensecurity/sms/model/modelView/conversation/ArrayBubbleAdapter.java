@@ -84,4 +84,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         return bubbleView;
     }
 
+    public void addConversationItem(ConversationItem item) {
+        this.mBubbles.add(item);
+    }
 }

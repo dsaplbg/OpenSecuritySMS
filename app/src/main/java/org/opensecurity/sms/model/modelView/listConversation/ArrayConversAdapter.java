@@ -95,8 +95,8 @@ public class ArrayConversAdapter extends ArrayAdapter {
         //rowView.setBackgroundColor(c.argb(50,250,250,190));
 
         ConversationLine convers = mRepertoire.get(position);
-        holder.photo.setImageBitmap(convers.getPhoto(contentResolver));
-        holder.name.setText(convers.getContactName());
+        holder.photo.setImageBitmap(convers.getContact().getPhoto(contentResolver));
+        holder.name.setText(convers.getContact().getName());
         holder.latestCon.setText(convers.getLatestMessage());
         holder.date.setText(convers.getManagedDate());
 
