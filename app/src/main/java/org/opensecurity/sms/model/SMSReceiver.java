@@ -4,21 +4,26 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.telephony.SmsMessage;
+import android.util.Log;
 
 import org.opensecurity.sms.controller.Controller;
 import org.opensecurity.sms.view.ConversationActivity;
 import org.opensecurity.sms.view.OpenSecuritySMS;
+import org.opensecurity.sms.view.PopupConversationActivity;
+
+import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * Created by Valentin on 10/11/2015.
  */
 public class SMSReceiver extends BroadcastReceiver {
-    private final String ACTION_RECEIVE_SMS = "android.provider.Telephony.SMS_RECEIVED";
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(ACTION_RECEIVE_SMS)) {
+        if (intent.getAction().equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)) {
             Bundle bundle = intent.getExtras();
             if (bundle != null) {
                 Object[] pdus = (Object[]) bundle.get("pdus");
@@ -37,14 +42,15 @@ public class SMSReceiver extends BroadcastReceiver {
 
                         if (ConversationActivity.getInstance() != null) {
                             Intent intentConversationActivity = new Intent(context, ConversationActivity.class);
-                            intent.putExtra("ConversationLine", OpenSecuritySMS.getInstance().getConversationLineByContact(contact));
+                            intent.putExtra("Contact", contact);
 
                             ConversationActivity.getInstance().update(intentConversationActivity);
                         }
 
-                        Bundle saveOpenSecuritySMS = new Bundle();
-                        saveOpenSecuritySMS.putSerializable("ConversationLine", OpenSecuritySMS.getInstance().getConversationLineByContact(contact));
-                        Controller.makeNotification(contact.getName(), messageBody, contact.getPhoto(context.getContentResolver()), ConversationActivity.getInstance(), saveOpenSecuritySMS);
+                        HashMap<String, Serializable> save = new HashMap<>();
+                        save.put("Contact", contact);
+                        save.put("Message", messageBody);
+                        Controller.makeNotification(contact.getName(), messageBody, contact.getPhoto(context.getContentResolver()), OpenSecuritySMS.getInstance(), PopupConversationActivity.class, save);
                     }
                 }
             }

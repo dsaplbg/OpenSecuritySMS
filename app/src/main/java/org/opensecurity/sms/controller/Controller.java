@@ -29,11 +29,13 @@ import org.opensecurity.sms.model.modelView.conversation.Bubble;
 import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -89,14 +91,13 @@ public class Controller {
         // While there is a message
         if (cursor.moveToFirst()) {
             String phoneNumber, smsContent;
-            int type, nbMessages = cursor.getCount();
+            int nbMessages = cursor.getCount();
             Contact contact;
             do {
                 phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-                type = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE));
                 contact = getContact(phoneNumber, contentResolver);
-                // if we don't already have this phoneNumber in the list and the message is not a draft
-                if ((!listContacts.containsKey(contact.getNumber())) && (type != 3) && (phoneNumber.length() >= 1)) {
+                // if we don't already have this phoneNumber in the list
+                if ((!listContacts.containsKey(contact.getNumber())) && (phoneNumber.length() >= 1)) {
                     listContacts.put(contact.getNumber(), contact);
                     // we get the smsContent and the date
                     smsContent = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
@@ -107,7 +108,8 @@ public class Controller {
 
                     // we add a new ConversationLine with an id to send to the conversationActivity.
                     contact.setThreadId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID))));
-                    conversationLines.add(new ConversationLine(contact, smsContent, date, nbMessages));
+                    contact.setNbMessages(nbMessages);
+                    conversationLines.add(new ConversationLine(contact, smsContent, date));
                 }
             } while (cursor.moveToNext());
         }
@@ -132,7 +134,7 @@ public class Controller {
             if (cursor.moveToFirst()) {
                 do {
                     //if it's a recevied message :
-                    isMe = !(cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == 1 || cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.PERSON)) != null);
+                    isMe = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT;
 
                     content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     Calendar date = Calendar.getInstance();
@@ -158,13 +160,13 @@ public class Controller {
     /**
      * Function called from sendButton click event in ConversationActivity.
      * @param c the context of ConversationActivity
-     * @param cont to get all informations about our contact
+     * @param contact to get all informations about our contact
      * @param message  to get the message body we want to send
      *
      * We try to send a message, but if the message does not contains text
      * We toast a Message nothing to send.
      */
-    static public boolean sendSMS(Context c, ConversationLine cont, String message) {
+    static public boolean sendSMS(Context c, Contact contact, String message) {
         SmsManager smsManager = SmsManager.getDefault();
 
         try {
@@ -179,7 +181,7 @@ public class Controller {
                 deliveryIntents.add(PendingIntent.getBroadcast(c, 0, new Intent(SMS_DELIVERY_ACTION), 0));
             }
 
-            smsManager.sendMultipartTextMessage(cont.getContact().getNumber(),
+            smsManager.sendMultipartTextMessage(contact.getNumber(),
                     null,
                     messages,
                     sentIntents,
@@ -197,23 +199,28 @@ public class Controller {
         return true;
     }
 
-    static public void makeNotification(String title, String content, Bitmap icon, Activity activity, Bundle save) {
-        Intent intent = new Intent(activity, activity.getClass());
-        intent.putExtras(save);
-        PendingIntent pIntent = PendingIntent.getActivity(activity, (int) System.currentTimeMillis(), intent, 0);
+    static public void makeNotification(String title, String content, Bitmap icon, Activity activity, Class activityRunClass, HashMap<String, Serializable> save) {
+        if (activity != null) {
+            Intent intent = new Intent(activity, activityRunClass );
+            for (Map.Entry<String, Serializable> entry : save.entrySet()) intent.putExtra(entry.getKey(), entry.getValue());
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(activity);
+            stackBuilder.addParentStack(activityRunClass);
+            stackBuilder.addNextIntent(intent);
+            PendingIntent pIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_ONE_SHOT);
 
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity);
-        mBuilder.setSmallIcon(R.drawable.bulle_not_me);
-        mBuilder.setLargeIcon(icon);
-        mBuilder.setContentTitle(title);
-        mBuilder.setContentText(content);
-        mBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-        mBuilder.setContentIntent(pIntent);
-        mBuilder.setAutoCancel(true);
-        mBuilder.setCategory(Notification.CATEGORY_MESSAGE);
-        mBuilder.setDefaults(Notification.DEFAULT_ALL);
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity);
+            mBuilder.setSmallIcon(R.drawable.bulle_not_me);
+            mBuilder.setLargeIcon(icon);
+            mBuilder.setContentTitle(title);
+            mBuilder.setContentText(content);
+            mBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+            mBuilder.setContentIntent(pIntent);
+            mBuilder.setAutoCancel(true);
+            mBuilder.setCategory(Notification.CATEGORY_MESSAGE);
+            mBuilder.setDefaults(Notification.DEFAULT_ALL);
 
-        NotificationManager mNotificationManager =  (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(0, mBuilder.build());
+            NotificationManager mNotificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.notify(0, mBuilder.build());
+        }
     }
 }

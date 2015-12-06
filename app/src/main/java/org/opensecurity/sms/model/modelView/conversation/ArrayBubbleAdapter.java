@@ -17,13 +17,14 @@ import java.util.ArrayList;
  * Created by public on 04/10/15.
  */
 public class ArrayBubbleAdapter extends ArrayAdapter {
-    private View bubbleView;
+
     private ArrayList<ConversationItem> mBubbles;
     private LayoutInflater mLayoutInflater;
 
     static class ViewHolder {
         private TextView messageBody;
     }
+
     public ArrayBubbleAdapter(Context c, ArrayList<ConversationItem> mb) {
         super(c, R.layout.bubble_item, mb);
         mBubbles = mb;
@@ -45,7 +46,8 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
     @Override
     public View getView (int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        bubbleView = convertView;
+        View bubbleView = convertView;
+
         if (convertView == null) {
             bubbleView = this.mLayoutInflater.inflate(R.layout.bubble_item, null);
             holder = new ViewHolder();
@@ -82,9 +84,5 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         }
 
         return bubbleView;
-    }
-
-    public void addConversationItem(ConversationItem item) {
-        this.mBubbles.add(item);
     }
 }

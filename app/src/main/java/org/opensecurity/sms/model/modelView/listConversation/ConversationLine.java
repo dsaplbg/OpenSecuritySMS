@@ -40,15 +40,12 @@ public class ConversationLine implements Serializable {
     private Calendar date;
     private int thread_ID;
     private Contact contact;
-    private int numberMessagesInTotal, numberLoaded;
 
-    public ConversationLine(Contact contact, String latestMessage, Calendar date, int numberMessagesInTotal){
+    public ConversationLine(Contact contact, String latestMessage, Calendar date){
         setContact(contact);
         setLatestMessage(latestMessage);
         setDate(date);
         setThread_id(contact.getThreadId());
-        setNumberMessagesInTotal(numberMessagesInTotal);
-        setNumerLoaded(LIMIT_LOAD_MESSAGE);
     }
 
     public int getThread_ID() {
@@ -106,22 +103,6 @@ public class ConversationLine implements Serializable {
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/y");
             return format.format(getDate().getTime());
         }
-    }
-
-    public void setNumberMessagesInTotal(int numberMessagesInTotal) {
-        this.numberMessagesInTotal = numberMessagesInTotal;
-    }
-
-    public int getMessageInTotal() {
-        return this.numberMessagesInTotal;
-    }
-
-    public void setNumerLoaded(int numerLoaded) {
-        this.numberLoaded = numerLoaded;
-    }
-
-    public int getNumberLoaded() {
-        return this.numberLoaded;
     }
 
     public Contact getContact() {

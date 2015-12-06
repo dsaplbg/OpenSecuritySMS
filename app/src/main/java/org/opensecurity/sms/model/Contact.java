@@ -19,20 +19,14 @@ import java.io.Serializable;
 public class Contact implements Serializable {
 
     private String name, number, photoURL;
-    private int threadId;  // There is only one thread for a contact so we can save it here
+    private int threadId, nbMessages;  // There is only one thread for a contact so we can save it here
 
     public Contact(String number) {
         setName(number);
         setNumber(number);
         setPhotoURL(null);
         setThreadId(0);
-    }
-
-    public Contact(String name, String number, String photoURL, int threadId) {
-        setName(name);
-        setNumber(number);
-        setPhotoURL(photoURL);
-        setThreadId(threadId);
+        setNbMessages(0);
     }
 
     public final Bitmap getPhoto(ContentResolver contentResolver) {
@@ -115,5 +109,13 @@ public class Contact implements Serializable {
 
     public void setThreadId(int threadId) {
         this.threadId = threadId;
+    }
+
+    public int getNbMessages() {
+        return nbMessages;
+    }
+
+    public void setNbMessages(int nbMessages) {
+        this.nbMessages = nbMessages;
     }
 }

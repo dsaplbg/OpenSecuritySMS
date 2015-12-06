@@ -45,12 +45,10 @@ public class ConversationActivity extends AppCompatActivity {
 
     private static ConversationActivity instance;
 
-    private  ArrayBubbleAdapter adapter;
-
-    private ArrayList<ConversationItem> bubbleData;
-    private ConversationLine convers;
     private Contact contact;
 
+    private ArrayList<ConversationItem> bubbleData;
+    private ArrayBubbleAdapter adapter;
     private SwipeMenuListView bubbleList;
     private EditText textMessage;
     private Button sendButton;
@@ -64,19 +62,43 @@ public class ConversationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_conversation);
 
-        setBubbleData(new ArrayList<ConversationItem>());
+        this.bubbleData = new ArrayList<>();
 
-        bubbleList = (SwipeMenuListView) findViewById(R.id.bubbleList);
-        textMessage = (EditText) findViewById(R.id.textMessage);
-        sendButton = (Button) findViewById(R.id.sendButton);
+        this.bubbleList = (SwipeMenuListView) findViewById(R.id.bubbleList);
+        this.bubbleList.setStackFromBottom(true);
+        this.bubbleList.setDividerHeight(0);
+        //The displaying of hour when we swipe a bubble
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                if (getAdapter().getItem(menu.getViewType()) instanceof Bubble) {
+                    // create "open" item
+                    SwipeMenuItem openItem = new SwipeMenuItem(getApplicationContext());
+                    // set item background
+                    openItem.setBackground((ColorDrawable) getBubbleList().getBackground());
+                    // set item width
+                    openItem.setWidth(150);
+                    // set item title
+                    openItem.setTitle(((ConversationItem) getAdapter().getItem(menu.getViewType())).getManagedDate());
+                    // set item title fontsize
+                    openItem.setTitleSize(13);
+                    // set item title font color
+                    openItem.setTitleColor(Color.BLACK);
+                    // add to menu
+                    menu.addMenuItem(openItem);
+                }
+            }
+        };
+        this.bubbleList.setMenuCreator(creator);
+
+        this.textMessage = (EditText) findViewById(R.id.textMessage);
+        this.sendButton = (Button) findViewById(R.id.sendButton);
+
+        listeners();
 
         update(getIntent());
-    }
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
         instance = this;
     }
 
@@ -126,46 +148,28 @@ public class ConversationActivity extends AppCompatActivity {
         getSendButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textMessage.getText().length() > 0 && Controller.sendSMS(ConversationActivity.this.getBaseContext(), getConvers(), textMessage.getText().toString())) {
-                    getBubbleData().add(new Bubble(textMessage.getEditableText().toString(), Calendar.getInstance(), true));
-                    updadeBubble();
+                if (textMessage.getText().length() > 0 && Controller.sendSMS(getBaseContext(), getContact(), textMessage.getText().toString())) {
                     textMessage.setText("");
                 }
             }
         });
     }
 
-    private void receivedMessage(String message) {
-        this.getBubbleData().add(new Bubble(message,
-                Calendar.getInstance(),
-                false));
-        this.updadeBubble();
-    }
+    public void setBubbleData(ArrayList<ConversationItem> bubbleData) {
+        getBubbleData().clear();
+        getBubbleData().addAll(bubbleData);
 
-
-    public void updadeBubble() {
-        final ArrayBubbleAdapter adapter = new ArrayBubbleAdapter(ConversationActivity.this, ConversationActivity.this.getBubbleData());
-        getBubbleList().setAdapter(adapter);
-        getBubbleList().invalidate();
+        this.adapter = new ArrayBubbleAdapter(getBaseContext(), this.bubbleData);
+        if (!getBubbleData().isEmpty()) this.bubbleList.setAdapter(this.adapter);
     }
 
     public ArrayList<ConversationItem> getBubbleData() {
-        return bubbleData;
-    }
-
-    public void setBubbleData(ArrayList<ConversationItem> bubbleData) {
-        this.bubbleData = bubbleData;
+        return this.bubbleData;
     }
 
     public SwipeMenuListView getBubbleList() {
         return bubbleList;
     }
-
-    public void setBubbleList(SwipeMenuListView bubbleList) {
-        this.bubbleList = bubbleList;
-    }
-
-    public void setSendButton(Button b) {this.sendButton = b;}
 
     public Button getSendButton() {return this.sendButton;}
 
@@ -175,54 +179,18 @@ public class ConversationActivity extends AppCompatActivity {
 
     public void setContact(Contact contact) {
         this.contact = contact;
-    }
-
-    public ConversationLine getConvers() {
-        return convers;
-    }
-
-    public void setConvers(ConversationLine convers) {
-        this.convers = convers;
+        this.setTitle(contact.getName());
     }
 
     public void update(Intent intent) {
-        if (intent.getSerializableExtra("ConversationLine") != null) setConvers((ConversationLine) intent.getSerializableExtra("ConversationLine"));
-        else setConvers((ConversationLine) intent.getExtras().getSerializable("ConversationLine"));
+        if (intent.getSerializableExtra("Contact") != null) setContact((Contact) intent.getSerializableExtra("Contact"));
 
-        setContact(getConvers().getContact());
-        this.setTitle(getContact().getName());
+        update();
+    }
 
-        setBubbleData(Controller.loadMessages(this.getContentResolver(), getContact(), getConvers().getMessageInTotal() - getConvers().getNumberLoaded(), ConversationLine.LIMIT_LOAD_MESSAGE));
-
-        getBubbleList().setStackFromBottom(true);
-        getBubbleList().setDividerHeight(0);
-        adapter = new ArrayBubbleAdapter(this, getBubbleData());
-        getBubbleList().setAdapter(adapter);
-
-        //The displaying of hour when we swipe a bubble
-        SwipeMenuCreator creator = new SwipeMenuCreator() {
-
-            @Override
-            public void create(SwipeMenu menu) {
-                if (getBubbleData().get(menu.getViewType()) instanceof Bubble) {
-                    // create "open" item
-                    SwipeMenuItem openItem = new SwipeMenuItem(getApplicationContext());
-                    // set item background
-                    openItem.setBackground((ColorDrawable) getBubbleList().getBackground());
-                    // set item width
-                    openItem.setWidth(150);
-                    // set item title
-                    openItem.setTitle(getBubbleData().get(menu.getViewType()).getManagedDate());
-                    // set item title fontsize
-                    openItem.setTitleSize(13);
-                    // set item title font color
-                    openItem.setTitleColor(Color.BLACK);
-                    // add to menu
-                    menu.addMenuItem(openItem);
-                }
-            }
-        };
-
+    public void update() {
+        setBubbleData(Controller.loadMessages(this.getContentResolver(), getContact(), 0, ConversationLine.LIMIT_LOAD_MESSAGE));
+        /*
         bubbleList.setOnScrollListener(new AbsListView.OnScrollListener() {
             private int prevVisibleItem;
 
@@ -240,9 +208,10 @@ public class ConversationActivity extends AppCompatActivity {
 
                 prevVisibleItem = firstVisibleItem;
             }
-        });
-        bubbleList.setMenuCreator(creator);
+        });*/
+    }
 
-        listeners();
+    public ArrayBubbleAdapter getAdapter() {
+        return this.adapter;
     }
 }

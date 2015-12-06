@@ -21,12 +21,15 @@ import org.opensecurity.sms.model.modelView.listConversation.ArrayConversAdapter
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class OpenSecuritySMS extends AppCompatActivity {
 
     private static OpenSecuritySMS instance;
+
     private ListView conversationList;
     private ArrayList<ConversationLine> conversationLines;
+    private ArrayConversAdapter adapter;
 
     public static OpenSecuritySMS getInstance() {
         return instance;
@@ -36,16 +39,20 @@ public class OpenSecuritySMS extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_security_sms);
-        setConversationList((ListView) findViewById(R.id.listeConvers));
 
-        if(savedInstanceState != null) this.restore(savedInstanceState);
-        else update();
-    }
+        this.conversationLines = new ArrayList<>();
+        this.adapter = new ArrayConversAdapter(getBaseContext(), this.conversationLines);
 
-    @Override
-    public void onStart() {
-        super.onStart();
+        this.conversationList = (ListView) findViewById(R.id.listeConvers);
+        this.conversationList.setAdapter(this.adapter);
+
+        update();
         instance = this;
+/*
+        Intent intent = new Intent(getApplicationContext(), PopupConversationActivity.class);
+        intent.putExtra("Contact", getConversationLines().get(0).getContact());
+        intent.putExtra("Message", "test d'un message");
+        startActivity(intent);*/
     }
 
     @Override
@@ -80,7 +87,8 @@ public class OpenSecuritySMS extends AppCompatActivity {
         b.putSerializable("ConversSerialization", getConversationLines());
     }
 
-    public void restore(Bundle savedInstanceState) {
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
         try {
             setConversationLines((ArrayList<ConversationLine>) savedInstanceState.getSerializable("ConversSerialization"));
         }
@@ -93,22 +101,14 @@ public class OpenSecuritySMS extends AppCompatActivity {
         return conversationList;
     }
 
-    public void setConversationList(ListView conversationList) {
-        this.conversationList = conversationList;
-    }
-
     public ArrayList<ConversationLine> getConversationLines() {
         return conversationLines;
     }
 
-    public ConversationLine getConversationLineByContact(Contact contact) {
-        for (ConversationLine i : getConversationLines()) if (i.getContact().equals(contact)) return i;
-
-        return null;
-    }
-
     public void setConversationLines(ArrayList<ConversationLine> conversationLines) {
-        this.conversationLines = conversationLines;
+        getConversationLines().clear();
+        getConversationLines().addAll(conversationLines);
+        getAdapter().notifyDataSetChanged();
     }
 
     public void update() {
@@ -119,18 +119,19 @@ public class OpenSecuritySMS extends AppCompatActivity {
          * Override of child class ArrayConversAdapter and getView method. and conversationLines is
          * the support(data of conversationLine information).
          */
-        getConversationList().setAdapter(new ArrayConversAdapter(this, getConversationLines()));
 
         //starting the new activity when clicking on one of rowview.
         getConversationList().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
-                intent.putExtra("ConversationLine", getConversationLines().get(position));
+                intent.putExtra("Contact", getConversationLines().get(position).getContact());
                 startActivity(intent);
             }
         });
+    }
 
-        getConversationList().invalidate();
+    public ArrayConversAdapter getAdapter() {
+        return adapter;
     }
 }
