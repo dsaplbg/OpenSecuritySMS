@@ -25,9 +25,8 @@ import java.util.List;
  * it's a child of ArrayAdapter.
  */
 public class ArrayConversAdapter extends ArrayAdapter {
-    private List<ConversationLine> mRepertoire;
+
     private LayoutInflater mLayoutInflater;
-    private View rowView;
     private ContentResolver contentResolver;
 
     static class ViewHolder {
@@ -45,7 +44,6 @@ public class ArrayConversAdapter extends ArrayAdapter {
      */
     public ArrayConversAdapter(Context context, List<ConversationLine> rep){
         super(context, R.layout.listofconvers, rep);
-        this.mRepertoire = rep;
         this.mLayoutInflater = LayoutInflater.from(context);
         this.contentResolver = context.getContentResolver();
     }
@@ -73,10 +71,10 @@ public class ArrayConversAdapter extends ArrayAdapter {
     public View getView (int position, View convertView, ViewGroup parent) {
 
         ViewHolder holder;  //use this class to keep element when one of them disappear (by scrolling for example)
-        rowView = convertView;
+        View rowView = convertView;
 
         //if the parameter convertView is null, we have to recalculate rowview thanks to the following lines.
-        if(convertView == null) {
+        if(rowView == null) {
             //la méthode inflate permet de créer un objet view à partir d'un xml.
             //inflate method permit to create a View object since the xml
             rowView = this.mLayoutInflater.inflate(R.layout.listofconvers, null);
@@ -98,9 +96,9 @@ public class ArrayConversAdapter extends ArrayAdapter {
         //Color c = new Color();
         //rowView.setBackgroundColor(c.argb(50,250,250,190));
 
-        ConversationLine convers = mRepertoire.get(position);
-        holder.photo.setImageBitmap(convers.getPhoto(contentResolver));
-        holder.name.setText(convers.getContactName());
+        ConversationLine convers = (ConversationLine) getItem(position);
+        holder.photo.setImageBitmap(convers.getContact().getPhoto(contentResolver));
+        holder.name.setText(convers.getContact().getName());
         holder.latestCon.setText(convers.getLatestMessage());
         holder.date.setText(convers.getManagedDate());
 
