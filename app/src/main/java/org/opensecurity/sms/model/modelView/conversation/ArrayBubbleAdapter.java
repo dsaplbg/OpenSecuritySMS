@@ -14,7 +14,7 @@ import org.opensecurity.sms.R;
 import java.util.ArrayList;
 
 public class ArrayBubbleAdapter extends ArrayAdapter {
-    private View bubbleView;
+
     private ArrayList<ConversationItem> mBubbles;
     private LayoutInflater mLayoutInflater;
 
@@ -24,13 +24,14 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
 
     /**
      *
-     * @param context
+     * @param c context
      * @param mb
      */
-    public ArrayBubbleAdapter(Context context, ArrayList<ConversationItem> mb) {
-        super(context, R.layout.bubble_item, mb);
+
+    public ArrayBubbleAdapter(Context c, ArrayList<ConversationItem> mb) {
+        super(c, R.layout.bubble_item, mb);
         mBubbles = mb;
-        mLayoutInflater = LayoutInflater.from(context);
+        mLayoutInflater = LayoutInflater.from(c);
     }
 
     @Override
@@ -48,7 +49,8 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
     @Override
     public View getView (int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        bubbleView = convertView;
+        View bubbleView = convertView;
+
         if (convertView == null) {
             bubbleView = this.mLayoutInflater.inflate(R.layout.bubble_item, null);
             holder = new ViewHolder();
@@ -86,5 +88,4 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
 
         return bubbleView;
     }
-
 }

@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">OpenSecuritySMS</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Paramètres</string>
     <string name="open_security_sms">OpenSecuritySMS</string>
-    <string name="title_activity_conversation">ConversationActivity</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_conversation">Conversation</string>
+    <string name="title_activity_popupConversation">Réponse rapide</string>
 </resources>
