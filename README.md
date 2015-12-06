@@ -11,7 +11,7 @@ TO DO
 - [x] Adding sending message function and listener to Send Button
 - [ ] Update sms database to mark on read for new sms reception in ConversationActivity.
 - [x] Listener to recevied message 
-- [ ] Update OpenSecurity activity when we return to this (with back native button for example) to display news potentials messages
+- [x] Update OpenSecurity activity when we return to this (with back native button for example) to display news potentials messages
 - [ ] Generate couple of public and private keys
 - [ ] Adding transmission of public key to an other contact
 - [ ] Permit of our application to be default sms Application (choice of the user)
