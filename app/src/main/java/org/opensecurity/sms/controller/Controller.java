@@ -37,10 +37,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- *
- */
+
 public class Controller {
+    /**
+     * The Controller is used by all activities. It contains various useful functions.
+     */
 
 
     private static final String SMS_SEND_ACTION = "CTS_SMS_SEND_ACTION";
@@ -48,6 +49,14 @@ public class Controller {
 
     private static HashMap<String, Contact> listContacts = new HashMap<>();
 
+    /**
+     * This function has to return a contact Object thanks to a phoneNumber and an access
+     * to the android dataBase
+     *
+     * @param phoneNumber the phoneNumber of a Contact in your phone.
+     * @param contentResolver to manage access to a structured set of data in your phone
+     * @return the contact who has this phoneNumber
+     */
     static public Contact getContact(String phoneNumber, ContentResolver contentResolver) {
         if (listContacts.containsKey(phoneNumber)) return listContacts.get(phoneNumber);
 
@@ -119,12 +128,13 @@ public class Controller {
     }
 
     /**
+     * This function has to load bubbles of one conversation in an ArrayList of object ConversationItem.
      *
-     * @param contentResolver
-     * @param contact
-     * @param offset
-     * @param limit
-     * @return
+     * @param contentResolver to manage access to a structured set of data in your phone
+     * @param contact is the current contact in our selected conversation
+     * @param offset never ised for the moment
+     * @param limit the limit of bubble what we want to load. (to dispence to load all bubbles)
+     * @return bubbleData the ArrayList of Bubbles in a conversation.
      */
 
     static public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver,
@@ -168,13 +178,14 @@ public class Controller {
     }
 
     /**
+     * We try to send a message, but if the message does not contains text
+     * We toast a Message nothing to send.
      * Function called from sendButton click event in ConversationActivity.
+     *
      * @param c the context of ConversationActivity
      * @param contact to get all informations about our contact
      * @param message  to get the message body we want to send
      *
-     * We try to send a message, but if the message does not contains text
-     * We toast a Message nothing to send.
      */
     static public boolean sendSMS(Context c, Contact contact, String message) {
         SmsManager smsManager = SmsManager.getDefault();
@@ -209,15 +220,29 @@ public class Controller {
         return true;
     }
 
-    static public void makeNotification(String title, String content, Bitmap icon, Activity activity, Class activityRunClass, HashMap<String, Serializable> save) {
+    /**
+     * This function is use to initialize, create and display a notification in Android.
+     *
+     * @param title the title of the notification.
+     * @param content the content of the notification
+     * @param icon the icon of the notification
+     * @param activity current activity
+     * @param activityRunClass
+     * @param save
+     */
+    static public void makeNotification(String title, String content, Bitmap icon, Activity activity,
+                                        Class activityRunClass, HashMap<String, Serializable> save) {
         if (activity != null) {
             Intent intent = new Intent(activity, activityRunClass );
             for (Map.Entry<String, Serializable> entry : save.entrySet()) intent.putExtra(entry.getKey(), entry.getValue());
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(activity);
             stackBuilder.addParentStack(activityRunClass);
             stackBuilder.addNextIntent(intent);
+
+            //specify the action which should be performed once the user select the notification
             PendingIntent pIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_ONE_SHOT);
 
+            //the object use to create the design of a notification
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity);
             mBuilder.setSmallIcon(R.drawable.bulle_not_me);
             mBuilder.setLargeIcon(icon);

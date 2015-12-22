@@ -43,20 +43,60 @@ import java.util.Calendar;
 
 public class ConversationActivity extends AppCompatActivity {
 
+    /**
+     * This class is an activity for displaying one conversation bitween us and
+     * another contact.
+     */
+
+
+    /**
+     * instance of a conversation activity
+     */
     private static ConversationActivity instance;
 
+    /**
+     * The contact who has been selected in conversation activity
+     */
     private Contact contact;
 
+    /**
+     * The array to keep bubbles. We load messages into this array
+     */
     private ArrayList<ConversationItem> bubbleData;
+
+    /**
+     * The adapter for this activity
+     */
     private ArrayBubbleAdapter adapter;
+
+    /**
+     * The listeView for displaying bubbles
+     */
     private SwipeMenuListView bubbleList;
+
+    /**
+     * The editText wiget to enter text to send
+     */
     private EditText textMessage;
+
+    /**
+     * the button used to send messages
+     */
     private Button sendButton;
 
+    /**
+     * To return the current instance. Be sure that is the only one instance (singleton pattern)
+     * @return the instance of current activity (=this)
+     */
     public static ConversationActivity getInstance() {
         return instance;
     }
 
+    /**
+     * To create the activity
+     *
+     * @param savedInstanceState save the instance state to keep informations.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +142,12 @@ public class ConversationActivity extends AppCompatActivity {
         instance = this;
     }
 
+    /**
+     * Use to create an optionMenu.
+     *
+     * @param menu keep informations relative to the menu
+     * @return boolean if the menu is create or no
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -116,6 +162,11 @@ public class ConversationActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * To react when we select on item on the menu.
+     * @param item the current selected item.
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -135,9 +186,7 @@ public class ConversationActivity extends AppCompatActivity {
     }
 
     /**
-     * method used to initialization of all listeners.
-     * 1st listener : sendButton onClick.
-     *
+     * contains listeners of the activity
      */
     public void listeners() {
 
@@ -148,13 +197,18 @@ public class ConversationActivity extends AppCompatActivity {
         getSendButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textMessage.getText().length() > 0 && Controller.sendSMS(getBaseContext(), getContact(), textMessage.getText().toString())) {
+                if (textMessage.getText().length() > 0 && Controller.sendSMS(getBaseContext(), getContact(),
+                        textMessage.getText().toString())) {
                     textMessage.setText("");
                 }
             }
         });
     }
 
+    /**
+     * Just set the ArrayList of Bubbles in the activity.
+     * @param bubbleData the data that we want to load
+     */
     public void setBubbleData(ArrayList<ConversationItem> bubbleData) {
         getBubbleData().clear();
         getBubbleData().addAll(bubbleData);
@@ -163,31 +217,58 @@ public class ConversationActivity extends AppCompatActivity {
         if (!getBubbleData().isEmpty()) this.bubbleList.setAdapter(this.adapter);
     }
 
+    /**
+     * Just return the bubbleData which are loaded in the activity
+     * @return bubbleData of current activity
+     */
     public ArrayList<ConversationItem> getBubbleData() {
         return this.bubbleData;
     }
 
+    /**
+     * To return the menuListView of bubbles.
+     * @return the ListView of current activity
+     */
     public SwipeMenuListView getBubbleList() {
         return bubbleList;
     }
 
+    /**
+     * To return the sendButton of this activity.
+     * @return the Button to send messages in this activity
+     */
     public Button getSendButton() {return this.sendButton;}
 
+    /**
+     * To get the contact of our current activity.
+     * @return the current contact of selected activity conversation
+     */
     public Contact getContact() {
         return contact;
     }
 
+    /**
+     * To set the current contact when we select it in previous activity
+     * @param contact the future current contact of this activity conversation.
+     */
     public void setContact(Contact contact) {
         this.contact = contact;
         this.setTitle(contact.getName());
     }
 
+    /**
+     *
+     * @param intent
+     */
     public void update(Intent intent) {
         if (intent.getSerializableExtra("Contact") != null) setContact((Contact) intent.getSerializableExtra("Contact"));
 
         update();
     }
 
+    /**
+     * This function is used to update a conversation when it's necessary
+     */
     public void update() {
         setBubbleData(Controller.loadMessages(this.getContentResolver(), getContact(), 0, ConversationLine.LIMIT_LOAD_MESSAGE));
         /*
@@ -211,6 +292,10 @@ public class ConversationActivity extends AppCompatActivity {
         });*/
     }
 
+    /**
+     * To get the adapter (design)
+     * @return the adapter of current activity
+     */
     public ArrayBubbleAdapter getAdapter() {
         return this.adapter;
     }
