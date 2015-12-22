@@ -41,12 +41,15 @@ import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+
+
+/**
+ * This class is an activity for displaying one conversation bitween us and
+ * another contact.
+ */
+
 public class ConversationActivity extends AppCompatActivity {
 
-    /**
-     * This class is an activity for displaying one conversation bitween us and
-     * another contact.
-     */
 
 
     /**

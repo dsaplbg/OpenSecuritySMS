@@ -67,6 +67,16 @@ public class ArrayConversAdapter extends ArrayAdapter {
      * If you want to improve the design of the listOfConvers activity (main activity) refer to
      * R.layout.listofconvers.xml and R.layout.opensecuritysms.xml
      */
+    /**
+     * get a view that displays the data at the specified position in the data set.
+     * This function is called for each rows
+     * a row contains information loaded thanks to the controller
+     *
+     * @param position the position of the item in the listview
+     * @param convertView the old view to rescue
+     * @param parent the parent that this view will eventually be attached to (mainActivity)
+     * @return the view of a row. Created view by us
+     */
     @Override
     public View getView (int position, View convertView, ViewGroup parent) {
 

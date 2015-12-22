@@ -47,6 +47,10 @@ public class Controller {
     private static final String SMS_SEND_ACTION = "CTS_SMS_SEND_ACTION";
     private static final String SMS_DELIVERY_ACTION = "CTS_SMS_DELIVERY_ACTION";
 
+    /**
+     * the list of contacts. In hashmap.
+     * the key is his name.
+     */
     private static HashMap<String, Contact> listContacts = new HashMap<>();
 
     /**

@@ -3,9 +3,19 @@ package org.opensecurity.sms.model.modelView.conversation;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * class bubble. On of conversationItem. Possible row in a conversationActivity.
+ */
 public class Bubble extends ConversationItem {
 
+    /**
+     * the text into a conversationItem
+     */
     private String content;
+
+    /**
+     * true if it's a message send by me. False if not
+     */
     private boolean sendByMe;
 
     /**

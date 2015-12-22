@@ -23,13 +23,23 @@ import org.opensecurity.sms.model.Contact;
 
 /**
  * Created by Valentin on 11/11/2015.
+ * The popup when we receive a sms.
  */
 public class PopupConversationActivity extends Activity implements GestureDetector.OnGestureListener {
 
+    /**
+     *
+     */
     private GestureDetectorCompat mDetector;
 
+    /**
+     * the contact who send an sms
+     */
     private Contact contact;
 
+    /**
+     * the contains of sms
+     */
     private TextView contactText, messageText;
     private Button buttonSend;
     private ImageButton photoContact;

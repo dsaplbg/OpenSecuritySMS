@@ -14,13 +14,25 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
+ * The contact class. An object
  * Created by Valentin on 10/11/2015.
  */
 public class Contact implements Serializable {
 
+    /**
+     * name is the name of contact, number is his phoneNumber and photoUrl is his picture contact
+     */
     private String name, number, photoURL;
+
+    /**
+     * threadId is like a primary key for on contact in database
+     */
     private int threadId, nbMessages;  // There is only one thread for a contact so we can save it here
 
+    /**
+     * constructor
+     * @param number his phoneNumber
+     */
     public Contact(String number) {
         setName(number);
         setNumber(number);
@@ -29,6 +41,11 @@ public class Contact implements Serializable {
         setNbMessages(0);
     }
 
+    /**
+     * To get his photo
+     * @param contentResolver to manage access to a structured set of data in your phone
+     * @return bitmap picture of our contact
+     */
     public final Bitmap getPhoto(ContentResolver contentResolver) {
         Bitmap b = null;
 
@@ -43,6 +60,10 @@ public class Contact implements Serializable {
         return (b != null ? b : createLetterPhoto());
     }
 
+    /**
+     * to create letter on a picture if we havn't the picture for our contact
+     * @return bitmap picture of our contact
+     */
     private final Bitmap createLetterPhoto() {
         Bitmap b = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(b);
@@ -74,47 +95,91 @@ public class Contact implements Serializable {
         return b;
     }
 
+    /**
+     * to know if a contact has a picture
+     * @return true if contact has a picture in database
+     */
     public boolean hasPhoto() {
         return this.photoURL != null && !this.photoURL.isEmpty();
     }
 
 
+    /**
+     * to get his photoUrl (in database)
+     * @return the photoUrl of current contact
+     */
     public String getPhotoURL() {
         return photoURL;
     }
 
+    /**
+     * to set his photoUrl (in database)
+     * @param  photoURL photoUrl of current contact
+     */
     public void setPhotoURL(String photoURL) {
         this.photoURL = photoURL;
     }
 
+    /**
+     * to get the phoneNumber of our contact
+     * @return the phoneNumber of our instance of contact
+     */
     public String getNumber() {
         return number;
     }
 
+    /**
+     * to set the phoneNumber of our contact
+     * @param number the phoneNumber in database
+     */
     public void setNumber(String number) {
         this.number = number;
     }
 
+    /**
+     * to get the name of current contact
+     * @return the name of the current contact
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * to set the name of a current contact
+     * @param name his name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * to get the primary key of current contact
+     * @return the threadId of one contact
+     */
     public int getThreadId() {
         return threadId;
     }
 
+    /**
+     * to set the threadId of one contact
+     * @param threadId the threadId for the current contact
+     */
     public void setThreadId(int threadId) {
         this.threadId = threadId;
     }
 
+    /**
+     * to get the numbers of messages between us and our contact
+     * @return the number of messages between us and our contact
+     */
     public int getNbMessages() {
         return nbMessages;
     }
 
+    /**
+     * to set the number of messages between us and our contact
+     * @param nbMessages the number of messages between us and our contact
+     */
     public void setNbMessages(int nbMessages) {
         this.nbMessages = nbMessages;
     }

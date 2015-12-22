@@ -13,52 +13,85 @@ import org.opensecurity.sms.R;
 
 import java.util.ArrayList;
 
+/**
+ * the adapter for displaing the listview of bubbles in a conversation activity
+ */
 public class ArrayBubbleAdapter extends ArrayAdapter {
 
+    /**
+     * the bubbles of our conversation in a arrayList
+     */
     private ArrayList<ConversationItem> mBubbles;
+
+    /**
+     * to instantiates a layout XML file into its corresponding view objects
+     */
     private LayoutInflater mLayoutInflater;
 
+    /**
+     * a static class to keep the view
+     */
     static class ViewHolder {
         private TextView messageBody;
     }
 
     /**
-     *
-     * @param c context
-     * @param mb
+     * constructor.
+     * @param c context interface to global information about an application environment.
+     * @param mb arrayList of bubbles
      */
-
     public ArrayBubbleAdapter(Context c, ArrayList<ConversationItem> mb) {
         super(c, R.layout.bubble_item, mb);
         mBubbles = mb;
         mLayoutInflater = LayoutInflater.from(c);
     }
 
+    /**
+     * to get the number of bubbles in our conversation activity
+     * @return the number of bubbles
+     */
     @Override
     public int getViewTypeCount() {
         // menu type count
         return mBubbles.size();
     }
 
+    /**
+     * to get the current menu type
+     * @param position the position of selected item
+     * @return the position of selected item
+     */
     @Override
     public int getItemViewType(int position) {
         // current menu type
         return position;
     }
 
+    /**
+     * get a view that displays the data at the specified position in the data set.
+     * This function is called for each rows
+     * a bubble contains information loaded thanks to the controller
+     *
+     * @param position the position of the item in the listview
+     * @param convertView the old view to rescue
+     * @param parent the parent that this view will eventually be attached to (conversationActivity)
+     * @return the view of a bubble. Created view by us
+     */
     @Override
     public View getView (int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        View bubbleView = convertView;
+        View bubbleViewRow = convertView;
 
         if (convertView == null) {
-            bubbleView = this.mLayoutInflater.inflate(R.layout.bubble_item, null);
-            holder = new ViewHolder();
-            holder.messageBody = (TextView) bubbleView.findViewById(R.id.b_contenu);
+            //create a new object with the same properties that the buuble_item
+            bubbleViewRow = this.mLayoutInflater.inflate(R.layout.bubble_item, null);
 
-            bubbleView.setTag(holder);
+            holder = new ViewHolder();
+            holder.messageBody = (TextView) bubbleViewRow.findViewById(R.id.b_contenu);
+
+            bubbleViewRow.setTag(holder);
         } else {
-            holder = (ViewHolder) bubbleView.getTag();
+            holder = (ViewHolder) bubbleViewRow.getTag();
         }
 
         ConversationItem item = mBubbles.get(position);
@@ -72,7 +105,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             holder.messageBody.setText(bubble.getContent());
 
             holder.messageBody.setMaxWidth((int) (parent.getWidth() * 0.9));
-            LinearLayout layout = (LinearLayout) bubbleView.findViewById(R.id.layoutBubble);
+            LinearLayout layout = (LinearLayout) bubbleViewRow.findViewById(R.id.layoutBubble);
             if (bubble.isSendByMe()) {
                 holder.messageBody.setBackgroundResource(R.drawable.bulle_me);
                 layout.setGravity(Gravity.RIGHT);
@@ -86,6 +119,6 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             holder.messageBody.setText(item.getManagedDate());
         }
 
-        return bubbleView;
+        return bubbleViewRow;
     }
 }

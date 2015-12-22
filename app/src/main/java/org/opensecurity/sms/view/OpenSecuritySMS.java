@@ -23,19 +23,44 @@ import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
+/**
+ * main activity when we start the application.
+ */
 public class OpenSecuritySMS extends AppCompatActivity {
 
+    /**
+     * singleton pattern. We keep one instance (this) for the current activity
+     */
     private static OpenSecuritySMS instance;
 
+    /**
+     * the listView of conversations
+     */
     private ListView conversationList;
+
+    /**
+     * The arrayList to keep objects of conversationLine
+     */
     private ArrayList<ConversationLine> conversationLines;
+
+    /**
+     * The adapter for design the current activity
+     */
     private ArrayConversAdapter adapter;
 
+    /**
+     * to get the current instance (=this)
+     * @return instance of our activity
+     */
     public static OpenSecuritySMS getInstance() {
         return instance;
     }
 
+    /**
+     * To create the activity
+     *
+     * @param savedInstanceState save the instance state to keep informations.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +73,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
         this.conversationList.setAdapter(this.adapter);
 
         update();
+        listeners();
         instance = this;
 /*
         Intent intent = new Intent(getApplicationContext(), PopupConversationActivity.class);
@@ -56,6 +82,12 @@ public class OpenSecuritySMS extends AppCompatActivity {
         startActivity(intent);*/
     }
 
+    /**
+     * Use to create an optionMenu.
+     *
+     * @param menu keep informations relative to the menu
+     * @return boolean if the menu is create or no
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,6 +95,11 @@ public class OpenSecuritySMS extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * To react when we select on item on the menu.
+     * @param item the current selected item.
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -80,7 +117,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * Allow the activity to keep the list of conversationsLine after the death of this activiy
-     * @param b
+     * @param b the bundel used to serialize informations.
      */
     @Override
     public void onSaveInstanceState(Bundle b) {
@@ -88,6 +125,10 @@ public class OpenSecuritySMS extends AppCompatActivity {
         b.putSerializable("ConversSerialization", getConversationLines());
     }
 
+    /**
+     * To resore data which was keeped by the bundle on onSaveInstanceState function
+     * @param savedInstanceState the bundle
+     */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         try {
@@ -98,20 +139,36 @@ public class OpenSecuritySMS extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * to return the current listView.
+     * @return the current listView
+     */
     public ListView getConversationList() {
         return conversationList;
     }
 
+    /**
+     * to return the data of conversations (arrayList)
+     * @return the arrayList of conversationLines
+     */
     public ArrayList<ConversationLine> getConversationLines() {
         return conversationLines;
     }
 
+    /**
+     * to set the data of conversationLines
+     * @param conversationLines arrayList of conversationLines
+     */
     public void setConversationLines(ArrayList<ConversationLine> conversationLines) {
         getConversationLines().clear();
         getConversationLines().addAll(conversationLines);
         getAdapter().notifyDataSetChanged();
     }
 
+    /**
+     * This function is used to update a conversation when it's necessary
+     */
     public void update() {
         setConversationLines(Controller.loadLastMessages(this.getContentResolver()));
 
@@ -121,6 +178,16 @@ public class OpenSecuritySMS extends AppCompatActivity {
          * the support(data of conversationLine information).
          */
 
+
+    }
+
+
+    /**
+     * We write all listeners for current activity in this function.
+     *
+     * first listener : clickListeners on listView
+     */
+    public void listeners() {
         //starting the new activity when clicking on one of rowview.
         getConversationList().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,7 +198,10 @@ public class OpenSecuritySMS extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * To get the adapter (design)
+     * @return the adapter of current activity
+     */
     public ArrayConversAdapter getAdapter() {
         return adapter;
     }

@@ -34,13 +34,38 @@ import java.util.Calendar;
  */
 public class ConversationLine implements Serializable {
 
+    /**
+     * the limit of messages can be loaded
+     */
     public static int LIMIT_LOAD_MESSAGE = 20;
 
+    /**
+     * the latest message
+     */
     private String latestMessage;
+
+    /**
+     * the date of latest message
+     */
     private Calendar date;
+
+    /**
+     * the primary key of the contact
+     */
     private int thread_ID;
+
+    /**
+     * the contact of the row
+     */
     private Contact contact;
 
+    /**
+     * Constructor
+     *
+     * @param contact is the contact of the row
+     * @param latestMessage is the latestMessage between you and he
+     * @param date the date of latest message
+     */
     public ConversationLine(Contact contact, String latestMessage, Calendar date){
         setContact(contact);
         setLatestMessage(latestMessage);
@@ -48,35 +73,67 @@ public class ConversationLine implements Serializable {
         setThread_id(contact.getThreadId());
     }
 
+    /**
+     * to get the threadId of the contact in the row
+     * @return the threadId of the contact in the row
+     */
     public int getThread_ID() {
         return thread_ID;
     }
 
+    /**
+     * to set the threadId of the contact in the row
+     * @param ID the id of the contact in the row
+     */
     public void setThread_id(int ID) {
         this.thread_ID = ID;
     }
 
+    /**
+     * to set the latestMessage for a row.
+     * @param latestMessage the lastest message for a row
+     */
     public void setLatestMessage(String latestMessage) {
         latestMessage = (latestMessage.length() > 100)?(latestMessage.substring(0, 97) + "..."):latestMessage;
         this.latestMessage = latestMessage;
     }
 
+    /**
+     * to set the contact of a row
+     * @param contact the contact of a row
+     */
     public void setContact(Contact contact) {
         this.contact = contact;
     }
 
+    /**
+     * to set the date of a row
+     * @param date the date of a row
+     */
     public void setDate(Calendar date) {
         this.date = date;
     }
 
+    /**
+     * to get the latest message of a row
+     * @return the latestmessage of a row
+     */
     public final String getLatestMessage() {
         return this.latestMessage;
     }
 
+    /**
+     * to get the date of a row
+     * @return the date of a row
+     */
     public  final Calendar getDate() {
         return this.date;
     }
 
+    /**
+     * to get the managed date of a row
+     * @return the managedDate of a row
+     */
     public String getManagedDate() {
         Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR_OF_DAY, 0);
@@ -105,6 +162,10 @@ public class ConversationLine implements Serializable {
         }
     }
 
+    /**
+     * to get the contact of a row
+     * @return the contact of a row
+     */
     public Contact getContact() {
         return contact;
     }

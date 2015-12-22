@@ -18,9 +18,16 @@ import java.util.HashMap;
 
 /**
  * Created by Valentin on 10/11/2015.
+ * Is a big listener for android. Active this piece of code when Android detect a new entrance
+ * of a sms
  */
 public class SMSReceiver extends BroadcastReceiver {
 
+    /**
+     * an override of BroadcastReceiver function. To execute code whe android detect an intent.
+     * @param context interface to global information about an application environment.
+     * @param intent abstract description of an operation to be performed.
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)) {
