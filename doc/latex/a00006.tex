@@ -1,0 +1,229 @@
+\hypertarget{a00006}{\section{Controller Class Reference}
+\label{a00006}\index{Controller@{Controller}}
+}
+
+
+Collaboration diagram for Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{a00042}
+\end{center}
+\end{figure}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{a00005}{Contact} \hyperlink{a00006_afb0bfb28009ccdfda1b58f26832b994f}{get\+Contact} (String phone\+Number, Content\+Resolver content\+Resolver)
+\item 
+static Array\+List\\*
+$<$ \hyperlink{a00009}{Conversation\+Line} $>$ \hyperlink{a00006_aa92a9bca692459dbb3a2d61cf94ff242}{load\+Last\+Messages} (Content\+Resolver content\+Resolver)
+\item 
+static Array\+List\\*
+$<$ \hyperlink{a00008}{Conversation\+Item} $>$ \hyperlink{a00006_a303cdc823347525806aa99487bb6074d}{load\+Messages} (Content\+Resolver content\+Resolver, \hyperlink{a00005}{Contact} contact, int offset, int limit)
+\item 
+static boolean \hyperlink{a00006_a6ad490642a293b184b343fc78f942af3}{send\+S\+M\+S} (Context c, \hyperlink{a00005}{Contact} contact, String message)
+\item 
+static void \hyperlink{a00006_a5e0bf80dacc45ede0c5519a88414f918}{make\+Notification} (String title, String content, Bitmap icon, Activity activity, Class activity\+Run\+Class, Hash\+Map$<$ String, Serializable $>$ save)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{a00006_ae783da46195d548123aa679a2040c53d}{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N} = \char`\"{}C\+T\+S\+\_\+\+S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N\char`\"{}
+\item 
+static final String \hyperlink{a00006_a134bdf0d10a1ebe6bc019d986853ca23}{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N} = \char`\"{}C\+T\+S\+\_\+\+S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N\char`\"{}
+\item 
+static Hash\+Map$<$ String, \hyperlink{a00005}{Contact} $>$ \hyperlink{a00006_a42b678132ea8e78c62ce961e43078bca}{list\+Contacts} = new Hash\+Map$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00006_afb0bfb28009ccdfda1b58f26832b994f}{\index{org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}!get\+Contact@{get\+Contact}}
+\index{get\+Contact@{get\+Contact}!org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}}
+\subsubsection[{get\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Contact} get\+Contact (
+\begin{DoxyParamCaption}
+\item[{String}]{phone\+Number, }
+\item[{Content\+Resolver}]{content\+Resolver}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00006_afb0bfb28009ccdfda1b58f26832b994f}
+This function has to return a contact Object thanks to a phone\+Number and an access to the android data\+Base
+
+
+\begin{DoxyParams}{Parameters}
+{\em phone\+Number} & the phone\+Number of a Contact in your phone. \\
+\hline
+{\em content\+Resolver} & to manage access to a structured set of data in your phone \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the contact who has this phone\+Number 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00006_afb0bfb28009ccdfda1b58f26832b994f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00006_aa92a9bca692459dbb3a2d61cf94ff242}{\index{org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}!load\+Last\+Messages@{load\+Last\+Messages}}
+\index{load\+Last\+Messages@{load\+Last\+Messages}!org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}}
+\subsubsection[{load\+Last\+Messages}]{\setlength{\rightskip}{0pt plus 5cm}static Array\+List$<${\bf Conversation\+Line}$>$ load\+Last\+Messages (
+\begin{DoxyParamCaption}
+\item[{Content\+Resolver}]{content\+Resolver}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00006_aa92a9bca692459dbb3a2d61cf94ff242}
+This method fill an Array\+List of Conversation\+Line with every last message for every contact
+
+
+\begin{DoxyParams}{Parameters}
+{\em content\+Resolver} & the content\+Resolver of the activity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an Array\+List of Conversation\+Line containing every last message for every contact 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{a00006_aa92a9bca692459dbb3a2d61cf94ff242_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00006_aa92a9bca692459dbb3a2d61cf94ff242_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00006_a303cdc823347525806aa99487bb6074d}{\index{org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}!load\+Messages@{load\+Messages}}
+\index{load\+Messages@{load\+Messages}!org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}}
+\subsubsection[{load\+Messages}]{\setlength{\rightskip}{0pt plus 5cm}static Array\+List$<${\bf Conversation\+Item}$>$ load\+Messages (
+\begin{DoxyParamCaption}
+\item[{Content\+Resolver}]{content\+Resolver, }
+\item[{{\bf Contact}}]{contact, }
+\item[{int}]{offset, }
+\item[{int}]{limit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00006_a303cdc823347525806aa99487bb6074d}
+This function has to load bubbles of one conversation in an Array\+List of object Conversation\+Item.
+
+
+\begin{DoxyParams}{Parameters}
+{\em content\+Resolver} & to manage access to a structured set of data in your phone \\
+\hline
+{\em contact} & is the current contact in our selected conversation \\
+\hline
+{\em offset} & never ised for the moment \\
+\hline
+{\em limit} & the limit of bubble what we want to load. (to dispence to load all bubbles) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bubble\+Data the Array\+List of Bubbles in a conversation. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00006_a303cdc823347525806aa99487bb6074d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00006_a5e0bf80dacc45ede0c5519a88414f918}{\index{org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}!make\+Notification@{make\+Notification}}
+\index{make\+Notification@{make\+Notification}!org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}}
+\subsubsection[{make\+Notification}]{\setlength{\rightskip}{0pt plus 5cm}static void make\+Notification (
+\begin{DoxyParamCaption}
+\item[{String}]{title, }
+\item[{String}]{content, }
+\item[{Bitmap}]{icon, }
+\item[{Activity}]{activity, }
+\item[{Class}]{activity\+Run\+Class, }
+\item[{Hash\+Map$<$ String, Serializable $>$}]{save}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00006_a5e0bf80dacc45ede0c5519a88414f918}
+This function is use to initialize, create and display a notification in Android.
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & the title of the notification. \\
+\hline
+{\em content} & the content of the notification \\
+\hline
+{\em icon} & the icon of the notification \\
+\hline
+{\em activity} & current activity \\
+\hline
+{\em activity\+Run\+Class} & \\
+\hline
+{\em save} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00006_a6ad490642a293b184b343fc78f942af3}{\index{org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}!send\+S\+M\+S@{send\+S\+M\+S}}
+\index{send\+S\+M\+S@{send\+S\+M\+S}!org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}}
+\subsubsection[{send\+S\+M\+S}]{\setlength{\rightskip}{0pt plus 5cm}static boolean send\+S\+M\+S (
+\begin{DoxyParamCaption}
+\item[{Context}]{c, }
+\item[{{\bf Contact}}]{contact, }
+\item[{String}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00006_a6ad490642a293b184b343fc78f942af3}
+We try to send a message, but if the message does not contains text We toast a Message nothing to send. Function called from send\+Button click event in Conversation\+Activity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & the context of Conversation\+Activity \\
+\hline
+{\em contact} & to get all informations about our contact \\
+\hline
+{\em message} & to get the message body we want to send \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00006_a6ad490642a293b184b343fc78f942af3_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00006_a42b678132ea8e78c62ce961e43078bca}{\index{org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}!list\+Contacts@{list\+Contacts}}
+\index{list\+Contacts@{list\+Contacts}!org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}}
+\subsubsection[{list\+Contacts}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Map$<$String, {\bf Contact}$>$ list\+Contacts = new Hash\+Map$<$$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00006_a42b678132ea8e78c62ce961e43078bca}
+the list of contacts. In hashmap. the key is his name. \hypertarget{a00006_a134bdf0d10a1ebe6bc019d986853ca23}{\index{org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}!S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N@{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N}}
+\index{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N@{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N}!org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}}
+\subsubsection[{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}final String S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N = \char`\"{}C\+T\+S\+\_\+\+S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00006_a134bdf0d10a1ebe6bc019d986853ca23}
+\hypertarget{a00006_ae783da46195d548123aa679a2040c53d}{\index{org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}!S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N@{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N}}
+\index{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N@{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N}!org\+::opensecurity\+::sms\+::controller\+::\+Controller@{org\+::opensecurity\+::sms\+::controller\+::\+Controller}}
+\subsubsection[{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}final String S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N = \char`\"{}C\+T\+S\+\_\+\+S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00006_ae783da46195d548123aa679a2040c53d}
+The \hyperlink{a00006}{Controller} is used by all activities. It contains various useful functions. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+app/src/main/java/org/opensecurity/sms/controller/\hyperlink{a00016}{Controller.\+java}\end{DoxyCompactItemize}

@@ -1,0 +1,6 @@
+<map id="sendSMS" name="sendSMS">
+<area shape="rect" id="node2" href="$a00007.html#a92b8e0730130e1184a8cdbd89590779d" title="org.opensecurity.sms.view.\lConversationActivity.listeners" alt="" coords="153,5,349,46"/>
+<area shape="rect" id="node4" href="$a00012.html#a92b8e0730130e1184a8cdbd89590779d" title="org.opensecurity.sms.view.\lPopupConversationActivity.listeners" alt="" coords="134,70,367,111"/>
+<area shape="rect" id="node3" href="$a00007.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lConversationActivity.onCreate" alt="" coords="435,5,635,46"/>
+<area shape="rect" id="node5" href="$a00012.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lPopupConversationActivity.onCreate" alt="" coords="416,70,653,111"/>
+</map>

@@ -1,0 +1,390 @@
+\hypertarget{a00010}{\section{Open\+Security\+S\+M\+S Class Reference}
+\label{a00010}\index{Open\+Security\+S\+M\+S@{Open\+Security\+S\+M\+S}}
+}
+
+
+Inheritance diagram for Open\+Security\+S\+M\+S\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{a00077}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Open\+Security\+S\+M\+S\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00078}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{a00010_a8f7d87763ddaf085205a54e8477ecfce}{on\+Create\+Options\+Menu} (Menu menu)
+\item 
+boolean \hyperlink{a00010_a37a55c533c74b60c0290ef1329d74e65}{on\+Options\+Item\+Selected} (Menu\+Item item)
+\item 
+void \hyperlink{a00010_aa2cebeeaec1e0ca5b7bdec2ccfd24252}{on\+Save\+Instance\+State} (Bundle b)
+\item 
+void \hyperlink{a00010_a3fd108ef7b3bf7c29e53e6c4984d5f84}{on\+Restore\+Instance\+State} (Bundle saved\+Instance\+State)
+\item 
+List\+View \hyperlink{a00010_a75e7cb8078fb5fdb58b09524fdd9e1d7}{get\+Conversation\+List} ()
+\item 
+Array\+List$<$ \hyperlink{a00009}{Conversation\+Line} $>$ \hyperlink{a00010_a65bc274b44a44cb00ba767e86e50ee83}{get\+Conversation\+Lines} ()
+\item 
+void \hyperlink{a00010_a75b300477b934b09cac51aaa4c96b245}{set\+Conversation\+Lines} (Array\+List$<$ \hyperlink{a00009}{Conversation\+Line} $>$ \hyperlink{a00010_aa533b62d6a728d5400683c4d6c0d8334}{conversation\+Lines})
+\item 
+void \hyperlink{a00010_ac5c54df7ed3b930268c8d7752c101725}{update} ()
+\item 
+void \hyperlink{a00010_a92b8e0730130e1184a8cdbd89590779d}{listeners} ()
+\item 
+\hyperlink{a00003}{Array\+Convers\+Adapter} \hyperlink{a00010_ab5e43d47bbe04b3b6a4561d91bc16f9f}{get\+Adapter} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{a00010}{Open\+Security\+S\+M\+S} \hyperlink{a00010_a20b99dca6a5147ea92b68f8ce333dc2e}{get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00010_a85e87cb5ced88dff7c8173ecc4f636d1}{on\+Create} (Bundle saved\+Instance\+State)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List\+View \hyperlink{a00010_a8e078b92f7b56733d32456ce00dbdbec}{conversation\+List}
+\item 
+Array\+List$<$ \hyperlink{a00009}{Conversation\+Line} $>$ \hyperlink{a00010_aa533b62d6a728d5400683c4d6c0d8334}{conversation\+Lines}
+\item 
+\hyperlink{a00003}{Array\+Convers\+Adapter} \hyperlink{a00010_a2834b1dbc07b7f58625003ba7265618f}{adapter}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{a00010}{Open\+Security\+S\+M\+S} \hyperlink{a00010_abb0d0e377de688c5417fcaf531612a23}{instance}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+main activity when we start the application. 
+
+\subsection{Member Function Documentation}
+\hypertarget{a00010_ab5e43d47bbe04b3b6a4561d91bc16f9f}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!get\+Adapter@{get\+Adapter}}
+\index{get\+Adapter@{get\+Adapter}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{get\+Adapter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Array\+Convers\+Adapter} get\+Adapter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00010_ab5e43d47bbe04b3b6a4561d91bc16f9f}
+To get the adapter (design) \begin{DoxyReturn}{Returns}
+the adapter of current activity 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00010_ab5e43d47bbe04b3b6a4561d91bc16f9f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_a65bc274b44a44cb00ba767e86e50ee83}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!get\+Conversation\+Lines@{get\+Conversation\+Lines}}
+\index{get\+Conversation\+Lines@{get\+Conversation\+Lines}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{get\+Conversation\+Lines}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Conversation\+Line}$>$ get\+Conversation\+Lines (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00010_a65bc274b44a44cb00ba767e86e50ee83}
+to return the data of conversations (array\+List) \begin{DoxyReturn}{Returns}
+the array\+List of conversation\+Lines 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00010_a65bc274b44a44cb00ba767e86e50ee83_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_a75e7cb8078fb5fdb58b09524fdd9e1d7}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!get\+Conversation\+List@{get\+Conversation\+List}}
+\index{get\+Conversation\+List@{get\+Conversation\+List}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{get\+Conversation\+List}]{\setlength{\rightskip}{0pt plus 5cm}List\+View get\+Conversation\+List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00010_a75e7cb8078fb5fdb58b09524fdd9e1d7}
+to return the current list\+View. \begin{DoxyReturn}{Returns}
+the current list\+View 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00010_a75e7cb8078fb5fdb58b09524fdd9e1d7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_a20b99dca6a5147ea92b68f8ce333dc2e}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Open\+Security\+S\+M\+S} get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00010_a20b99dca6a5147ea92b68f8ce333dc2e}
+to get the current instance (=this) \begin{DoxyReturn}{Returns}
+instance of our activity 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{a00010_a20b99dca6a5147ea92b68f8ce333dc2e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_a92b8e0730130e1184a8cdbd89590779d}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!listeners@{listeners}}
+\index{listeners@{listeners}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{listeners}]{\setlength{\rightskip}{0pt plus 5cm}void listeners (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00010_a92b8e0730130e1184a8cdbd89590779d}
+We write all listeners for current activity in this function.
+
+first listener \+: click\+Listeners on list\+View 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{a00010_a92b8e0730130e1184a8cdbd89590779d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{a00010_a92b8e0730130e1184a8cdbd89590779d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_a85e87cb5ced88dff7c8173ecc4f636d1}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!on\+Create@{on\+Create}}
+\index{on\+Create@{on\+Create}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{on\+Create}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Create (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00010_a85e87cb5ced88dff7c8173ecc4f636d1}
+To create the activity
+
+
+\begin{DoxyParams}{Parameters}
+{\em saved\+Instance\+State} & save the instance state to keep informations. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00010_a85e87cb5ced88dff7c8173ecc4f636d1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_a8f7d87763ddaf085205a54e8477ecfce}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!on\+Create\+Options\+Menu@{on\+Create\+Options\+Menu}}
+\index{on\+Create\+Options\+Menu@{on\+Create\+Options\+Menu}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{on\+Create\+Options\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Create\+Options\+Menu (
+\begin{DoxyParamCaption}
+\item[{Menu}]{menu}
+\end{DoxyParamCaption}
+)}}\label{a00010_a8f7d87763ddaf085205a54e8477ecfce}
+Use to create an option\+Menu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu} & keep informations relative to the menu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean if the menu is create or no 
+\end{DoxyReturn}
+\hypertarget{a00010_a37a55c533c74b60c0290ef1329d74e65}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}}
+\index{on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{on\+Options\+Item\+Selected}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Options\+Item\+Selected (
+\begin{DoxyParamCaption}
+\item[{Menu\+Item}]{item}
+\end{DoxyParamCaption}
+)}}\label{a00010_a37a55c533c74b60c0290ef1329d74e65}
+To react when we select on item on the menu. 
+\begin{DoxyParams}{Parameters}
+{\em item} & the current selected item. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{a00010_a3fd108ef7b3bf7c29e53e6c4984d5f84}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!on\+Restore\+Instance\+State@{on\+Restore\+Instance\+State}}
+\index{on\+Restore\+Instance\+State@{on\+Restore\+Instance\+State}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{on\+Restore\+Instance\+State}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Restore\+Instance\+State (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{saved\+Instance\+State}
+\end{DoxyParamCaption}
+)}}\label{a00010_a3fd108ef7b3bf7c29e53e6c4984d5f84}
+To resore data which was keeped by the bundle on on\+Save\+Instance\+State function 
+\begin{DoxyParams}{Parameters}
+{\em saved\+Instance\+State} & the bundle \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00010_a3fd108ef7b3bf7c29e53e6c4984d5f84_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_aa2cebeeaec1e0ca5b7bdec2ccfd24252}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!on\+Save\+Instance\+State@{on\+Save\+Instance\+State}}
+\index{on\+Save\+Instance\+State@{on\+Save\+Instance\+State}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{on\+Save\+Instance\+State}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Save\+Instance\+State (
+\begin{DoxyParamCaption}
+\item[{Bundle}]{b}
+\end{DoxyParamCaption}
+)}}\label{a00010_aa2cebeeaec1e0ca5b7bdec2ccfd24252}
+Allow the activity to keep the list of conversations\+Line after the death of this activiy 
+\begin{DoxyParams}{Parameters}
+{\em b} & the bundel used to serialize informations. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{a00010_aa2cebeeaec1e0ca5b7bdec2ccfd24252_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_a75b300477b934b09cac51aaa4c96b245}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!set\+Conversation\+Lines@{set\+Conversation\+Lines}}
+\index{set\+Conversation\+Lines@{set\+Conversation\+Lines}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{set\+Conversation\+Lines}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Conversation\+Lines (
+\begin{DoxyParamCaption}
+\item[{Array\+List$<$ {\bf Conversation\+Line} $>$}]{conversation\+Lines}
+\end{DoxyParamCaption}
+)}}\label{a00010_a75b300477b934b09cac51aaa4c96b245}
+to set the data of conversation\+Lines 
+\begin{DoxyParams}{Parameters}
+{\em conversation\+Lines} & array\+List of conversation\+Lines \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{a00010_a75b300477b934b09cac51aaa4c96b245_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00010_a75b300477b934b09cac51aaa4c96b245_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00010_ac5c54df7ed3b930268c8d7752c101725}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!update@{update}}
+\index{update@{update}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00010_ac5c54df7ed3b930268c8d7752c101725}
+This function is used to update a conversation when it's necessary The list\+View conversation\+List will be showed in the activity thanks to the Override of child class Array\+Convers\+Adapter and get\+View method. and conversation\+Lines is the support(data of conversation\+Line information).
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00010_ac5c54df7ed3b930268c8d7752c101725_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{a00010_ac5c54df7ed3b930268c8d7752c101725_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00010_a2834b1dbc07b7f58625003ba7265618f}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!adapter@{adapter}}
+\index{adapter@{adapter}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{adapter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Array\+Convers\+Adapter} adapter\hspace{0.3cm}{\ttfamily [private]}}}\label{a00010_a2834b1dbc07b7f58625003ba7265618f}
+The adapter for design the current activity \hypertarget{a00010_aa533b62d6a728d5400683c4d6c0d8334}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!conversation\+Lines@{conversation\+Lines}}
+\index{conversation\+Lines@{conversation\+Lines}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{conversation\+Lines}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Conversation\+Line}$>$ conversation\+Lines\hspace{0.3cm}{\ttfamily [private]}}}\label{a00010_aa533b62d6a728d5400683c4d6c0d8334}
+The array\+List to keep objects of conversation\+Line \hypertarget{a00010_a8e078b92f7b56733d32456ce00dbdbec}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!conversation\+List@{conversation\+List}}
+\index{conversation\+List@{conversation\+List}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{conversation\+List}]{\setlength{\rightskip}{0pt plus 5cm}List\+View conversation\+List\hspace{0.3cm}{\ttfamily [private]}}}\label{a00010_a8e078b92f7b56733d32456ce00dbdbec}
+the list\+View of conversations \hypertarget{a00010_abb0d0e377de688c5417fcaf531612a23}{\index{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}!instance@{instance}}
+\index{instance@{instance}!org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S@{org\+::opensecurity\+::sms\+::view\+::\+Open\+Security\+S\+M\+S}}
+\subsubsection[{instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Open\+Security\+S\+M\+S} instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00010_abb0d0e377de688c5417fcaf531612a23}
+singleton pattern. We keep one instance (this) for the current activity 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+app/src/main/java/org/opensecurity/sms/view/\hyperlink{a00029}{Open\+Security\+S\+M\+S.\+java}\end{DoxyCompactItemize}

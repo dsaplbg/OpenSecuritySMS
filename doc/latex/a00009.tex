@@ -1,0 +1,296 @@
+\hypertarget{a00009}{\section{Conversation\+Line Class Reference}
+\label{a00009}\index{Conversation\+Line@{Conversation\+Line}}
+}
+
+
+Inheritance diagram for Conversation\+Line\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{a00064}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Conversation\+Line\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{a00065}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00009_a80a547afe975a7118b8cc354c41b2835}{Conversation\+Line} (\hyperlink{a00005}{Contact} \hyperlink{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}{contact}, String \hyperlink{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}{latest\+Message}, Calendar \hyperlink{a00009_aa713d1025d73543bd4eae313a1868570}{date})
+\item 
+int \hyperlink{a00009_aebf2c5bb10824f5fcbd32677c8152735}{get\+Thread\+\_\+\+I\+D} ()
+\item 
+void \hyperlink{a00009_a27e124edc933b9954443e1b29b544bac}{set\+Thread\+\_\+id} (int I\+D)
+\item 
+void \hyperlink{a00009_a33f2ab55a4ba0636593f02f0322f3dd0}{set\+Latest\+Message} (String \hyperlink{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}{latest\+Message})
+\item 
+void \hyperlink{a00009_abef3c7b6635dc06ac6b8e4b37c51b37f}{set\+Contact} (\hyperlink{a00005}{Contact} \hyperlink{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}{contact})
+\item 
+void \hyperlink{a00009_a65c1a5dad9225d01d585af72e0c80138}{set\+Date} (Calendar \hyperlink{a00009_aa713d1025d73543bd4eae313a1868570}{date})
+\item 
+final String \hyperlink{a00009_a10a2abf152f4957caca28c562fc33168}{get\+Latest\+Message} ()
+\item 
+final Calendar \hyperlink{a00009_a6d7bc612b8eee5382e11d9847e2f878e}{get\+Date} ()
+\item 
+String \hyperlink{a00009_aa53441954dd0352c8b8964194365c688}{get\+Managed\+Date} ()
+\item 
+\hyperlink{a00005}{Contact} \hyperlink{a00009_adb647c7ae09f1d5755db63d701968925}{get\+Contact} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{a00009_a9d23fb3258cdafe6a3c4bb95f7ee886f}{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E} = 20
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}{latest\+Message}
+\item 
+Calendar \hyperlink{a00009_aa713d1025d73543bd4eae313a1868570}{date}
+\item 
+int \hyperlink{a00009_aab2b525336a6ab01e8b4ec8df7588b65}{thread\+\_\+\+I\+D}
+\item 
+\hyperlink{a00005}{Contact} \hyperlink{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}{contact}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Object used to show a line of conversation in the main activity A \hyperlink{a00009}{Conversation\+Line} is a class which just implements the contents of a row\+View. latest\+Message will be the last message so display in the row\+View contact\+Name will be the name of a \hyperlink{a00005}{Contact} in the row\+View 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{a00009_a80a547afe975a7118b8cc354c41b2835}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!Conversation\+Line@{Conversation\+Line}}
+\index{Conversation\+Line@{Conversation\+Line}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{Conversation\+Line}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Conversation\+Line} (
+\begin{DoxyParamCaption}
+\item[{{\bf Contact}}]{contact, }
+\item[{String}]{latest\+Message, }
+\item[{Calendar}]{date}
+\end{DoxyParamCaption}
+)}}\label{a00009_a80a547afe975a7118b8cc354c41b2835}
+Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & is the contact of the row \\
+\hline
+{\em latest\+Message} & is the latest\+Message between you and he \\
+\hline
+{\em date} & the date of latest message \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00009_a80a547afe975a7118b8cc354c41b2835_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00009_adb647c7ae09f1d5755db63d701968925}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Contact@{get\+Contact}}
+\index{get\+Contact@{get\+Contact}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{get\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} get\+Contact (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00009_adb647c7ae09f1d5755db63d701968925}
+to get the contact of a row \begin{DoxyReturn}{Returns}
+the contact of a row 
+\end{DoxyReturn}
+\hypertarget{a00009_a6d7bc612b8eee5382e11d9847e2f878e}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Date@{get\+Date}}
+\index{get\+Date@{get\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{get\+Date}]{\setlength{\rightskip}{0pt plus 5cm}final Calendar get\+Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00009_a6d7bc612b8eee5382e11d9847e2f878e}
+to get the date of a row \begin{DoxyReturn}{Returns}
+the date of a row 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{a00009_a6d7bc612b8eee5382e11d9847e2f878e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00009_a10a2abf152f4957caca28c562fc33168}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Latest\+Message@{get\+Latest\+Message}}
+\index{get\+Latest\+Message@{get\+Latest\+Message}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{get\+Latest\+Message}]{\setlength{\rightskip}{0pt plus 5cm}final String get\+Latest\+Message (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00009_a10a2abf152f4957caca28c562fc33168}
+to get the latest message of a row \begin{DoxyReturn}{Returns}
+the latestmessage of a row 
+\end{DoxyReturn}
+\hypertarget{a00009_aa53441954dd0352c8b8964194365c688}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Managed\+Date@{get\+Managed\+Date}}
+\index{get\+Managed\+Date@{get\+Managed\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{get\+Managed\+Date}]{\setlength{\rightskip}{0pt plus 5cm}String get\+Managed\+Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00009_aa53441954dd0352c8b8964194365c688}
+to get the managed date of a row \begin{DoxyReturn}{Returns}
+the managed\+Date of a row 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{a00009_aa53441954dd0352c8b8964194365c688_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00009_aebf2c5bb10824f5fcbd32677c8152735}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Thread\+\_\+\+I\+D@{get\+Thread\+\_\+\+I\+D}}
+\index{get\+Thread\+\_\+\+I\+D@{get\+Thread\+\_\+\+I\+D}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{get\+Thread\+\_\+\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Thread\+\_\+\+I\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00009_aebf2c5bb10824f5fcbd32677c8152735}
+to get the thread\+Id of the contact in the row \begin{DoxyReturn}{Returns}
+the thread\+Id of the contact in the row 
+\end{DoxyReturn}
+\hypertarget{a00009_abef3c7b6635dc06ac6b8e4b37c51b37f}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!set\+Contact@{set\+Contact}}
+\index{set\+Contact@{set\+Contact}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{set\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Contact (
+\begin{DoxyParamCaption}
+\item[{{\bf Contact}}]{contact}
+\end{DoxyParamCaption}
+)}}\label{a00009_abef3c7b6635dc06ac6b8e4b37c51b37f}
+to set the contact of a row 
+\begin{DoxyParams}{Parameters}
+{\em contact} & the contact of a row \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{a00009_abef3c7b6635dc06ac6b8e4b37c51b37f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00009_a65c1a5dad9225d01d585af72e0c80138}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!set\+Date@{set\+Date}}
+\index{set\+Date@{set\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{set\+Date}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Date (
+\begin{DoxyParamCaption}
+\item[{Calendar}]{date}
+\end{DoxyParamCaption}
+)}}\label{a00009_a65c1a5dad9225d01d585af72e0c80138}
+to set the date of a row 
+\begin{DoxyParams}{Parameters}
+{\em date} & the date of a row \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{a00009_a65c1a5dad9225d01d585af72e0c80138_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00009_a33f2ab55a4ba0636593f02f0322f3dd0}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!set\+Latest\+Message@{set\+Latest\+Message}}
+\index{set\+Latest\+Message@{set\+Latest\+Message}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{set\+Latest\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Latest\+Message (
+\begin{DoxyParamCaption}
+\item[{String}]{latest\+Message}
+\end{DoxyParamCaption}
+)}}\label{a00009_a33f2ab55a4ba0636593f02f0322f3dd0}
+to set the latest\+Message for a row. 
+\begin{DoxyParams}{Parameters}
+{\em latest\+Message} & the lastest message for a row \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{a00009_a33f2ab55a4ba0636593f02f0322f3dd0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00009_a27e124edc933b9954443e1b29b544bac}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!set\+Thread\+\_\+id@{set\+Thread\+\_\+id}}
+\index{set\+Thread\+\_\+id@{set\+Thread\+\_\+id}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{set\+Thread\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Thread\+\_\+id (
+\begin{DoxyParamCaption}
+\item[{int}]{I\+D}
+\end{DoxyParamCaption}
+)}}\label{a00009_a27e124edc933b9954443e1b29b544bac}
+to set the thread\+Id of the contact in the row 
+\begin{DoxyParams}{Parameters}
+{\em I\+D} & the id of the contact in the row \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{a00009_a27e124edc933b9954443e1b29b544bac_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!contact@{contact}}
+\index{contact@{contact}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} contact\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}
+the contact of the row \hypertarget{a00009_aa713d1025d73543bd4eae313a1868570}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!date@{date}}
+\index{date@{date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{date}]{\setlength{\rightskip}{0pt plus 5cm}Calendar date\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_aa713d1025d73543bd4eae313a1868570}
+the date of latest message \hypertarget{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!latest\+Message@{latest\+Message}}
+\index{latest\+Message@{latest\+Message}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{latest\+Message}]{\setlength{\rightskip}{0pt plus 5cm}String latest\+Message\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}
+the latest message \hypertarget{a00009_a9d23fb3258cdafe6a3c4bb95f7ee886f}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E@{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E}}
+\index{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E@{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}int L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E = 20\hspace{0.3cm}{\ttfamily [static]}}}\label{a00009_a9d23fb3258cdafe6a3c4bb95f7ee886f}
+the limit of messages can be loaded \hypertarget{a00009_aab2b525336a6ab01e8b4ec8df7588b65}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!thread\+\_\+\+I\+D@{thread\+\_\+\+I\+D}}
+\index{thread\+\_\+\+I\+D@{thread\+\_\+\+I\+D}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
+\subsubsection[{thread\+\_\+\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int thread\+\_\+\+I\+D\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_aab2b525336a6ab01e8b4ec8df7588b65}
+the primary key of the contact 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+app/src/main/java/org/opensecurity/sms/model/model\+View/list\+Conversation/\hyperlink{a00022}{Conversation\+Line.\+java}\end{DoxyCompactItemize}

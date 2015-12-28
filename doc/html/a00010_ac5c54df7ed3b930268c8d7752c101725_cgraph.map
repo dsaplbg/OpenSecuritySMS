@@ -1,0 +1,7 @@
+<map id="update" name="update">
+<area shape="rect" id="node2" href="$a00010.html#a75b300477b934b09cac51aaa4c96b245" title="setConversationLines" alt="" coords="145,56,293,83"/>
+<area shape="rect" id="node5" href="$a00006.html#aa92a9bca692459dbb3a2d61cf94ff242" title="org.opensecurity.sms.controller.\lController.loadLastMessages" alt="" coords="115,107,323,149"/>
+<area shape="rect" id="node3" href="$a00010.html#a65bc274b44a44cb00ba767e86e50ee83" title="getConversationLines" alt="" coords="401,5,549,32"/>
+<area shape="rect" id="node4" href="$a00010.html#ab5e43d47bbe04b3b6a4561d91bc16f9f" title="getAdapter" alt="" coords="432,56,517,83"/>
+<area shape="rect" id="node6" href="$a00006.html#afb0bfb28009ccdfda1b58f26832b994f" title="org.opensecurity.sms.controller.\lController.getContact" alt="" coords="371,107,579,149"/>
+</map>

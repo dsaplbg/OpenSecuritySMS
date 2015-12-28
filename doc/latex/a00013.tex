@@ -1,0 +1,135 @@
+\hypertarget{a00013}{\section{R\+S\+A Class Reference}
+\label{a00013}\index{R\+S\+A@{R\+S\+A}}
+}
+
+
+Collaboration diagram for R\+S\+A\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{a00072}
+\end{center}
+\end{figure}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{a00013_a7e50cd7fa3c4f3a6817d292ca95aeb62}{generate\+Key} ()
+\item 
+static boolean \hyperlink{a00013_a35798da976b0b93c5a41d3cacfca2614}{are\+Keys\+Present} ()
+\item 
+static byte\mbox{[}$\,$\mbox{]} \hyperlink{a00013_aebcb755cdb5b80fbc7e5550d4ef7b58c}{encrypt} (String text, Public\+Key key)
+\item 
+static String \hyperlink{a00013_af45813b997c833a4aa7c740f24da405d}{decrypt} (byte\mbox{[}$\,$\mbox{]} text, Private\+Key key)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{a00013_a6e0d720a4420fd9bfd6749e43727e4cf}{A\+L\+G\+O\+R\+I\+T\+H\+M} = \char`\"{}R\+S\+A\char`\"{}
+\item 
+static final String \hyperlink{a00013_a6688acc9715053feb655fd1179f44ca2}{P\+R\+I\+V\+A\+T\+E\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E} = \char`\"{}/sdcard/keys/private.\+key\char`\"{}
+\item 
+static final String \hyperlink{a00013_a9512d79dcc02d4b61268f7118479185d}{P\+U\+B\+L\+I\+C\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E} = \char`\"{}/sdcard/keys/public.\+key\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00013_a35798da976b0b93c5a41d3cacfca2614}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}!are\+Keys\+Present@{are\+Keys\+Present}}
+\index{are\+Keys\+Present@{are\+Keys\+Present}!org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}}
+\subsubsection[{are\+Keys\+Present}]{\setlength{\rightskip}{0pt plus 5cm}static boolean are\+Keys\+Present (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00013_a35798da976b0b93c5a41d3cacfca2614}
+The method checks if the pair of public and private key has been generated.
+
+\begin{DoxyReturn}{Returns}
+flag indicating if the pair of keys were generated. 
+\end{DoxyReturn}
+\hypertarget{a00013_af45813b997c833a4aa7c740f24da405d}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}}
+\subsubsection[{decrypt}]{\setlength{\rightskip}{0pt plus 5cm}static String decrypt (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{text, }
+\item[{Private\+Key}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00013_af45813b997c833a4aa7c740f24da405d}
+Decrypt text using private key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \+:encrypted text \\
+\hline
+{\em key} & \+:The private key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+plain text 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em java.\+lang.\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{a00013_aebcb755cdb5b80fbc7e5550d4ef7b58c}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}}
+\subsubsection[{encrypt}]{\setlength{\rightskip}{0pt plus 5cm}static byte \mbox{[}$\,$\mbox{]} encrypt (
+\begin{DoxyParamCaption}
+\item[{String}]{text, }
+\item[{Public\+Key}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00013_aebcb755cdb5b80fbc7e5550d4ef7b58c}
+Encrypt the plain text using public key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \+: original plain text \\
+\hline
+{\em key} & \+:The public key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Encrypted text 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em java.\+lang.\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{a00013_a7e50cd7fa3c4f3a6817d292ca95aeb62}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}!generate\+Key@{generate\+Key}}
+\index{generate\+Key@{generate\+Key}!org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}}
+\subsubsection[{generate\+Key}]{\setlength{\rightskip}{0pt plus 5cm}static void generate\+Key (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00013_a7e50cd7fa3c4f3a6817d292ca95aeb62}
+Generate key which contains a pair of private and public key using 1024 bytes. Store the set of keys in Private.\+key and Public.\+key files.
+
+Will have to change this ! Must be stored in D\+B now !
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No\+Such\+Algorithm\+Exception} & \\
+\hline
+{\em I\+O\+Exception} & \\
+\hline
+{\em File\+Not\+Found\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00013_a6e0d720a4420fd9bfd6749e43727e4cf}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}!A\+L\+G\+O\+R\+I\+T\+H\+M@{A\+L\+G\+O\+R\+I\+T\+H\+M}}
+\index{A\+L\+G\+O\+R\+I\+T\+H\+M@{A\+L\+G\+O\+R\+I\+T\+H\+M}!org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}}
+\subsubsection[{A\+L\+G\+O\+R\+I\+T\+H\+M}]{\setlength{\rightskip}{0pt plus 5cm}final String A\+L\+G\+O\+R\+I\+T\+H\+M = \char`\"{}R\+S\+A\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}}\label{a00013_a6e0d720a4420fd9bfd6749e43727e4cf}
+\hypertarget{a00013_a6688acc9715053feb655fd1179f44ca2}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}!P\+R\+I\+V\+A\+T\+E\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E@{P\+R\+I\+V\+A\+T\+E\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E}}
+\index{P\+R\+I\+V\+A\+T\+E\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E@{P\+R\+I\+V\+A\+T\+E\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E}!org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}}
+\subsubsection[{P\+R\+I\+V\+A\+T\+E\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}final String P\+R\+I\+V\+A\+T\+E\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E = \char`\"{}/sdcard/keys/private.\+key\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}}\label{a00013_a6688acc9715053feb655fd1179f44ca2}
+\hypertarget{a00013_a9512d79dcc02d4b61268f7118479185d}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}!P\+U\+B\+L\+I\+C\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E@{P\+U\+B\+L\+I\+C\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E}}
+\index{P\+U\+B\+L\+I\+C\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E@{P\+U\+B\+L\+I\+C\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E}!org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A@{org\+::opensecurity\+::sms\+::model\+::security\+::\+R\+S\+A}}
+\subsubsection[{P\+U\+B\+L\+I\+C\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}final String P\+U\+B\+L\+I\+C\+\_\+\+K\+E\+Y\+\_\+\+F\+I\+L\+E = \char`\"{}/sdcard/keys/public.\+key\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}}\label{a00013_a9512d79dcc02d4b61268f7118479185d}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+app/src/main/java/org/opensecurity/sms/model/security/\hyperlink{a00025}{R\+S\+A.\+java}\end{DoxyCompactItemize}
