@@ -1,26 +1,15 @@
 package org.opensecurity.sms.view;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.NotificationCompat;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -31,7 +20,7 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.controller.Controller;
+import org.opensecurity.sms.model.DAO;
 import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.modelView.conversation.ArrayBubbleAdapter;
 import org.opensecurity.sms.model.modelView.conversation.Bubble;
@@ -39,8 +28,6 @@ import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-
 
 
 /**
@@ -49,7 +36,6 @@ import java.util.Calendar;
  */
 
 public class ConversationActivity extends AppCompatActivity {
-
 
 
     /**
@@ -143,6 +129,8 @@ public class ConversationActivity extends AppCompatActivity {
         update(getIntent());
 
         instance = this;
+
+        DAO.getInstance().insertContactIntoDB(getContact());
     }
 
     /**
@@ -155,7 +143,6 @@ public class ConversationActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_conversation, menu);
-
         MenuItem photo = menu.getItem(0);
 
         Bitmap origin = getContact().getPhoto(getContentResolver());
@@ -200,7 +187,7 @@ public class ConversationActivity extends AppCompatActivity {
         getSendButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textMessage.getText().length() > 0 && Controller.sendSMS(getBaseContext(), getContact(),
+                if (textMessage.getText().length() > 0 && DAO.getInstance().sendSMS(getBaseContext(), getContact(),
                         textMessage.getText().toString())) {
                     textMessage.setText("");
                 }
@@ -273,7 +260,7 @@ public class ConversationActivity extends AppCompatActivity {
      * This function is used to update a conversation when it's necessary
      */
     public void update() {
-        setBubbleData(Controller.loadMessages(this.getContentResolver(), getContact(), 0, ConversationLine.LIMIT_LOAD_MESSAGE));
+        setBubbleData(DAO.getInstance().loadMessages(this.getContentResolver(), getContact(), 0, ConversationLine.LIMIT_LOAD_MESSAGE));
         /*
         bubbleList.setOnScrollListener(new AbsListView.OnScrollListener() {
             private int prevVisibleItem;

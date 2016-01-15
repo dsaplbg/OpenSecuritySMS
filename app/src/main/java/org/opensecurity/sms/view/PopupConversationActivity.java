@@ -2,12 +2,10 @@ package org.opensecurity.sms.view;
 
 import android.app.Activity;
 import android.graphics.Point;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.Display;
 import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -18,7 +16,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.controller.Controller;
+import org.opensecurity.sms.model.DAO;
 import org.opensecurity.sms.model.Contact;
 
 /**
@@ -74,7 +72,7 @@ public class PopupConversationActivity extends Activity implements GestureDetect
         this.buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textSend.getText().length() > 0 && Controller.sendSMS(getBaseContext(), getContact(), textSend.getText().toString())) {
+                if (textSend.getText().length() > 0 && DAO.getInstance().sendSMS(getBaseContext(), getContact(), textSend.getText().toString())) {
                     finish();
                 }
             }

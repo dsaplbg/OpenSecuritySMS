@@ -1,13 +1,8 @@
 package org.opensecurity.sms.view;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,13 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.controller.Controller;
-import org.opensecurity.sms.model.Contact;
+import org.opensecurity.sms.model.DAO;
 import org.opensecurity.sms.model.modelView.listConversation.ArrayConversAdapter;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * main activity when we start the application.
@@ -72,14 +65,12 @@ public class OpenSecuritySMS extends AppCompatActivity {
         this.conversationList = (ListView) findViewById(R.id.listeConvers);
         this.conversationList.setAdapter(this.adapter);
 
+        instance = this;
         update();
         listeners();
-        instance = this;
-/*
-        Intent intent = new Intent(getApplicationContext(), PopupConversationActivity.class);
-        intent.putExtra("Contact", getConversationLines().get(0).getContact());
-        intent.putExtra("Message", "test d'un message");
-        startActivity(intent);*/
+
+
+        DAO.getInstance().openDb();
     }
 
     /**
@@ -170,7 +161,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
      * This function is used to update a conversation when it's necessary
      */
     public void update() {
-        setConversationLines(Controller.loadLastMessages(this.getContentResolver()));
+        setConversationLines(DAO.getInstance().loadLastMessages(this.getContentResolver()));
 
         /**
          * The listView conversationList will be showed in the activity thanks to the

@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Telephony;
 import android.telephony.SmsMessage;
-import android.util.Log;
 
-import org.opensecurity.sms.controller.Controller;
 import org.opensecurity.sms.view.ConversationActivity;
 import org.opensecurity.sms.view.OpenSecuritySMS;
 import org.opensecurity.sms.view.PopupConversationActivity;
@@ -42,7 +40,7 @@ public class SMSReceiver extends BroadcastReceiver {
                 if (messages.length > -1) {
                     final String messageBody = messages[0].getMessageBody();
                     final String phoneNumber = messages[0].getDisplayOriginatingAddress();
-                    Contact contact = Controller.getContact(phoneNumber, context.getContentResolver());
+                    Contact contact = DAO.getInstance().findContactByPhoneNumber(phoneNumber, context.getContentResolver());
 
                     if (OpenSecuritySMS.getInstance() != null) {
                         OpenSecuritySMS.getInstance().update();
@@ -57,7 +55,7 @@ public class SMSReceiver extends BroadcastReceiver {
                         HashMap<String, Serializable> save = new HashMap<>();
                         save.put("Contact", contact);
                         save.put("Message", messageBody);
-                        Controller.makeNotification(contact.getName(), messageBody, contact.getPhoto(context.getContentResolver()), OpenSecuritySMS.getInstance(), PopupConversationActivity.class, save);
+                        DAO.getInstance().makeNotification(contact.getName(), messageBody, contact.getPhoto(context.getContentResolver()), OpenSecuritySMS.getInstance(), PopupConversationActivity.class, save);
                     }
                 }
             }
