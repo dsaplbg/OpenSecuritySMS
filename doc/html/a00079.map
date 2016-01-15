@@ -1,0 +1,4 @@
+<map id="ConversationActivity" name="ConversationActivity">
+<area shape="rect" id="node3" href="$a00002.html" title="{ArrayBubbleAdapter\n||+ ArrayBubbleAdapter()\l+ getViewTypeCount()\l+ getItemViewType()\l+ getView()\l}" alt="" coords="190,437,348,558"/>
+<area shape="rect" id="node11" href="$a00005.html" title="{Contact\n|~ number\l~ photoURL\l~ nbMessages\l&#45; name\l&#45; threadId\l|+ Contact()\l+ getPhoto()\l+ hasPhoto()\l+ getPhotoURL()\l+ setPhotoURL()\l+ getNumber()\l+ setNumber()\l+ getName()\l+ setName()\l+ getThreadId()\l+ setThreadId()\l+ getNbMessages()\l+ setNbMessages()\l&#45; createLetterPhoto()\l}" alt="" coords="839,334,979,661"/>
+</map>

@@ -1,66 +1,42 @@
-\hypertarget{a00015}{\section{S\+M\+S\+Receiver Class Reference}
-\label{a00015}\index{S\+M\+S\+Receiver@{S\+M\+S\+Receiver}}
+\hypertarget{a00015}{\section{Serializer Class Reference}
+\label{a00015}\index{Serializer@{Serializer}}
 }
 
 
-Inheritance diagram for S\+M\+S\+Receiver\+:
+Collaboration diagram for Serializer\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=180pt]{a00049}
+\includegraphics[width=158pt]{a00051}
 \end{center}
 \end{figure}
-
-
-Collaboration diagram for S\+M\+S\+Receiver\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=180pt]{a00050}
-\end{center}
-\end{figure}
-\subsection*{Public Member Functions}
+\subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{a00015_afe2ab6137f59f9ff640f1e3b74080ad7}{on\+Receive} (Context context, Intent intent)
+static byte\mbox{[}$\,$\mbox{]} \hyperlink{a00015_a1331717cb2a54bf8a95a0555403da236}{serialize} (Object obj)  throws I\+O\+Exception 
+\item 
+static Object \hyperlink{a00015_a79bdcf2199693e6c879cdd89c30926b9}{deserialize} (byte\mbox{[}$\,$\mbox{]} bytes)  throws I\+O\+Exception, Class\+Not\+Found\+Exception 
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Created by Valentin on 10/11/2015. Is a big listener for android. Active this piece of code when Android detect a new entrance of a sms 
-
 \subsection{Member Function Documentation}
-\hypertarget{a00015_afe2ab6137f59f9ff640f1e3b74080ad7}{\index{org\+::opensecurity\+::sms\+::model\+::\+S\+M\+S\+Receiver@{org\+::opensecurity\+::sms\+::model\+::\+S\+M\+S\+Receiver}!on\+Receive@{on\+Receive}}
-\index{on\+Receive@{on\+Receive}!org\+::opensecurity\+::sms\+::model\+::\+S\+M\+S\+Receiver@{org\+::opensecurity\+::sms\+::model\+::\+S\+M\+S\+Receiver}}
-\subsubsection[{on\+Receive}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Receive (
+\hypertarget{a00015_a79bdcf2199693e6c879cdd89c30926b9}{\index{org\+::opensecurity\+::sms\+::model\+::\+Serializer@{org\+::opensecurity\+::sms\+::model\+::\+Serializer}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!org\+::opensecurity\+::sms\+::model\+::\+Serializer@{org\+::opensecurity\+::sms\+::model\+::\+Serializer}}
+\subsubsection[{deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static Object deserialize (
 \begin{DoxyParamCaption}
-\item[{Context}]{context, }
-\item[{Intent}]{intent}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{bytes}
 \end{DoxyParamCaption}
-)}}\label{a00015_afe2ab6137f59f9ff640f1e3b74080ad7}
-an override of Broadcast\+Receiver function. To execute code whe android detect an intent. 
-\begin{DoxyParams}{Parameters}
-{\em context} & interface to global information about an application environment. \\
-\hline
-{\em intent} & abstract description of an operation to be performed. \\
-\hline
-\end{DoxyParams}
-
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=342pt]{a00015_afe2ab6137f59f9ff640f1e3b74080ad7_cgraph}
-\end{center}
-\end{figure}
-
-
+) throws I\+O\+Exception, Class\+Not\+Found\+Exception\hspace{0.3cm}{\ttfamily [static]}}}\label{a00015_a79bdcf2199693e6c879cdd89c30926b9}
+\hypertarget{a00015_a1331717cb2a54bf8a95a0555403da236}{\index{org\+::opensecurity\+::sms\+::model\+::\+Serializer@{org\+::opensecurity\+::sms\+::model\+::\+Serializer}!serialize@{serialize}}
+\index{serialize@{serialize}!org\+::opensecurity\+::sms\+::model\+::\+Serializer@{org\+::opensecurity\+::sms\+::model\+::\+Serializer}}
+\subsubsection[{serialize}]{\setlength{\rightskip}{0pt plus 5cm}static byte \mbox{[}$\,$\mbox{]} serialize (
+\begin{DoxyParamCaption}
+\item[{Object}]{obj}
+\end{DoxyParamCaption}
+) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}}\label{a00015_a1331717cb2a54bf8a95a0555403da236}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-app/src/main/java/org/opensecurity/sms/model/\hyperlink{a00027}{S\+M\+S\+Receiver.\+java}\end{DoxyCompactItemize}
+app/src/main/java/org/opensecurity/sms/model/\hyperlink{a00028}{Serializer.\+java}\end{DoxyCompactItemize}

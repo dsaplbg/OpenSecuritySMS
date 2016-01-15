@@ -1,98 +1,86 @@
-\hypertarget{a00007}{\section{Conversation\+Activity Class Reference}
-\label{a00007}\index{Conversation\+Activity@{Conversation\+Activity}}
+\hypertarget{a00007}{\section{Conversation\+Item Class Reference}
+\label{a00007}\index{Conversation\+Item@{Conversation\+Item}}
 }
 
 
-Inheritance diagram for Conversation\+Activity\+:
+Inheritance diagram for Conversation\+Item\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=214pt]{a00074}
+\includegraphics[width=198pt]{a00062}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Conversation\+Activity\+:
+Collaboration diagram for Conversation\+Item\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{a00075}
+\includegraphics[width=198pt]{a00063}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-boolean \hyperlink{a00007_a8f7d87763ddaf085205a54e8477ecfce}{on\+Create\+Options\+Menu} (Menu menu)
+\hyperlink{a00007_ae50f1143e886a4a835296609372ec04a}{Conversation\+Item} (Calendar \hyperlink{a00007_aa713d1025d73543bd4eae313a1868570}{date})
 \item 
-boolean \hyperlink{a00007_a37a55c533c74b60c0290ef1329d74e65}{on\+Options\+Item\+Selected} (Menu\+Item item)
+Calendar \hyperlink{a00007_a91855ab66a4bb5c5e62f947170f29b10}{get\+Date} ()
 \item 
-void \hyperlink{a00007_a92b8e0730130e1184a8cdbd89590779d}{listeners} ()
+String \hyperlink{a00007_aa53441954dd0352c8b8964194365c688}{get\+Managed\+Date} ()
 \item 
-void \hyperlink{a00007_a1e3fee8580ec4092ffc6e3ce9d44f2b9}{set\+Bubble\+Data} (Array\+List$<$ \hyperlink{a00008}{Conversation\+Item} $>$ \hyperlink{a00007_a68544a0bda28776dfb51718a3c71bf69}{bubble\+Data})
+boolean \hyperlink{a00007_abadf98014647b41c6a96847158d24230}{has\+To\+Managed\+Date} (Calendar \hyperlink{a00007_aa713d1025d73543bd4eae313a1868570}{date})
 \item 
-Array\+List$<$ \hyperlink{a00008}{Conversation\+Item} $>$ \hyperlink{a00007_ac8e14177e6079becbb8bc1f8b35197e0}{get\+Bubble\+Data} ()
-\item 
-Swipe\+Menu\+List\+View \hyperlink{a00007_af293d3ea5f145650e06a96d2bae482da}{get\+Bubble\+List} ()
-\item 
-Button \hyperlink{a00007_a57576f3fc93bfa5a685ed5ee30fe113c}{get\+Send\+Button} ()
-\item 
-\hyperlink{a00005}{Contact} \hyperlink{a00007_adb647c7ae09f1d5755db63d701968925}{get\+Contact} ()
-\item 
-void \hyperlink{a00007_abef3c7b6635dc06ac6b8e4b37c51b37f}{set\+Contact} (\hyperlink{a00005}{Contact} \hyperlink{a00007_a3459849ab29ad684658dbcd0cf8c5d5a}{contact})
-\item 
-void \hyperlink{a00007_aa2825578f585a8a32958eaf0ce8df7b8}{update} (Intent intent)
-\item 
-void \hyperlink{a00007_ac5c54df7ed3b930268c8d7752c101725}{update} ()
-\item 
-\hyperlink{a00002}{Array\+Bubble\+Adapter} \hyperlink{a00007_a06738816ea7799569af8fa119bb49f7e}{get\+Adapter} ()
-\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-static \hyperlink{a00007}{Conversation\+Activity} \hyperlink{a00007_a7ebafa56e442a2f16c4afe044e65695b}{get\+Instance} ()
-\end{DoxyCompactItemize}
-\subsection*{Protected Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-void \hyperlink{a00007_a85e87cb5ced88dff7c8173ecc4f636d1}{on\+Create} (Bundle saved\+Instance\+State)
+void \hyperlink{a00007_a65c1a5dad9225d01d585af72e0c80138}{set\+Date} (Calendar \hyperlink{a00007_aa713d1025d73543bd4eae313a1868570}{date})
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{a00005}{Contact} \hyperlink{a00007_a3459849ab29ad684658dbcd0cf8c5d5a}{contact}
-\item 
-Array\+List$<$ \hyperlink{a00008}{Conversation\+Item} $>$ \hyperlink{a00007_a68544a0bda28776dfb51718a3c71bf69}{bubble\+Data}
-\item 
-\hyperlink{a00002}{Array\+Bubble\+Adapter} \hyperlink{a00007_adaad4a865e59995c45ef2ad13f6e88a9}{adapter}
-\item 
-Swipe\+Menu\+List\+View \hyperlink{a00007_ae5bb074a89738fa417e643960b0041c6}{bubble\+List}
-\item 
-Edit\+Text \hyperlink{a00007_abc418be8d11246756bfcb7f95123a88d}{text\+Message}
-\item 
-Button \hyperlink{a00007_a2e4d147a434708e05027f41ecf9ed577}{send\+Button}
-\end{DoxyCompactItemize}
-\subsection*{Static Private Attributes}
-\begin{DoxyCompactItemize}
-\item 
-static \hyperlink{a00007}{Conversation\+Activity} \hyperlink{a00007_a64a39fb2b7f756356462736dfbdb9f9f}{instance}
+Calendar \hyperlink{a00007_aa713d1025d73543bd4eae313a1868570}{date}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This class is an activity for displaying one conversation bitween us and another contact. 
+A class to keep a date of message provided from one bubble. A mother class from \hyperlink{a00004}{Bubble} 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{a00007_ae50f1143e886a4a835296609372ec04a}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}!Conversation\+Item@{Conversation\+Item}}
+\index{Conversation\+Item@{Conversation\+Item}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}}
+\subsubsection[{Conversation\+Item}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Conversation\+Item} (
+\begin{DoxyParamCaption}
+\item[{Calendar}]{date}
+\end{DoxyParamCaption}
+)}}\label{a00007_ae50f1143e886a4a835296609372ec04a}
+constructor 
+\begin{DoxyParams}{Parameters}
+{\em date} & the date of a message \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{a00007_ae50f1143e886a4a835296609372ec04a_cgraph}
+\end{center}
+\end{figure}
+
+
+
 
 \subsection{Member Function Documentation}
-\hypertarget{a00007_a06738816ea7799569af8fa119bb49f7e}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!get\+Adapter@{get\+Adapter}}
-\index{get\+Adapter@{get\+Adapter}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{get\+Adapter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Array\+Bubble\+Adapter} get\+Adapter (
+\hypertarget{a00007_a91855ab66a4bb5c5e62f947170f29b10}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}!get\+Date@{get\+Date}}
+\index{get\+Date@{get\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}}
+\subsubsection[{get\+Date}]{\setlength{\rightskip}{0pt plus 5cm}Calendar get\+Date (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{a00007_a06738816ea7799569af8fa119bb49f7e}
-To get the adapter (design) \begin{DoxyReturn}{Returns}
-the adapter of current activity 
+)}}\label{a00007_a91855ab66a4bb5c5e62f947170f29b10}
+to get the date of a message \begin{DoxyReturn}{Returns}
+the date of a message 
 \end{DoxyReturn}
 
 
@@ -101,166 +89,21 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=236pt]{a00007_a06738816ea7799569af8fa119bb49f7e_icgraph}
+\includegraphics[width=350pt]{a00007_a91855ab66a4bb5c5e62f947170f29b10_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{a00007_ac8e14177e6079becbb8bc1f8b35197e0}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!get\+Bubble\+Data@{get\+Bubble\+Data}}
-\index{get\+Bubble\+Data@{get\+Bubble\+Data}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{get\+Bubble\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Conversation\+Item}$>$ get\+Bubble\+Data (
+\hypertarget{a00007_aa53441954dd0352c8b8964194365c688}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}!get\+Managed\+Date@{get\+Managed\+Date}}
+\index{get\+Managed\+Date@{get\+Managed\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}}
+\subsubsection[{get\+Managed\+Date}]{\setlength{\rightskip}{0pt plus 5cm}String get\+Managed\+Date (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{a00007_ac8e14177e6079becbb8bc1f8b35197e0}
-Just return the bubble\+Data which are loaded in the activity \begin{DoxyReturn}{Returns}
-bubble\+Data of current activity 
+)}}\label{a00007_aa53441954dd0352c8b8964194365c688}
+to get the managed date (the format) \begin{DoxyReturn}{Returns}
+the date after formatted it 
 \end{DoxyReturn}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{a00007_ac8e14177e6079becbb8bc1f8b35197e0_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_af293d3ea5f145650e06a96d2bae482da}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!get\+Bubble\+List@{get\+Bubble\+List}}
-\index{get\+Bubble\+List@{get\+Bubble\+List}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{get\+Bubble\+List}]{\setlength{\rightskip}{0pt plus 5cm}Swipe\+Menu\+List\+View get\+Bubble\+List (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{a00007_af293d3ea5f145650e06a96d2bae482da}
-To return the menu\+List\+View of bubbles. \begin{DoxyReturn}{Returns}
-the List\+View of current activity 
-\end{DoxyReturn}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=248pt]{a00007_af293d3ea5f145650e06a96d2bae482da_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_adb647c7ae09f1d5755db63d701968925}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!get\+Contact@{get\+Contact}}
-\index{get\+Contact@{get\+Contact}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{get\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} get\+Contact (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{a00007_adb647c7ae09f1d5755db63d701968925}
-To get the contact of our current activity. \begin{DoxyReturn}{Returns}
-the current contact of selected activity conversation 
-\end{DoxyReturn}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{a00007_adb647c7ae09f1d5755db63d701968925_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_a7ebafa56e442a2f16c4afe044e65695b}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!get\+Instance@{get\+Instance}}
-\index{get\+Instance@{get\+Instance}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Conversation\+Activity} get\+Instance (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00007_a7ebafa56e442a2f16c4afe044e65695b}
-To return the current instance. Be sure that is the only one instance (singleton pattern) \begin{DoxyReturn}{Returns}
-the instance of current activity (=this) 
-\end{DoxyReturn}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=328pt]{a00007_a7ebafa56e442a2f16c4afe044e65695b_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_a57576f3fc93bfa5a685ed5ee30fe113c}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!get\+Send\+Button@{get\+Send\+Button}}
-\index{get\+Send\+Button@{get\+Send\+Button}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{get\+Send\+Button}]{\setlength{\rightskip}{0pt plus 5cm}Button get\+Send\+Button (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{a00007_a57576f3fc93bfa5a685ed5ee30fe113c}
-To return the send\+Button of this activity. \begin{DoxyReturn}{Returns}
-the Button to send messages in this activity 
-\end{DoxyReturn}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=344pt]{a00007_a57576f3fc93bfa5a685ed5ee30fe113c_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_a92b8e0730130e1184a8cdbd89590779d}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!listeners@{listeners}}
-\index{listeners@{listeners}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{listeners}]{\setlength{\rightskip}{0pt plus 5cm}void listeners (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{a00007_a92b8e0730130e1184a8cdbd89590779d}
-contains listeners of the activity First listener. We call send\+S\+M\+S function and after that, if the sms exists, we create a new bubble and we reload the Adapter.
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=326pt]{a00007_a92b8e0730130e1184a8cdbd89590779d_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=226pt]{a00007_a92b8e0730130e1184a8cdbd89590779d_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_a85e87cb5ced88dff7c8173ecc4f636d1}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!on\+Create@{on\+Create}}
-\index{on\+Create@{on\+Create}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{on\+Create}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Create (
-\begin{DoxyParamCaption}
-\item[{Bundle}]{saved\+Instance\+State}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00007_a85e87cb5ced88dff7c8173ecc4f636d1}
-To create the activity
-
-
-\begin{DoxyParams}{Parameters}
-{\em saved\+Instance\+State} & save the instance state to keep informations. \\
-\hline
-\end{DoxyParams}
 
 
 Here is the call graph for this function\+:
@@ -268,27 +111,25 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{a00007_a85e87cb5ced88dff7c8173ecc4f636d1_cgraph}
+\includegraphics[width=260pt]{a00007_aa53441954dd0352c8b8964194365c688_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{a00007_a8f7d87763ddaf085205a54e8477ecfce}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!on\+Create\+Options\+Menu@{on\+Create\+Options\+Menu}}
-\index{on\+Create\+Options\+Menu@{on\+Create\+Options\+Menu}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{on\+Create\+Options\+Menu}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Create\+Options\+Menu (
+\hypertarget{a00007_abadf98014647b41c6a96847158d24230}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}!has\+To\+Managed\+Date@{has\+To\+Managed\+Date}}
+\index{has\+To\+Managed\+Date@{has\+To\+Managed\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}}
+\subsubsection[{has\+To\+Managed\+Date}]{\setlength{\rightskip}{0pt plus 5cm}boolean has\+To\+Managed\+Date (
 \begin{DoxyParamCaption}
-\item[{Menu}]{menu}
+\item[{Calendar}]{date}
 \end{DoxyParamCaption}
-)}}\label{a00007_a8f7d87763ddaf085205a54e8477ecfce}
-Use to create an option\+Menu.
-
-
+)}}\label{a00007_abadf98014647b41c6a96847158d24230}
+to know if we have to managed the date 
 \begin{DoxyParams}{Parameters}
-{\em menu} & keep informations relative to the menu \\
+{\em date} & the date to compare \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-boolean if the menu is create or no 
+true if it's the same date as today 
 \end{DoxyReturn}
 
 
@@ -297,84 +138,21 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=296pt]{a00007_a8f7d87763ddaf085205a54e8477ecfce_cgraph}
+\includegraphics[width=272pt]{a00007_abadf98014647b41c6a96847158d24230_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{a00007_a37a55c533c74b60c0290ef1329d74e65}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}}
-\index{on\+Options\+Item\+Selected@{on\+Options\+Item\+Selected}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{on\+Options\+Item\+Selected}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Options\+Item\+Selected (
+\hypertarget{a00007_a65c1a5dad9225d01d585af72e0c80138}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}!set\+Date@{set\+Date}}
+\index{set\+Date@{set\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}}
+\subsubsection[{set\+Date}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Date (
 \begin{DoxyParamCaption}
-\item[{Menu\+Item}]{item}
+\item[{Calendar}]{date}
 \end{DoxyParamCaption}
-)}}\label{a00007_a37a55c533c74b60c0290ef1329d74e65}
-To react when we select on item on the menu. 
+)}}\label{a00007_a65c1a5dad9225d01d585af72e0c80138}
+to set the date of the message 
 \begin{DoxyParams}{Parameters}
-{\em item} & the current selected item. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-
-\end{DoxyReturn}
-
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=302pt]{a00007_a37a55c533c74b60c0290ef1329d74e65_cgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_a1e3fee8580ec4092ffc6e3ce9d44f2b9}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!set\+Bubble\+Data@{set\+Bubble\+Data}}
-\index{set\+Bubble\+Data@{set\+Bubble\+Data}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{set\+Bubble\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Bubble\+Data (
-\begin{DoxyParamCaption}
-\item[{Array\+List$<$ {\bf Conversation\+Item} $>$}]{bubble\+Data}
-\end{DoxyParamCaption}
-)}}\label{a00007_a1e3fee8580ec4092ffc6e3ce9d44f2b9}
-Just set the Array\+List of Bubbles in the activity. 
-\begin{DoxyParams}{Parameters}
-{\em bubble\+Data} & the data that we want to load \\
-\hline
-\end{DoxyParams}
-
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=280pt]{a00007_a1e3fee8580ec4092ffc6e3ce9d44f2b9_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=336pt]{a00007_a1e3fee8580ec4092ffc6e3ce9d44f2b9_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_abef3c7b6635dc06ac6b8e4b37c51b37f}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!set\+Contact@{set\+Contact}}
-\index{set\+Contact@{set\+Contact}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{set\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Contact (
-\begin{DoxyParamCaption}
-\item[{{\bf Contact}}]{contact}
-\end{DoxyParamCaption}
-)}}\label{a00007_abef3c7b6635dc06ac6b8e4b37c51b37f}
-To set the current contact when we select it in previous activity 
-\begin{DoxyParams}{Parameters}
-{\em contact} & the future current contact of this activity conversation. \\
+{\em date} & the date of the message \\
 \hline
 \end{DoxyParams}
 
@@ -384,62 +162,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=228pt]{a00007_abef3c7b6635dc06ac6b8e4b37c51b37f_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_aa2825578f585a8a32958eaf0ce8df7b8}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!update@{update}}
-\index{update@{update}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
-\begin{DoxyParamCaption}
-\item[{Intent}]{intent}
-\end{DoxyParamCaption}
-)}}\label{a00007_aa2825578f585a8a32958eaf0ce8df7b8}
-
-\begin{DoxyParams}{Parameters}
-{\em intent} & \\
-\hline
-\end{DoxyParams}
-
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{a00007_aa2825578f585a8a32958eaf0ce8df7b8_cgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00007_ac5c54df7ed3b930268c8d7752c101725}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!update@{update}}
-\index{update@{update}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void update (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{a00007_ac5c54df7ed3b930268c8d7752c101725}
-This function is used to update a conversation when it's necessary 
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{a00007_ac5c54df7ed3b930268c8d7752c101725_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=218pt]{a00007_ac5c54df7ed3b930268c8d7752c101725_icgraph}
+\includegraphics[width=262pt]{a00007_a65c1a5dad9225d01d585af72e0c80138_icgraph}
 \end{center}
 \end{figure}
 
@@ -447,29 +170,11 @@ Here is the caller graph for this function\+:
 
 
 \subsection{Member Data Documentation}
-\hypertarget{a00007_adaad4a865e59995c45ef2ad13f6e88a9}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!adapter@{adapter}}
-\index{adapter@{adapter}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{adapter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Array\+Bubble\+Adapter} adapter\hspace{0.3cm}{\ttfamily [private]}}}\label{a00007_adaad4a865e59995c45ef2ad13f6e88a9}
-The adapter for this activity \hypertarget{a00007_a68544a0bda28776dfb51718a3c71bf69}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!bubble\+Data@{bubble\+Data}}
-\index{bubble\+Data@{bubble\+Data}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{bubble\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Conversation\+Item}$>$ bubble\+Data\hspace{0.3cm}{\ttfamily [private]}}}\label{a00007_a68544a0bda28776dfb51718a3c71bf69}
-The array to keep bubbles. We load messages into this array \hypertarget{a00007_ae5bb074a89738fa417e643960b0041c6}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!bubble\+List@{bubble\+List}}
-\index{bubble\+List@{bubble\+List}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{bubble\+List}]{\setlength{\rightskip}{0pt plus 5cm}Swipe\+Menu\+List\+View bubble\+List\hspace{0.3cm}{\ttfamily [private]}}}\label{a00007_ae5bb074a89738fa417e643960b0041c6}
-The liste\+View for displaying bubbles \hypertarget{a00007_a3459849ab29ad684658dbcd0cf8c5d5a}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!contact@{contact}}
-\index{contact@{contact}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} contact\hspace{0.3cm}{\ttfamily [private]}}}\label{a00007_a3459849ab29ad684658dbcd0cf8c5d5a}
-The contact who has been selected in conversation activity \hypertarget{a00007_a64a39fb2b7f756356462736dfbdb9f9f}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!instance@{instance}}
-\index{instance@{instance}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Conversation\+Activity} instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00007_a64a39fb2b7f756356462736dfbdb9f9f}
-instance of a conversation activity \hypertarget{a00007_a2e4d147a434708e05027f41ecf9ed577}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!send\+Button@{send\+Button}}
-\index{send\+Button@{send\+Button}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{send\+Button}]{\setlength{\rightskip}{0pt plus 5cm}Button send\+Button\hspace{0.3cm}{\ttfamily [private]}}}\label{a00007_a2e4d147a434708e05027f41ecf9ed577}
-the button used to send messages \hypertarget{a00007_abc418be8d11246756bfcb7f95123a88d}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!text\+Message@{text\+Message}}
-\index{text\+Message@{text\+Message}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{text\+Message}]{\setlength{\rightskip}{0pt plus 5cm}Edit\+Text text\+Message\hspace{0.3cm}{\ttfamily [private]}}}\label{a00007_abc418be8d11246756bfcb7f95123a88d}
-The edit\+Text wiget to enter text to send 
+\hypertarget{a00007_aa713d1025d73543bd4eae313a1868570}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}!date@{date}}
+\index{date@{date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::conversation\+::\+Conversation\+Item}}
+\subsubsection[{date}]{\setlength{\rightskip}{0pt plus 5cm}Calendar date\hspace{0.3cm}{\ttfamily [private]}}}\label{a00007_aa713d1025d73543bd4eae313a1868570}
+the date of a message 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-app/src/main/java/org/opensecurity/sms/view/\hyperlink{a00028}{Conversation\+Activity.\+java}\end{DoxyCompactItemize}
+app/src/main/java/org/opensecurity/sms/model/model\+View/conversation/\hyperlink{a00022}{Conversation\+Item.\+java}\end{DoxyCompactItemize}

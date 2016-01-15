@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>OpenSecuriySMS: PasswordDbHelper Class Reference</title>
+<title>OpenSecuriySMS: OpenSecuritySMS Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,195 +82,455 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00031.html">org</a></li><li class="navelem"><a class="el" href="a00032.html">opensecurity</a></li><li class="navelem"><a class="el" href="a00033.html">sms</a></li><li class="navelem"><a class="el" href="a00035.html">model</a></li><li class="navelem"><a class="el" href="a00039.html">security</a></li><li class="navelem"><a class="el" href="a00011.html">PasswordDbHelper</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00033.html">org</a></li><li class="navelem"><a class="el" href="a00034.html">opensecurity</a></li><li class="navelem"><a class="el" href="a00035.html">sms</a></li><li class="navelem"><a class="el" href="a00041.html">view</a></li><li class="navelem"><a class="el" href="a00011.html">OpenSecuritySMS</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
-<a href="a00068.html">List of all members</a>  </div>
+<a href="a00080.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PasswordDbHelper Class Reference</div>  </div>
+<div class="title">OpenSecuritySMS Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Inheritance diagram for PasswordDbHelper:</div>
+Inheritance diagram for OpenSecuritySMS:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00069.png" border="0" usemap="#_password_db_helper_inherit__map" alt="Inheritance graph"/></div>
-<map name="_password_db_helper_inherit__map" id="_password_db_helper_inherit__map">
+<div class="center"><img src="a00081.png" border="0" usemap="#_open_security_s_m_s_inherit__map" alt="Inheritance graph"/></div>
+<map name="_open_security_s_m_s_inherit__map" id="_open_security_s_m_s_inherit__map">
 </map>
 </div>
 <div class="dynheader">
-Collaboration diagram for PasswordDbHelper:</div>
+Collaboration diagram for OpenSecuritySMS:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00070.png" border="0" usemap="#_password_db_helper_coll__map" alt="Collaboration graph"/></div>
-<map name="_password_db_helper_coll__map" id="_password_db_helper_coll__map">
-</map>
+<div class="center"><img src="a00082.png" border="0" usemap="#_open_security_s_m_s_coll__map" alt="Collaboration graph"/></div>
+<map name="_open_security_s_m_s_coll__map" id="_open_security_s_m_s_coll__map">
+<area shape="rect" id="node4" href="a00003.html" title="{ArrayConversAdapter\n||+ ArrayConversAdapter()\l+ getView()\l}" alt="" coords="261,190,427,282"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5253eee04657df75063746388f018998"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a5253eee04657df75063746388f018998">PasswordDbHelper</a> (Context context)</td></tr>
-<tr class="separator:a5253eee04657df75063746388f018998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98b247cd7e075d076b0364beee305621"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a98b247cd7e075d076b0364beee305621">onCreate</a> (SQLiteDatabase db)</td></tr>
-<tr class="separator:a98b247cd7e075d076b0364beee305621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47418a2bb9896d8cd648b4094755e6c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a47418a2bb9896d8cd648b4094755e6c7">onUpgrade</a> (SQLiteDatabase db, int oldVersion, int newVersion)</td></tr>
-<tr class="separator:a47418a2bb9896d8cd648b4094755e6c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a7757b503ddeb122c4633bcd98d70f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a5a7757b503ddeb122c4633bcd98d70f0">onDowngrade</a> (SQLiteDatabase db, int oldVersion, int newVersion)</td></tr>
-<tr class="separator:a5a7757b503ddeb122c4633bcd98d70f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f7d87763ddaf085205a54e8477ecfce"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a8f7d87763ddaf085205a54e8477ecfce">onCreateOptionsMenu</a> (Menu menu)</td></tr>
+<tr class="separator:a8f7d87763ddaf085205a54e8477ecfce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a55c533c74b60c0290ef1329d74e65"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a37a55c533c74b60c0290ef1329d74e65">onOptionsItemSelected</a> (MenuItem item)</td></tr>
+<tr class="separator:a37a55c533c74b60c0290ef1329d74e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2cebeeaec1e0ca5b7bdec2ccfd24252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aa2cebeeaec1e0ca5b7bdec2ccfd24252">onSaveInstanceState</a> (Bundle b)</td></tr>
+<tr class="separator:aa2cebeeaec1e0ca5b7bdec2ccfd24252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fd108ef7b3bf7c29e53e6c4984d5f84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a3fd108ef7b3bf7c29e53e6c4984d5f84">onRestoreInstanceState</a> (Bundle savedInstanceState)</td></tr>
+<tr class="separator:a3fd108ef7b3bf7c29e53e6c4984d5f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e7cb8078fb5fdb58b09524fdd9e1d7"><td class="memItemLeft" align="right" valign="top">ListView&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a75e7cb8078fb5fdb58b09524fdd9e1d7">getConversationList</a> ()</td></tr>
+<tr class="separator:a75e7cb8078fb5fdb58b09524fdd9e1d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65bc274b44a44cb00ba767e86e50ee83"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a65bc274b44a44cb00ba767e86e50ee83">getConversationLines</a> ()</td></tr>
+<tr class="separator:a65bc274b44a44cb00ba767e86e50ee83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75b300477b934b09cac51aaa4c96b245"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a75b300477b934b09cac51aaa4c96b245">setConversationLines</a> (ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt; <a class="el" href="a00011.html#aa533b62d6a728d5400683c4d6c0d8334">conversationLines</a>)</td></tr>
+<tr class="separator:a75b300477b934b09cac51aaa4c96b245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c54df7ed3b930268c8d7752c101725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725">update</a> ()</td></tr>
+<tr class="separator:ac5c54df7ed3b930268c8d7752c101725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b8e0730130e1184a8cdbd89590779d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a92b8e0730130e1184a8cdbd89590779d">listeners</a> ()</td></tr>
+<tr class="separator:a92b8e0730130e1184a8cdbd89590779d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e43d47bbe04b3b6a4561d91bc16f9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00003.html">ArrayConversAdapter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#ab5e43d47bbe04b3b6a4561d91bc16f9f">getAdapter</a> ()</td></tr>
+<tr class="separator:ab5e43d47bbe04b3b6a4561d91bc16f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a4418255697bdbe4056215b3439562e5b"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a4418255697bdbe4056215b3439562e5b">DATABASE_VERSION</a> = 1</td></tr>
-<tr class="separator:a4418255697bdbe4056215b3439562e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62e0f89c9b9f944cee181af556bfba76"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a62e0f89c9b9f944cee181af556bfba76">DATABASE_NAME</a> = &quot;Password.db&quot;</td></tr>
-<tr class="separator:a62e0f89c9b9f944cee181af556bfba76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a20b99dca6a5147ea92b68f8ce333dc2e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00011.html">OpenSecuritySMS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a20b99dca6a5147ea92b68f8ce333dc2e">getInstance</a> ()</td></tr>
+<tr class="separator:a20b99dca6a5147ea92b68f8ce333dc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a85e87cb5ced88dff7c8173ecc4f636d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1">onCreate</a> (Bundle savedInstanceState)</td></tr>
+<tr class="separator:a85e87cb5ced88dff7c8173ecc4f636d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8e078b92f7b56733d32456ce00dbdbec"><td class="memItemLeft" align="right" valign="top">ListView&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a8e078b92f7b56733d32456ce00dbdbec">conversationList</a></td></tr>
+<tr class="separator:a8e078b92f7b56733d32456ce00dbdbec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa533b62d6a728d5400683c4d6c0d8334"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aa533b62d6a728d5400683c4d6c0d8334">conversationLines</a></td></tr>
+<tr class="separator:aa533b62d6a728d5400683c4d6c0d8334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2834b1dbc07b7f58625003ba7265618f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00003.html">ArrayConversAdapter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a2834b1dbc07b7f58625003ba7265618f">adapter</a></td></tr>
+<tr class="separator:a2834b1dbc07b7f58625003ba7265618f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a179ee64b30ed865c0aa6600e25624635"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a179ee64b30ed865c0aa6600e25624635">SQL_CREATE_ENTRIES</a> = &quot;&quot;</td></tr>
-<tr class="separator:a179ee64b30ed865c0aa6600e25624635"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f4bdf660cf40b8e8789fbecdaf421ec"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a4f4bdf660cf40b8e8789fbecdaf421ec">SQL_DELETE_ENTRIES</a> = &quot;&quot;</td></tr>
-<tr class="separator:a4f4bdf660cf40b8e8789fbecdaf421ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb0d0e377de688c5417fcaf531612a23"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00011.html">OpenSecuritySMS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#abb0d0e377de688c5417fcaf531612a23">instance</a></td></tr>
+<tr class="separator:abb0d0e377de688c5417fcaf531612a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a5253eee04657df75063746388f018998"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>main activity when we start the application. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ab5e43d47bbe04b3b6a4561d91bc16f9f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html">PasswordDbHelper</a> </td>
+          <td class="memname"><a class="el" href="a00003.html">ArrayConversAdapter</a> getAdapter </td>
           <td>(</td>
-          <td class="paramtype">Context&#160;</td>
-          <td class="paramname"><em>context</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>To get the adapter (design) </p><dl class="section return"><dt>Returns</dt><dd>the adapter of current activity </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_ab5e43d47bbe04b3b6a4561d91bc16f9f_icgraph.png" border="0" usemap="#a00011_ab5e43d47bbe04b3b6a4561d91bc16f9f_icgraph" alt=""/></div>
+<map name="a00011_ab5e43d47bbe04b3b6a4561d91bc16f9f_icgraph" id="a00011_ab5e43d47bbe04b3b6a4561d91bc16f9f_icgraph">
+<area shape="rect" id="node2" href="a00011.html#a75b300477b934b09cac51aaa4c96b245" title="setConversationLines" alt="" coords="139,31,287,57"/><area shape="rect" id="node3" href="a00011.html#a3fd108ef7b3bf7c29e53e6c4984d5f84" title="onRestoreInstanceState" alt="" coords="336,5,499,32"/><area shape="rect" id="node4" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725" title="update" alt="" coords="387,56,448,83"/><area shape="rect" id="node5" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="onCreate" alt="" coords="547,56,621,83"/></map>
+</div>
+</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a98b247cd7e075d076b0364beee305621"></a>
+<a class="anchor" id="a65bc274b44a44cb00ba767e86e50ee83"></a>
 <div class="memitem">
 <div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArrayList&lt;<a class="el" href="a00008.html">ConversationLine</a>&gt; getConversationLines </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>to return the data of conversations (arrayList) </p><dl class="section return"><dt>Returns</dt><dd>the arrayList of conversationLines </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_a65bc274b44a44cb00ba767e86e50ee83_icgraph.png" border="0" usemap="#a00011_a65bc274b44a44cb00ba767e86e50ee83_icgraph" alt=""/></div>
+<map name="a00011_a65bc274b44a44cb00ba767e86e50ee83_icgraph" id="a00011_a65bc274b44a44cb00ba767e86e50ee83_icgraph">
+<area shape="rect" id="node2" href="a00011.html#aa2cebeeaec1e0ca5b7bdec2ccfd24252" title="onSaveInstanceState" alt="" coords="204,5,351,32"/><area shape="rect" id="node3" href="a00011.html#a75b300477b934b09cac51aaa4c96b245" title="setConversationLines" alt="" coords="203,56,351,83"/><area shape="rect" id="node7" href="a00011.html#a92b8e0730130e1184a8cdbd89590779d" title="listeners" alt="" coords="446,107,517,133"/><area shape="rect" id="node4" href="a00011.html#a3fd108ef7b3bf7c29e53e6c4984d5f84" title="onRestoreInstanceState" alt="" coords="400,5,563,32"/><area shape="rect" id="node5" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725" title="update" alt="" coords="451,56,512,83"/><area shape="rect" id="node6" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="onCreate" alt="" coords="611,81,685,108"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a75e7cb8078fb5fdb58b09524fdd9e1d7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ListView getConversationList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>to return the current listView. </p><dl class="section return"><dt>Returns</dt><dd>the current listView </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_a75e7cb8078fb5fdb58b09524fdd9e1d7_icgraph.png" border="0" usemap="#a00011_a75e7cb8078fb5fdb58b09524fdd9e1d7_icgraph" alt=""/></div>
+<map name="a00011_a75e7cb8078fb5fdb58b09524fdd9e1d7_icgraph" id="a00011_a75e7cb8078fb5fdb58b09524fdd9e1d7_icgraph">
+<area shape="rect" id="node2" href="a00011.html#a92b8e0730130e1184a8cdbd89590779d" title="listeners" alt="" coords="193,5,263,32"/><area shape="rect" id="node3" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="onCreate" alt="" coords="312,5,387,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a20b99dca6a5147ea92b68f8ce333dc2e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="a00011.html">OpenSecuritySMS</a> getInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>to get the current instance (=this) </p><dl class="section return"><dt>Returns</dt><dd>instance of our activity </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_a20b99dca6a5147ea92b68f8ce333dc2e_icgraph.png" border="0" usemap="#a00011_a20b99dca6a5147ea92b68f8ce333dc2e_icgraph" alt=""/></div>
+<map name="a00011_a20b99dca6a5147ea92b68f8ce333dc2e_icgraph" id="a00011_a20b99dca6a5147ea92b68f8ce333dc2e_icgraph">
+<area shape="rect" id="node2" href="a00009.html#a0d87654bfa9eb4fd33a79c470d4dc6f3" title="org.opensecurity.sms.model.\lDAO.getInstance" alt="" coords="145,99,335,141"/><area shape="rect" id="node11" href="a00016.html#afe2ab6137f59f9ff640f1e3b74080ad7" title="org.opensecurity.sms.model.\lSMSReceiver.onReceive" alt="" coords="145,165,335,206"/><area shape="rect" id="node3" href="a00006.html#a92b8e0730130e1184a8cdbd89590779d" title="org.opensecurity.sms.view.\lConversationActivity.listeners" alt="" coords="403,5,599,46"/><area shape="rect" id="node5" href="a00006.html#ac5c54df7ed3b930268c8d7752c101725" title="org.opensecurity.sms.view.\lConversationActivity.update" alt="" coords="408,70,595,111"/><area shape="rect" id="node7" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725" title="update" alt="" coords="471,136,532,163"/><area shape="rect" id="node9" href="a00013.html#a92b8e0730130e1184a8cdbd89590779d" title="org.opensecurity.sms.view.\lPopupConversationActivity.listeners" alt="" coords="385,187,618,229"/><area shape="rect" id="node4" href="a00006.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lConversationActivity.onCreate" alt="" coords="685,5,885,46"/><area shape="rect" id="node6" href="a00006.html#aa2825578f585a8a32958eaf0ce8df7b8" title="org.opensecurity.sms.view.\lConversationActivity.update" alt="" coords="692,70,879,111"/><area shape="rect" id="node8" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="onCreate" alt="" coords="748,136,823,163"/><area shape="rect" id="node10" href="a00013.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lPopupConversationActivity.onCreate" alt="" coords="667,187,904,229"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a92b8e0730130e1184a8cdbd89590779d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void listeners </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>We write all listeners for current activity in this function.</p>
+<p>first listener : clickListeners on listView </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_a92b8e0730130e1184a8cdbd89590779d_cgraph.png" border="0" usemap="#a00011_a92b8e0730130e1184a8cdbd89590779d_cgraph" alt=""/></div>
+<map name="a00011_a92b8e0730130e1184a8cdbd89590779d_cgraph" id="a00011_a92b8e0730130e1184a8cdbd89590779d_cgraph">
+<area shape="rect" id="node2" href="a00011.html#a75e7cb8078fb5fdb58b09524fdd9e1d7" title="getConversationList" alt="" coords="131,5,269,32"/><area shape="rect" id="node3" href="a00011.html#a65bc274b44a44cb00ba767e86e50ee83" title="getConversationLines" alt="" coords="126,56,274,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_a92b8e0730130e1184a8cdbd89590779d_icgraph.png" border="0" usemap="#a00011_a92b8e0730130e1184a8cdbd89590779d_icgraph" alt=""/></div>
+<map name="a00011_a92b8e0730130e1184a8cdbd89590779d_icgraph" id="a00011_a92b8e0730130e1184a8cdbd89590779d_icgraph">
+<area shape="rect" id="node2" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="onCreate" alt="" coords="125,5,200,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a85e87cb5ced88dff7c8173ecc4f636d1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void onCreate </td>
           <td>(</td>
-          <td class="paramtype">SQLiteDatabase&#160;</td>
-          <td class="paramname"><em>db</em></td><td>)</td>
+          <td class="paramtype">Bundle&#160;</td>
+          <td class="paramname"><em>savedInstanceState</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00011_a98b247cd7e075d076b0364beee305621_icgraph.png" border="0" usemap="#a00011_a98b247cd7e075d076b0364beee305621_icgraph" alt=""/></div>
-<map name="a00011_a98b247cd7e075d076b0364beee305621_icgraph" id="a00011_a98b247cd7e075d076b0364beee305621_icgraph">
-<area shape="rect" id="node2" href="a00011.html#a47418a2bb9896d8cd648b4094755e6c7" title="onUpgrade" alt="" coords="128,5,213,32"/><area shape="rect" id="node3" href="a00011.html#a5a7757b503ddeb122c4633bcd98d70f0" title="onDowngrade" alt="" coords="262,5,365,32"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="a5a7757b503ddeb122c4633bcd98d70f0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void onDowngrade </td>
-          <td>(</td>
-          <td class="paramtype">SQLiteDatabase&#160;</td>
-          <td class="paramname"><em>db</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>oldVersion</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>newVersion</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>To create the activity</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">savedInstanceState</td><td>save the instance state to keep informations. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00011_a5a7757b503ddeb122c4633bcd98d70f0_cgraph.png" border="0" usemap="#a00011_a5a7757b503ddeb122c4633bcd98d70f0_cgraph" alt=""/></div>
-<map name="a00011_a5a7757b503ddeb122c4633bcd98d70f0_cgraph" id="a00011_a5a7757b503ddeb122c4633bcd98d70f0_cgraph">
-<area shape="rect" id="node2" href="a00011.html#a47418a2bb9896d8cd648b4094755e6c7" title="onUpgrade" alt="" coords="157,5,243,32"/><area shape="rect" id="node3" href="a00011.html#a98b247cd7e075d076b0364beee305621" title="onCreate" alt="" coords="291,5,365,32"/></map>
+<div class="center"><img src="a00011_a85e87cb5ced88dff7c8173ecc4f636d1_cgraph.png" border="0" usemap="#a00011_a85e87cb5ced88dff7c8173ecc4f636d1_cgraph" alt=""/></div>
+<map name="a00011_a85e87cb5ced88dff7c8173ecc4f636d1_cgraph" id="a00011_a85e87cb5ced88dff7c8173ecc4f636d1_cgraph">
+<area shape="rect" id="node2" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725" title="update" alt="" coords="133,125,195,152"/><area shape="rect" id="node9" href="a00011.html#a92b8e0730130e1184a8cdbd89590779d" title="listeners" alt="" coords="129,176,199,203"/><area shape="rect" id="node3" href="a00011.html#a75b300477b934b09cac51aaa4c96b245" title="setConversationLines" alt="" coords="270,125,418,152"/><area shape="rect" id="node6" href="a00009.html#a0d87654bfa9eb4fd33a79c470d4dc6f3" title="org.opensecurity.sms.model.\lDAO.getInstance" alt="" coords="249,59,439,101"/><area shape="rect" id="node4" href="a00011.html#a65bc274b44a44cb00ba767e86e50ee83" title="getConversationLines" alt="" coords="510,201,658,228"/><area shape="rect" id="node5" href="a00011.html#ab5e43d47bbe04b3b6a4561d91bc16f9f" title="getAdapter" alt="" coords="541,125,627,152"/><area shape="rect" id="node7" href="a00009.html#af8530c35cbb3602bcea42535ab31e9a6" title="org.opensecurity.sms.model.\lDAO.DAO" alt="" coords="489,5,679,46"/><area shape="rect" id="node8" href="a00011.html#a20b99dca6a5147ea92b68f8ce333dc2e" title="getInstance" alt="" coords="539,71,629,97"/><area shape="rect" id="node10" href="a00011.html#a75e7cb8078fb5fdb58b09524fdd9e1d7" title="getConversationList" alt="" coords="275,176,413,203"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a47418a2bb9896d8cd648b4094755e6c7"></a>
+<a class="anchor" id="a8f7d87763ddaf085205a54e8477ecfce"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void onUpgrade </td>
+          <td class="memname">boolean onCreateOptionsMenu </td>
           <td>(</td>
-          <td class="paramtype">SQLiteDatabase&#160;</td>
-          <td class="paramname"><em>db</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">Menu&#160;</td>
+          <td class="paramname"><em>menu</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>oldVersion</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>newVersion</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Use to create an optionMenu.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">menu</td><td>keep informations relative to the menu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>boolean if the menu is create or no </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a37a55c533c74b60c0290ef1329d74e65"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean onOptionsItemSelected </td>
+          <td>(</td>
+          <td class="paramtype">MenuItem&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>To react when we select on item on the menu. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>the current selected item. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3fd108ef7b3bf7c29e53e6c4984d5f84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void onRestoreInstanceState </td>
+          <td>(</td>
+          <td class="paramtype">Bundle&#160;</td>
+          <td class="paramname"><em>savedInstanceState</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>To resore data which was keeped by the bundle on onSaveInstanceState function </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">savedInstanceState</td><td>the bundle </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00011_a47418a2bb9896d8cd648b4094755e6c7_cgraph.png" border="0" usemap="#a00011_a47418a2bb9896d8cd648b4094755e6c7_cgraph" alt=""/></div>
-<map name="a00011_a47418a2bb9896d8cd648b4094755e6c7_cgraph" id="a00011_a47418a2bb9896d8cd648b4094755e6c7_cgraph">
-<area shape="rect" id="node2" href="a00011.html#a98b247cd7e075d076b0364beee305621" title="onCreate" alt="" coords="139,5,213,32"/></map>
+<div class="center"><img src="a00011_a3fd108ef7b3bf7c29e53e6c4984d5f84_cgraph.png" border="0" usemap="#a00011_a3fd108ef7b3bf7c29e53e6c4984d5f84_cgraph" alt=""/></div>
+<map name="a00011_a3fd108ef7b3bf7c29e53e6c4984d5f84_cgraph" id="a00011_a3fd108ef7b3bf7c29e53e6c4984d5f84_cgraph">
+<area shape="rect" id="node2" href="a00011.html#a75b300477b934b09cac51aaa4c96b245" title="setConversationLines" alt="" coords="217,31,365,57"/><area shape="rect" id="node3" href="a00011.html#a65bc274b44a44cb00ba767e86e50ee83" title="getConversationLines" alt="" coords="414,5,562,32"/><area shape="rect" id="node4" href="a00011.html#ab5e43d47bbe04b3b6a4561d91bc16f9f" title="getAdapter" alt="" coords="445,56,531,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa2cebeeaec1e0ca5b7bdec2ccfd24252"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void onSaveInstanceState </td>
+          <td>(</td>
+          <td class="paramtype">Bundle&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allow the activity to keep the list of conversationsLine after the death of this activiy </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>the bundel used to serialize informations. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_aa2cebeeaec1e0ca5b7bdec2ccfd24252_cgraph.png" border="0" usemap="#a00011_aa2cebeeaec1e0ca5b7bdec2ccfd24252_cgraph" alt=""/></div>
+<map name="a00011_aa2cebeeaec1e0ca5b7bdec2ccfd24252_cgraph" id="a00011_aa2cebeeaec1e0ca5b7bdec2ccfd24252_cgraph">
+<area shape="rect" id="node2" href="a00011.html#a65bc274b44a44cb00ba767e86e50ee83" title="getConversationLines" alt="" coords="201,5,349,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a75b300477b934b09cac51aaa4c96b245"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setConversationLines </td>
+          <td>(</td>
+          <td class="paramtype">ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt;&#160;</td>
+          <td class="paramname"><em>conversationLines</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>to set the data of conversationLines </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conversationLines</td><td>arrayList of conversationLines </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_a75b300477b934b09cac51aaa4c96b245_cgraph.png" border="0" usemap="#a00011_a75b300477b934b09cac51aaa4c96b245_cgraph" alt=""/></div>
+<map name="a00011_a75b300477b934b09cac51aaa4c96b245_cgraph" id="a00011_a75b300477b934b09cac51aaa4c96b245_cgraph">
+<area shape="rect" id="node2" href="a00011.html#a65bc274b44a44cb00ba767e86e50ee83" title="getConversationLines" alt="" coords="203,5,351,32"/><area shape="rect" id="node3" href="a00011.html#ab5e43d47bbe04b3b6a4561d91bc16f9f" title="getAdapter" alt="" coords="235,56,320,83"/></map>
 </div>
 </p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00011_a47418a2bb9896d8cd648b4094755e6c7_icgraph.png" border="0" usemap="#a00011_a47418a2bb9896d8cd648b4094755e6c7_icgraph" alt=""/></div>
-<map name="a00011_a47418a2bb9896d8cd648b4094755e6c7_icgraph" id="a00011_a47418a2bb9896d8cd648b4094755e6c7_icgraph">
-<area shape="rect" id="node2" href="a00011.html#a5a7757b503ddeb122c4633bcd98d70f0" title="onDowngrade" alt="" coords="139,5,242,32"/></map>
+<div class="center"><img src="a00011_a75b300477b934b09cac51aaa4c96b245_icgraph.png" border="0" usemap="#a00011_a75b300477b934b09cac51aaa4c96b245_icgraph" alt=""/></div>
+<map name="a00011_a75b300477b934b09cac51aaa4c96b245_icgraph" id="a00011_a75b300477b934b09cac51aaa4c96b245_icgraph">
+<area shape="rect" id="node2" href="a00011.html#a3fd108ef7b3bf7c29e53e6c4984d5f84" title="onRestoreInstanceState" alt="" coords="203,5,365,32"/><area shape="rect" id="node3" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725" title="update" alt="" coords="253,56,315,83"/><area shape="rect" id="node4" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="onCreate" alt="" coords="413,56,488,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac5c54df7ed3b930268c8d7752c101725"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is used to update this activity when it's necessary. </p>
+<p>The listView conversationList will be showed in the activity thanks to the Override of child class ArrayConversAdapter and getView method. and conversationLines is the support(data of conversationLine information).</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_ac5c54df7ed3b930268c8d7752c101725_cgraph.png" border="0" usemap="#a00011_ac5c54df7ed3b930268c8d7752c101725_cgraph" alt=""/></div>
+<map name="a00011_ac5c54df7ed3b930268c8d7752c101725_cgraph" id="a00011_ac5c54df7ed3b930268c8d7752c101725_cgraph">
+<area shape="rect" id="node2" href="a00011.html#a75b300477b934b09cac51aaa4c96b245" title="setConversationLines" alt="" coords="137,56,285,83"/><area shape="rect" id="node5" href="a00009.html#a0d87654bfa9eb4fd33a79c470d4dc6f3" title="org.opensecurity.sms.model.\lDAO.getInstance" alt="" coords="115,107,306,149"/><area shape="rect" id="node3" href="a00011.html#a65bc274b44a44cb00ba767e86e50ee83" title="getConversationLines" alt="" coords="377,5,525,32"/><area shape="rect" id="node4" href="a00011.html#ab5e43d47bbe04b3b6a4561d91bc16f9f" title="getAdapter" alt="" coords="408,56,493,83"/><area shape="rect" id="node6" href="a00009.html#af8530c35cbb3602bcea42535ab31e9a6" title="org.opensecurity.sms.model.\lDAO.DAO" alt="" coords="355,107,546,149"/><area shape="rect" id="node7" href="a00011.html#a20b99dca6a5147ea92b68f8ce333dc2e" title="getInstance" alt="" coords="405,173,496,200"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00011_ac5c54df7ed3b930268c8d7752c101725_icgraph.png" border="0" usemap="#a00011_ac5c54df7ed3b930268c8d7752c101725_icgraph" alt=""/></div>
+<map name="a00011_ac5c54df7ed3b930268c8d7752c101725_icgraph" id="a00011_ac5c54df7ed3b930268c8d7752c101725_icgraph">
+<area shape="rect" id="node2" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="onCreate" alt="" coords="115,5,189,32"/></map>
 </div>
 </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a62e0f89c9b9f944cee181af556bfba76"></a>
+<a class="anchor" id="a2834b1dbc07b7f58625003ba7265618f"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -278,19 +538,20 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">final String DATABASE_NAME = &quot;Password.db&quot;</td>
+          <td class="memname"><a class="el" href="a00003.html">ArrayConversAdapter</a> adapter</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The adapter for design the current activity </p>
 
 </div>
 </div>
-<a class="anchor" id="a4418255697bdbe4056215b3439562e5b"></a>
+<a class="anchor" id="aa533b62d6a728d5400683c4d6c0d8334"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -298,19 +559,20 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">final int DATABASE_VERSION = 1</td>
+          <td class="memname">ArrayList&lt;<a class="el" href="a00008.html">ConversationLine</a>&gt; conversationLines</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The arrayList to keep objects of conversationLine </p>
 
 </div>
 </div>
-<a class="anchor" id="a179ee64b30ed865c0aa6600e25624635"></a>
+<a class="anchor" id="a8e078b92f7b56733d32456ce00dbdbec"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -318,7 +580,28 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">final String SQL_CREATE_ENTRIES = &quot;&quot;</td>
+          <td class="memname">ListView conversationList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>the listView of conversations </p>
+
+</div>
+</div>
+<a class="anchor" id="abb0d0e377de688c5417fcaf531612a23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00011.html">OpenSecuritySMS</a> instance</td>
         </tr>
       </table>
   </td>
@@ -327,36 +610,17 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a4f4bdf660cf40b8e8789fbecdaf421ec"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">final String SQL_DELETE_ENTRIES = &quot;&quot;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>singleton pattern. We keep one instance (this) for the current activity </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>app/src/main/java/org/opensecurity/sms/model/security/<a class="el" href="a00024.html">PasswordDbHelper.java</a></li>
+<li>app/src/main/java/org/opensecurity/sms/view/<a class="el" href="a00031.html">OpenSecuritySMS.java</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 28 2015 11:48:30 for OpenSecuriySMS by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 15 2016 21:26:47 for OpenSecuriySMS by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

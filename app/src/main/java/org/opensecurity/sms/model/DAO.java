@@ -36,7 +36,7 @@ import java.util.concurrent.ExecutionException;
 
 public class DAO {
     /**
-     * The DAO is used by all activities. It contains various useful functions.
+     * The DAO is used by all activities. It contains various useful functions to access to the database.
      */
 
 

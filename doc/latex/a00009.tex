@@ -1,99 +1,92 @@
-\hypertarget{a00009}{\section{Conversation\+Line Class Reference}
-\label{a00009}\index{Conversation\+Line@{Conversation\+Line}}
+\hypertarget{a00009}{\section{D\+A\+O Class Reference}
+\label{a00009}\index{D\+A\+O@{D\+A\+O}}
 }
 
 
-Inheritance diagram for Conversation\+Line\+:
+Collaboration diagram for D\+A\+O\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=218pt]{a00064}
-\end{center}
-\end{figure}
-
-
-Collaboration diagram for Conversation\+Line\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=550pt]{a00065}
+\includegraphics[width=350pt]{a00046}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{a00009_a80a547afe975a7118b8cc354c41b2835}{Conversation\+Line} (\hyperlink{a00005}{Contact} \hyperlink{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}{contact}, String \hyperlink{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}{latest\+Message}, Calendar \hyperlink{a00009_aa713d1025d73543bd4eae313a1868570}{date})
+void \hyperlink{a00009_a0e9c1cf6abb64bc19b9c3bdec9eb750b}{open\+Db} ()
 \item 
-int \hyperlink{a00009_aebf2c5bb10824f5fcbd32677c8152735}{get\+Thread\+\_\+\+I\+D} ()
+void \hyperlink{a00009_a5ae591df94fc66ccb85cbb6565368bca}{close} ()
 \item 
-void \hyperlink{a00009_a27e124edc933b9954443e1b29b544bac}{set\+Thread\+\_\+id} (int I\+D)
+void \hyperlink{a00009_a0d261830f979d2b82adddde282a4074d}{insert\+Contact\+Into\+D\+B} (\hyperlink{a00005}{Contact} c)
 \item 
-void \hyperlink{a00009_a33f2ab55a4ba0636593f02f0322f3dd0}{set\+Latest\+Message} (String \hyperlink{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}{latest\+Message})
+\hyperlink{a00005}{Contact} \hyperlink{a00009_a0074262a1e69f8e9deb0ea44e55c021b}{find\+Contact\+By\+Phone\+Number} (String phone\+Number, Content\+Resolver content\+Resolver)
 \item 
-void \hyperlink{a00009_abef3c7b6635dc06ac6b8e4b37c51b37f}{set\+Contact} (\hyperlink{a00005}{Contact} \hyperlink{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}{contact})
+Array\+List$<$ \hyperlink{a00008}{Conversation\+Line} $>$ \hyperlink{a00009_a47fd191a6b728f32b3b232b836d97f1c}{load\+Last\+Messages} (Content\+Resolver content\+Resolver)
 \item 
-void \hyperlink{a00009_a65c1a5dad9225d01d585af72e0c80138}{set\+Date} (Calendar \hyperlink{a00009_aa713d1025d73543bd4eae313a1868570}{date})
+Array\+List$<$ \hyperlink{a00007}{Conversation\+Item} $>$ \hyperlink{a00009_acc6f8d4836ab29c22365b7f6e0763a15}{load\+Messages} (Content\+Resolver content\+Resolver, \hyperlink{a00005}{Contact} contact, int offset, int limit)
 \item 
-final String \hyperlink{a00009_a10a2abf152f4957caca28c562fc33168}{get\+Latest\+Message} ()
+boolean \hyperlink{a00009_aefc9fb17466b37d1b0a6f37ecbcb9657}{send\+S\+M\+S} (Context c, \hyperlink{a00005}{Contact} contact, String message)
 \item 
-final Calendar \hyperlink{a00009_a6d7bc612b8eee5382e11d9847e2f878e}{get\+Date} ()
+void \hyperlink{a00009_a056267ebf36c250c0b67cca3564ea3f9}{make\+Notification} (String title, String content, Bitmap icon, Activity activity, Class activity\+Run\+Class, Hash\+Map$<$ String, Serializable $>$ save)
 \item 
-String \hyperlink{a00009_aa53441954dd0352c8b8964194365c688}{get\+Managed\+Date} ()
+Array\+List$<$ String\mbox{[}$\,$\mbox{]}$>$ \hyperlink{a00009_ad6830b697058550025465b603b1b254a}{get\+Db\+Table\+Details} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{a00005}{Contact} \hyperlink{a00009_adb647c7ae09f1d5755db63d701968925}{get\+Contact} ()
+static final \hyperlink{a00009}{D\+A\+O} \hyperlink{a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3}{get\+Instance} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static int \hyperlink{a00009_a9d23fb3258cdafe6a3c4bb95f7ee886f}{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E} = 20
+static final String \hyperlink{a00009_a2e2a8b5e4b33363e36e2d75ff425c86c}{N\+A\+M\+E} = \char`\"{}open\+Security\+S\+M\+S\+Database.\+db\char`\"{}
+\item 
+static final int \hyperlink{a00009_a6cad282e2a906561926b9e4c5c46e92a}{V\+E\+R\+S\+I\+O\+N} = 1
 \end{DoxyCompactItemize}
-\subsection*{Private Attributes}
+\subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-String \hyperlink{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}{latest\+Message}
+\hyperlink{a00009_af8530c35cbb3602bcea42535ab31e9a6}{D\+A\+O} (Context c)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
 \item 
-Calendar \hyperlink{a00009_aa713d1025d73543bd4eae313a1868570}{date}
+static final String \hyperlink{a00009_ae783da46195d548123aa679a2040c53d}{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N} = \char`\"{}C\+T\+S\+\_\+\+S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N\char`\"{}
 \item 
-int \hyperlink{a00009_aab2b525336a6ab01e8b4ec8df7588b65}{thread\+\_\+\+I\+D}
+static final String \hyperlink{a00009_a134bdf0d10a1ebe6bc019d986853ca23}{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N} = \char`\"{}C\+T\+S\+\_\+\+S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N\char`\"{}
 \item 
-\hyperlink{a00005}{Contact} \hyperlink{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}{contact}
+static S\+Q\+Lite\+Database \hyperlink{a00009_a1b26570b52d9895c151f669c750358a8}{m\+Db} = null
+\item 
+static \hyperlink{a00010}{Database\+Handler} \hyperlink{a00009_ac19fc67c8ce8c11d34068a8963eb01dc}{m\+Handler} = null
+\item 
+static Hash\+Map$<$ String, \hyperlink{a00005}{Contact} $>$ \hyperlink{a00009_a42b678132ea8e78c62ce961e43078bca}{list\+Contacts} = new Hash\+Map$<$$>$()
+\item 
+static volatile \hyperlink{a00009}{D\+A\+O} \hyperlink{a00009_a01e7d5986bec56c6371309b48469a8cd}{instance} = null
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Object used to show a line of conversation in the main activity A \hyperlink{a00009}{Conversation\+Line} is a class which just implements the contents of a row\+View. latest\+Message will be the last message so display in the row\+View contact\+Name will be the name of a \hyperlink{a00005}{Contact} in the row\+View 
-
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{a00009_a80a547afe975a7118b8cc354c41b2835}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!Conversation\+Line@{Conversation\+Line}}
-\index{Conversation\+Line@{Conversation\+Line}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{Conversation\+Line}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Conversation\+Line} (
+\hypertarget{a00009_af8530c35cbb3602bcea42535ab31e9a6}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!D\+A\+O@{D\+A\+O}}
+\index{D\+A\+O@{D\+A\+O}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{D\+A\+O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+A\+O} (
 \begin{DoxyParamCaption}
-\item[{{\bf Contact}}]{contact, }
-\item[{String}]{latest\+Message, }
-\item[{Calendar}]{date}
+\item[{Context}]{c}
 \end{DoxyParamCaption}
-)}}\label{a00009_a80a547afe975a7118b8cc354c41b2835}
-Constructor
-
-
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_af8530c35cbb3602bcea42535ab31e9a6}
+private (because of singleton) constructor 
 \begin{DoxyParams}{Parameters}
-{\em contact} & is the contact of the row \\
-\hline
-{\em latest\+Message} & is the latest\+Message between you and he \\
-\hline
-{\em date} & the date of latest message \\
+{\em c} & the context \\
 \hline
 \end{DoxyParams}
 
 
-Here is the call graph for this function\+:
+Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{a00009_a80a547afe975a7118b8cc354c41b2835_cgraph}
+\includegraphics[width=350pt]{a00009_af8530c35cbb3602bcea42535ab31e9a6_icgraph}
 \end{center}
 \end{figure}
 
@@ -101,25 +94,32 @@ Here is the call graph for this function\+:
 
 
 \subsection{Member Function Documentation}
-\hypertarget{a00009_adb647c7ae09f1d5755db63d701968925}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Contact@{get\+Contact}}
-\index{get\+Contact@{get\+Contact}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{get\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} get\+Contact (
+\hypertarget{a00009_a5ae591df94fc66ccb85cbb6565368bca}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!close@{close}}
+\index{close@{close}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void close (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{a00009_adb647c7ae09f1d5755db63d701968925}
-to get the contact of a row \begin{DoxyReturn}{Returns}
-the contact of a row 
-\end{DoxyReturn}
-\hypertarget{a00009_a6d7bc612b8eee5382e11d9847e2f878e}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Date@{get\+Date}}
-\index{get\+Date@{get\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{get\+Date}]{\setlength{\rightskip}{0pt plus 5cm}final Calendar get\+Date (
+)}}\label{a00009_a5ae591df94fc66ccb85cbb6565368bca}
+to close the data\+Base \hypertarget{a00009_a0074262a1e69f8e9deb0ea44e55c021b}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!find\+Contact\+By\+Phone\+Number@{find\+Contact\+By\+Phone\+Number}}
+\index{find\+Contact\+By\+Phone\+Number@{find\+Contact\+By\+Phone\+Number}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{find\+Contact\+By\+Phone\+Number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} find\+Contact\+By\+Phone\+Number (
 \begin{DoxyParamCaption}
-{}
+\item[{String}]{phone\+Number, }
+\item[{Content\+Resolver}]{content\+Resolver}
 \end{DoxyParamCaption}
-)}}\label{a00009_a6d7bc612b8eee5382e11d9847e2f878e}
-to get the date of a row \begin{DoxyReturn}{Returns}
-the date of a row 
+)}}\label{a00009_a0074262a1e69f8e9deb0ea44e55c021b}
+This function has to return a contact Object thanks to a phone\+Number and an access to the android data\+Base
+
+
+\begin{DoxyParams}{Parameters}
+{\em phone\+Number} & the phone\+Number of a \hyperlink{a00005}{Contact} in your phone. \\
+\hline
+{\em content\+Resolver} & to manage access to a structured set of data in your phone \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the contact who has this phone\+Number 
 \end{DoxyReturn}
 
 
@@ -128,30 +128,34 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{a00009_a6d7bc612b8eee5382e11d9847e2f878e_icgraph}
+\includegraphics[width=350pt]{a00009_a0074262a1e69f8e9deb0ea44e55c021b_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{a00009_a10a2abf152f4957caca28c562fc33168}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Latest\+Message@{get\+Latest\+Message}}
-\index{get\+Latest\+Message@{get\+Latest\+Message}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{get\+Latest\+Message}]{\setlength{\rightskip}{0pt plus 5cm}final String get\+Latest\+Message (
+\hypertarget{a00009_ad6830b697058550025465b603b1b254a}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!get\+Db\+Table\+Details@{get\+Db\+Table\+Details}}
+\index{get\+Db\+Table\+Details@{get\+Db\+Table\+Details}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{get\+Db\+Table\+Details}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<$String\mbox{[}$\,$\mbox{]}$>$ get\+Db\+Table\+Details (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{a00009_a10a2abf152f4957caca28c562fc33168}
-to get the latest message of a row \begin{DoxyReturn}{Returns}
-the latestmessage of a row 
+)}}\label{a00009_ad6830b697058550025465b603b1b254a}
+Get all table Details from teh sqlite\+\_\+master table in Db.
+
+\begin{DoxyReturn}{Returns}
+An Array\+List of table details. 
 \end{DoxyReturn}
-\hypertarget{a00009_aa53441954dd0352c8b8964194365c688}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Managed\+Date@{get\+Managed\+Date}}
-\index{get\+Managed\+Date@{get\+Managed\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{get\+Managed\+Date}]{\setlength{\rightskip}{0pt plus 5cm}String get\+Managed\+Date (
+\hypertarget{a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}static final {\bf D\+A\+O} get\+Instance (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{a00009_aa53441954dd0352c8b8964194365c688}
-to get the managed date of a row \begin{DoxyReturn}{Returns}
-the managed\+Date of a row 
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3}
+Méthode permettant de renvoyer une instance de la classe Singleton
+
+\begin{DoxyReturn}{Returns}
+Retourne l'instance du singleton. 
 \end{DoxyReturn}
 
 
@@ -160,137 +164,175 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{a00009_aa53441954dd0352c8b8964194365c688_cgraph}
+\includegraphics[width=336pt]{a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{a00009_aebf2c5bb10824f5fcbd32677c8152735}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!get\+Thread\+\_\+\+I\+D@{get\+Thread\+\_\+\+I\+D}}
-\index{get\+Thread\+\_\+\+I\+D@{get\+Thread\+\_\+\+I\+D}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{get\+Thread\+\_\+\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Thread\+\_\+\+I\+D (
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00009_a0d261830f979d2b82adddde282a4074d}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!insert\+Contact\+Into\+D\+B@{insert\+Contact\+Into\+D\+B}}
+\index{insert\+Contact\+Into\+D\+B@{insert\+Contact\+Into\+D\+B}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{insert\+Contact\+Into\+D\+B}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+Contact\+Into\+D\+B (
+\begin{DoxyParamCaption}
+\item[{{\bf Contact}}]{c}
+\end{DoxyParamCaption}
+)}}\label{a00009_a0d261830f979d2b82adddde282a4074d}
+to insert a contact into the data\+Base 
+\begin{DoxyParams}{Parameters}
+{\em c} & the context \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00009_a47fd191a6b728f32b3b232b836d97f1c}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!load\+Last\+Messages@{load\+Last\+Messages}}
+\index{load\+Last\+Messages@{load\+Last\+Messages}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{load\+Last\+Messages}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Conversation\+Line}$>$ load\+Last\+Messages (
+\begin{DoxyParamCaption}
+\item[{Content\+Resolver}]{content\+Resolver}
+\end{DoxyParamCaption}
+)}}\label{a00009_a47fd191a6b728f32b3b232b836d97f1c}
+This function fill an Array\+List of Conversation\+Line with every last message for every contact
+
+
+\begin{DoxyParams}{Parameters}
+{\em content\+Resolver} & the content\+Resolver of the activity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an Array\+List of Conversation\+Line containing every last message for every contact 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00009_a47fd191a6b728f32b3b232b836d97f1c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00009_acc6f8d4836ab29c22365b7f6e0763a15}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!load\+Messages@{load\+Messages}}
+\index{load\+Messages@{load\+Messages}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{load\+Messages}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Conversation\+Item}$>$ load\+Messages (
+\begin{DoxyParamCaption}
+\item[{Content\+Resolver}]{content\+Resolver, }
+\item[{{\bf Contact}}]{contact, }
+\item[{int}]{offset, }
+\item[{int}]{limit}
+\end{DoxyParamCaption}
+)}}\label{a00009_acc6f8d4836ab29c22365b7f6e0763a15}
+This function has to load bubbles of one conversation in an Array\+List of object Conversation\+Item.
+
+
+\begin{DoxyParams}{Parameters}
+{\em content\+Resolver} & to manage access to a structured set of data in your phone \\
+\hline
+{\em contact} & is the current contact in our selected conversation \\
+\hline
+{\em offset} & never ised for the moment \\
+\hline
+{\em limit} & the limit of bubble what we want to load. (to dispence to load all bubbles) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bubble\+Data the Array\+List of Bubbles in a conversation. 
+\end{DoxyReturn}
+\hypertarget{a00009_a056267ebf36c250c0b67cca3564ea3f9}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!make\+Notification@{make\+Notification}}
+\index{make\+Notification@{make\+Notification}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{make\+Notification}]{\setlength{\rightskip}{0pt plus 5cm}void make\+Notification (
+\begin{DoxyParamCaption}
+\item[{String}]{title, }
+\item[{String}]{content, }
+\item[{Bitmap}]{icon, }
+\item[{Activity}]{activity, }
+\item[{Class}]{activity\+Run\+Class, }
+\item[{Hash\+Map$<$ String, Serializable $>$}]{save}
+\end{DoxyParamCaption}
+)}}\label{a00009_a056267ebf36c250c0b67cca3564ea3f9}
+This function is use to initialize, create and display a notification in Android.
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & the title of the notification. \\
+\hline
+{\em content} & the content of the notification \\
+\hline
+{\em icon} & the icon of the notification \\
+\hline
+{\em activity} & current activity \\
+\hline
+{\em activity\+Run\+Class} & \\
+\hline
+{\em save} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{a00009_a0e9c1cf6abb64bc19b9c3bdec9eb750b}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!open\+Db@{open\+Db}}
+\index{open\+Db@{open\+Db}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{open\+Db}]{\setlength{\rightskip}{0pt plus 5cm}void open\+Db (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{a00009_aebf2c5bb10824f5fcbd32677c8152735}
-to get the thread\+Id of the contact in the row \begin{DoxyReturn}{Returns}
-the thread\+Id of the contact in the row 
-\end{DoxyReturn}
-\hypertarget{a00009_abef3c7b6635dc06ac6b8e4b37c51b37f}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!set\+Contact@{set\+Contact}}
-\index{set\+Contact@{set\+Contact}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{set\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Contact (
+)}}\label{a00009_a0e9c1cf6abb64bc19b9c3bdec9eb750b}
+to open the database. \hypertarget{a00009_aefc9fb17466b37d1b0a6f37ecbcb9657}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!send\+S\+M\+S@{send\+S\+M\+S}}
+\index{send\+S\+M\+S@{send\+S\+M\+S}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{send\+S\+M\+S}]{\setlength{\rightskip}{0pt plus 5cm}boolean send\+S\+M\+S (
 \begin{DoxyParamCaption}
-\item[{{\bf Contact}}]{contact}
+\item[{Context}]{c, }
+\item[{{\bf Contact}}]{contact, }
+\item[{String}]{message}
 \end{DoxyParamCaption}
-)}}\label{a00009_abef3c7b6635dc06ac6b8e4b37c51b37f}
-to set the contact of a row 
+)}}\label{a00009_aefc9fb17466b37d1b0a6f37ecbcb9657}
+We try to send a message, but if the message does not contains text We toast a Message nothing to send. Function called from send\+Button click event in Conversation\+Activity.
+
+
 \begin{DoxyParams}{Parameters}
-{\em contact} & the contact of a row \\
+{\em c} & the context of Conversation\+Activity \\
+\hline
+{\em contact} & to get all informations about our contact \\
+\hline
+{\em message} & to get the message body we want to send \\
 \hline
 \end{DoxyParams}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=274pt]{a00009_abef3c7b6635dc06ac6b8e4b37c51b37f_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00009_a65c1a5dad9225d01d585af72e0c80138}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!set\+Date@{set\+Date}}
-\index{set\+Date@{set\+Date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{set\+Date}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Date (
-\begin{DoxyParamCaption}
-\item[{Calendar}]{date}
-\end{DoxyParamCaption}
-)}}\label{a00009_a65c1a5dad9225d01d585af72e0c80138}
-to set the date of a row 
-\begin{DoxyParams}{Parameters}
-{\em date} & the date of a row \\
-\hline
-\end{DoxyParams}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=260pt]{a00009_a65c1a5dad9225d01d585af72e0c80138_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00009_a33f2ab55a4ba0636593f02f0322f3dd0}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!set\+Latest\+Message@{set\+Latest\+Message}}
-\index{set\+Latest\+Message@{set\+Latest\+Message}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{set\+Latest\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Latest\+Message (
-\begin{DoxyParamCaption}
-\item[{String}]{latest\+Message}
-\end{DoxyParamCaption}
-)}}\label{a00009_a33f2ab55a4ba0636593f02f0322f3dd0}
-to set the latest\+Message for a row. 
-\begin{DoxyParams}{Parameters}
-{\em latest\+Message} & the lastest message for a row \\
-\hline
-\end{DoxyParams}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=306pt]{a00009_a33f2ab55a4ba0636593f02f0322f3dd0_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00009_a27e124edc933b9954443e1b29b544bac}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!set\+Thread\+\_\+id@{set\+Thread\+\_\+id}}
-\index{set\+Thread\+\_\+id@{set\+Thread\+\_\+id}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{set\+Thread\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Thread\+\_\+id (
-\begin{DoxyParamCaption}
-\item[{int}]{I\+D}
-\end{DoxyParamCaption}
-)}}\label{a00009_a27e124edc933b9954443e1b29b544bac}
-to set the thread\+Id of the contact in the row 
-\begin{DoxyParams}{Parameters}
-{\em I\+D} & the id of the contact in the row \\
-\hline
-\end{DoxyParams}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=282pt]{a00009_a27e124edc933b9954443e1b29b544bac_icgraph}
-\end{center}
-\end{figure}
-
-
 
 
 \subsection{Member Data Documentation}
-\hypertarget{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!contact@{contact}}
-\index{contact@{contact}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} contact\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_a3459849ab29ad684658dbcd0cf8c5d5a}
-the contact of the row \hypertarget{a00009_aa713d1025d73543bd4eae313a1868570}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!date@{date}}
-\index{date@{date}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{date}]{\setlength{\rightskip}{0pt plus 5cm}Calendar date\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_aa713d1025d73543bd4eae313a1868570}
-the date of latest message \hypertarget{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!latest\+Message@{latest\+Message}}
-\index{latest\+Message@{latest\+Message}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{latest\+Message}]{\setlength{\rightskip}{0pt plus 5cm}String latest\+Message\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_ae482a1ec09eba288cd2a19d22c3c9f3a}
-the latest message \hypertarget{a00009_a9d23fb3258cdafe6a3c4bb95f7ee886f}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E@{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E}}
-\index{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E@{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}int L\+I\+M\+I\+T\+\_\+\+L\+O\+A\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E = 20\hspace{0.3cm}{\ttfamily [static]}}}\label{a00009_a9d23fb3258cdafe6a3c4bb95f7ee886f}
-the limit of messages can be loaded \hypertarget{a00009_aab2b525336a6ab01e8b4ec8df7588b65}{\index{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}!thread\+\_\+\+I\+D@{thread\+\_\+\+I\+D}}
-\index{thread\+\_\+\+I\+D@{thread\+\_\+\+I\+D}!org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line@{org\+::opensecurity\+::sms\+::model\+::model\+View\+::list\+Conversation\+::\+Conversation\+Line}}
-\subsubsection[{thread\+\_\+\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int thread\+\_\+\+I\+D\hspace{0.3cm}{\ttfamily [private]}}}\label{a00009_aab2b525336a6ab01e8b4ec8df7588b65}
-the primary key of the contact 
+\hypertarget{a00009_a01e7d5986bec56c6371309b48469a8cd}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!instance@{instance}}
+\index{instance@{instance}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{instance}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf D\+A\+O} instance = null\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00009_a01e7d5986bec56c6371309b48469a8cd}
+uset for pater\+Singleton \hypertarget{a00009_a42b678132ea8e78c62ce961e43078bca}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!list\+Contacts@{list\+Contacts}}
+\index{list\+Contacts@{list\+Contacts}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{list\+Contacts}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Map$<$String, {\bf Contact}$>$ list\+Contacts = new Hash\+Map$<$$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00009_a42b678132ea8e78c62ce961e43078bca}
+the list of contacts. In hashmap. The key is his name. \hypertarget{a00009_a1b26570b52d9895c151f669c750358a8}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!m\+Db@{m\+Db}}
+\index{m\+Db@{m\+Db}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{m\+Db}]{\setlength{\rightskip}{0pt plus 5cm}S\+Q\+Lite\+Database m\+Db = null\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00009_a1b26570b52d9895c151f669c750358a8}
+the database to do queries. \hypertarget{a00009_ac19fc67c8ce8c11d34068a8963eb01dc}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!m\+Handler@{m\+Handler}}
+\index{m\+Handler@{m\+Handler}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{m\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Database\+Handler} m\+Handler = null\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00009_ac19fc67c8ce8c11d34068a8963eb01dc}
+handler to create or upgrade table \hypertarget{a00009_a2e2a8b5e4b33363e36e2d75ff425c86c}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!N\+A\+M\+E@{N\+A\+M\+E}}
+\index{N\+A\+M\+E@{N\+A\+M\+E}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{N\+A\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}final String N\+A\+M\+E = \char`\"{}open\+Security\+S\+M\+S\+Database.\+db\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}}\label{a00009_a2e2a8b5e4b33363e36e2d75ff425c86c}
+handler to create or upgrade table \hypertarget{a00009_a134bdf0d10a1ebe6bc019d986853ca23}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N@{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N}}
+\index{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N@{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}final String S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N = \char`\"{}C\+T\+S\+\_\+\+S\+M\+S\+\_\+\+D\+E\+L\+I\+V\+E\+R\+Y\+\_\+\+A\+C\+T\+I\+O\+N\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00009_a134bdf0d10a1ebe6bc019d986853ca23}
+\hypertarget{a00009_ae783da46195d548123aa679a2040c53d}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N@{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N}}
+\index{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N@{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}final String S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N = \char`\"{}C\+T\+S\+\_\+\+S\+M\+S\+\_\+\+S\+E\+N\+D\+\_\+\+A\+C\+T\+I\+O\+N\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00009_ae783da46195d548123aa679a2040c53d}
+The \hyperlink{a00009}{D\+A\+O} is used by all activities. It contains various useful functions to access to the database. \hypertarget{a00009_a6cad282e2a906561926b9e4c5c46e92a}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!V\+E\+R\+S\+I\+O\+N@{V\+E\+R\+S\+I\+O\+N}}
+\index{V\+E\+R\+S\+I\+O\+N@{V\+E\+R\+S\+I\+O\+N}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{V\+E\+R\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}final int V\+E\+R\+S\+I\+O\+N = 1\hspace{0.3cm}{\ttfamily [static]}}}\label{a00009_a6cad282e2a906561926b9e4c5c46e92a}
+the version 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-app/src/main/java/org/opensecurity/sms/model/model\+View/list\+Conversation/\hyperlink{a00022}{Conversation\+Line.\+java}\end{DoxyCompactItemize}
+app/src/main/java/org/opensecurity/sms/model/\hyperlink{a00018}{D\+A\+O.\+java}\end{DoxyCompactItemize}

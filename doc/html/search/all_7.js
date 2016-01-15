@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['instance',['instance',['../a00007.html#a64a39fb2b7f756356462736dfbdb9f9f',1,'org.opensecurity.sms.view.ConversationActivity.instance()'],['../a00010.html#abb0d0e377de688c5417fcaf531612a23',1,'org.opensecurity.sms.view.OpenSecuritySMS.instance()']]],
-  ['issendbyme',['isSendByMe',['../a00004.html#a0506f5775946d7c4db49b611d57fa3da',1,'org::opensecurity::sms::model::modelView::conversation::Bubble']]]
+  ['hasphoto',['hasPhoto',['../a00005.html#a6f861ae47c26fefab4e8e0cea9a1c979',1,'org::opensecurity::sms::model::Contact']]],
+  ['hastomanageddate',['hasToManagedDate',['../a00007.html#abadf98014647b41c6a96847158d24230',1,'org::opensecurity::sms::model::modelView::conversation::ConversationItem']]]
 ];

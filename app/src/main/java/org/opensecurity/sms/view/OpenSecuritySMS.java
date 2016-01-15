@@ -66,9 +66,9 @@ public class OpenSecuritySMS extends AppCompatActivity {
         this.conversationList.setAdapter(this.adapter);
 
         instance = this;
+
         update();
         listeners();
-
 
         DAO.getInstance().openDb();
     }
@@ -158,10 +158,11 @@ public class OpenSecuritySMS extends AppCompatActivity {
     }
 
     /**
-     * This function is used to update a conversation when it's necessary
+     * This function is used to update this activity when it's necessary.
      */
     public void update() {
         setConversationLines(DAO.getInstance().loadLastMessages(this.getContentResolver()));
+        instance = this;
 
         /**
          * The listView conversationList will be showed in the activity thanks to the

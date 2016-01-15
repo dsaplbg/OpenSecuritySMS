@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>OpenSecuriySMS: SMSReceiver Class Reference</title>
+<title>OpenSecuriySMS: Serializer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,89 +82,88 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00031.html">org</a></li><li class="navelem"><a class="el" href="a00032.html">opensecurity</a></li><li class="navelem"><a class="el" href="a00033.html">sms</a></li><li class="navelem"><a class="el" href="a00035.html">model</a></li><li class="navelem"><a class="el" href="a00015.html">SMSReceiver</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00033.html">org</a></li><li class="navelem"><a class="el" href="a00034.html">opensecurity</a></li><li class="navelem"><a class="el" href="a00035.html">sms</a></li><li class="navelem"><a class="el" href="a00036.html">model</a></li><li class="navelem"><a class="el" href="a00015.html">Serializer</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00048.html">List of all members</a>  </div>
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="a00050.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">SMSReceiver Class Reference</div>  </div>
+<div class="title">Serializer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Inheritance diagram for SMSReceiver:</div>
+Collaboration diagram for Serializer:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00049.png" border="0" usemap="#_s_m_s_receiver_inherit__map" alt="Inheritance graph"/></div>
-<map name="_s_m_s_receiver_inherit__map" id="_s_m_s_receiver_inherit__map">
-</map>
-</div>
-<div class="dynheader">
-Collaboration diagram for SMSReceiver:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00050.png" border="0" usemap="#_s_m_s_receiver_coll__map" alt="Collaboration graph"/></div>
-<map name="_s_m_s_receiver_coll__map" id="_s_m_s_receiver_coll__map">
+<div class="center"><img src="a00051.png" border="0" usemap="#_serializer_coll__map" alt="Collaboration graph"/></div>
+<map name="_serializer_coll__map" id="_serializer_coll__map">
 </map>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:afe2ab6137f59f9ff640f1e3b74080ad7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#afe2ab6137f59f9ff640f1e3b74080ad7">onReceive</a> (Context context, Intent intent)</td></tr>
-<tr class="separator:afe2ab6137f59f9ff640f1e3b74080ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a1331717cb2a54bf8a95a0555403da236"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a1331717cb2a54bf8a95a0555403da236">serialize</a> (Object obj)  throws IOException </td></tr>
+<tr class="separator:a1331717cb2a54bf8a95a0555403da236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79bdcf2199693e6c879cdd89c30926b9"><td class="memItemLeft" align="right" valign="top">static Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html#a79bdcf2199693e6c879cdd89c30926b9">deserialize</a> (byte[] bytes)  throws IOException, ClassNotFoundException </td></tr>
+<tr class="separator:a79bdcf2199693e6c879cdd89c30926b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Created by Valentin on 10/11/2015. Is a big listener for android. Active this piece of code when Android detect a new entrance of a sms </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="afe2ab6137f59f9ff640f1e3b74080ad7"></a>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a79bdcf2199693e6c879cdd89c30926b9"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void onReceive </td>
+          <td class="memname">static Object deserialize </td>
           <td>(</td>
-          <td class="paramtype">Context&#160;</td>
-          <td class="paramname"><em>context</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Intent&#160;</td>
-          <td class="paramname"><em>intent</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>bytes</em></td><td>)</td>
+          <td> throws IOException, ClassNotFoundException</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>an override of BroadcastReceiver function. To execute code whe android detect an intent. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">context</td><td>interface to global information about an application environment. </td></tr>
-    <tr><td class="paramname">intent</td><td>abstract description of an operation to be performed. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00015_afe2ab6137f59f9ff640f1e3b74080ad7_cgraph.png" border="0" usemap="#a00015_afe2ab6137f59f9ff640f1e3b74080ad7_cgraph" alt=""/></div>
-<map name="a00015_afe2ab6137f59f9ff640f1e3b74080ad7_cgraph" id="a00015_afe2ab6137f59f9ff640f1e3b74080ad7_cgraph">
-<area shape="rect" id="node2" href="a00010.html#a20b99dca6a5147ea92b68f8ce333dc2e" title="org.opensecurity.sms.view.\lOpenSecuritySMS.getInstance" alt="" coords="145,5,348,46"/><area shape="rect" id="node3" href="a00007.html#a7ebafa56e442a2f16c4afe044e65695b" title="org.opensecurity.sms.view.\lConversationActivity.getInstance" alt="" coords="139,70,354,111"/></map>
 </div>
-</p>
+</div>
+<a class="anchor" id="a1331717cb2a54bf8a95a0555403da236"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static byte [] serialize </td>
+          <td>(</td>
+          <td class="paramtype">Object&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td> throws IOException</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>app/src/main/java/org/opensecurity/sms/model/<a class="el" href="a00027.html">SMSReceiver.java</a></li>
+<li>app/src/main/java/org/opensecurity/sms/model/<a class="el" href="a00028.html">Serializer.java</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 28 2015 11:48:30 for OpenSecuriySMS by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 15 2016 21:26:47 for OpenSecuriySMS by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

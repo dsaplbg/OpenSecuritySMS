@@ -1,2 +1,3 @@
-<map id="ArrayConversAdapter" name="ArrayConversAdapter">
+<map id="ConversationItem" name="ConversationItem">
+<area shape="rect" id="node2" href="$a00004.html" title="{Bubble\n|&#45; content\l&#45; sendByMe\l|+ Bubble()\l+ getContent()\l+ setContent()\l+ getManagedDate()\l+ isSendByMe()\l+ setSendByMe()\l}" alt="" coords="13,189,153,355"/>
 </map>

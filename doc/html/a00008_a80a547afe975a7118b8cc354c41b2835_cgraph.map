@@ -1,0 +1,7 @@
+<map id="ConversationLine" name="ConversationLine">
+<area shape="rect" id="node2" href="$a00008.html#abef3c7b6635dc06ac6b8e4b37c51b37f" title="setContact" alt="" coords="229,5,315,32"/>
+<area shape="rect" id="node3" href="$a00008.html#a33f2ab55a4ba0636593f02f0322f3dd0" title="setLatestMessage" alt="" coords="207,56,337,83"/>
+<area shape="rect" id="node4" href="$a00008.html#a65c1a5dad9225d01d585af72e0c80138" title="setDate" alt="" coords="238,107,306,133"/>
+<area shape="rect" id="node5" href="$a00008.html#a27e124edc933b9954443e1b29b544bac" title="setThread_id" alt="" coords="223,157,321,184"/>
+<area shape="rect" id="node6" href="$a00005.html#ad0e00784944089a9ece0934817c8976b" title="org.opensecurity.sms.model.\lContact.getThreadId" alt="" coords="177,209,367,250"/>
+</map>

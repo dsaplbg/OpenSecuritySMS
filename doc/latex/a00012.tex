@@ -1,139 +1,92 @@
-\hypertarget{a00012}{\section{Popup\+Conversation\+Activity Class Reference}
-\label{a00012}\index{Popup\+Conversation\+Activity@{Popup\+Conversation\+Activity}}
+\hypertarget{a00012}{\section{Password\+Db\+Helper Class Reference}
+\label{a00012}\index{Password\+Db\+Helper@{Password\+Db\+Helper}}
 }
 
 
-Inheritance diagram for Popup\+Conversation\+Activity\+:
+Inheritance diagram for Password\+Db\+Helper\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=246pt]{a00080}
+\includegraphics[width=218pt]{a00073}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Popup\+Conversation\+Activity\+:
+Collaboration diagram for Password\+Db\+Helper\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{a00081}
+\includegraphics[width=218pt]{a00074}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{a00012_a92b8e0730130e1184a8cdbd89590779d}{listeners} ()
+\hyperlink{a00012_a5253eee04657df75063746388f018998}{Password\+Db\+Helper} (Context context)
 \item 
-\hyperlink{a00005}{Contact} \hyperlink{a00012_adb647c7ae09f1d5755db63d701968925}{get\+Contact} ()
+void \hyperlink{a00012_a98b247cd7e075d076b0364beee305621}{on\+Create} (S\+Q\+Lite\+Database db)
 \item 
-void \hyperlink{a00012_abef3c7b6635dc06ac6b8e4b37c51b37f}{set\+Contact} (\hyperlink{a00005}{Contact} \hyperlink{a00012_a3459849ab29ad684658dbcd0cf8c5d5a}{contact})
+void \hyperlink{a00012_a47418a2bb9896d8cd648b4094755e6c7}{on\+Upgrade} (S\+Q\+Lite\+Database db, int old\+Version, int new\+Version)
 \item 
-void \hyperlink{a00012_ae101bc9d661896c7dda12efd1e7b91d2}{set\+Up\+Window} ()
-\item 
-boolean \hyperlink{a00012_ab52b3ce187f918e0bc8f5a34c1e347a3}{on\+Touch\+Event} (Motion\+Event event)
-\item 
-boolean \hyperlink{a00012_afe7febda1f2210be8658c06fce770e1c}{on\+Down} (Motion\+Event e)
-\item 
-void \hyperlink{a00012_a929cec72582aad79985fd2927344b9c7}{on\+Show\+Press} (Motion\+Event e)
-\item 
-boolean \hyperlink{a00012_a05333c5dbd12d347d100d8cb029e4530}{on\+Single\+Tap\+Up} (Motion\+Event e)
-\item 
-boolean \hyperlink{a00012_af912304fa5a847e1231b71015c2ed06a}{on\+Scroll} (Motion\+Event e1, Motion\+Event e2, float distance\+X, float distance\+Y)
-\item 
-void \hyperlink{a00012_ac12f39cb7fd9003b2aa5ddf76f2e93fe}{on\+Long\+Press} (Motion\+Event e)
-\item 
-boolean \hyperlink{a00012_ae44fb084c2495a486a664f60ae319b8c}{on\+Fling} (Motion\+Event e1, Motion\+Event e2, float velocity\+X, float velocity\+Y)
+void \hyperlink{a00012_a5a7757b503ddeb122c4633bcd98d70f0}{on\+Downgrade} (S\+Q\+Lite\+Database db, int old\+Version, int new\+Version)
 \end{DoxyCompactItemize}
-\subsection*{Protected Member Functions}
+\subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{a00012_a85e87cb5ced88dff7c8173ecc4f636d1}{on\+Create} (Bundle saved\+Instance\+State)
+static final int \hyperlink{a00012_a4418255697bdbe4056215b3439562e5b}{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N} = 1
+\item 
+static final String \hyperlink{a00012_a62e0f89c9b9f944cee181af556bfba76}{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+N\+A\+M\+E} = \char`\"{}Password.\+db\char`\"{}
 \end{DoxyCompactItemize}
-\subsection*{Package Attributes}
+\subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-Text\+View \hyperlink{a00012_a4d3c87657c6cce664136ba8ae0a78c52}{message\+Text}
-\end{DoxyCompactItemize}
-\subsection*{Private Attributes}
-\begin{DoxyCompactItemize}
+static final String \hyperlink{a00012_a179ee64b30ed865c0aa6600e25624635}{S\+Q\+L\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S} = \char`\"{}\char`\"{}
 \item 
-Gesture\+Detector\+Compat \hyperlink{a00012_a5427c03b406fec9ef7e547ffa8c1c24c}{m\+Detector}
-\item 
-\hyperlink{a00005}{Contact} \hyperlink{a00012_a3459849ab29ad684658dbcd0cf8c5d5a}{contact}
-\item 
-Text\+View \hyperlink{a00012_aa626bf9c766e31794516e0e7b74813cf}{contact\+Text}
-\item 
-Button \hyperlink{a00012_a3d972e537893ff474034f33312b3e82a}{button\+Send}
-\item 
-Image\+Button \hyperlink{a00012_a5fad5165774c90a18e891feae1bfba2d}{photo\+Contact}
-\item 
-Edit\+Text \hyperlink{a00012_a7b7d08c7707f7318f92d2e7c55f2d0bc}{text\+Send}
+static final String \hyperlink{a00012_a4f4bdf660cf40b8e8789fbecdaf421ec}{S\+Q\+L\+\_\+\+D\+E\+L\+E\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S} = \char`\"{}\char`\"{}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Created by Valentin on 11/11/2015. The popup when we receive a sms. 
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{a00012_a5253eee04657df75063746388f018998}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}!Password\+Db\+Helper@{Password\+Db\+Helper}}
+\index{Password\+Db\+Helper@{Password\+Db\+Helper}!org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}}
+\subsubsection[{Password\+Db\+Helper}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Password\+Db\+Helper} (
+\begin{DoxyParamCaption}
+\item[{Context}]{context}
+\end{DoxyParamCaption}
+)}}\label{a00012_a5253eee04657df75063746388f018998}
+
 
 \subsection{Member Function Documentation}
-\hypertarget{a00012_adb647c7ae09f1d5755db63d701968925}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!get\+Contact@{get\+Contact}}
-\index{get\+Contact@{get\+Contact}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{get\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} get\+Contact (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{a00012_adb647c7ae09f1d5755db63d701968925}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=328pt]{a00012_adb647c7ae09f1d5755db63d701968925_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00012_a92b8e0730130e1184a8cdbd89590779d}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!listeners@{listeners}}
-\index{listeners@{listeners}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{listeners}]{\setlength{\rightskip}{0pt plus 5cm}void listeners (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{a00012_a92b8e0730130e1184a8cdbd89590779d}
-method used to initialization of all listeners. 1st listener \+: send\+Button on\+Click. 
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=326pt]{a00012_a92b8e0730130e1184a8cdbd89590779d_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=226pt]{a00012_a92b8e0730130e1184a8cdbd89590779d_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00012_a85e87cb5ced88dff7c8173ecc4f636d1}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!on\+Create@{on\+Create}}
-\index{on\+Create@{on\+Create}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
+\hypertarget{a00012_a98b247cd7e075d076b0364beee305621}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}!on\+Create@{on\+Create}}
+\index{on\+Create@{on\+Create}!org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}}
 \subsubsection[{on\+Create}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Create (
 \begin{DoxyParamCaption}
-\item[{Bundle}]{saved\+Instance\+State}
+\item[{S\+Q\+Lite\+Database}]{db}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00012_a85e87cb5ced88dff7c8173ecc4f636d1}
+)}}\label{a00012_a98b247cd7e075d076b0364beee305621}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{a00012_a98b247cd7e075d076b0364beee305621_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00012_a5a7757b503ddeb122c4633bcd98d70f0}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}!on\+Downgrade@{on\+Downgrade}}
+\index{on\+Downgrade@{on\+Downgrade}!org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}}
+\subsubsection[{on\+Downgrade}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Downgrade (
+\begin{DoxyParamCaption}
+\item[{S\+Q\+Lite\+Database}]{db, }
+\item[{int}]{old\+Version, }
+\item[{int}]{new\+Version}
+\end{DoxyParamCaption}
+)}}\label{a00012_a5a7757b503ddeb122c4633bcd98d70f0}
 
 
 Here is the call graph for this function\+:
@@ -141,73 +94,32 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{a00012_a85e87cb5ced88dff7c8173ecc4f636d1_cgraph}
+\includegraphics[width=350pt]{a00012_a5a7757b503ddeb122c4633bcd98d70f0_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{a00012_afe7febda1f2210be8658c06fce770e1c}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!on\+Down@{on\+Down}}
-\index{on\+Down@{on\+Down}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{on\+Down}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Down (
+\hypertarget{a00012_a47418a2bb9896d8cd648b4094755e6c7}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}!on\+Upgrade@{on\+Upgrade}}
+\index{on\+Upgrade@{on\+Upgrade}!org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}}
+\subsubsection[{on\+Upgrade}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Upgrade (
 \begin{DoxyParamCaption}
-\item[{Motion\+Event}]{e}
+\item[{S\+Q\+Lite\+Database}]{db, }
+\item[{int}]{old\+Version, }
+\item[{int}]{new\+Version}
 \end{DoxyParamCaption}
-)}}\label{a00012_afe7febda1f2210be8658c06fce770e1c}
-\hypertarget{a00012_ae44fb084c2495a486a664f60ae319b8c}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!on\+Fling@{on\+Fling}}
-\index{on\+Fling@{on\+Fling}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{on\+Fling}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Fling (
-\begin{DoxyParamCaption}
-\item[{Motion\+Event}]{e1, }
-\item[{Motion\+Event}]{e2, }
-\item[{float}]{velocity\+X, }
-\item[{float}]{velocity\+Y}
-\end{DoxyParamCaption}
-)}}\label{a00012_ae44fb084c2495a486a664f60ae319b8c}
-\hypertarget{a00012_ac12f39cb7fd9003b2aa5ddf76f2e93fe}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!on\+Long\+Press@{on\+Long\+Press}}
-\index{on\+Long\+Press@{on\+Long\+Press}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{on\+Long\+Press}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Long\+Press (
-\begin{DoxyParamCaption}
-\item[{Motion\+Event}]{e}
-\end{DoxyParamCaption}
-)}}\label{a00012_ac12f39cb7fd9003b2aa5ddf76f2e93fe}
-\hypertarget{a00012_af912304fa5a847e1231b71015c2ed06a}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!on\+Scroll@{on\+Scroll}}
-\index{on\+Scroll@{on\+Scroll}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{on\+Scroll}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Scroll (
-\begin{DoxyParamCaption}
-\item[{Motion\+Event}]{e1, }
-\item[{Motion\+Event}]{e2, }
-\item[{float}]{distance\+X, }
-\item[{float}]{distance\+Y}
-\end{DoxyParamCaption}
-)}}\label{a00012_af912304fa5a847e1231b71015c2ed06a}
-\hypertarget{a00012_a929cec72582aad79985fd2927344b9c7}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!on\+Show\+Press@{on\+Show\+Press}}
-\index{on\+Show\+Press@{on\+Show\+Press}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{on\+Show\+Press}]{\setlength{\rightskip}{0pt plus 5cm}void on\+Show\+Press (
-\begin{DoxyParamCaption}
-\item[{Motion\+Event}]{e}
-\end{DoxyParamCaption}
-)}}\label{a00012_a929cec72582aad79985fd2927344b9c7}
-\hypertarget{a00012_a05333c5dbd12d347d100d8cb029e4530}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!on\+Single\+Tap\+Up@{on\+Single\+Tap\+Up}}
-\index{on\+Single\+Tap\+Up@{on\+Single\+Tap\+Up}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{on\+Single\+Tap\+Up}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Single\+Tap\+Up (
-\begin{DoxyParamCaption}
-\item[{Motion\+Event}]{e}
-\end{DoxyParamCaption}
-)}}\label{a00012_a05333c5dbd12d347d100d8cb029e4530}
-\hypertarget{a00012_ab52b3ce187f918e0bc8f5a34c1e347a3}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!on\+Touch\+Event@{on\+Touch\+Event}}
-\index{on\+Touch\+Event@{on\+Touch\+Event}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{on\+Touch\+Event}]{\setlength{\rightskip}{0pt plus 5cm}boolean on\+Touch\+Event (
-\begin{DoxyParamCaption}
-\item[{Motion\+Event}]{event}
-\end{DoxyParamCaption}
-)}}\label{a00012_ab52b3ce187f918e0bc8f5a34c1e347a3}
-\hypertarget{a00012_abef3c7b6635dc06ac6b8e4b37c51b37f}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!set\+Contact@{set\+Contact}}
-\index{set\+Contact@{set\+Contact}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{set\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Contact (
-\begin{DoxyParamCaption}
-\item[{{\bf Contact}}]{contact}
-\end{DoxyParamCaption}
-)}}\label{a00012_abef3c7b6635dc06ac6b8e4b37c51b37f}
+)}}\label{a00012_a47418a2bb9896d8cd648b4094755e6c7}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{a00012_a47418a2bb9896d8cd648b4094755e6c7_cgraph}
+\end{center}
+\end{figure}
+
+
 
 
 Here is the caller graph for this function\+:
@@ -215,26 +127,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=238pt]{a00012_abef3c7b6635dc06ac6b8e4b37c51b37f_icgraph}
-\end{center}
-\end{figure}
-
-
-\hypertarget{a00012_ae101bc9d661896c7dda12efd1e7b91d2}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!set\+Up\+Window@{set\+Up\+Window}}
-\index{set\+Up\+Window@{set\+Up\+Window}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{set\+Up\+Window}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Up\+Window (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{a00012_ae101bc9d661896c7dda12efd1e7b91d2}
-
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=250pt]{a00012_ae101bc9d661896c7dda12efd1e7b91d2_icgraph}
+\includegraphics[width=258pt]{a00012_a47418a2bb9896d8cd648b4094755e6c7_icgraph}
 \end{center}
 \end{figure}
 
@@ -242,29 +135,20 @@ Here is the caller graph for this function\+:
 
 
 \subsection{Member Data Documentation}
-\hypertarget{a00012_a3d972e537893ff474034f33312b3e82a}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!button\+Send@{button\+Send}}
-\index{button\+Send@{button\+Send}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{button\+Send}]{\setlength{\rightskip}{0pt plus 5cm}Button button\+Send\hspace{0.3cm}{\ttfamily [private]}}}\label{a00012_a3d972e537893ff474034f33312b3e82a}
-\hypertarget{a00012_a3459849ab29ad684658dbcd0cf8c5d5a}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!contact@{contact}}
-\index{contact@{contact}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} contact\hspace{0.3cm}{\ttfamily [private]}}}\label{a00012_a3459849ab29ad684658dbcd0cf8c5d5a}
-the contact who send an sms \hypertarget{a00012_aa626bf9c766e31794516e0e7b74813cf}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!contact\+Text@{contact\+Text}}
-\index{contact\+Text@{contact\+Text}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{contact\+Text}]{\setlength{\rightskip}{0pt plus 5cm}Text\+View contact\+Text\hspace{0.3cm}{\ttfamily [private]}}}\label{a00012_aa626bf9c766e31794516e0e7b74813cf}
-the contains of sms \hypertarget{a00012_a5427c03b406fec9ef7e547ffa8c1c24c}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!m\+Detector@{m\+Detector}}
-\index{m\+Detector@{m\+Detector}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{m\+Detector}]{\setlength{\rightskip}{0pt plus 5cm}Gesture\+Detector\+Compat m\+Detector\hspace{0.3cm}{\ttfamily [private]}}}\label{a00012_a5427c03b406fec9ef7e547ffa8c1c24c}
-\hypertarget{a00012_a4d3c87657c6cce664136ba8ae0a78c52}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!message\+Text@{message\+Text}}
-\index{message\+Text@{message\+Text}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{message\+Text}]{\setlength{\rightskip}{0pt plus 5cm}Text\+View message\+Text\hspace{0.3cm}{\ttfamily [package]}}}\label{a00012_a4d3c87657c6cce664136ba8ae0a78c52}
-\hypertarget{a00012_a5fad5165774c90a18e891feae1bfba2d}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!photo\+Contact@{photo\+Contact}}
-\index{photo\+Contact@{photo\+Contact}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{photo\+Contact}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Button photo\+Contact\hspace{0.3cm}{\ttfamily [private]}}}\label{a00012_a5fad5165774c90a18e891feae1bfba2d}
-\hypertarget{a00012_a7b7d08c7707f7318f92d2e7c55f2d0bc}{\index{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}!text\+Send@{text\+Send}}
-\index{text\+Send@{text\+Send}!org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Popup\+Conversation\+Activity}}
-\subsubsection[{text\+Send}]{\setlength{\rightskip}{0pt plus 5cm}Edit\+Text text\+Send\hspace{0.3cm}{\ttfamily [private]}}}\label{a00012_a7b7d08c7707f7318f92d2e7c55f2d0bc}
+\hypertarget{a00012_a62e0f89c9b9f944cee181af556bfba76}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}!D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+N\+A\+M\+E@{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+N\+A\+M\+E}}
+\index{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+N\+A\+M\+E@{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+N\+A\+M\+E}!org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}}
+\subsubsection[{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+N\+A\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}final String D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+N\+A\+M\+E = \char`\"{}Password.\+db\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}}\label{a00012_a62e0f89c9b9f944cee181af556bfba76}
+\hypertarget{a00012_a4418255697bdbe4056215b3439562e5b}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}!D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N@{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N}}
+\index{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N@{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N}!org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}}
+\subsubsection[{D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}final int D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+V\+E\+R\+S\+I\+O\+N = 1\hspace{0.3cm}{\ttfamily [static]}}}\label{a00012_a4418255697bdbe4056215b3439562e5b}
+\hypertarget{a00012_a179ee64b30ed865c0aa6600e25624635}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}!S\+Q\+L\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S@{S\+Q\+L\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S}}
+\index{S\+Q\+L\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S@{S\+Q\+L\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S}!org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}}
+\subsubsection[{S\+Q\+L\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}final String S\+Q\+L\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00012_a179ee64b30ed865c0aa6600e25624635}
+\hypertarget{a00012_a4f4bdf660cf40b8e8789fbecdaf421ec}{\index{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}!S\+Q\+L\+\_\+\+D\+E\+L\+E\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S@{S\+Q\+L\+\_\+\+D\+E\+L\+E\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S}}
+\index{S\+Q\+L\+\_\+\+D\+E\+L\+E\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S@{S\+Q\+L\+\_\+\+D\+E\+L\+E\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S}!org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper@{org\+::opensecurity\+::sms\+::model\+::security\+::\+Password\+Db\+Helper}}
+\subsubsection[{S\+Q\+L\+\_\+\+D\+E\+L\+E\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}final String S\+Q\+L\+\_\+\+D\+E\+L\+E\+T\+E\+\_\+\+E\+N\+T\+R\+I\+E\+S = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{a00012_a4f4bdf660cf40b8e8789fbecdaf421ec}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-app/src/main/java/org/opensecurity/sms/view/\hyperlink{a00030}{Popup\+Conversation\+Activity.\+java}\end{DoxyCompactItemize}
+app/src/main/java/org/opensecurity/sms/model/security/\hyperlink{a00026}{Password\+Db\+Helper.\+java}\end{DoxyCompactItemize}

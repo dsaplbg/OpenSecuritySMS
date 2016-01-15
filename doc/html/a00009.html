@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>OpenSecuriySMS: ConversationLine Class Reference</title>
+<title>OpenSecuriySMS: DAO Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,97 +82,154 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00031.html">org</a></li><li class="navelem"><a class="el" href="a00032.html">opensecurity</a></li><li class="navelem"><a class="el" href="a00033.html">sms</a></li><li class="navelem"><a class="el" href="a00035.html">model</a></li><li class="navelem"><a class="el" href="a00036.html">modelView</a></li><li class="navelem"><a class="el" href="a00038.html">listConversation</a></li><li class="navelem"><a class="el" href="a00009.html">ConversationLine</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00033.html">org</a></li><li class="navelem"><a class="el" href="a00034.html">opensecurity</a></li><li class="navelem"><a class="el" href="a00035.html">sms</a></li><li class="navelem"><a class="el" href="a00036.html">model</a></li><li class="navelem"><a class="el" href="a00009.html">DAO</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="a00063.html">List of all members</a>  </div>
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="a00045.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ConversationLine Class Reference</div>  </div>
+<div class="title">DAO Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Inheritance diagram for ConversationLine:</div>
+Collaboration diagram for DAO:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00064.png" border="0" usemap="#_conversation_line_inherit__map" alt="Inheritance graph"/></div>
-<map name="_conversation_line_inherit__map" id="_conversation_line_inherit__map">
-</map>
-</div>
-<div class="dynheader">
-Collaboration diagram for ConversationLine:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00065.png" border="0" usemap="#_conversation_line_coll__map" alt="Collaboration graph"/></div>
-<map name="_conversation_line_coll__map" id="_conversation_line_coll__map">
-<area shape="rect" id="node4" href="a00005.html" title="{Contact\n|~ number\l~ photoURL\l~ nbMessages\l&#45; name\l&#45; threadId\l|+ Contact()\l+ getPhoto()\l+ hasPhoto()\l+ getPhotoURL()\l+ setPhotoURL()\l+ getNumber()\l+ setNumber()\l+ getName()\l+ setName()\l+ getThreadId()\l+ setThreadId()\l+ getNbMessages()\l+ setNbMessages()\l&#45; createLetterPhoto()\l}" alt="" coords="52,134,192,461"/></map>
+<div class="center"><img src="a00046.png" border="0" usemap="#_d_a_o_coll__map" alt="Collaboration graph"/></div>
+<map name="_d_a_o_coll__map" id="_d_a_o_coll__map">
+<area shape="rect" id="node3" href="a00010.html" title="{DatabaseHandler\n|+ PHONE_NUMBER\l+ PHOTO_URL\l+ PUBLIC_RSA_KEY\l+ CONTACT_NAME\l+ THREAD_ID\l+ NUMBER_OF_MESSAGE\l+ CONTACT_TABLE_NAME\l+ CONTACT_CREATE_TABLE\l+ DROP_ALL_CONTACTOSMS\l_TABLE\l|+ DatabaseHandler()\l+ onCreate()\l+ onUpgrade()\l}" alt="" coords="147,161,361,399"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a80a547afe975a7118b8cc354c41b2835"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a80a547afe975a7118b8cc354c41b2835">ConversationLine</a> (<a class="el" href="a00005.html">Contact</a> <a class="el" href="a00009.html#a3459849ab29ad684658dbcd0cf8c5d5a">contact</a>, String <a class="el" href="a00009.html#ae482a1ec09eba288cd2a19d22c3c9f3a">latestMessage</a>, Calendar <a class="el" href="a00009.html#aa713d1025d73543bd4eae313a1868570">date</a>)</td></tr>
-<tr class="separator:a80a547afe975a7118b8cc354c41b2835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebf2c5bb10824f5fcbd32677c8152735"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#aebf2c5bb10824f5fcbd32677c8152735">getThread_ID</a> ()</td></tr>
-<tr class="separator:aebf2c5bb10824f5fcbd32677c8152735"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27e124edc933b9954443e1b29b544bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a27e124edc933b9954443e1b29b544bac">setThread_id</a> (int ID)</td></tr>
-<tr class="separator:a27e124edc933b9954443e1b29b544bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33f2ab55a4ba0636593f02f0322f3dd0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a33f2ab55a4ba0636593f02f0322f3dd0">setLatestMessage</a> (String <a class="el" href="a00009.html#ae482a1ec09eba288cd2a19d22c3c9f3a">latestMessage</a>)</td></tr>
-<tr class="separator:a33f2ab55a4ba0636593f02f0322f3dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abef3c7b6635dc06ac6b8e4b37c51b37f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#abef3c7b6635dc06ac6b8e4b37c51b37f">setContact</a> (<a class="el" href="a00005.html">Contact</a> <a class="el" href="a00009.html#a3459849ab29ad684658dbcd0cf8c5d5a">contact</a>)</td></tr>
-<tr class="separator:abef3c7b6635dc06ac6b8e4b37c51b37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65c1a5dad9225d01d585af72e0c80138"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a65c1a5dad9225d01d585af72e0c80138">setDate</a> (Calendar <a class="el" href="a00009.html#aa713d1025d73543bd4eae313a1868570">date</a>)</td></tr>
-<tr class="separator:a65c1a5dad9225d01d585af72e0c80138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10a2abf152f4957caca28c562fc33168"><td class="memItemLeft" align="right" valign="top">final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a10a2abf152f4957caca28c562fc33168">getLatestMessage</a> ()</td></tr>
-<tr class="separator:a10a2abf152f4957caca28c562fc33168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d7bc612b8eee5382e11d9847e2f878e"><td class="memItemLeft" align="right" valign="top">final Calendar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a6d7bc612b8eee5382e11d9847e2f878e">getDate</a> ()</td></tr>
-<tr class="separator:a6d7bc612b8eee5382e11d9847e2f878e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa53441954dd0352c8b8964194365c688"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#aa53441954dd0352c8b8964194365c688">getManagedDate</a> ()</td></tr>
-<tr class="separator:aa53441954dd0352c8b8964194365c688"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb647c7ae09f1d5755db63d701968925"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">Contact</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#adb647c7ae09f1d5755db63d701968925">getContact</a> ()</td></tr>
-<tr class="separator:adb647c7ae09f1d5755db63d701968925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e9c1cf6abb64bc19b9c3bdec9eb750b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a0e9c1cf6abb64bc19b9c3bdec9eb750b">openDb</a> ()</td></tr>
+<tr class="separator:a0e9c1cf6abb64bc19b9c3bdec9eb750b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae591df94fc66ccb85cbb6565368bca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a5ae591df94fc66ccb85cbb6565368bca">close</a> ()</td></tr>
+<tr class="separator:a5ae591df94fc66ccb85cbb6565368bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d261830f979d2b82adddde282a4074d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a0d261830f979d2b82adddde282a4074d">insertContactIntoDB</a> (<a class="el" href="a00005.html">Contact</a> c)</td></tr>
+<tr class="separator:a0d261830f979d2b82adddde282a4074d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0074262a1e69f8e9deb0ea44e55c021b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">Contact</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a0074262a1e69f8e9deb0ea44e55c021b">findContactByPhoneNumber</a> (String phoneNumber, ContentResolver contentResolver)</td></tr>
+<tr class="separator:a0074262a1e69f8e9deb0ea44e55c021b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47fd191a6b728f32b3b232b836d97f1c"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a47fd191a6b728f32b3b232b836d97f1c">loadLastMessages</a> (ContentResolver contentResolver)</td></tr>
+<tr class="separator:a47fd191a6b728f32b3b232b836d97f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc6f8d4836ab29c22365b7f6e0763a15"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="a00007.html">ConversationItem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#acc6f8d4836ab29c22365b7f6e0763a15">loadMessages</a> (ContentResolver contentResolver, <a class="el" href="a00005.html">Contact</a> contact, int offset, int limit)</td></tr>
+<tr class="separator:acc6f8d4836ab29c22365b7f6e0763a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc9fb17466b37d1b0a6f37ecbcb9657"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#aefc9fb17466b37d1b0a6f37ecbcb9657">sendSMS</a> (Context c, <a class="el" href="a00005.html">Contact</a> contact, String message)</td></tr>
+<tr class="separator:aefc9fb17466b37d1b0a6f37ecbcb9657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a056267ebf36c250c0b67cca3564ea3f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a056267ebf36c250c0b67cca3564ea3f9">makeNotification</a> (String title, String content, Bitmap icon, Activity activity, Class activityRunClass, HashMap&lt; String, Serializable &gt; save)</td></tr>
+<tr class="separator:a056267ebf36c250c0b67cca3564ea3f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6830b697058550025465b603b1b254a"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; String[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#ad6830b697058550025465b603b1b254a">getDbTableDetails</a> ()</td></tr>
+<tr class="separator:ad6830b697058550025465b603b1b254a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a0d87654bfa9eb4fd33a79c470d4dc6f3"><td class="memItemLeft" align="right" valign="top">static final <a class="el" href="a00009.html">DAO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a0d87654bfa9eb4fd33a79c470d4dc6f3">getInstance</a> ()</td></tr>
+<tr class="separator:a0d87654bfa9eb4fd33a79c470d4dc6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a9d23fb3258cdafe6a3c4bb95f7ee886f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a9d23fb3258cdafe6a3c4bb95f7ee886f">LIMIT_LOAD_MESSAGE</a> = 20</td></tr>
-<tr class="separator:a9d23fb3258cdafe6a3c4bb95f7ee886f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e2a8b5e4b33363e36e2d75ff425c86c"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a2e2a8b5e4b33363e36e2d75ff425c86c">NAME</a> = &quot;openSecuritySMSDatabase.db&quot;</td></tr>
+<tr class="separator:a2e2a8b5e4b33363e36e2d75ff425c86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cad282e2a906561926b9e4c5c46e92a"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a6cad282e2a906561926b9e4c5c46e92a">VERSION</a> = 1</td></tr>
+<tr class="separator:a6cad282e2a906561926b9e4c5c46e92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ae482a1ec09eba288cd2a19d22c3c9f3a"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#ae482a1ec09eba288cd2a19d22c3c9f3a">latestMessage</a></td></tr>
-<tr class="separator:ae482a1ec09eba288cd2a19d22c3c9f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa713d1025d73543bd4eae313a1868570"><td class="memItemLeft" align="right" valign="top">Calendar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#aa713d1025d73543bd4eae313a1868570">date</a></td></tr>
-<tr class="separator:aa713d1025d73543bd4eae313a1868570"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab2b525336a6ab01e8b4ec8df7588b65"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#aab2b525336a6ab01e8b4ec8df7588b65">thread_ID</a></td></tr>
-<tr class="separator:aab2b525336a6ab01e8b4ec8df7588b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3459849ab29ad684658dbcd0cf8c5d5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">Contact</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a3459849ab29ad684658dbcd0cf8c5d5a">contact</a></td></tr>
-<tr class="separator:a3459849ab29ad684658dbcd0cf8c5d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:af8530c35cbb3602bcea42535ab31e9a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#af8530c35cbb3602bcea42535ab31e9a6">DAO</a> (Context c)</td></tr>
+<tr class="separator:af8530c35cbb3602bcea42535ab31e9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ae783da46195d548123aa679a2040c53d"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#ae783da46195d548123aa679a2040c53d">SMS_SEND_ACTION</a> = &quot;CTS_SMS_SEND_ACTION&quot;</td></tr>
+<tr class="separator:ae783da46195d548123aa679a2040c53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a134bdf0d10a1ebe6bc019d986853ca23"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a134bdf0d10a1ebe6bc019d986853ca23">SMS_DELIVERY_ACTION</a> = &quot;CTS_SMS_DELIVERY_ACTION&quot;</td></tr>
+<tr class="separator:a134bdf0d10a1ebe6bc019d986853ca23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b26570b52d9895c151f669c750358a8"><td class="memItemLeft" align="right" valign="top">static SQLiteDatabase&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a1b26570b52d9895c151f669c750358a8">mDb</a> = null</td></tr>
+<tr class="separator:a1b26570b52d9895c151f669c750358a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac19fc67c8ce8c11d34068a8963eb01dc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00010.html">DatabaseHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#ac19fc67c8ce8c11d34068a8963eb01dc">mHandler</a> = null</td></tr>
+<tr class="separator:ac19fc67c8ce8c11d34068a8963eb01dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b678132ea8e78c62ce961e43078bca"><td class="memItemLeft" align="right" valign="top">static HashMap&lt; String, <a class="el" href="a00005.html">Contact</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a42b678132ea8e78c62ce961e43078bca">listContacts</a> = new HashMap&lt;&gt;()</td></tr>
+<tr class="separator:a42b678132ea8e78c62ce961e43078bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e7d5986bec56c6371309b48469a8cd"><td class="memItemLeft" align="right" valign="top">static volatile <a class="el" href="a00009.html">DAO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00009.html#a01e7d5986bec56c6371309b48469a8cd">instance</a> = null</td></tr>
+<tr class="separator:a01e7d5986bec56c6371309b48469a8cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Object used to show a line of conversation in the main activity A <a class="el" href="a00009.html">ConversationLine</a> is a class which just implements the contents of a rowView. latestMessage will be the last message so display in the rowView contactName will be the name of a <a class="el" href="a00005.html">Contact</a> in the rowView </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a80a547afe975a7118b8cc354c41b2835"></a>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af8530c35cbb3602bcea42535ab31e9a6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00009.html">DAO</a> </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>private (because of singleton) constructor </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>the context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00009_af8530c35cbb3602bcea42535ab31e9a6_icgraph.png" border="0" usemap="#a00009_af8530c35cbb3602bcea42535ab31e9a6_icgraph" alt=""/></div>
+<map name="a00009_af8530c35cbb3602bcea42535ab31e9a6_icgraph" id="a00009_af8530c35cbb3602bcea42535ab31e9a6_icgraph">
+<area shape="rect" id="node2" href="a00009.html#a0d87654bfa9eb4fd33a79c470d4dc6f3" title="getInstance" alt="" coords="104,111,195,137"/><area shape="rect" id="node3" href="a00006.html#a92b8e0730130e1184a8cdbd89590779d" title="org.opensecurity.sms.view.\lConversationActivity.listeners" alt="" coords="262,5,458,46"/><area shape="rect" id="node5" href="a00006.html#ac5c54df7ed3b930268c8d7752c101725" title="org.opensecurity.sms.view.\lConversationActivity.update" alt="" coords="267,70,453,111"/><area shape="rect" id="node7" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725" title="org.opensecurity.sms.view.\lOpenSecuritySMS.update" alt="" coords="269,135,451,177"/><area shape="rect" id="node9" href="a00013.html#a92b8e0730130e1184a8cdbd89590779d" title="org.opensecurity.sms.view.\lPopupConversationActivity.listeners" alt="" coords="243,201,477,242"/><area shape="rect" id="node4" href="a00006.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lConversationActivity.onCreate" alt="" coords="544,5,744,46"/><area shape="rect" id="node6" href="a00006.html#aa2825578f585a8a32958eaf0ce8df7b8" title="org.opensecurity.sms.view.\lConversationActivity.update" alt="" coords="551,70,737,111"/><area shape="rect" id="node8" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lOpenSecuritySMS.onCreate" alt="" coords="551,135,737,177"/><area shape="rect" id="node10" href="a00013.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lPopupConversationActivity.onCreate" alt="" coords="525,201,763,242"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a5ae591df94fc66ccb85cbb6565368bca"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00009.html">ConversationLine</a> </td>
+          <td class="memname">void close </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00005.html">Contact</a>&#160;</td>
-          <td class="paramname"><em>contact</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>to close the dataBase </p>
+
+</div>
+</div>
+<a class="anchor" id="a0074262a1e69f8e9deb0ea44e55c021b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00005.html">Contact</a> findContactByPhoneNumber </td>
+          <td>(</td>
           <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>latestMessage</em>, </td>
+          <td class="paramname"><em>phoneNumber</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Calendar&#160;</td>
-          <td class="paramname"><em>date</em>&#160;</td>
+          <td class="paramtype">ContentResolver&#160;</td>
+          <td class="paramname"><em>contentResolver</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -181,252 +238,45 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor</p>
+<p>This function has to return a contact Object thanks to a phoneNumber and an access to the android dataBase</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">contact</td><td>is the contact of the row </td></tr>
-    <tr><td class="paramname">latestMessage</td><td>is the latestMessage between you and he </td></tr>
-    <tr><td class="paramname">date</td><td>the date of latest message </td></tr>
+    <tr><td class="paramname">phoneNumber</td><td>the phoneNumber of a <a class="el" href="a00005.html">Contact</a> in your phone. </td></tr>
+    <tr><td class="paramname">contentResolver</td><td>to manage access to a structured set of data in your phone </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the contact who has this phoneNumber </dd></dl>
 
 <p><div class="dynheader">
-Here is the call graph for this function:</div>
+Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00009_a80a547afe975a7118b8cc354c41b2835_cgraph.png" border="0" usemap="#a00009_a80a547afe975a7118b8cc354c41b2835_cgraph" alt=""/></div>
-<map name="a00009_a80a547afe975a7118b8cc354c41b2835_cgraph" id="a00009_a80a547afe975a7118b8cc354c41b2835_cgraph">
-<area shape="rect" id="node2" href="a00009.html#abef3c7b6635dc06ac6b8e4b37c51b37f" title="setContact" alt="" coords="229,5,315,32"/><area shape="rect" id="node3" href="a00009.html#a33f2ab55a4ba0636593f02f0322f3dd0" title="setLatestMessage" alt="" coords="207,56,337,83"/><area shape="rect" id="node4" href="a00009.html#a65c1a5dad9225d01d585af72e0c80138" title="setDate" alt="" coords="238,107,306,133"/><area shape="rect" id="node5" href="a00009.html#a27e124edc933b9954443e1b29b544bac" title="setThread_id" alt="" coords="223,157,321,184"/><area shape="rect" id="node6" href="a00005.html#ad0e00784944089a9ece0934817c8976b" title="org.opensecurity.sms.model.\lContact.getThreadId" alt="" coords="177,209,367,250"/></map>
+<div class="center"><img src="a00009_a0074262a1e69f8e9deb0ea44e55c021b_icgraph.png" border="0" usemap="#a00009_a0074262a1e69f8e9deb0ea44e55c021b_icgraph" alt=""/></div>
+<map name="a00009_a0074262a1e69f8e9deb0ea44e55c021b_icgraph" id="a00009_a0074262a1e69f8e9deb0ea44e55c021b_icgraph">
+<area shape="rect" id="node2" href="a00009.html#a47fd191a6b728f32b3b232b836d97f1c" title="loadLastMessages" alt="" coords="243,5,373,32"/></map>
 </div>
 </p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="adb647c7ae09f1d5755db63d701968925"></a>
+<a class="anchor" id="ad6830b697058550025465b603b1b254a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">Contact</a> getContact </td>
+          <td class="memname">ArrayList&lt;String[]&gt; getDbTableDetails </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>to get the contact of a row </p><dl class="section return"><dt>Returns</dt><dd>the contact of a row </dd></dl>
+<p>Get all table Details from teh sqlite_master table in Db.</p>
+<dl class="section return"><dt>Returns</dt><dd>An ArrayList of table details. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a6d7bc612b8eee5382e11d9847e2f878e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">final Calendar getDate </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>to get the date of a row </p><dl class="section return"><dt>Returns</dt><dd>the date of a row </dd></dl>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00009_a6d7bc612b8eee5382e11d9847e2f878e_icgraph.png" border="0" usemap="#a00009_a6d7bc612b8eee5382e11d9847e2f878e_icgraph" alt=""/></div>
-<map name="a00009_a6d7bc612b8eee5382e11d9847e2f878e_icgraph" id="a00009_a6d7bc612b8eee5382e11d9847e2f878e_icgraph">
-<area shape="rect" id="node2" href="a00009.html#aa53441954dd0352c8b8964194365c688" title="getManagedDate" alt="" coords="123,5,245,32"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="a10a2abf152f4957caca28c562fc33168"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">final String getLatestMessage </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>to get the latest message of a row </p><dl class="section return"><dt>Returns</dt><dd>the latestmessage of a row </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aa53441954dd0352c8b8964194365c688"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">String getManagedDate </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>to get the managed date of a row </p><dl class="section return"><dt>Returns</dt><dd>the managedDate of a row </dd></dl>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00009_aa53441954dd0352c8b8964194365c688_cgraph.png" border="0" usemap="#a00009_aa53441954dd0352c8b8964194365c688_cgraph" alt=""/></div>
-<map name="a00009_aa53441954dd0352c8b8964194365c688_cgraph" id="a00009_aa53441954dd0352c8b8964194365c688_cgraph">
-<area shape="rect" id="node2" href="a00009.html#a6d7bc612b8eee5382e11d9847e2f878e" title="getDate" alt="" coords="177,5,245,32"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="aebf2c5bb10824f5fcbd32677c8152735"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int getThread_ID </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>to get the threadId of the contact in the row </p><dl class="section return"><dt>Returns</dt><dd>the threadId of the contact in the row </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="abef3c7b6635dc06ac6b8e4b37c51b37f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void setContact </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00005.html">Contact</a>&#160;</td>
-          <td class="paramname"><em>contact</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>to set the contact of a row </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">contact</td><td>the contact of a row </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00009_abef3c7b6635dc06ac6b8e4b37c51b37f_icgraph.png" border="0" usemap="#a00009_abef3c7b6635dc06ac6b8e4b37c51b37f_icgraph" alt=""/></div>
-<map name="a00009_abef3c7b6635dc06ac6b8e4b37c51b37f_icgraph" id="a00009_abef3c7b6635dc06ac6b8e4b37c51b37f_icgraph">
-<area shape="rect" id="node2" href="a00009.html#a80a547afe975a7118b8cc354c41b2835" title="ConversationLine" alt="" coords="141,5,264,32"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="a65c1a5dad9225d01d585af72e0c80138"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void setDate </td>
-          <td>(</td>
-          <td class="paramtype">Calendar&#160;</td>
-          <td class="paramname"><em>date</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>to set the date of a row </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">date</td><td>the date of a row </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00009_a65c1a5dad9225d01d585af72e0c80138_icgraph.png" border="0" usemap="#a00009_a65c1a5dad9225d01d585af72e0c80138_icgraph" alt=""/></div>
-<map name="a00009_a65c1a5dad9225d01d585af72e0c80138_icgraph" id="a00009_a65c1a5dad9225d01d585af72e0c80138_icgraph">
-<area shape="rect" id="node2" href="a00009.html#a80a547afe975a7118b8cc354c41b2835" title="ConversationLine" alt="" coords="123,5,245,32"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="a33f2ab55a4ba0636593f02f0322f3dd0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void setLatestMessage </td>
-          <td>(</td>
-          <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>latestMessage</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>to set the latestMessage for a row. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">latestMessage</td><td>the lastest message for a row </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00009_a33f2ab55a4ba0636593f02f0322f3dd0_icgraph.png" border="0" usemap="#a00009_a33f2ab55a4ba0636593f02f0322f3dd0_icgraph" alt=""/></div>
-<map name="a00009_a33f2ab55a4ba0636593f02f0322f3dd0_icgraph" id="a00009_a33f2ab55a4ba0636593f02f0322f3dd0_icgraph">
-<area shape="rect" id="node2" href="a00009.html#a80a547afe975a7118b8cc354c41b2835" title="ConversationLine" alt="" coords="184,5,307,32"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<a class="anchor" id="a27e124edc933b9954443e1b29b544bac"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void setThread_id </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ID</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>to set the threadId of the contact in the row </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ID</td><td>the id of the contact in the row </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00009_a27e124edc933b9954443e1b29b544bac_icgraph.png" border="0" usemap="#a00009_a27e124edc933b9954443e1b29b544bac_icgraph" alt=""/></div>
-<map name="a00009_a27e124edc933b9954443e1b29b544bac_icgraph" id="a00009_a27e124edc933b9954443e1b29b544bac_icgraph">
-<area shape="rect" id="node2" href="a00009.html#a80a547afe975a7118b8cc354c41b2835" title="ConversationLine" alt="" coords="152,5,275,32"/></map>
-</div>
-</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a3459849ab29ad684658dbcd0cf8c5d5a"></a>
+<a class="anchor" id="a0d87654bfa9eb4fd33a79c470d4dc6f3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -434,70 +284,10 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00005.html">Contact</a> contact</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>the contact of the row </p>
-
-</div>
-</div>
-<a class="anchor" id="aa713d1025d73543bd4eae313a1868570"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Calendar date</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>the date of latest message </p>
-
-</div>
-</div>
-<a class="anchor" id="ae482a1ec09eba288cd2a19d22c3c9f3a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">String latestMessage</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>the latest message </p>
-
-</div>
-</div>
-<a class="anchor" id="a9d23fb3258cdafe6a3c4bb95f7ee886f"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int LIMIT_LOAD_MESSAGE = 20</td>
+          <td class="memname">static final <a class="el" href="a00009.html">DAO</a> getInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -506,11 +296,254 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>the limit of messages can be loaded </p>
+<p>Méthode permettant de renvoyer une instance de la classe Singleton</p>
+<dl class="section return"><dt>Returns</dt><dd>Retourne l'instance du singleton. </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_cgraph.png" border="0" usemap="#a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_cgraph" alt=""/></div>
+<map name="a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_cgraph" id="a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_cgraph">
+<area shape="rect" id="node2" href="a00009.html#af8530c35cbb3602bcea42535ab31e9a6" title="DAO" alt="" coords="220,5,271,32"/><area shape="rect" id="node3" href="a00011.html#a20b99dca6a5147ea92b68f8ce333dc2e" title="org.opensecurity.sms.view.\lOpenSecuritySMS.getInstance" alt="" coords="144,57,347,98"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_icgraph.png" border="0" usemap="#a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_icgraph" alt=""/></div>
+<map name="a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_icgraph" id="a00009_a0d87654bfa9eb4fd33a79c470d4dc6f3_icgraph">
+<area shape="rect" id="node2" href="a00006.html#a92b8e0730130e1184a8cdbd89590779d" title="org.opensecurity.sms.view.\lConversationActivity.listeners" alt="" coords="163,5,359,46"/><area shape="rect" id="node4" href="a00006.html#ac5c54df7ed3b930268c8d7752c101725" title="org.opensecurity.sms.view.\lConversationActivity.update" alt="" coords="168,70,355,111"/><area shape="rect" id="node6" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725" title="org.opensecurity.sms.view.\lOpenSecuritySMS.update" alt="" coords="170,135,353,177"/><area shape="rect" id="node8" href="a00013.html#a92b8e0730130e1184a8cdbd89590779d" title="org.opensecurity.sms.view.\lPopupConversationActivity.listeners" alt="" coords="145,201,378,242"/><area shape="rect" id="node3" href="a00006.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lConversationActivity.onCreate" alt="" coords="445,5,645,46"/><area shape="rect" id="node5" href="a00006.html#aa2825578f585a8a32958eaf0ce8df7b8" title="org.opensecurity.sms.view.\lConversationActivity.update" alt="" coords="452,70,639,111"/><area shape="rect" id="node7" href="a00011.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lOpenSecuritySMS.onCreate" alt="" coords="452,135,639,177"/><area shape="rect" id="node9" href="a00013.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="org.opensecurity.sms.view.\lPopupConversationActivity.onCreate" alt="" coords="427,201,664,242"/></map>
+</div>
+</p>
 
 </div>
 </div>
-<a class="anchor" id="aab2b525336a6ab01e8b4ec8df7588b65"></a>
+<a class="anchor" id="a0d261830f979d2b82adddde282a4074d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void insertContactIntoDB </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00005.html">Contact</a>&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>to insert a contact into the dataBase </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>the context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a47fd191a6b728f32b3b232b836d97f1c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArrayList&lt;<a class="el" href="a00008.html">ConversationLine</a>&gt; loadLastMessages </td>
+          <td>(</td>
+          <td class="paramtype">ContentResolver&#160;</td>
+          <td class="paramname"><em>contentResolver</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function fill an ArrayList of ConversationLine with every last message for every contact</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contentResolver</td><td>the contentResolver of the activity </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an ArrayList of ConversationLine containing every last message for every contact </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00009_a47fd191a6b728f32b3b232b836d97f1c_cgraph.png" border="0" usemap="#a00009_a47fd191a6b728f32b3b232b836d97f1c_cgraph" alt=""/></div>
+<map name="a00009_a47fd191a6b728f32b3b232b836d97f1c_cgraph" id="a00009_a47fd191a6b728f32b3b232b836d97f1c_cgraph">
+<area shape="rect" id="node2" href="a00009.html#a0074262a1e69f8e9deb0ea44e55c021b" title="findContactByPhoneNumber" alt="" coords="185,5,373,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="acc6f8d4836ab29c22365b7f6e0763a15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArrayList&lt;<a class="el" href="a00007.html">ConversationItem</a>&gt; loadMessages </td>
+          <td>(</td>
+          <td class="paramtype">ContentResolver&#160;</td>
+          <td class="paramname"><em>contentResolver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00005.html">Contact</a>&#160;</td>
+          <td class="paramname"><em>contact</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>limit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function has to load bubbles of one conversation in an ArrayList of object ConversationItem.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contentResolver</td><td>to manage access to a structured set of data in your phone </td></tr>
+    <tr><td class="paramname">contact</td><td>is the current contact in our selected conversation </td></tr>
+    <tr><td class="paramname">offset</td><td>never ised for the moment </td></tr>
+    <tr><td class="paramname">limit</td><td>the limit of bubble what we want to load. (to dispence to load all bubbles) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bubbleData the ArrayList of Bubbles in a conversation. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a056267ebf36c250c0b67cca3564ea3f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void makeNotification </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>content</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Bitmap&#160;</td>
+          <td class="paramname"><em>icon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Activity&#160;</td>
+          <td class="paramname"><em>activity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Class&#160;</td>
+          <td class="paramname"><em>activityRunClass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HashMap&lt; String, Serializable &gt;&#160;</td>
+          <td class="paramname"><em>save</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is use to initialize, create and display a notification in Android.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>the title of the notification. </td></tr>
+    <tr><td class="paramname">content</td><td>the content of the notification </td></tr>
+    <tr><td class="paramname">icon</td><td>the icon of the notification </td></tr>
+    <tr><td class="paramname">activity</td><td>current activity </td></tr>
+    <tr><td class="paramname">activityRunClass</td><td></td></tr>
+    <tr><td class="paramname">save</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0e9c1cf6abb64bc19b9c3bdec9eb750b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void openDb </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>to open the database. </p>
+
+</div>
+</div>
+<a class="anchor" id="aefc9fb17466b37d1b0a6f37ecbcb9657"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean sendSMS </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00005.html">Contact</a>&#160;</td>
+          <td class="paramname"><em>contact</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>We try to send a message, but if the message does not contains text We toast a Message nothing to send. Function called from sendButton click event in ConversationActivity.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>the context of ConversationActivity </td></tr>
+    <tr><td class="paramname">contact</td><td>to get all informations about our contact </td></tr>
+    <tr><td class="paramname">message</td><td>to get the message body we want to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a01e7d5986bec56c6371309b48469a8cd"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -518,26 +551,172 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int thread_ID</td>
+          <td class="memname">volatile <a class="el" href="a00009.html">DAO</a> instance = null</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>the primary key of the contact </p>
+<p>uset for paterSingleton </p>
+
+</div>
+</div>
+<a class="anchor" id="a42b678132ea8e78c62ce961e43078bca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HashMap&lt;String, <a class="el" href="a00005.html">Contact</a>&gt; listContacts = new HashMap&lt;&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>the list of contacts. In hashmap. The key is his name. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1b26570b52d9895c151f669c750358a8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SQLiteDatabase mDb = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>the database to do queries. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac19fc67c8ce8c11d34068a8963eb01dc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00010.html">DatabaseHandler</a> mHandler = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>handler to create or upgrade table </p>
+
+</div>
+</div>
+<a class="anchor" id="a2e2a8b5e4b33363e36e2d75ff425c86c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String NAME = &quot;openSecuritySMSDatabase.db&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>handler to create or upgrade table </p>
+
+</div>
+</div>
+<a class="anchor" id="a134bdf0d10a1ebe6bc019d986853ca23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String SMS_DELIVERY_ACTION = &quot;CTS_SMS_DELIVERY_ACTION&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae783da46195d548123aa679a2040c53d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String SMS_SEND_ACTION = &quot;CTS_SMS_SEND_ACTION&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The <a class="el" href="a00009.html">DAO</a> is used by all activities. It contains various useful functions to access to the database. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6cad282e2a906561926b9e4c5c46e92a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final int VERSION = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>the version </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>app/src/main/java/org/opensecurity/sms/model/modelView/listConversation/<a class="el" href="a00022.html">ConversationLine.java</a></li>
+<li>app/src/main/java/org/opensecurity/sms/model/<a class="el" href="a00018.html">DAO.java</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 28 2015 11:48:30 for OpenSecuriySMS by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 15 2016 21:26:47 for OpenSecuriySMS by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

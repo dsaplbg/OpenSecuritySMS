@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>OpenSecuriySMS: Serializer Class Reference</title>
+<title>OpenSecuriySMS: RSA Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,34 +82,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00031.html">org</a></li><li class="navelem"><a class="el" href="a00032.html">opensecurity</a></li><li class="navelem"><a class="el" href="a00033.html">sms</a></li><li class="navelem"><a class="el" href="a00035.html">model</a></li><li class="navelem"><a class="el" href="a00014.html">Serializer</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00033.html">org</a></li><li class="navelem"><a class="el" href="a00034.html">opensecurity</a></li><li class="navelem"><a class="el" href="a00035.html">sms</a></li><li class="navelem"><a class="el" href="a00036.html">model</a></li><li class="navelem"><a class="el" href="a00040.html">security</a></li><li class="navelem"><a class="el" href="a00014.html">RSA</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="a00046.html">List of all members</a>  </div>
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="a00075.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Serializer Class Reference</div>  </div>
+<div class="title">RSA Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Collaboration diagram for Serializer:</div>
+Collaboration diagram for RSA:</div>
 <div class="dyncontent">
-<div class="center"><img src="a00047.png" border="0" usemap="#_serializer_coll__map" alt="Collaboration graph"/></div>
-<map name="_serializer_coll__map" id="_serializer_coll__map">
+<div class="center"><img src="a00076.png" border="0" usemap="#_r_s_a_coll__map" alt="Collaboration graph"/></div>
+<map name="_r_s_a_coll__map" id="_r_s_a_coll__map">
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a1331717cb2a54bf8a95a0555403da236"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#a1331717cb2a54bf8a95a0555403da236">serialize</a> (Object obj)  throws IOException </td></tr>
-<tr class="separator:a1331717cb2a54bf8a95a0555403da236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79bdcf2199693e6c879cdd89c30926b9"><td class="memItemLeft" align="right" valign="top">static Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#a79bdcf2199693e6c879cdd89c30926b9">deserialize</a> (byte[] bytes)  throws IOException, ClassNotFoundException </td></tr>
-<tr class="separator:a79bdcf2199693e6c879cdd89c30926b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e50cd7fa3c4f3a6817d292ca95aeb62"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#a7e50cd7fa3c4f3a6817d292ca95aeb62">generateKey</a> ()</td></tr>
+<tr class="separator:a7e50cd7fa3c4f3a6817d292ca95aeb62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35798da976b0b93c5a41d3cacfca2614"><td class="memItemLeft" align="right" valign="top">static boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#a35798da976b0b93c5a41d3cacfca2614">areKeysPresent</a> ()</td></tr>
+<tr class="separator:a35798da976b0b93c5a41d3cacfca2614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebcb755cdb5b80fbc7e5550d4ef7b58c"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#aebcb755cdb5b80fbc7e5550d4ef7b58c">encrypt</a> (String text, PublicKey key)</td></tr>
+<tr class="separator:aebcb755cdb5b80fbc7e5550d4ef7b58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45813b997c833a4aa7c740f24da405d"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#af45813b997c833a4aa7c740f24da405d">decrypt</a> (byte[] text, PrivateKey key)</td></tr>
+<tr class="separator:af45813b997c833a4aa7c740f24da405d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a6e0d720a4420fd9bfd6749e43727e4cf"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#a6e0d720a4420fd9bfd6749e43727e4cf">ALGORITHM</a> = &quot;RSA&quot;</td></tr>
+<tr class="separator:a6e0d720a4420fd9bfd6749e43727e4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6688acc9715053feb655fd1179f44ca2"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#a6688acc9715053feb655fd1179f44ca2">PRIVATE_KEY_FILE</a> = &quot;/sdcard/keys/private.key&quot;</td></tr>
+<tr class="separator:a6688acc9715053feb655fd1179f44ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9512d79dcc02d4b61268f7118479185d"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html#a9512d79dcc02d4b61268f7118479185d">PUBLIC_KEY_FILE</a> = &quot;/sdcard/keys/public.key&quot;</td></tr>
+<tr class="separator:a9512d79dcc02d4b61268f7118479185d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a79bdcf2199693e6c879cdd89c30926b9"></a>
+<a class="anchor" id="a35798da976b0b93c5a41d3cacfca2614"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -117,11 +131,164 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static Object deserialize </td>
+          <td class="memname">static boolean areKeysPresent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The method checks if the pair of public and private key has been generated.</p>
+<dl class="section return"><dt>Returns</dt><dd>flag indicating if the pair of keys were generated. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af45813b997c833a4aa7c740f24da405d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static String decrypt </td>
           <td>(</td>
           <td class="paramtype">byte[]&#160;</td>
-          <td class="paramname"><em>bytes</em></td><td>)</td>
-          <td> throws IOException, ClassNotFoundException</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PrivateKey&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Decrypt text using private key.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>:encrypted text </td></tr>
+    <tr><td class="paramname">key</td><td>:The private key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>plain text </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">java.lang.Exception</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aebcb755cdb5b80fbc7e5550d4ef7b58c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static byte [] encrypt </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PublicKey&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Encrypt the plain text using public key.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>: original plain text </td></tr>
+    <tr><td class="paramname">key</td><td>:The public key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Encrypted text </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">java.lang.Exception</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7e50cd7fa3c4f3a6817d292ca95aeb62"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void generateKey </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Generate key which contains a pair of private and public key using 1024 bytes. Store the set of keys in Private.key and Public.key files.</p>
+<p>Will have to change this ! Must be stored in DB now !</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">NoSuchAlgorithmException</td><td></td></tr>
+    <tr><td class="paramname">IOException</td><td></td></tr>
+    <tr><td class="paramname">FileNotFoundException</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a6e0d720a4420fd9bfd6749e43727e4cf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String ALGORITHM = &quot;RSA&quot;</td>
         </tr>
       </table>
   </td>
@@ -133,7 +300,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1331717cb2a54bf8a95a0555403da236"></a>
+<a class="anchor" id="a6688acc9715053feb655fd1179f44ca2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -141,11 +308,27 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static byte [] serialize </td>
-          <td>(</td>
-          <td class="paramtype">Object&#160;</td>
-          <td class="paramname"><em>obj</em></td><td>)</td>
-          <td> throws IOException</td>
+          <td class="memname">final String PRIVATE_KEY_FILE = &quot;/sdcard/keys/private.key&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9512d79dcc02d4b61268f7118479185d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final String PUBLIC_KEY_FILE = &quot;/sdcard/keys/public.key&quot;</td>
         </tr>
       </table>
   </td>
@@ -158,12 +341,12 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>app/src/main/java/org/opensecurity/sms/model/<a class="el" href="a00026.html">Serializer.java</a></li>
+<li>app/src/main/java/org/opensecurity/sms/model/security/<a class="el" href="a00027.html">RSA.java</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 28 2015 11:48:30 for OpenSecuriySMS by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 15 2016 21:26:47 for OpenSecuriySMS by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
