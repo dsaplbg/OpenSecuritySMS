@@ -1,8 +1,0 @@
-<map id="getConversationLines" name="getConversationLines">
-<area shape="rect" id="node2" href="$a00010.html#aa2cebeeaec1e0ca5b7bdec2ccfd24252" title="onSaveInstanceState" alt="" coords="204,5,351,32"/>
-<area shape="rect" id="node3" href="$a00010.html#a75b300477b934b09cac51aaa4c96b245" title="setConversationLines" alt="" coords="203,56,351,83"/>
-<area shape="rect" id="node7" href="$a00010.html#a92b8e0730130e1184a8cdbd89590779d" title="listeners" alt="" coords="446,107,517,133"/>
-<area shape="rect" id="node4" href="$a00010.html#a3fd108ef7b3bf7c29e53e6c4984d5f84" title="onRestoreInstanceState" alt="" coords="400,5,563,32"/>
-<area shape="rect" id="node5" href="$a00010.html#ac5c54df7ed3b930268c8d7752c101725" title="update" alt="" coords="451,56,512,83"/>
-<area shape="rect" id="node6" href="$a00010.html#a85e87cb5ced88dff7c8173ecc4f636d1" title="onCreate" alt="" coords="611,81,685,108"/>
-</map>

@@ -20,7 +20,9 @@ void \hyperlink{a00009_a5ae591df94fc66ccb85cbb6565368bca}{close} ()
 \item 
 void \hyperlink{a00009_a0d261830f979d2b82adddde282a4074d}{insert\+Contact\+Into\+D\+B} (\hyperlink{a00005}{Contact} c)
 \item 
-\hyperlink{a00005}{Contact} \hyperlink{a00009_a0074262a1e69f8e9deb0ea44e55c021b}{find\+Contact\+By\+Phone\+Number} (String phone\+Number, Content\+Resolver content\+Resolver)
+\hyperlink{a00005}{Contact} \hyperlink{a00009_a5eb135eeb76cb1557170dc43443b0c5d}{find\+Contact\+By\+Phone\+Number\+In\+O\+S\+M\+S\+Base} (String phone\+Number)
+\item 
+\hyperlink{a00005}{Contact} \hyperlink{a00009_ac877f70a0e827e3855b81178f5746b3a}{find\+Contact\+By\+Phone\+Number\+In\+Default\+Base} (String phone\+Number, Content\+Resolver content\+Resolver)
 \item 
 Array\+List$<$ \hyperlink{a00008}{Conversation\+Line} $>$ \hyperlink{a00009_a47fd191a6b728f32b3b232b836d97f1c}{load\+Last\+Messages} (Content\+Resolver content\+Resolver)
 \item 
@@ -101,14 +103,14 @@ Here is the caller graph for this function\+:
 {}
 \end{DoxyParamCaption}
 )}}\label{a00009_a5ae591df94fc66ccb85cbb6565368bca}
-to close the data\+Base \hypertarget{a00009_a0074262a1e69f8e9deb0ea44e55c021b}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!find\+Contact\+By\+Phone\+Number@{find\+Contact\+By\+Phone\+Number}}
-\index{find\+Contact\+By\+Phone\+Number@{find\+Contact\+By\+Phone\+Number}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
-\subsubsection[{find\+Contact\+By\+Phone\+Number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} find\+Contact\+By\+Phone\+Number (
+to close the data\+Base \hypertarget{a00009_ac877f70a0e827e3855b81178f5746b3a}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!find\+Contact\+By\+Phone\+Number\+In\+Default\+Base@{find\+Contact\+By\+Phone\+Number\+In\+Default\+Base}}
+\index{find\+Contact\+By\+Phone\+Number\+In\+Default\+Base@{find\+Contact\+By\+Phone\+Number\+In\+Default\+Base}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{find\+Contact\+By\+Phone\+Number\+In\+Default\+Base}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} find\+Contact\+By\+Phone\+Number\+In\+Default\+Base (
 \begin{DoxyParamCaption}
 \item[{String}]{phone\+Number, }
 \item[{Content\+Resolver}]{content\+Resolver}
 \end{DoxyParamCaption}
-)}}\label{a00009_a0074262a1e69f8e9deb0ea44e55c021b}
+)}}\label{a00009_ac877f70a0e827e3855b81178f5746b3a}
 This function has to return a contact Object thanks to a phone\+Number and an access to the android data\+Base
 
 
@@ -128,11 +130,26 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{a00009_a0074262a1e69f8e9deb0ea44e55c021b_icgraph}
+\includegraphics[width=350pt]{a00009_ac877f70a0e827e3855b81178f5746b3a_icgraph}
 \end{center}
 \end{figure}
 
 
+\hypertarget{a00009_a5eb135eeb76cb1557170dc43443b0c5d}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!find\+Contact\+By\+Phone\+Number\+In\+O\+S\+M\+S\+Base@{find\+Contact\+By\+Phone\+Number\+In\+O\+S\+M\+S\+Base}}
+\index{find\+Contact\+By\+Phone\+Number\+In\+O\+S\+M\+S\+Base@{find\+Contact\+By\+Phone\+Number\+In\+O\+S\+M\+S\+Base}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
+\subsubsection[{find\+Contact\+By\+Phone\+Number\+In\+O\+S\+M\+S\+Base}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} find\+Contact\+By\+Phone\+Number\+In\+O\+S\+M\+S\+Base (
+\begin{DoxyParamCaption}
+\item[{String}]{phone\+Number}
+\end{DoxyParamCaption}
+)}}\label{a00009_a5eb135eeb76cb1557170dc43443b0c5d}
+To find a contact in our open\+Security data\+Base 
+\begin{DoxyParams}{Parameters}
+{\em phone\+Number} & the number of our contact we want to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the contact we are looking for 
+\end{DoxyReturn}
 \hypertarget{a00009_ad6830b697058550025465b603b1b254a}{\index{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}!get\+Db\+Table\+Details@{get\+Db\+Table\+Details}}
 \index{get\+Db\+Table\+Details@{get\+Db\+Table\+Details}!org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O@{org\+::opensecurity\+::sms\+::model\+::\+D\+A\+O}}
 \subsubsection[{get\+Db\+Table\+Details}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<$String\mbox{[}$\,$\mbox{]}$>$ get\+Db\+Table\+Details (

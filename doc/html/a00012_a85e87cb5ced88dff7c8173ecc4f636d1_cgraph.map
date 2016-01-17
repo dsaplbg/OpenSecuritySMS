@@ -1,7 +1,0 @@
-<map id="onCreate" name="onCreate">
-<area shape="rect" id="node2" href="$a00012.html#ae101bc9d661896c7dda12efd1e7b91d2" title="setUpWindow" alt="" coords="128,5,232,32"/>
-<area shape="rect" id="node3" href="$a00012.html#abef3c7b6635dc06ac6b8e4b37c51b37f" title="setContact" alt="" coords="137,56,223,83"/>
-<area shape="rect" id="node4" href="$a00012.html#a92b8e0730130e1184a8cdbd89590779d" title="listeners" alt="" coords="145,107,215,133"/>
-<area shape="rect" id="node5" href="$a00006.html#a6ad490642a293b184b343fc78f942af3" title="org.opensecurity.sms.controller.\lController.sendSMS" alt="" coords="280,70,488,111"/>
-<area shape="rect" id="node6" href="$a00012.html#adb647c7ae09f1d5755db63d701968925" title="getContact" alt="" coords="341,136,427,163"/>
-</map>
