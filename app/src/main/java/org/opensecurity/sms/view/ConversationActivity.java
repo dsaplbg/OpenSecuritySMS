@@ -130,7 +130,8 @@ public class ConversationActivity extends AppCompatActivity {
 
         instance = this;
 
-        DAO.getInstance().insertContactIntoDB(getContact());
+        if(DAO.getInstance().findContactByPhoneNumberInOSMSBase(getContact().getNumber()) == null)
+            DAO.getInstance().insertContactIntoDB(getContact());
     }
 
     /**

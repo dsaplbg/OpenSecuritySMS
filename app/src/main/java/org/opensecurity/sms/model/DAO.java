@@ -20,7 +20,6 @@ import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.modelView.conversation.Bubble;
 import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
@@ -31,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 
 public class DAO {
@@ -149,6 +147,37 @@ public class DAO {
     }
 
     /**
+     * To find a contact in our openSecurity dataBase
+     * @param phoneNumber the number of our contact we want to find.
+     * @return the contact we are looking for
+     */
+    public Contact findContactByPhoneNumberInOSMSBase(String phoneNumber) {
+        try {
+            Contact c = new Contact(phoneNumber);
+            Cursor cursor = mDb.rawQuery("Select * FROM " +
+                    mHandler.CONTACT_TABLE_NAME + " Where phoneNumber = ?", new String[]{phoneNumber});
+            if (cursor.equals(null)) {
+                System.out.println("Je vaut null");
+                return null;
+            }
+            cursor.moveToFirst();
+            c.setPhotoURL(cursor.getString(2));
+            c.setName(cursor.getString(3));
+            c.setThreadId(cursor.getInt(4));
+            c.setNbMessages(cursor.getInt(5));
+            for (int i = 0; i<cursor.getColumnCount(); i++){
+                System.out.println(cursor.getColumnName(i) + " : " + cursor.getString(i));
+            }
+            Toast.makeText(OpenSecuritySMS.getInstance().getBaseContext(), c.getName()+" found", Toast.LENGTH_LONG).show();
+            return c;
+        } catch (Exception e) {
+            System.out.println("Erreur : je suis dans le catch");
+        }
+        return null;
+
+    }
+
+    /**
      * This function has to return a contact Object thanks to a phoneNumber and an access
      * to the android dataBase
      *
@@ -156,7 +185,7 @@ public class DAO {
      * @param contentResolver to manage access to a structured set of data in your phone
      * @return the contact who has this phoneNumber
      */
-    public Contact findContactByPhoneNumber(String phoneNumber, ContentResolver contentResolver) {
+    public Contact findContactByPhoneNumberInDefaultBase(String phoneNumber, ContentResolver contentResolver) {
         if (listContacts.containsKey(phoneNumber)) return listContacts.get(phoneNumber);
 
         Contact contact = new Contact(phoneNumber);
@@ -203,7 +232,7 @@ public class DAO {
             Contact contact;
             do {
                 phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-                contact = findContactByPhoneNumber(phoneNumber, contentResolver);
+                contact = findContactByPhoneNumberInDefaultBase(phoneNumber, contentResolver);
                 // if we don't already have this phoneNumber in the list
                 if ((!listContacts.containsKey(contact.getNumber())) && (phoneNumber.length() >= 1)) {
                     listContacts.put(contact.getNumber(), contact);

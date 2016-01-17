@@ -40,7 +40,7 @@ public class SMSReceiver extends BroadcastReceiver {
                 if (messages.length > -1) {
                     final String messageBody = messages[0].getMessageBody();
                     final String phoneNumber = messages[0].getDisplayOriginatingAddress();
-                    Contact contact = DAO.getInstance().findContactByPhoneNumber(phoneNumber, context.getContentResolver());
+                    Contact contact = DAO.getInstance().findContactByPhoneNumberInDefaultBase(phoneNumber, context.getContentResolver());
 
                     if (OpenSecuritySMS.getInstance() != null) {
                         OpenSecuritySMS.getInstance().update();
