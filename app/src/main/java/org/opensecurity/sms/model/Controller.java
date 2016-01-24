@@ -6,11 +6,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -23,7 +21,6 @@ import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.modelView.conversation.Bubble;
 import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
-import org.opensecurity.sms.view.OpenSecuritySMS;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,25 +29,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class DAO {
+public class Controller {
     /**
-     * The DAO is used by all activities. It contains various useful functions to access to the database.
+     * The Controller is used by all activities. It contains various useful functions to access to the database.
      */
 
 
     private static final String SMS_SEND_ACTION = "CTS_SMS_SEND_ACTION";
     private static final String SMS_DELIVERY_ACTION = "CTS_SMS_DELIVERY_ACTION";
-
-
-    /**
-     * the database to do queries.
-     */
-    private static SQLiteDatabase mDb = null;
-
-    /**
-     * handler to create or upgrade table
-     */
-    private static DatabaseHandler mHandler = null;
 
     /**
      * the list of contacts. In hashmap. The key is his name.
@@ -60,25 +46,14 @@ public class DAO {
     /**
      * uset for paterSingleton
      */
-    private static volatile DAO instance = null;
-
-    /**
-     * handler to create or upgrade table
-     */
-    public static final String NAME = "openSecuritySMSDatabase.db";
-
-    /**
-     * the version
-     */
-    public static final int VERSION = 1;
+    private static volatile Controller instance = null;
 
 
     /**
      * private (because of singleton) constructor
-     * @param c the context
      */
-    private DAO(Context c) {
-        mHandler = new DatabaseHandler(c, NAME, null, VERSION);
+    private Controller() {
+
     }
 
 
@@ -87,94 +62,21 @@ public class DAO {
      *
      * @return Retourne l'instance du singleton.
      */
-    public final static DAO getInstance() {
+    public final static Controller getInstance() {
         //Le "Double-Checked Singleton"/"Singleton doublement vérifié" permet
         //d'éviter un appel coûteux à synchronized,
         //une fois que l'instanciation est faite.
-        if (DAO.instance == null) {
+        if (Controller.instance == null) {
             // Le mot-clé synchronized sur ce bloc empêche toute instanciation
             // multiple même par différents "threads".
             // Il est TRES important.
-            synchronized (DAO.class) {
-                if (DAO.instance == null) {
-                    DAO.instance = new DAO(OpenSecuritySMS.getInstance().getApplicationContext());
+            synchronized (Controller.class) {
+                if (Controller.instance == null) {
+                    Controller.instance = new Controller();
                 }
             }
         }
-        return DAO.instance;
-    }
-
-    /**
-     * to open the database.
-     */
-    public void openDb() {
-        // Pas besoin de fermer la dernière base puisque getWritableDatabase s'en charge
-        mDb = mHandler.getWritableDatabase();
-    }
-
-    /**
-     * to close the dataBase
-     */
-    public void close() {
-        mDb.close();
-    }
-
-    /**
-     * to insert a contact into the dataBase
-     * @param c the context
-     */
-    public void insertContactIntoDB(Contact c) {
-        mDb.beginTransaction();
-        try {
-            ContentValues value = new ContentValues();
-
-            mDb.beginTransaction();
-
-            value.put(DatabaseHandler.CONTACT_NAME, c.getName());
-            value.put(DatabaseHandler.NUMBER_OF_MESSAGE, c.getNbMessages());
-            value.put(DatabaseHandler.PHONE_NUMBER, c.getNumber());
-            value.put(DatabaseHandler.PHOTO_URL, c.getPhotoURL());
-            value.put(DatabaseHandler.THREAD_ID, c.getThreadId());
-
-            mDb.insert(DatabaseHandler.CONTACT_TABLE_NAME, null, value);
-            mDb.setTransactionSuccessful();
-        } catch (Exception e) {
-            System.out.println("ERROR : Cannot insert contact ! ");
-        } finally {
-            mDb.endTransaction();
-            Toast.makeText(OpenSecuritySMS.getInstance().getBaseContext(), "Contact inserted", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    /**
-     * To find a contact in our openSecurity dataBase
-     * @param phoneNumber the number of our contact we want to find.
-     * @return the contact we are looking for
-     */
-    public Contact findContactByPhoneNumberInOSMSBase(String phoneNumber) {
-        try {
-            Contact c = new Contact(phoneNumber);
-            Cursor cursor = mDb.rawQuery("Select * FROM " +
-                    mHandler.CONTACT_TABLE_NAME + " Where phoneNumber = ?", new String[]{phoneNumber});
-            if (cursor.equals(null)) {
-                System.out.println("Je vaut null");
-                return null;
-            }
-            cursor.moveToFirst();
-            c.setPhotoURL(cursor.getString(2));
-            c.setName(cursor.getString(3));
-            c.setThreadId(cursor.getInt(4));
-            c.setNbMessages(cursor.getInt(5));
-            for (int i = 0; i<cursor.getColumnCount(); i++){
-                System.out.println(cursor.getColumnName(i) + " : " + cursor.getString(i));
-            }
-            Toast.makeText(OpenSecuritySMS.getInstance().getBaseContext(), c.getName()+" found", Toast.LENGTH_LONG).show();
-            return c;
-        } catch (Exception e) {
-            System.out.println("Erreur : je suis dans le catch");
-        }
-        return null;
-
+        return Controller.instance;
     }
 
     /**
@@ -265,7 +167,7 @@ public class DAO {
      * @return bubbleData the ArrayList of Bubbles in a conversation.
      */
     public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver,
-                                                           Contact contact, int offset, int limit) {
+                                                    Contact contact, int offset, int limit) {
         ArrayList<ConversationItem> bubbleData = new ArrayList<>();
         String content;
         boolean isMe;
@@ -358,7 +260,7 @@ public class DAO {
      * @param save
      */
     public void makeNotification(String title, String content, Bitmap icon, Activity activity,
-                                        Class activityRunClass, HashMap<String, Serializable> save) {
+                                 Class activityRunClass, HashMap<String, Serializable> save) {
         if (activity != null) {
             Intent intent = new Intent(activity, activityRunClass);
             for (Map.Entry<String, Serializable> entry : save.entrySet())
@@ -385,27 +287,5 @@ public class DAO {
             NotificationManager mNotificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(0, mBuilder.build());
         }
-    }
-
-    /**
-     * Get all table Details from teh sqlite_master table in Db.
-     *
-     * @return An ArrayList of table details.
-     */
-    public ArrayList<String[]> getDbTableDetails() {
-        Cursor c = mDb.rawQuery(
-                "SELECT name FROM sqlite_master WHERE type='table'", null);
-        ArrayList<String[]> result = new ArrayList<String[]>();
-        int i = 0;
-        result.add(c.getColumnNames());
-        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            String[] temp = new String[c.getColumnCount()];
-            for (i = 0; i < temp.length; i++) {
-                temp[i] = c.getString(i);
-            }
-            result.add(temp);
-        }
-
-        return result;
     }
 }

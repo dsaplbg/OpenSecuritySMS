@@ -22,7 +22,7 @@ import java.util.HashMap;
 public class SMSReceiver extends BroadcastReceiver {
 
     /**
-     * an override of BroadcastReceiver function. To execute code whe android detect an intent.
+     * an override of BroadcastReceiver function. To execute code when android detect an intent.
      * @param context interface to global information about an application environment.
      * @param intent abstract description of an operation to be performed.
      */
@@ -40,7 +40,7 @@ public class SMSReceiver extends BroadcastReceiver {
                 if (messages.length > -1) {
                     final String messageBody = messages[0].getMessageBody();
                     final String phoneNumber = messages[0].getDisplayOriginatingAddress();
-                    Contact contact = DAO.getInstance().findContactByPhoneNumberInDefaultBase(phoneNumber, context.getContentResolver());
+                    Contact contact = Controller.getInstance().findContactByPhoneNumberInDefaultBase(phoneNumber, context.getContentResolver());
 
                     if (OpenSecuritySMS.getInstance() != null) {
                         OpenSecuritySMS.getInstance().update();
@@ -55,7 +55,7 @@ public class SMSReceiver extends BroadcastReceiver {
                         HashMap<String, Serializable> save = new HashMap<>();
                         save.put("Contact", contact);
                         save.put("Message", messageBody);
-                        DAO.getInstance().makeNotification(contact.getName(), messageBody, contact.getPhoto(context.getContentResolver()), OpenSecuritySMS.getInstance(), PopupConversationActivity.class, save);
+                        Controller.getInstance().makeNotification(contact.getName(), messageBody, contact.getPhoto(context.getContentResolver()), OpenSecuritySMS.getInstance(), PopupConversationActivity.class, save);
                     }
                 }
             }

@@ -3,6 +3,7 @@ package org.opensecurity.sms.view;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,7 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.DAO;
+import org.opensecurity.sms.model.ContactDAO;
+import org.opensecurity.sms.model.Controller;
 import org.opensecurity.sms.model.modelView.listConversation.ArrayConversAdapter;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
@@ -31,6 +33,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
      */
     private ListView conversationList;
 
+    private ContactDAO contactDAO;
     /**
      * The arrayList to keep objects of conversationLine
      */
@@ -70,7 +73,9 @@ public class OpenSecuritySMS extends AppCompatActivity {
         update();
         listeners();
 
-        DAO.getInstance().openDb();
+        contactDAO = new ContactDAO(getApplicationContext());
+        contactDAO.openDb();
+        instance = this;
     }
 
     /**
@@ -100,6 +105,11 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if(id==R.id.deleteAllElementsOfTable) {
+            contactDAO.deleteAllContactOSMS();
             return true;
         }
 
@@ -161,8 +171,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
      * This function is used to update this activity when it's necessary.
      */
     public void update() {
-        setConversationLines(DAO.getInstance().loadLastMessages(this.getContentResolver()));
-        instance = this;
+        setConversationLines(Controller.getInstance().loadLastMessages(this.getContentResolver()));
 
         /**
          * The listView conversationList will be showed in the activity thanks to the
@@ -196,5 +205,19 @@ public class OpenSecuritySMS extends AppCompatActivity {
      */
     public ArrayConversAdapter getAdapter() {
         return adapter;
+    }
+
+
+    @Override
+    protected void onResume() {
+        contactDAO.openDb();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        contactDAO.closeDb();
+        Log.d("onPause", "passage dans le onPause de OpenSecurity");
+        super.onPause();
     }
 }

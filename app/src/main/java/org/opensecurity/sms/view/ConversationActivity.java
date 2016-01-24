@@ -20,7 +20,8 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.DAO;
+import org.opensecurity.sms.model.ContactDAO;
+import org.opensecurity.sms.model.Controller;
 import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.modelView.conversation.ArrayBubbleAdapter;
 import org.opensecurity.sms.model.modelView.conversation.Bubble;
@@ -67,6 +68,8 @@ public class ConversationActivity extends AppCompatActivity {
      * The editText wiget to enter text to send
      */
     private EditText textMessage;
+
+    private ContactDAO contactDAO;
 
     /**
      * the button used to send messages
@@ -128,10 +131,15 @@ public class ConversationActivity extends AppCompatActivity {
 
         update(getIntent());
 
-        instance = this;
 
-        if(DAO.getInstance().findContactByPhoneNumberInOSMSBase(getContact().getNumber()) == null)
-            DAO.getInstance().insertContactIntoDB(getContact());
+
+        contactDAO = new ContactDAO(getApplicationContext());
+        contactDAO.openDb();
+
+        if(contactDAO.findContactByPhoneNumberInOSMSBase(contact.getNumber()) == null)
+            contactDAO.insertContactIntoDB(contact);
+
+        instance = this;
     }
 
     /**
@@ -188,7 +196,7 @@ public class ConversationActivity extends AppCompatActivity {
         getSendButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textMessage.getText().length() > 0 && DAO.getInstance().sendSMS(getBaseContext(), getContact(),
+                if (textMessage.getText().length() > 0 && Controller.getInstance().sendSMS(getBaseContext(), getContact(),
                         textMessage.getText().toString())) {
                     textMessage.setText("");
                 }
@@ -261,7 +269,7 @@ public class ConversationActivity extends AppCompatActivity {
      * This function is used to update a conversation when it's necessary
      */
     public void update() {
-        setBubbleData(DAO.getInstance().loadMessages(this.getContentResolver(), getContact(), 0, ConversationLine.LIMIT_LOAD_MESSAGE));
+        setBubbleData(Controller.getInstance().loadMessages(this.getContentResolver(), getContact(), 0, ConversationLine.LIMIT_LOAD_MESSAGE));
         /*
         bubbleList.setOnScrollListener(new AbsListView.OnScrollListener() {
             private int prevVisibleItem;
@@ -289,5 +297,17 @@ public class ConversationActivity extends AppCompatActivity {
      */
     public ArrayBubbleAdapter getAdapter() {
         return this.adapter;
+    }
+
+    @Override
+    protected void onResume() {
+        contactDAO.openDb();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        contactDAO.closeDb();
+        super.onPause();
     }
 }

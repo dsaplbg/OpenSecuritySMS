@@ -2,6 +2,7 @@
     <string name="app_name">OpenSecuritySMS</string>
 
     <string name="action_settings">Paramètres</string>
+    <string name="delete_contactosms_table">Delete all OSMS Contacts</string>
     <string name="open_security_sms">OpenSecuritySMS</string>
     <string name="title_activity_conversation">Conversation</string>
     <string name="title_activity_popupConversation">Réponse rapide</string>
