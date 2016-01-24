@@ -212,7 +212,7 @@ public class ConversationActivity extends AppCompatActivity {
         getBubbleData().clear();
         getBubbleData().addAll(bubbleData);
 
-        this.adapter = new ArrayBubbleAdapter(getBaseContext(), this.bubbleData);
+        this.adapter = new ArrayBubbleAdapter(getBaseContext(), this.getBubbleData());
         if (!getBubbleData().isEmpty()) this.bubbleList.setAdapter(this.adapter);
     }
 
@@ -260,7 +260,8 @@ public class ConversationActivity extends AppCompatActivity {
      * @param intent
      */
     public void update(Intent intent) {
-        if (intent.getSerializableExtra("Contact") != null) setContact((Contact) intent.getSerializableExtra("Contact"));
+        if (intent.getSerializableExtra("Contact") != null)
+            setContact((Contact) intent.getSerializableExtra("Contact"));
 
         update();
     }

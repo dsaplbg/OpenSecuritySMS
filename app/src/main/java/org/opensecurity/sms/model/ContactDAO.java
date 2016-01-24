@@ -49,7 +49,7 @@ public class ContactDAO {
             c.setThreadId(cursor.getInt(4));
             c.setNbMessages(cursor.getInt(5));
 
-            Toast.makeText(currentContex, c.getName() + " found", Toast.LENGTH_LONG).show();
+          //  Toast.makeText(currentContex, c.getName() + " found", Toast.LENGTH_LONG).show();
             return c;
         } catch (Exception e) {
             System.out.println("Erreur : je suis dans le catch");
@@ -78,7 +78,7 @@ public class ContactDAO {
             System.out.println("ERROR : Cannot insert contact ! ");
         } finally {
             database.endTransaction();
-            Toast.makeText(currentContex.getApplicationContext(), "Contact inserted", Toast.LENGTH_LONG).show();
+          //  Toast.makeText(currentContex.getApplicationContext(), "Contact inserted", Toast.LENGTH_LONG).show();
         }
     }
 
