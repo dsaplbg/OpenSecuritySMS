@@ -15,12 +15,16 @@ import android.provider.ContactsContract;
 import android.provider.Telephony;
 import android.support.v7.app.NotificationCompat;
 import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
 import android.widget.Toast;
+import android.content.ContentValues;
+import android.telephony.TelephonyManager;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.modelView.conversation.Bubble;
 import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
+import org.opensecurity.sms.view.OpenSecuritySMS;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -41,7 +45,7 @@ public class Controller {
     /**
      * the list of contacts. In hashmap. The key is his name.
      */
-    private static HashMap<String, Contact> listContacts = new HashMap<>();
+    private static HashMap<String, Contact> listContacts = new HashMap<String, Contact>();
 
     /**
      * uset for paterSingleton
@@ -55,6 +59,27 @@ public class Controller {
     private Controller() {
 
     }
+
+    public static final String SMS_EXTRA_NAME = "pdus";
+    public static final String SMS_URI = "content://sms";
+
+    public static final String ADDRESS = "address";
+    public static final String PERSON = "person";
+    public static final String DATE = "date";
+    public static final String READ = "read";
+    public static final String STATUS = "status";
+    public static final String TYPE = "type";
+    public static final String BODY = "body";
+    public static final String SEEN = "seen";
+
+    public static final int MESSAGE_TYPE_INBOX = 1;
+    public static final int MESSAGE_TYPE_SENT = 2;
+
+    public static final int MESSAGE_IS_NOT_READ = 0;
+    public static final int MESSAGE_IS_READ = 1;
+
+    public static final int MESSAGE_IS_NOT_SEEN = 0;
+    public static final int MESSAGE_IS_SEEN = 1;
 
 
     /**
@@ -117,7 +142,7 @@ public class Controller {
         //Empty all contacts
         listContacts.clear();
         //create a ArrayList of ConversationLine object.
-        ArrayList<ConversationLine> conversationLines = new ArrayList<>();
+        ArrayList<ConversationLine> conversationLines = new ArrayList<ConversationLine>();
 
         // We want to get the sms  with some of their attributes
         //SELECT distinct ADDRESS, Body, Type, Thread_id, Date FROM content://sms/ WHERE Address is not null  GROUP BY thread_id
@@ -168,7 +193,7 @@ public class Controller {
      */
     public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver,
                                                     Contact contact, int offset, int limit) {
-        ArrayList<ConversationItem> bubbleData = new ArrayList<>();
+        ArrayList<ConversationItem> bubbleData = new ArrayList<ConversationItem>();
         String content;
         boolean isMe;
         Calendar lastDate = Calendar.getInstance();
@@ -236,6 +261,15 @@ public class Controller {
                     messages,
                     sentIntents,
                     deliveryIntents);
+
+            TelephonyManager tMgr = (TelephonyManager) c.getSystemService(Context.TELEPHONY_SERVICE);
+            String mPhoneNumber = tMgr.getLine1Number();
+
+            ContentValues values = new ContentValues();
+            values.put("address", mPhoneNumber);
+            values.put("body", message);
+            OpenSecuritySMS.getInstance().getContentResolver().insert(Uri.parse("content://sms/sent"), values);
+
         } catch (Exception e) {
             System.out.println("Erreur : " + e.getLocalizedMessage());
             if (message.length() > 0) {
@@ -249,6 +283,20 @@ public class Controller {
         return true;
     }
 
+    public void putSmsIntoDataBase(SmsMessage sms, String smsContent) {
+        ContentResolver contentResolver = OpenSecuritySMS.getInstance().getContentResolver();
+        ContentValues values = new ContentValues();
+        values.put( ADDRESS, sms.getOriginatingAddress() );
+        values.put( DATE, sms.getTimestampMillis() );
+        values.put( READ, MESSAGE_IS_NOT_READ );
+        values.put( STATUS, sms.getStatus() );
+        values.put( TYPE, MESSAGE_TYPE_INBOX );
+        values.put( SEEN, MESSAGE_IS_NOT_SEEN );
+        values.put( BODY, smsContent );
+
+        // Push row into the SMS table
+        contentResolver.insert( Uri.parse( SMS_URI ), values );
+    }
     /**
      * This function is use to initialize, create and display a notification in Android.
      *
@@ -281,7 +329,7 @@ public class Controller {
             mBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
             mBuilder.setContentIntent(pIntent);
             mBuilder.setAutoCancel(true);
-            mBuilder.setCategory(Notification.CATEGORY_MESSAGE);
+           // mBuilder.setCategory(Notification.CATEGORY_MESSAGE);
             mBuilder.setDefaults(Notification.DEFAULT_ALL);
 
             NotificationManager mNotificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);

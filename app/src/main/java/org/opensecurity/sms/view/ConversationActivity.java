@@ -29,6 +29,7 @@ import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 
 /**
@@ -94,7 +95,7 @@ public class ConversationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_conversation);
 
-        this.bubbleData = new ArrayList<>();
+        this.bubbleData = new ArrayList<ConversationItem>();
 
         this.bubbleList = (SwipeMenuListView) findViewById(R.id.bubbleList);
         this.bubbleList.setStackFromBottom(true);
@@ -198,6 +199,7 @@ public class ConversationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (textMessage.getText().length() > 0 && Controller.getInstance().sendSMS(getBaseContext(), getContact(),
                         textMessage.getText().toString())) {
+                    createBubble();
                     textMessage.setText("");
                 }
             }
@@ -255,6 +257,14 @@ public class ConversationActivity extends AppCompatActivity {
         this.setTitle(contact.getName());
     }
 
+
+    public void createBubble() {
+        Bubble b = new Bubble(textMessage.getText().toString(), GregorianCalendar.getInstance(), true);
+        bubbleData.add(b);
+        this.bubbleList.setAdapter(this.adapter);
+    }
+
+
     /**
      *
      * @param intent
@@ -270,7 +280,7 @@ public class ConversationActivity extends AppCompatActivity {
      * This function is used to update a conversation when it's necessary
      */
     public void update() {
-        setBubbleData(Controller.getInstance().loadMessages(this.getContentResolver(), getContact(), 0, ConversationLine.LIMIT_LOAD_MESSAGE));
+        setBubbleData(Controller.getInstance().loadMessages(this.getContentResolver(), getContact(), 0, 1000000));
         /*
         bubbleList.setOnScrollListener(new AbsListView.OnScrollListener() {
             private int prevVisibleItem;
@@ -303,6 +313,7 @@ public class ConversationActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         contactDAO.openDb();
+        this.update();
         super.onResume();
     }
 

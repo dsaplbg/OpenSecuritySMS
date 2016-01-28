@@ -1,6 +1,12 @@
 package org.opensecurity.sms.view;
 
+import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.media.audiofx.BassBoost;
+import android.provider.Settings;
+import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,11 +14,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.ContactDAO;
 import org.opensecurity.sms.model.Controller;
+import org.opensecurity.sms.model.SMSReceiver;
+import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
 import org.opensecurity.sms.model.modelView.listConversation.ArrayConversAdapter;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
@@ -22,6 +32,10 @@ import java.util.ArrayList;
  * main activity when we start the application.
  */
 public class OpenSecuritySMS extends AppCompatActivity {
+
+    public static final String SMS_DEFAULT_APPLICATION = "sms_default_application";
+    private MenuItem itemDefaultApp;
+
 
     /**
      * singleton pattern. We keep one instance (this) for the current activity
@@ -46,6 +60,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * to get the current instance (=this)
+     *
      * @return instance of our activity
      */
     public static OpenSecuritySMS getInstance() {
@@ -62,7 +77,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_security_sms);
 
-        this.conversationLines = new ArrayList<>();
+        this.conversationLines = new ArrayList<ConversationLine>();
         this.adapter = new ArrayConversAdapter(getBaseContext(), this.conversationLines);
 
         this.conversationList = (ListView) findViewById(R.id.listeConvers);
@@ -76,6 +91,17 @@ public class OpenSecuritySMS extends AppCompatActivity {
         contactDAO = new ContactDAO(getApplicationContext());
         contactDAO.openDb();
         instance = this;
+
+
+        final String myPackageName = getPackageName();
+        if (!Telephony.Sms.getDefaultSmsPackage(this).equals(myPackageName)) {
+            // App is not default.
+            Intent intent =
+                    new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
+            intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME,
+                    myPackageName);
+            startActivity(intent);
+        }
     }
 
     /**
@@ -93,6 +119,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * To react when we select on item on the menu.
+     *
      * @param item the current selected item.
      * @return
      */
@@ -108,7 +135,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
             return true;
         }
 
-        if(id==R.id.deleteAllElementsOfTable) {
+        if (id == R.id.deleteAllElementsOfTable) {
             contactDAO.deleteAllContactOSMS();
             return true;
         }
@@ -118,6 +145,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * Allow the activity to keep the list of conversationsLine after the death of this activiy
+     *
      * @param b the bundel used to serialize informations.
      */
     @Override
@@ -128,14 +156,14 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * To resore data which was keeped by the bundle on onSaveInstanceState function
+     *
      * @param savedInstanceState the bundle
      */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         try {
             setConversationLines((ArrayList<ConversationLine>) savedInstanceState.getSerializable("ConversSerialization"));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error : the arrayList of conversationLine can't be saved !");
         }
     }
@@ -143,6 +171,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * to return the current listView.
+     *
      * @return the current listView
      */
     public ListView getConversationList() {
@@ -151,6 +180,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * to return the data of conversations (arrayList)
+     *
      * @return the arrayList of conversationLines
      */
     public ArrayList<ConversationLine> getConversationLines() {
@@ -159,6 +189,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * to set the data of conversationLines
+     *
      * @param conversationLines arrayList of conversationLines
      */
     public void setConversationLines(ArrayList<ConversationLine> conversationLines) {
@@ -185,7 +216,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
     /**
      * We write all listeners for current activity in this function.
-     *
+     * <p/>
      * first listener : clickListeners on listView
      */
     public void listeners() {
@@ -198,9 +229,13 @@ public class OpenSecuritySMS extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
+
     /**
      * To get the adapter (design)
+     *
      * @return the adapter of current activity
      */
     public ArrayConversAdapter getAdapter() {
@@ -214,10 +249,10 @@ public class OpenSecuritySMS extends AppCompatActivity {
         super.onResume();
     }
 
+
     @Override
     protected void onPause() {
         contactDAO.closeDb();
-        Log.d("onPause", "passage dans le onPause de OpenSecurity");
         super.onPause();
     }
 }

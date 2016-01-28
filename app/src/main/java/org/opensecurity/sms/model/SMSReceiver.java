@@ -5,13 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Telephony;
+import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
+import android.widget.Toast;
 
 import org.opensecurity.sms.view.ConversationActivity;
 import org.opensecurity.sms.view.OpenSecuritySMS;
 import org.opensecurity.sms.view.PopupConversationActivity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -21,43 +24,33 @@ import java.util.HashMap;
  */
 public class SMSReceiver extends BroadcastReceiver {
 
+    private static final String RECEIVED_ACTION =
+            "android.provider.Telephony.SMS_RECEIVED";
+
+
     /**
      * an override of BroadcastReceiver function. To execute code when android detect an intent.
      * @param context interface to global information about an application environment.
      * @param intent abstract description of an operation to be performed.
      */
     @Override
-    public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)) {
-            Bundle bundle = intent.getExtras();
-            if (bundle != null) {
-                Object[] pdus = (Object[]) bundle.get("pdus");
+    public void onReceive(Context c, Intent in) {
+        if(in.getAction().equals(RECEIVED_ACTION)) {
 
-                final SmsMessage[] messages = new SmsMessage[pdus.length];
-                for (int i = 0; i < pdus.length; i++)
-                    messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-
-                if (messages.length > -1) {
-                    final String messageBody = messages[0].getMessageBody();
-                    final String phoneNumber = messages[0].getDisplayOriginatingAddress();
-                    Contact contact = Controller.getInstance().findContactByPhoneNumberInDefaultBase(phoneNumber, context.getContentResolver());
-
-                    if (OpenSecuritySMS.getInstance() != null) {
-                        OpenSecuritySMS.getInstance().update();
-
-                        if (ConversationActivity.getInstance() != null) {
-                            Intent intentConversationActivity = new Intent(context, ConversationActivity.class);
-                            intent.putExtra("Contact", contact);
-
-                            ConversationActivity.getInstance().update(intentConversationActivity);
-                        }
-
-                        HashMap<String, Serializable> save = new HashMap<>();
-                        save.put("Contact", contact);
-                        save.put("Message", messageBody);
-                        Controller.getInstance().makeNotification(contact.getName(), messageBody, contact.getPhoto(context.getContentResolver()), OpenSecuritySMS.getInstance(), PopupConversationActivity.class, save);
-                    }
+            Bundle bundle = in.getExtras();
+            if(bundle!=null) {
+                Object[] pdus = (Object[])bundle.get("pdus");
+                SmsMessage[] messages = new SmsMessage[pdus.length];
+                String messageContent = new String();
+                for(int i = 0; i<pdus.length; i++) {
+                    messages[i] =
+                            SmsMessage.createFromPdu((byte[])pdus[i]);
+                    messageContent = messageContent+messages[i].getDisplayMessageBody();
                 }
+
+                Toast.makeText(c, "sms : " + messageContent, Toast.LENGTH_SHORT).show();
+                Controller.getInstance().putSmsIntoDataBase(messages[0], messageContent);
+                ConversationActivity.getInstance().update();
             }
         }
     }
