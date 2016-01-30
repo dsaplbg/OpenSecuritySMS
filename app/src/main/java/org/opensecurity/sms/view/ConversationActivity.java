@@ -198,7 +198,7 @@ public class ConversationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (textMessage.getText().length() > 0 && Controller.getInstance().sendSMS(getBaseContext(), getContact(),
                         textMessage.getText().toString())) {
-                    createBubble();
+                    ConversationActivity.getInstance().update();
                     textMessage.setText("");
                 }
             }
