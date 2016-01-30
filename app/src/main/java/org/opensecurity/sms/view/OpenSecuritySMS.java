@@ -1,28 +1,18 @@
 package org.opensecurity.sms.view;
 
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.audiofx.BassBoost;
-import android.provider.Settings;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.ContactDAO;
-import org.opensecurity.sms.model.Controller;
-import org.opensecurity.sms.model.SMSReceiver;
-import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
+import org.opensecurity.sms.controller.Controller;
 import org.opensecurity.sms.model.modelView.listConversation.ArrayConversAdapter;
 import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 

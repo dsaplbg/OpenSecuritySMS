@@ -21,12 +21,11 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.ContactDAO;
-import org.opensecurity.sms.model.Controller;
+import org.opensecurity.sms.controller.Controller;
 import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.modelView.conversation.ArrayBubbleAdapter;
 import org.opensecurity.sms.model.modelView.conversation.Bubble;
 import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
-import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;

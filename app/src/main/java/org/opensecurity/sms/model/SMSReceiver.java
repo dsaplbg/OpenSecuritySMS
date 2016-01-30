@@ -4,18 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Telephony;
-import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.widget.Toast;
 
+import org.opensecurity.sms.controller.Controller;
 import org.opensecurity.sms.view.ConversationActivity;
-import org.opensecurity.sms.view.OpenSecuritySMS;
-import org.opensecurity.sms.view.PopupConversationActivity;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Valentin on 10/11/2015.

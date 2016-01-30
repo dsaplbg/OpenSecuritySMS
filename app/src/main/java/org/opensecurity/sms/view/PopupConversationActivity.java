@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.Controller;
+import org.opensecurity.sms.controller.Controller;
 import org.opensecurity.sms.model.Contact;
 
 /**
