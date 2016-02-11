@@ -1,26 +1,20 @@
 # OpenSecuritySMS [![Build Status](https://travis-ci.org/OpenSecurityOrganization/OpenSecuritySMS.svg?branch=master)](https://travis-ci.org/OpenSecurityOrganization/OpenSecuritySMS)
-This project's goal is to help people to send SMS safely.
 
-Fork it and pull us !!
+Thanks to OpenSecuritySMS you will text your friends in a secure way !
 
-TO DO
------
+How does it work ?
+------------------
+It's easy !
+<p>You need to have OpenSecuritySMS installed on the devices you want to chat with. A synchronization between your devices allow you to begin a new talk : everything is automated !</p>
+<p>OpenSecuritySMS encrypts your text before sending them to your friends ! Once your friend receive the message he has to go in OpenSecuritySMS and it will decrypts it !</p>
 
-- [x] Displaying of last message in the main activity even if it was send by us
-- [ ] Show full date when we swipe left an older message (yesterday or more)
-- [x] Adding sending message function and listener to Send Button
-- [ ] Update sms database to mark on read for new sms reception in ConversationActivity.
-- [x] Listener to recevied message 
-- [x] Update OpenSecurity activity when we return to this (with back native button for example) to display news potentials messages
-- [ ] Generate couple of public and private keys
-- [ ] Adding transmission of public key to an other contact
-- [ ] Permit of our application to be default sms Application (choice of the user)
+Interested in helping us ?
+--------------------------
+You can fork the project !
+<p>You think that a new feature should be implemented or you want to discuss about an improvement in the application ?</p>
+Every ideas are welcome ! Suggest yours in the [ISSUE](https://github.com/OpenSecurityOrganization/OpenSecuritySMS/issues) tab.
 
-
-French Version : 
-
-Le but de cette application est d'envoyer des SMS cryptés avec le système asymétrique RSA. 
-Chaque utilisateur dispose d'un couple clé privée/publique. 
-On envoie la clé publique à un autre utilisateur par une requête spéciale de l'application (non implémentée)
-et nous récupérons sa clé publique en échange. Ainsi, une conversation cryptée peut avoir lieu. Un message reçu crypté
-ne peut être décrypté que par notre application, donc une application standard SMS recevra le message comme tel.
+TODO
+----
+- [ ] Restructure code
+- [ ] Work on new design for the message list
