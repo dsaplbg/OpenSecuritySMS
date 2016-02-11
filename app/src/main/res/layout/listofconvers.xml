@@ -42,5 +42,6 @@
             android:layout_alignTop="@id/nameContact"
             android:fontFamily="sans-serif-thin"
             android:text="20/01/2016"
-            android:textColor="#9e9e9e" />
+            android:textColor="#9e9e9e"
+            android:layout_marginRight="10dp" />
 </RelativeLayout>
