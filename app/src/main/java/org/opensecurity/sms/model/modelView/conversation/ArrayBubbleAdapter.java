@@ -46,6 +46,11 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         mLayoutInflater = LayoutInflater.from(c);
     }
 
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
+    }
+
     /**
      * to get the number of bubbles in our conversation activity
      * @return the number of bubbles

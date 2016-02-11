@@ -22,7 +22,8 @@
             android:layout_alignTop="@id/photoContact"
             android:text="John Doe"
             android:fontFamily="sans-serif-thin"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/latestMessage"
@@ -32,7 +33,8 @@
             android:singleLine="true"
             android:layout_alignBottom="@+id/photoContact"
             android:layout_toEndOf="@+id/photoContact"
-            android:fontFamily="sans-serif-thin" />
+            android:fontFamily="sans-serif-thin"
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/date"

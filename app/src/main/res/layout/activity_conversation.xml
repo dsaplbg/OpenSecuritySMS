@@ -14,7 +14,7 @@
             android:smoothScrollbar="true"
             android:scrollingCache="true"
             android:layout_alignParentTop="false"
-            android:layout_above="@+id/textMessage" />
+            android:layout_above="@+id/textMessage"/>
 
         <EditText
             android:layout_width="match_parent"

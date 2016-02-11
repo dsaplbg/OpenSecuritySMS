@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -67,9 +68,13 @@ public class Contact implements Serializable {
     private final Bitmap createLetterPhoto() {
         Bitmap b = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(b);
-        c.drawColor(Color.DKGRAY);
-        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        Paint p = new Paint();
+        p.setFlags(Paint.ANTI_ALIAS_FLAG);
+        p.setAntiAlias(true);
+        p.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
         p.setColor(Color.WHITE);
+        c.drawColor(Color.DKGRAY);
+
 
         if (getNumber().equals(getName())) {
             c.drawCircle(25, 15, 8, p);
@@ -80,7 +85,6 @@ public class Contact implements Serializable {
             String lettre = getName().substring(0, 1);
 
             p.setTextSize(35);
-            p.setShadowLayer(1f, 0f, 1f, Color.BLACK);
             p.setTextAlign(Paint.Align.LEFT);
 
             // draw text to the Canvas center
