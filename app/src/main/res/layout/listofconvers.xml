@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-
         <ImageView
             android:id="@+id/photoContact"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:minWidth="50dp"/>
+            android:minWidth="50dp"
+            android:contentDescription="@string/descriptionPhotoContact"
+            android:layout_margin="10dp" />
 
         <TextView
             android:id="@+id/nameContact"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="15px"
+            android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_toRightOf="@+id/photoContact" />
+            android:layout_toEndOf="@+id/photoContact"
+            android:layout_alignTop="@id/photoContact"
+            android:text="John Doe"
+            android:fontFamily="sans-serif-thin"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/latestMessage"
-            android:layout_marginLeft="15px"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/nameContact"
-            android:maxLines="1"
-            android:textSize="15sp"
-            android:layout_toRightOf="@+id/photoContact" />
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum"
+            android:singleLine="true"
+            android:layout_alignBottom="@+id/photoContact"
+            android:layout_toEndOf="@+id/photoContact"
+            android:fontFamily="sans-serif-thin" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_alignRight="@+id/nameContact"
-            android:paddingRight="20px"
-            android:textSize="10sp"
-            android:layout_marginLeft="15px"/>
-    </RelativeLayout>
-</LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/nameContact"
+            android:layout_alignTop="@id/nameContact"
+            android:fontFamily="sans-serif-thin"
+            android:text="20/01/2016"
+            android:textColor="#9e9e9e" />
+</RelativeLayout>

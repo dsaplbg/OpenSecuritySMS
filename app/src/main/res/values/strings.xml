@@ -6,4 +6,6 @@
     <string name="open_security_sms">OpenSecuritySMS</string>
     <string name="title_activity_conversation">Conversation</string>
     <string name="title_activity_popupConversation">Réponse rapide</string>
+    <string name="photoContact">Contact</string>
+    <string name="descriptionPhotoContact">Photo du contact</string>
 </resources>

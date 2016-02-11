@@ -1,5 +1,6 @@
 package org.opensecurity.sms.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -36,7 +37,7 @@ import java.util.GregorianCalendar;
  * another contact.
  */
 
-public class ConversationActivity extends AppCompatActivity {
+public class ConversationActivity extends Activity {
 
 
     /**

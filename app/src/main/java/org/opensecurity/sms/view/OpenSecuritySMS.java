@@ -1,8 +1,8 @@
 package org.opensecurity.sms.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.provider.Telephony;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * main activity when we start the application.
  */
-public class OpenSecuritySMS extends AppCompatActivity {
+public class OpenSecuritySMS extends Activity {
 
     public static final String SMS_DEFAULT_APPLICATION = "sms_default_application";
     private MenuItem itemDefaultApp;
@@ -103,7 +103,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_open_security_sm, menu);
+        getMenuInflater().inflate(R.menu.menu_open_security_sms, menu);
         return true;
     }
 

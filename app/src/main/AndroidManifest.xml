@@ -85,7 +85,6 @@
             </intent-filter>
         </receiver>
 
-        *
         <!-- Service that delivers messages for "Quick Response" -->
         <service
             android:name="com.shinobicontrols.messageme.HeadlessSmsSendService"

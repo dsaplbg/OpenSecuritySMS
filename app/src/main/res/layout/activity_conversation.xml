@@ -6,7 +6,6 @@
 
         <com.baoyz.swipemenulistview.SwipeMenuListView
             android:minHeight="@dimen/activity_vertical_margin"
-            android:scrollIndicators="bottom"
             android:id="@+id/bubbleList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,16 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter text here"
-            android:inputType="textMultiLine|textCapSentences|textLongMessage|textAutoCorrect"
+            android:inputType="textCapSentences|textLongMessage|textAutoComplete|textAutoCorrect|textMultiLine"
             android:ems="10"
             android:scrollbarSize="@dimen/activity_vertical_margin"
             android:id="@+id/textMessage"
             android:maxLines="3"
-            android:layout_alignParentLeft="false"
-            android:layout_toLeftOf="@+id/sendButton"
-            android:layout_alignParentBottom="true"
-            android:allowUndo="true"
-            android:autoText="false" />
+            android:layout_alignParentStart="false"
+            android:layout_toStartOf="@+id/sendButton"
+            android:layout_alignParentBottom="true"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -38,6 +35,6 @@
             android:text="Send"
             android:id="@+id/sendButton"
             android:layout_alignParentTop="false"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true" />
 </RelativeLayout>

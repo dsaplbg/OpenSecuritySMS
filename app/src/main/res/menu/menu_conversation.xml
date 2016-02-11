@@ -4,6 +4,7 @@
     tools:context="org.opensecurity.sms.view.ConversationActivity">
 
     <item android:id="@+id/action_photoContact"
+        android:title="@string/photoContact"
         app:showAsAction="always" />
 
     <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"
