@@ -21,6 +21,9 @@ public class Message implements Serializable{
      */
     private boolean sendByMe;
 
+    /**
+     * The contact who wrote the message
+     */
     private Contact contact;
 
     /**
@@ -35,6 +38,8 @@ public class Message implements Serializable{
      *          The content of the bubble
      * @param date
      *          The date of reception of the message
+     * @param contact
+     *          The contact who wrote the message
      * @param sendByMe
      *          True if send by the phone, False if not
      */

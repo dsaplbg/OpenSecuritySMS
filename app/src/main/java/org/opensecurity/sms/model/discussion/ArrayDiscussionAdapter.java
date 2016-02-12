@@ -1,4 +1,4 @@
-package org.opensecurity.sms.model.lastMessageList;
+package org.opensecurity.sms.model.discussion;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -18,7 +18,7 @@ import java.util.List;
  * This class is used to set an adapter of a list of conversation (in the main activity)
  * it's a child of ArrayAdapter.
  */
-public class ArrayConversAdapter extends ArrayAdapter {
+public class ArrayDiscussionAdapter extends ArrayAdapter {
 
     private LayoutInflater mLayoutInflater;
     private ContentResolver contentResolver;
@@ -28,7 +28,6 @@ public class ArrayConversAdapter extends ArrayAdapter {
         public TextView latestCon;
         public TextView date;
         public ImageView photo;
-
     }
 
     /**
@@ -36,7 +35,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
      * @param context
      * @param rep
      */
-    public ArrayConversAdapter(Context context, List<Message> rep){
+    public ArrayDiscussionAdapter(Context context, List<Message> rep){
         super(context, R.layout.listofconvers, rep);
         this.mLayoutInflater = LayoutInflater.from(context);
         this.contentResolver = context.getContentResolver();

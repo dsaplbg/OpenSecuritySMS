@@ -1,12 +1,15 @@
 package org.opensecurity.sms.model.discussion;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
@@ -28,11 +31,14 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
      */
     private LayoutInflater mLayoutInflater;
 
+    private ContentResolver contentResolver;
+
     /**
      * a static class to keep the view
      */
     static class ViewHolder {
         private TextView messageBody;
+        private ImageView photo;
     }
 
     /**
@@ -44,6 +50,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
         super(c, R.layout.bubble_item, mb);
         mBubbles = mb;
         mLayoutInflater = LayoutInflater.from(c);
+        this.contentResolver = c.getContentResolver();
     }
 
     @Override
@@ -93,6 +100,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
 
             holder = new ViewHolder();
             holder.messageBody = (TextView) bubbleViewRow.findViewById(R.id.b_contenu);
+            holder.photo = (ImageView) bubbleViewRow.findViewById(R.id.imageViewPhotoContact);
 
             bubbleViewRow.setTag(holder);
         } else {
@@ -109,12 +117,12 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             Message message = (Message) item;
             holder.messageBody.setText(message.getContent());
 
-            holder.messageBody.setMaxWidth((int) (parent.getWidth() * 0.9));
-            LinearLayout layout = (LinearLayout) bubbleViewRow.findViewById(R.id.layoutBubble);
+            RelativeLayout layout = (RelativeLayout) bubbleViewRow.findViewById(R.id.layoutBubble);
             if (message.isSendByMe()) {
                 holder.messageBody.setBackgroundResource(R.drawable.bulle_me);
                 layout.setGravity(Gravity.RIGHT);
             } else {
+                holder.photo.setImageBitmap(message.getContact().getPhoto(contentResolver));
                 holder.messageBody.setBackgroundResource(R.drawable.bulle_not_me);
                 layout.setGravity(Gravity.LEFT);
             }

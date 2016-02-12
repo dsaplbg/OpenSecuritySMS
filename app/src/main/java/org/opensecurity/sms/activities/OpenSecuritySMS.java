@@ -14,7 +14,7 @@ import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.Engine;
 import org.opensecurity.sms.model.discussion.Message;
-import org.opensecurity.sms.model.lastMessageList.ArrayConversAdapter;
+import org.opensecurity.sms.model.discussion.ArrayDiscussionAdapter;
 
 import java.util.ArrayList;
 
@@ -46,7 +46,7 @@ public class OpenSecuritySMS extends Activity {
     /**
      * The adapter for design the current activity
      */
-    private ArrayConversAdapter adapter;
+    private ArrayDiscussionAdapter adapter;
 
     /**
      * to get the current instance (=this)
@@ -68,7 +68,7 @@ public class OpenSecuritySMS extends Activity {
         setContentView(R.layout.activity_open_security_sms);
 
         this.messages = new ArrayList<>();
-        this.adapter = new ArrayConversAdapter(getBaseContext(), this.messages);
+        this.adapter = new ArrayDiscussionAdapter(getBaseContext(), this.messages);
 
         this.conversationList = (ListView) findViewById(R.id.listeConvers);
         this.conversationList.setAdapter(this.adapter);
@@ -196,7 +196,7 @@ public class OpenSecuritySMS extends Activity {
 
         /**
          * The listView conversationList will be showed in the activity thanks to the
-         * Override of child class ArrayConversAdapter and getView method. and messages is
+         * Override of child class ArrayDiscussionAdapter and getView method. and messages is
          * the support(data of conversationLine information).
          */
 
@@ -228,7 +228,7 @@ public class OpenSecuritySMS extends Activity {
      *
      * @return the adapter of current activity
      */
-    public ArrayConversAdapter getAdapter() {
+    public ArrayDiscussionAdapter getAdapter() {
         return adapter;
     }
 
