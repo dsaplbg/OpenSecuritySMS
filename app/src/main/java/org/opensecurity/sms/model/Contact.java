@@ -2,10 +2,13 @@ package org.opensecurity.sms.model;
 
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -42,6 +45,17 @@ public class Contact implements Serializable {
         setNbMessages(0);
     }
 
+    public final Bitmap roundBitmap(Bitmap b) {
+        Bitmap imageRounded = Bitmap.createBitmap(b.getWidth(), b.getHeight(), b.getConfig());
+        Canvas canvas = new Canvas(imageRounded);
+        Paint mpaint = new Paint();
+        mpaint.setAntiAlias(true);
+        mpaint.setShader(new BitmapShader(b, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+        canvas.drawRoundRect((new RectF(0, 0, b.getWidth(), b.getHeight())), 100, 100, mpaint);// Round Image Corner 100 100 100 100
+
+        return imageRounded;
+    }
+
     /**
      * To get his photo
      * @param contentResolver to manage access to a structured set of data in your phone
@@ -58,7 +72,7 @@ public class Contact implements Serializable {
             }
         }
 
-        return (b != null ? b : createLetterPhoto());
+        return (b != null ? roundBitmap(b) : roundBitmap(createLetterPhoto()));
     }
 
     /**
