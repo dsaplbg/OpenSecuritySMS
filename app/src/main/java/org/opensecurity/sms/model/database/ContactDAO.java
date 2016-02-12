@@ -1,14 +1,12 @@
-package org.opensecurity.sms.model;
+package org.opensecurity.sms.model.database;
 
-import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
 
-import org.opensecurity.sms.view.OpenSecuritySMS;
+import org.opensecurity.sms.model.Contact;
 
 /**
  * Created by loft-2015-asus on 24/01/16.

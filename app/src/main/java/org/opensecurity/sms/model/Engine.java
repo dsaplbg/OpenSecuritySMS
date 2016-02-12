@@ -1,4 +1,4 @@
-package org.opensecurity.sms.controller;
+package org.opensecurity.sms.model;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -13,7 +13,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.Telephony;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
@@ -22,24 +21,21 @@ import android.content.ContentValues;
 import android.telephony.TelephonyManager;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.Contact;
-import org.opensecurity.sms.model.modelView.conversation.Bubble;
-import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
-import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
-import org.opensecurity.sms.view.OpenSecuritySMS;
+import org.opensecurity.sms.activities.OpenSecuritySMS;
+import org.opensecurity.sms.model.talk.Bubble;
+import org.opensecurity.sms.model.talk.ConversationItem;
+import org.opensecurity.sms.model.lastMessageList.ConversationLine;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class Controller {
+public class Engine {
     /**
-     * The Controller is used by all activities. It contains various useful functions to access to the database.
+     * The Engine is used by all activities. It contains various useful functions to access to the database.
      */
 
 
@@ -54,13 +50,13 @@ public class Controller {
     /**
      * uset for paterSingleton
      */
-    private static volatile Controller instance = null;
+    private static volatile Engine instance = null;
 
 
     /**
      * private (because of singleton) constructor
      */
-    private Controller() {
+    private Engine() {
 
     }
 
@@ -91,21 +87,21 @@ public class Controller {
      *
      * @return Retourne l'instance du singleton.
      */
-    public final static Controller getInstance() {
+    public final static Engine getInstance() {
         //Le "Double-Checked Singleton"/"Singleton doublement vérifié" permet
         //d'éviter un appel coûteux à synchronized,
         //une fois que l'instanciation est faite.
-        if (Controller.instance == null) {
+        if (Engine.instance == null) {
             // Le mot-clé synchronized sur ce bloc empêche toute instanciation
             // multiple même par différents "threads".
             // Il est TRES important.
-            synchronized (Controller.class) {
-                if (Controller.instance == null) {
-                    Controller.instance = new Controller();
+            synchronized (Engine.class) {
+                if (Engine.instance == null) {
+                    Engine.instance = new Engine();
                 }
             }
         }
-        return Controller.instance;
+        return Engine.instance;
     }
 
     /**

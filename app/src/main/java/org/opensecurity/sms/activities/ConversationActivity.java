@@ -1,4 +1,4 @@
-package org.opensecurity.sms.view;
+package org.opensecurity.sms.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,12 +20,12 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.ContactDAO;
-import org.opensecurity.sms.controller.Controller;
+import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.Contact;
-import org.opensecurity.sms.model.modelView.conversation.ArrayBubbleAdapter;
-import org.opensecurity.sms.model.modelView.conversation.Bubble;
-import org.opensecurity.sms.model.modelView.conversation.ConversationItem;
+import org.opensecurity.sms.model.Engine;
+import org.opensecurity.sms.model.talk.ArrayBubbleAdapter;
+import org.opensecurity.sms.model.talk.Bubble;
+import org.opensecurity.sms.model.talk.ConversationItem;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -197,7 +196,7 @@ public class ConversationActivity extends Activity {
         getSendButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textMessage.getText().length() > 0 && Controller.getInstance().sendSMS(getBaseContext(), getContact(),
+                if (textMessage.getText().length() > 0 && Engine.getInstance().sendSMS(getBaseContext(), getContact(),
                         textMessage.getText().toString())) {
                     ConversationActivity.getInstance().update();
                     textMessage.setText("");
@@ -280,7 +279,7 @@ public class ConversationActivity extends Activity {
      * This function is used to update a conversation when it's necessary
      */
     public void update() {
-        setBubbleData(Controller.getInstance().loadMessages(this.getContentResolver(), getContact(), 0, 1000000));
+        setBubbleData(Engine.getInstance().loadMessages(this.getContentResolver(), getContact(), 0, 1000000));
         /*
         bubbleList.setOnScrollListener(new AbsListView.OnScrollListener() {
             private int prevVisibleItem;

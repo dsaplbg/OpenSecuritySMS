@@ -1,4 +1,4 @@
-package org.opensecurity.sms.model.modelView.conversation;
+package org.opensecurity.sms.model.talk;
 
 import android.content.Context;
 import android.view.Gravity;

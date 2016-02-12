@@ -7,8 +7,7 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.widget.Toast;
 
-import org.opensecurity.sms.controller.Controller;
-import org.opensecurity.sms.view.ConversationActivity;
+import org.opensecurity.sms.activities.ConversationActivity;
 
 /**
  * Created by Valentin on 10/11/2015.
@@ -17,14 +16,12 @@ import org.opensecurity.sms.view.ConversationActivity;
  */
 public class SMSReceiver extends BroadcastReceiver {
 
-    private static final String RECEIVED_ACTION =
-            "android.provider.Telephony.SMS_RECEIVED";
-
+    private static final String RECEIVED_ACTION = "android.provider.Telephony.SMS_RECEIVED";
 
     /**
      * an override of BroadcastReceiver function. To execute code when android detect an intent.
-     * @param context interface to global information about an application environment.
-     * @param intent abstract description of an operation to be performed.
+     * @param c interface to global information about an application environment.
+     * @param in abstract description of an operation to be performed.
      */
     @Override
     public void onReceive(Context c, Intent in) {
@@ -43,7 +40,7 @@ public class SMSReceiver extends BroadcastReceiver {
                 }
 
                 Toast.makeText(c, "sms : " + messageContent, Toast.LENGTH_SHORT).show();
-                Controller.getInstance().putSmsIntoDataBase(messages[0], messageContent);
+                Engine.getInstance().putSmsIntoDataBase(messages[0], messageContent);
                 ConversationActivity.getInstance().update();
             }
         }

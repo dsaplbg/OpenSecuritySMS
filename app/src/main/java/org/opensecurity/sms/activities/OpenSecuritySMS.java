@@ -1,4 +1,4 @@
-package org.opensecurity.sms.view;
+package org.opensecurity.sms.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,10 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.ContactDAO;
-import org.opensecurity.sms.controller.Controller;
-import org.opensecurity.sms.model.modelView.listConversation.ArrayConversAdapter;
-import org.opensecurity.sms.model.modelView.listConversation.ConversationLine;
+import org.opensecurity.sms.model.database.ContactDAO;
+import org.opensecurity.sms.model.Engine;
+import org.opensecurity.sms.model.lastMessageList.ArrayConversAdapter;
+import org.opensecurity.sms.model.lastMessageList.ConversationLine;
 
 import java.util.ArrayList;
 
@@ -192,7 +192,7 @@ public class OpenSecuritySMS extends Activity {
      * This function is used to update this activity when it's necessary.
      */
     public void update() {
-        setConversationLines(Controller.getInstance().loadLastMessages(this.getContentResolver()));
+        setConversationLines(Engine.getInstance().loadLastMessages(this.getContentResolver()));
 
         /**
          * The listView conversationList will be showed in the activity thanks to the

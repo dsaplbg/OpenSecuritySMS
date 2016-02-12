@@ -1,25 +1,7 @@
-package org.opensecurity.sms.model.modelView.listConversation;
+package org.opensecurity.sms.model.lastMessageList;
 
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.provider.MediaStore;
-import android.util.Log;
-
-import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.Contact;
-import org.opensecurity.sms.view.ConversationActivity;
-import org.opensecurity.sms.view.OpenSecuritySMS;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

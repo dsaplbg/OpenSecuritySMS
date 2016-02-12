@@ -1,14 +1,7 @@
-package org.opensecurity.sms.model.modelView.listConversation;
+package org.opensecurity.sms.model.lastMessageList;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.PaintDrawable;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
