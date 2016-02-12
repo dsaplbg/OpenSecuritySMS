@@ -13,8 +13,8 @@ import android.widget.ListView;
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.Engine;
+import org.opensecurity.sms.model.discussion.Message;
 import org.opensecurity.sms.model.lastMessageList.ArrayConversAdapter;
-import org.opensecurity.sms.model.lastMessageList.ConversationLine;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class OpenSecuritySMS extends Activity {
     /**
      * The arrayList to keep objects of conversationLine
      */
-    private ArrayList<ConversationLine> conversationLines;
+    private ArrayList<Message> messages;
 
     /**
      * The adapter for design the current activity
@@ -67,8 +67,8 @@ public class OpenSecuritySMS extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_security_sms);
 
-        this.conversationLines = new ArrayList<ConversationLine>();
-        this.adapter = new ArrayConversAdapter(getBaseContext(), this.conversationLines);
+        this.messages = new ArrayList<>();
+        this.adapter = new ArrayConversAdapter(getBaseContext(), this.messages);
 
         this.conversationList = (ListView) findViewById(R.id.listeConvers);
         this.conversationList.setAdapter(this.adapter);
@@ -141,7 +141,7 @@ public class OpenSecuritySMS extends Activity {
     @Override
     public void onSaveInstanceState(Bundle b) {
         super.onSaveInstanceState(b);
-        b.putSerializable("ConversSerialization", getConversationLines());
+        b.putSerializable("ConversSerialization", getMessages());
     }
 
     /**
@@ -152,7 +152,7 @@ public class OpenSecuritySMS extends Activity {
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         try {
-            setConversationLines((ArrayList<ConversationLine>) savedInstanceState.getSerializable("ConversSerialization"));
+            setMessages((ArrayList<Message>) savedInstanceState.getSerializable("ConversSerialization"));
         } catch (Exception e) {
             System.err.println("Error : the arrayList of conversationLine can't be saved !");
         }
@@ -171,20 +171,20 @@ public class OpenSecuritySMS extends Activity {
     /**
      * to return the data of conversations (arrayList)
      *
-     * @return the arrayList of conversationLines
+     * @return the arrayList of messages
      */
-    public ArrayList<ConversationLine> getConversationLines() {
-        return conversationLines;
+    public ArrayList<Message> getMessages() {
+        return messages;
     }
 
     /**
-     * to set the data of conversationLines
+     * to set the data of messages
      *
-     * @param conversationLines arrayList of conversationLines
+     * @param messages arrayList of messages
      */
-    public void setConversationLines(ArrayList<ConversationLine> conversationLines) {
-        getConversationLines().clear();
-        getConversationLines().addAll(conversationLines);
+    public void setMessages(ArrayList<Message> messages) {
+        getMessages().clear();
+        getMessages().addAll(messages);
         getAdapter().notifyDataSetChanged();
     }
 
@@ -192,11 +192,11 @@ public class OpenSecuritySMS extends Activity {
      * This function is used to update this activity when it's necessary.
      */
     public void update() {
-        setConversationLines(Engine.getInstance().loadLastMessages(this.getContentResolver()));
+        setMessages(Engine.getInstance().loadLastMessages(this.getContentResolver()));
 
         /**
          * The listView conversationList will be showed in the activity thanks to the
-         * Override of child class ArrayConversAdapter and getView method. and conversationLines is
+         * Override of child class ArrayConversAdapter and getView method. and messages is
          * the support(data of conversationLine information).
          */
 
@@ -215,7 +215,7 @@ public class OpenSecuritySMS extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
-                intent.putExtra("Contact", getConversationLines().get(position).getContact());
+                intent.putExtra("Contact", getMessages().get(position).getContact());
                 startActivity(intent);
             }
         });

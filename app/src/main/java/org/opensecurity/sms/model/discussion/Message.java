@@ -1,12 +1,15 @@
 package org.opensecurity.sms.model.discussion;
 
+import org.opensecurity.sms.model.Contact;
+
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
  * Message contains every elements a message should have
  */
-public class Message {
+public class Message implements Serializable{
 
     /**
      * The message content. Currently String so won't support MMS !
@@ -17,6 +20,8 @@ public class Message {
      * true if it's a message send by me. False if not
      */
     private boolean sendByMe;
+
+    private Contact contact;
 
     /**
      * The message date
@@ -33,9 +38,10 @@ public class Message {
      * @param sendByMe
      *          True if send by the phone, False if not
      */
-    public Message(String content, Calendar date, boolean sendByMe) {
+    public Message(String content, Calendar date, Contact contact, boolean sendByMe) {
         setContent(content);
         setDate(date);
+        setContact(contact);
         setSendByMe(sendByMe);
     }
 
@@ -67,8 +73,31 @@ public class Message {
      *          The human readable date
      */
     public String getManagedDate() {
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        return format.format(getDate().getTime());
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
+
+        Calendar dayWeek = (Calendar) today.clone();
+        dayWeek.set(Calendar.DAY_OF_WEEK, dayWeek.getFirstDayOfWeek());
+
+        Calendar dateMsg = (Calendar) getDate().clone();
+        dateMsg.set(Calendar.HOUR_OF_DAY, 0);
+        dateMsg.set(Calendar.MINUTE, 0);
+        dateMsg.set(Calendar.SECOND, 0);
+        dateMsg.set(Calendar.MILLISECOND, 0);
+
+        if (dateMsg.compareTo(today) == 0) {
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            return format.format(getDate().getTime());
+        } else if (dateMsg.compareTo(dayWeek) >= 0) {
+            SimpleDateFormat format = new SimpleDateFormat("E");
+            return format.format(getDate().getTime());
+        } else {
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/y");
+            return format.format(getDate().getTime());
+        }
     }
 
     /**
@@ -123,5 +152,16 @@ public class Message {
 
     public void setDate(Calendar date) {
         this.date = date;
+    }
+
+    /**
+     * Contact who wrote the message
+     */
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 }

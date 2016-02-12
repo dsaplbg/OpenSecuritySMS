@@ -255,14 +255,6 @@ public class ConversationActivity extends Activity {
         this.setTitle(contact.getName());
     }
 
-
-    public void createBubble() {
-        Message b = new Message(textMessage.getText().toString(), GregorianCalendar.getInstance(), true);
-        bubbleData.add(b);
-        this.bubbleList.setAdapter(this.adapter);
-    }
-
-
     /**
      *
      * @param intent

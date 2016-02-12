@@ -23,7 +23,6 @@ import android.telephony.TelephonyManager;
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.activities.OpenSecuritySMS;
 import org.opensecurity.sms.model.discussion.Message;
-import org.opensecurity.sms.model.lastMessageList.ConversationLine;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -137,11 +136,11 @@ public class Engine {
      * @param contentResolver the contentResolver of the activity
      * @return an ArrayList of ConversationLine containing every last message for every contact
      */
-    public ArrayList<ConversationLine> loadLastMessages(ContentResolver contentResolver) {
+    public ArrayList<Message> loadLastMessages(ContentResolver contentResolver) {
         //Empty all contacts
         listContacts.clear();
         //create a ArrayList of ConversationLine object.
-        ArrayList<ConversationLine> conversationLines = new ArrayList<ConversationLine>();
+        ArrayList<Message> messages = new ArrayList<>();
 
         // We want to get the sms  with some of their attributes
         //SELECT distinct ADDRESS, Body, Type, Thread_id, Date FROM content://sms/ WHERE Address is not null  GROUP BY thread_id
@@ -172,13 +171,14 @@ public class Engine {
                     // we add a new ConversationLine with an id to send to the conversationActivity.
                     contact.setThreadId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID))));
                     contact.setNbMessages(nbMessages);
-                    conversationLines.add(new ConversationLine(contact, smsContent, date));
+                    messages.add(new Message(smsContent, date, contact,
+                            cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT));
                 }
             } while (cursor.moveToNext());
         }
         cursor.close();
 
-        return conversationLines;
+        return messages;
     }
 
     /**
@@ -214,7 +214,7 @@ public class Engine {
                     content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     Calendar date = Calendar.getInstance();
                     date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
-                    Message message = new Message(content, date, isMe);
+                    Message message = new Message(content, date, contact, isMe);
 
                     bubbleData.add(0, message);
                 } while (cursor.moveToNext());

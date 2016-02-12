@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
+import org.opensecurity.sms.model.discussion.Message;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class ArrayConversAdapter extends ArrayAdapter {
      * @param context
      * @param rep
      */
-    public ArrayConversAdapter(Context context, List<ConversationLine> rep){
+    public ArrayConversAdapter(Context context, List<Message> rep){
         super(context, R.layout.listofconvers, rep);
         this.mLayoutInflater = LayoutInflater.from(context);
         this.contentResolver = context.getContentResolver();
@@ -99,10 +100,10 @@ public class ArrayConversAdapter extends ArrayAdapter {
         //Color c = new Color();
         //rowView.setBackgroundColor(c.argb(50,250,250,190));
 
-        ConversationLine convers = (ConversationLine) getItem(position);
+        Message convers = (Message) getItem(position);
         holder.photo.setImageBitmap(convers.getContact().getPhoto(contentResolver));
         holder.name.setText(convers.getContact().getName());
-        holder.latestCon.setText(convers.getLatestMessage());
+        holder.latestCon.setText(convers.getContent());
         holder.date.setText(convers.getManagedDate());
 
         holder.latestCon.setPadding(5,10,0,15);

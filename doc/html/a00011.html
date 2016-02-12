@@ -126,7 +126,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a75e7cb8078fb5fdb58b09524fdd9e1d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65bc274b44a44cb00ba767e86e50ee83"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a65bc274b44a44cb00ba767e86e50ee83">getConversationLines</a> ()</td></tr>
 <tr class="separator:a65bc274b44a44cb00ba767e86e50ee83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75b300477b934b09cac51aaa4c96b245"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a75b300477b934b09cac51aaa4c96b245">setConversationLines</a> (ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt; <a class="el" href="a00011.html#aa533b62d6a728d5400683c4d6c0d8334">conversationLines</a>)</td></tr>
+<tr class="memitem:a75b300477b934b09cac51aaa4c96b245"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a75b300477b934b09cac51aaa4c96b245">setConversationLines</a> (ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt; <a class="el" href="a00011.html#aa533b62d6a728d5400683c4d6c0d8334">messages</a>)</td></tr>
 <tr class="separator:a75b300477b934b09cac51aaa4c96b245"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5c54df7ed3b930268c8d7752c101725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#ac5c54df7ed3b930268c8d7752c101725">update</a> ()</td></tr>
 <tr class="separator:ac5c54df7ed3b930268c8d7752c101725"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,7 +149,7 @@ Protected Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a8e078b92f7b56733d32456ce00dbdbec"><td class="memItemLeft" align="right" valign="top">ListView&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a8e078b92f7b56733d32456ce00dbdbec">conversationList</a></td></tr>
 <tr class="separator:a8e078b92f7b56733d32456ce00dbdbec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa533b62d6a728d5400683c4d6c0d8334"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aa533b62d6a728d5400683c4d6c0d8334">conversationLines</a></td></tr>
+<tr class="memitem:aa533b62d6a728d5400683c4d6c0d8334"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aa533b62d6a728d5400683c4d6c0d8334">messages</a></td></tr>
 <tr class="separator:aa533b62d6a728d5400683c4d6c0d8334"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2834b1dbc07b7f58625003ba7265618f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00003.html">ArrayConversAdapter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a2834b1dbc07b7f58625003ba7265618f">adapter</a></td></tr>
 <tr class="separator:a2834b1dbc07b7f58625003ba7265618f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,7 +199,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>to return the data of conversations (arrayList) </p><dl class="section return"><dt>Returns</dt><dd>the arrayList of conversationLines </dd></dl>
+<p>to return the data of conversations (arrayList) </p><dl class="section return"><dt>Returns</dt><dd>the arrayList of messages </dd></dl>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -462,14 +462,14 @@ Here is the call graph for this function:</div>
           <td class="memname">void setConversationLines </td>
           <td>(</td>
           <td class="paramtype">ArrayList&lt; <a class="el" href="a00008.html">ConversationLine</a> &gt;&#160;</td>
-          <td class="paramname"><em>conversationLines</em></td><td>)</td>
+          <td class="paramname"><em>messages</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>to set the data of conversationLines </p><dl class="params"><dt>Parameters</dt><dd>
+<p>to set the data of messages </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">conversationLines</td><td>arrayList of conversationLines </td></tr>
+    <tr><td class="paramname">messages</td><td>arrayList of messages </td></tr>
   </table>
   </dd>
 </dl>
@@ -507,7 +507,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p>This function is used to update this activity when it's necessary. </p>
-<p>The listView conversationList will be showed in the activity thanks to the Override of child class ArrayConversAdapter and getView method. and conversationLines is the support(data of conversationLine information).</p>
+<p>The listView conversationList will be showed in the activity thanks to the Override of child class ArrayConversAdapter and getView method. and messages is the support(data of conversationLine information).</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -559,7 +559,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ArrayList&lt;<a class="el" href="a00008.html">ConversationLine</a>&gt; conversationLines</td>
+          <td class="memname">ArrayList&lt;<a class="el" href="a00008.html">ConversationLine</a>&gt; messages</td>
         </tr>
       </table>
   </td>
