@@ -16,5 +16,8 @@ Every ideas are welcome ! Suggest yours in the [ISSUE](https://github.com/OpenSe
 
 TODO
 ----
-- [ ] Restructure code
-- [ ] Work on new design for the message list
+- [ ] Restructure code (partially done)
+- [ ] Remove lastMessageList package
+- [ ] Add color to a contact
+- [ ] Rounded edges for contact picture
+- [ ] Customize color for chat bubble
