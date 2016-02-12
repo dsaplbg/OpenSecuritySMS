@@ -1,4 +1,4 @@
-package org.opensecurity.sms.model.talk;
+package org.opensecurity.sms.model.discussion;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -21,7 +21,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
     /**
      * the bubbles of our conversation in a arrayList
      */
-    private ArrayList<ConversationItem> mBubbles;
+    private ArrayList<Message> mBubbles;
 
     /**
      * to instantiates a layout XML file into its corresponding view objects
@@ -40,7 +40,7 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
      * @param c context interface to global information about an application environment.
      * @param mb arrayList of bubbles
      */
-    public ArrayBubbleAdapter(Context c, ArrayList<ConversationItem> mb) {
+    public ArrayBubbleAdapter(Context c, ArrayList<Message> mb) {
         super(c, R.layout.bubble_item, mb);
         mBubbles = mb;
         mLayoutInflater = LayoutInflater.from(c);
@@ -99,19 +99,19 @@ public class ArrayBubbleAdapter extends ArrayAdapter {
             holder = (ViewHolder) bubbleViewRow.getTag();
         }
 
-        ConversationItem item = mBubbles.get(position);
+        Message item = mBubbles.get(position);
 
         /**
-         * if it's an instance of Bubble, we create an item with a messageBody, imageBubble etc...
+         * if it's an instance of Message, we create an item with a messageBody, imageBubble etc...
          * Else, We write the date.
          */
-        if (item instanceof Bubble) {
-            Bubble bubble = (Bubble) item;
-            holder.messageBody.setText(bubble.getContent());
+        if (item instanceof Message) {
+            Message message = (Message) item;
+            holder.messageBody.setText(message.getContent());
 
             holder.messageBody.setMaxWidth((int) (parent.getWidth() * 0.9));
             LinearLayout layout = (LinearLayout) bubbleViewRow.findViewById(R.id.layoutBubble);
-            if (bubble.isSendByMe()) {
+            if (message.isSendByMe()) {
                 holder.messageBody.setBackgroundResource(R.drawable.bulle_me);
                 layout.setGravity(Gravity.RIGHT);
             } else {

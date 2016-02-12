@@ -1,15 +1,15 @@
-package org.opensecurity.sms.model.talk;
+package org.opensecurity.sms.model.discussion;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * class bubble. On of conversationItem. Possible row in a conversationActivity.
+ * Message contains every elements a message should have
  */
-public class Bubble extends ConversationItem {
+public class Message {
 
     /**
-     * the text into a conversationItem
+     * The message content. Currently String so won't support MMS !
      */
     private String content;
 
@@ -17,6 +17,11 @@ public class Bubble extends ConversationItem {
      * true if it's a message send by me. False if not
      */
     private boolean sendByMe;
+
+    /**
+     * The message date
+     */
+    private Calendar date;
 
     /**
      * Constructor
@@ -28,9 +33,9 @@ public class Bubble extends ConversationItem {
      * @param sendByMe
      *          True if send by the phone, False if not
      */
-    public Bubble(String content, Calendar date, boolean sendByMe) {
-        super(date);
+    public Message(String content, Calendar date, boolean sendByMe) {
         setContent(content);
+        setDate(date);
         setSendByMe(sendByMe);
     }
 
@@ -61,10 +66,30 @@ public class Bubble extends ConversationItem {
      * @return
      *          The human readable date
      */
-    @Override
     public String getManagedDate() {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         return format.format(getDate().getTime());
+    }
+
+    /**
+     * to know if we have to managed the date
+     * @param date the date to compare
+     * @return true if it's the same date as today
+     */
+    public boolean hasToManagedDate(Calendar date) {
+        date = (Calendar) date.clone();
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+
+        Calendar dateMsg = (Calendar) getDate().clone();
+        dateMsg.set(Calendar.HOUR_OF_DAY, 0);
+        dateMsg.set(Calendar.MINUTE, 0);
+        dateMsg.set(Calendar.SECOND, 0);
+        dateMsg.set(Calendar.MILLISECOND, 0);
+
+        return dateMsg.compareTo(date) != 0;
     }
 
     /**
@@ -87,5 +112,16 @@ public class Bubble extends ConversationItem {
      */
     public void setSendByMe(boolean sendByMe) {
         this.sendByMe = sendByMe;
+    }
+
+    /**
+     * The date of a message
+     */
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
     }
 }

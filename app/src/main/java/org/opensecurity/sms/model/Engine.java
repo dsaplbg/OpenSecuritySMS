@@ -22,8 +22,7 @@ import android.telephony.TelephonyManager;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.activities.OpenSecuritySMS;
-import org.opensecurity.sms.model.talk.Bubble;
-import org.opensecurity.sms.model.talk.ConversationItem;
+import org.opensecurity.sms.model.discussion.Message;
 import org.opensecurity.sms.model.lastMessageList.ConversationLine;
 
 import java.io.Serializable;
@@ -191,9 +190,9 @@ public class Engine {
      * @param limit           the limit of bubble what we want to load. (to dispence to load all bubbles)
      * @return bubbleData the ArrayList of Bubbles in a conversation.
      */
-    public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver,
+    public ArrayList<Message> loadMessages(ContentResolver contentResolver,
                                                     Contact contact, int offset, int limit) {
-        ArrayList<ConversationItem> bubbleData = new ArrayList<>();
+        ArrayList<Message> bubbleData = new ArrayList<>();
         String content;
         boolean isMe;
         Calendar lastDate = Calendar.getInstance();
@@ -215,13 +214,9 @@ public class Engine {
                     content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     Calendar date = Calendar.getInstance();
                     date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
-                    Bubble bubble = new Bubble(content, date, isMe);
-                    if (lastDate != date && bubble.hasToManagedDate(lastDate)) {
-                        bubbleData.add(0, new ConversationItem(date));
-                    }
-                    lastDate = date;
+                    Message message = new Message(content, date, isMe);
 
-                    bubbleData.add(0, bubble);
+                    bubbleData.add(0, message);
                 } while (cursor.moveToNext());
             }
             cursor.close();

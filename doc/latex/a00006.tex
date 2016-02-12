@@ -30,7 +30,7 @@ boolean \hyperlink{a00006_a37a55c533c74b60c0290ef1329d74e65}{on\+Options\+Item\+
 \item 
 void \hyperlink{a00006_a92b8e0730130e1184a8cdbd89590779d}{listeners} ()
 \item 
-void \hyperlink{a00006_a1e3fee8580ec4092ffc6e3ce9d44f2b9}{set\+Bubble\+Data} (Array\+List$<$ \hyperlink{a00007}{Conversation\+Item} $>$ \hyperlink{a00006_a68544a0bda28776dfb51718a3c71bf69}{bubble\+Data})
+void \hyperlink{a00006_a1e3fee8580ec4092ffc6e3ce9d44f2b9}{set\+Bubble\+Data} (Array\+List$<$ \hyperlink{a00007}{Conversation\+Item} $>$ \hyperlink{a00006_a68544a0bda28776dfb51718a3c71bf69}{message\+Data})
 \item 
 Array\+List$<$ \hyperlink{a00007}{Conversation\+Item} $>$ \hyperlink{a00006_ac8e14177e6079becbb8bc1f8b35197e0}{get\+Bubble\+Data} ()
 \item 
@@ -63,11 +63,11 @@ void \hyperlink{a00006_a85e87cb5ced88dff7c8173ecc4f636d1}{on\+Create} (Bundle sa
 \item 
 \hyperlink{a00005}{Contact} \hyperlink{a00006_a3459849ab29ad684658dbcd0cf8c5d5a}{contact}
 \item 
-Array\+List$<$ \hyperlink{a00007}{Conversation\+Item} $>$ \hyperlink{a00006_a68544a0bda28776dfb51718a3c71bf69}{bubble\+Data}
+Array\+List$<$ \hyperlink{a00007}{Conversation\+Item} $>$ \hyperlink{a00006_a68544a0bda28776dfb51718a3c71bf69}{message\+Data}
 \item 
 \hyperlink{a00002}{Array\+Bubble\+Adapter} \hyperlink{a00006_adaad4a865e59995c45ef2ad13f6e88a9}{adapter}
 \item 
-Swipe\+Menu\+List\+View \hyperlink{a00006_ae5bb074a89738fa417e643960b0041c6}{bubble\+List}
+Swipe\+Menu\+List\+View \hyperlink{a00006_ae5bb074a89738fa417e643960b0041c6}{message\+List}
 \item 
 Edit\+Text \hyperlink{a00006_abc418be8d11246756bfcb7f95123a88d}{text\+Message}
 \item 
@@ -113,8 +113,8 @@ Here is the caller graph for this function\+:
 {}
 \end{DoxyParamCaption}
 )}}\label{a00006_ac8e14177e6079becbb8bc1f8b35197e0}
-Just return the bubble\+Data which are loaded in the activity \begin{DoxyReturn}{Returns}
-bubble\+Data of current activity 
+Just return the message\+Data which are loaded in the activity \begin{DoxyReturn}{Returns}
+message\+Data of current activity
 \end{DoxyReturn}
 
 
@@ -223,7 +223,7 @@ Here is the caller graph for this function\+:
 {}
 \end{DoxyParamCaption}
 )}}\label{a00006_a92b8e0730130e1184a8cdbd89590779d}
-contains listeners of the activity First listener. We call send\+S\+M\+S function and after that, if the sms exists, we create a new bubble and we reload the Adapter.
+contains listeners of the activity First listener. We call send\+S\+M\+S function and after that, if the sms exists, we create a new message and we reload the Adapter.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -333,12 +333,12 @@ Here is the call graph for this function\+:
 \index{set\+Bubble\+Data@{set\+Bubble\+Data}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
 \subsubsection[{set\+Bubble\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Bubble\+Data (
 \begin{DoxyParamCaption}
-\item[{Array\+List$<$ {\bf Conversation\+Item} $>$}]{bubble\+Data}
+\item[{Array\+List$<$ {\bf Conversation\+Item} $>$}]{message\+Data}
 \end{DoxyParamCaption}
 )}}\label{a00006_a1e3fee8580ec4092ffc6e3ce9d44f2b9}
 Just set the Array\+List of Bubbles in the activity. 
 \begin{DoxyParams}{Parameters}
-{\em bubble\+Data} & the data that we want to load \\
+{\em message\+Data} & the data that we want to load \\
 \hline
 \end{DoxyParams}
 
@@ -450,12 +450,12 @@ Here is the caller graph for this function\+:
 \hypertarget{a00006_adaad4a865e59995c45ef2ad13f6e88a9}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!adapter@{adapter}}
 \index{adapter@{adapter}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
 \subsubsection[{adapter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Array\+Bubble\+Adapter} adapter\hspace{0.3cm}{\ttfamily [private]}}}\label{a00006_adaad4a865e59995c45ef2ad13f6e88a9}
-The adapter for this activity \hypertarget{a00006_a68544a0bda28776dfb51718a3c71bf69}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!bubble\+Data@{bubble\+Data}}
-\index{bubble\+Data@{bubble\+Data}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{bubble\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Conversation\+Item}$>$ bubble\+Data\hspace{0.3cm}{\ttfamily [private]}}}\label{a00006_a68544a0bda28776dfb51718a3c71bf69}
-The array to keep bubbles. We load messages into this array \hypertarget{a00006_ae5bb074a89738fa417e643960b0041c6}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!bubble\+List@{bubble\+List}}
-\index{bubble\+List@{bubble\+List}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
-\subsubsection[{bubble\+List}]{\setlength{\rightskip}{0pt plus 5cm}Swipe\+Menu\+List\+View bubble\+List\hspace{0.3cm}{\ttfamily [private]}}}\label{a00006_ae5bb074a89738fa417e643960b0041c6}
+The adapter for this activity \hypertarget{a00006_a68544a0bda28776dfb51718a3c71bf69}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!message\+Data@{message\+Data}}
+\index{message\+Data@{message\+Data}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
+\subsubsection[{message\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Array\+List$<${\bf Conversation\+Item}$>$ message\+Data\hspace{0.3cm}{\ttfamily [private]}}}\label{a00006_a68544a0bda28776dfb51718a3c71bf69}
+The array to keep bubbles. We load messages into this array \hypertarget{a00006_ae5bb074a89738fa417e643960b0041c6}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!message\+List@{message\+List}}
+\index{message\+List@{message\+List}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
+\subsubsection[{message\+List}]{\setlength{\rightskip}{0pt plus 5cm}Swipe\+Menu\+List\+View message\+List\hspace{0.3cm}{\ttfamily [private]}}}\label{a00006_ae5bb074a89738fa417e643960b0041c6}
 The liste\+View for displaying bubbles \hypertarget{a00006_a3459849ab29ad684658dbcd0cf8c5d5a}{\index{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}!contact@{contact}}
 \index{contact@{contact}!org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity@{org\+::opensecurity\+::sms\+::view\+::\+Conversation\+Activity}}
 \subsubsection[{contact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Contact} contact\hspace{0.3cm}{\ttfamily [private]}}}\label{a00006_a3459849ab29ad684658dbcd0cf8c5d5a}

@@ -23,9 +23,8 @@ import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.Engine;
-import org.opensecurity.sms.model.talk.ArrayBubbleAdapter;
-import org.opensecurity.sms.model.talk.Bubble;
-import org.opensecurity.sms.model.talk.ConversationItem;
+import org.opensecurity.sms.model.discussion.ArrayBubbleAdapter;
+import org.opensecurity.sms.model.discussion.Message;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -52,7 +51,7 @@ public class ConversationActivity extends Activity {
     /**
      * The array to keep bubbles. We load messages into this array
      */
-    private ArrayList<ConversationItem> bubbleData;
+    private ArrayList<Message> bubbleData;
 
     /**
      * The adapter for this activity
@@ -94,7 +93,7 @@ public class ConversationActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_conversation);
 
-        this.bubbleData = new ArrayList<ConversationItem>();
+        this.bubbleData = new ArrayList<>();
 
         this.bubbleList = (SwipeMenuListView) findViewById(R.id.bubbleList);
         this.bubbleList.setStackFromBottom(true);
@@ -104,7 +103,7 @@ public class ConversationActivity extends Activity {
 
             @Override
             public void create(SwipeMenu menu) {
-                if (getAdapter().getItem(menu.getViewType()) instanceof Bubble) {
+                if (getAdapter().getItem(menu.getViewType()) instanceof Message) {
                     // create "open" item
                     SwipeMenuItem openItem = new SwipeMenuItem(getApplicationContext());
                     // set item background
@@ -112,7 +111,7 @@ public class ConversationActivity extends Activity {
                     // set item width
                     openItem.setWidth(150);
                     // set item title
-                    openItem.setTitle(((ConversationItem) getAdapter().getItem(menu.getViewType())).getManagedDate());
+                    openItem.setTitle(((Message) getAdapter().getItem(menu.getViewType())).getManagedDate());
                     // set item title fontsize
                     openItem.setTitleSize(13);
                     // set item title font color
@@ -209,7 +208,7 @@ public class ConversationActivity extends Activity {
      * Just set the ArrayList of Bubbles in the activity.
      * @param bubbleData the data that we want to load
      */
-    public void setBubbleData(ArrayList<ConversationItem> bubbleData) {
+    public void setBubbleData(ArrayList<Message> bubbleData) {
         getBubbleData().clear();
         getBubbleData().addAll(bubbleData);
 
@@ -221,7 +220,7 @@ public class ConversationActivity extends Activity {
      * Just return the bubbleData which are loaded in the activity
      * @return bubbleData of current activity
      */
-    public ArrayList<ConversationItem> getBubbleData() {
+    public ArrayList<Message> getBubbleData() {
         return this.bubbleData;
     }
 
@@ -258,7 +257,7 @@ public class ConversationActivity extends Activity {
 
 
     public void createBubble() {
-        Bubble b = new Bubble(textMessage.getText().toString(), GregorianCalendar.getInstance(), true);
+        Message b = new Message(textMessage.getText().toString(), GregorianCalendar.getInstance(), true);
         bubbleData.add(b);
         this.bubbleList.setAdapter(this.adapter);
     }

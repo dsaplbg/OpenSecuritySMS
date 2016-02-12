@@ -20,4 +20,4 @@ TODO
 - [ ] Remove lastMessageList package
 - [ ] Add color to a contact
 - [ ] Rounded edges for contact picture
-- [ ] Customize color for chat bubble
+- [ ] Customize color for chat message
