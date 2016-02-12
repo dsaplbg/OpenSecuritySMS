@@ -1,12 +1,17 @@
 package org.opensecurity.sms.model.database;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import org.opensecurity.sms.model.Contact;
+
+import java.util.HashMap;
 
 /**
  * Created by loft-2015-asus on 24/01/16.
@@ -50,7 +55,7 @@ public class ContactDAO {
           //  Toast.makeText(currentContex, c.getName() + " found", Toast.LENGTH_LONG).show();
             return c;
         } catch (Exception e) {
-            System.out.println("Erreur : je suis dans le catch");
+            System.out.println("Erreur : je suis dans le catch" + e.toString());
         }
         return null;
     }
@@ -75,6 +80,7 @@ public class ContactDAO {
         } catch (Exception e) {
             System.out.println("ERROR : Cannot insert contact ! ");
         } finally {
+            System.out.println("Juste avant endTransaction");
             database.endTransaction();
           //  Toast.makeText(currentContex.getApplicationContext(), "Contact inserted", Toast.LENGTH_LONG).show();
         }
@@ -82,9 +88,36 @@ public class ContactDAO {
 
     public void deleteAllContactOSMS(){
         try {
-            database.execSQL("DELETE FROM "+DatabaseHandler.CONTACT_TABLE_NAME);
+            database.execSQL("DELETE FROM " + DatabaseHandler.CONTACT_TABLE_NAME);
         } catch (Exception e) {
             Log.d("Error", "Dont able to delete all elements of "+DatabaseHandler.CONTACT_TABLE_NAME);
         }
+    }
+
+    /**
+     * This function has to return a contact Object thanks to a phoneNumber and an access
+     * to the android dataBase
+     *
+     * @param phoneNumber     the phoneNumber of a Contact in your phone.
+     * @param contentResolver to manage access to a structured set of data in your phone
+     * @return the contact who has this phoneNumber
+     */
+    public Contact findContactByPhoneNumberInDefaultBase(String phoneNumber, ContentResolver contentResolver, HashMap<String, Contact> listContacts) {
+        if (listContacts.containsKey(phoneNumber)) return listContacts.get(phoneNumber);
+
+        Contact contact = new Contact(phoneNumber);
+        Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
+        Cursor localCursor = contentResolver.query(personUri,
+                new String[]{ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_THUMBNAIL_URI},
+                null,
+                null,
+                null);
+        if (localCursor.moveToFirst()) {
+            contact.setName(localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)));
+            contact.setPhotoURL(localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
+        }
+        localCursor.close();
+
+        return contact;
     }
 }

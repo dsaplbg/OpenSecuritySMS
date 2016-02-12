@@ -33,11 +33,15 @@ public class OpenSecuritySMS extends Activity {
     private static OpenSecuritySMS instance;
 
     /**
+     * the engine of main class
+     */
+    private Engine engine;
+
+    /**
      * the listView of conversations
      */
     private ListView conversationList;
 
-    private ContactDAO contactDAO;
     /**
      * The arrayList to keep objects of conversationLine
      */
@@ -74,12 +78,12 @@ public class OpenSecuritySMS extends Activity {
         this.conversationList.setAdapter(this.adapter);
 
         instance = this;
-
+        setEngine(new Engine(this.getApplicationContext()));
+        getEngine().getContactDAO().openDb();
         update();
         listeners();
 
-        contactDAO = new ContactDAO(getApplicationContext());
-        contactDAO.openDb();
+
         instance = this;
 
 
@@ -126,7 +130,7 @@ public class OpenSecuritySMS extends Activity {
         }
 
         if (id == R.id.deleteAllElementsOfTable) {
-            contactDAO.deleteAllContactOSMS();
+            this.getEngine().getContactDAO().deleteAllContactOSMS();
             return true;
         }
 
@@ -192,15 +196,7 @@ public class OpenSecuritySMS extends Activity {
      * This function is used to update this activity when it's necessary.
      */
     public void update() {
-        setMessages(Engine.getInstance().loadLastMessages(this.getContentResolver()));
-
-        /**
-         * The listView conversationList will be showed in the activity thanks to the
-         * Override of child class ArrayConversAdapter and getView method. and messages is
-         * the support(data of conversationLine information).
-         */
-
-
+        setMessages(this.getEngine().loadLastMessages(this.getContentResolver()));
     }
 
 
@@ -232,17 +228,24 @@ public class OpenSecuritySMS extends Activity {
         return adapter;
     }
 
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
 
     @Override
     protected void onResume() {
-        contactDAO.openDb();
+        getEngine().getContactDAO().openDb();
         super.onResume();
     }
 
 
     @Override
     protected void onPause() {
-        contactDAO.closeDb();
+        getEngine().getContactDAO().closeDb();
         super.onPause();
     }
 }

@@ -30,6 +30,7 @@ public class PopupConversationActivity extends Activity implements GestureDetect
      */
     private GestureDetectorCompat mDetector;
 
+    private Engine engine;
     /**
      * the contact who send an sms
      */
@@ -58,6 +59,7 @@ public class PopupConversationActivity extends Activity implements GestureDetect
         this.messageText.setText(((String) getIntent().getExtras().get("Message")));
         setContact(((Contact) getIntent().getExtras().get("Contact")));
 
+        setEngine(new Engine(this.getApplicationContext()));
         listeners();
     }
 
@@ -72,7 +74,7 @@ public class PopupConversationActivity extends Activity implements GestureDetect
         this.buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textSend.getText().length() > 0 && Engine.getInstance().sendSMS(getBaseContext(), getContact(), textSend.getText().toString())) {
+                if (textSend.getText().length() > 0 && getEngine().sendSMS(getBaseContext(), getContact(), textSend.getText().toString())) {
                     finish();
                 }
             }
@@ -115,6 +117,15 @@ public class PopupConversationActivity extends Activity implements GestureDetect
             getWindow().setLayout((int) (width * .7), (int) (height * .8));
         }
     }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event){

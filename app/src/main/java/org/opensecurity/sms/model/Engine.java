@@ -22,6 +22,7 @@ import android.telephony.TelephonyManager;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.activities.OpenSecuritySMS;
+import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.discussion.Message;
 
 import java.io.Serializable;
@@ -50,13 +51,16 @@ public class Engine {
      */
     private static volatile Engine instance = null;
 
+    /**
+     * the DAO to access to the database with contact functions
+     */
+    private ContactDAO contactDAO;
 
     /**
-     * private (because of singleton) constructor
+     * the context of the app
      */
-    private Engine() {
+    private Context context;
 
-    }
 
     public static final String SMS_EXTRA_NAME = "pdus";
     public static final String SMS_URI = "content://sms";
@@ -79,54 +83,12 @@ public class Engine {
     public static final int MESSAGE_IS_NOT_SEEN = 0;
     public static final int MESSAGE_IS_SEEN = 1;
 
-
     /**
-     * Méthode permettant de renvoyer une instance de la classe Singleton
-     *
-     * @return Retourne l'instance du singleton.
+     * private (because of singleton) constructor
      */
-    public final static Engine getInstance() {
-        //Le "Double-Checked Singleton"/"Singleton doublement vérifié" permet
-        //d'éviter un appel coûteux à synchronized,
-        //une fois que l'instanciation est faite.
-        if (Engine.instance == null) {
-            // Le mot-clé synchronized sur ce bloc empêche toute instanciation
-            // multiple même par différents "threads".
-            // Il est TRES important.
-            synchronized (Engine.class) {
-                if (Engine.instance == null) {
-                    Engine.instance = new Engine();
-                }
-            }
-        }
-        return Engine.instance;
-    }
-
-    /**
-     * This function has to return a contact Object thanks to a phoneNumber and an access
-     * to the android dataBase
-     *
-     * @param phoneNumber     the phoneNumber of a Contact in your phone.
-     * @param contentResolver to manage access to a structured set of data in your phone
-     * @return the contact who has this phoneNumber
-     */
-    public Contact findContactByPhoneNumberInDefaultBase(String phoneNumber, ContentResolver contentResolver) {
-        if (listContacts.containsKey(phoneNumber)) return listContacts.get(phoneNumber);
-
-        Contact contact = new Contact(phoneNumber);
-        Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
-        Cursor localCursor = contentResolver.query(personUri,
-                new String[]{ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_THUMBNAIL_URI},
-                null,
-                null,
-                null);
-        if (localCursor.moveToFirst()) {
-            contact.setName(localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)));
-            contact.setPhotoURL(localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
-        }
-        localCursor.close();
-
-        return contact;
+    public Engine(Context context) {
+        setContext(context);
+        setContactDAO(new ContactDAO(this.getContext()));
     }
 
     /**
@@ -157,7 +119,7 @@ public class Engine {
             Contact contact;
             do {
                 phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-                contact = findContactByPhoneNumberInDefaultBase(phoneNumber, contentResolver);
+                contact = this.getContactDAO().findContactByPhoneNumberInDefaultBase(phoneNumber, contentResolver, listContacts);
                 // if we don't already have this phoneNumber in the list
                 if ((!listContacts.containsKey(contact.getNumber())) && (phoneNumber.length() >= 1)) {
                     listContacts.put(contact.getNumber(), contact);
@@ -307,7 +269,7 @@ public class Engine {
         }
 
         // Push row into the SMS table
-        contentResolver.insert( Uri.parse( SMS_URI ), values );
+        contentResolver.insert(Uri.parse(SMS_URI), values);
     }
     /**
      * This function is use to initialize, create and display a notification in Android.
@@ -347,5 +309,21 @@ public class Engine {
             NotificationManager mNotificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(0, mBuilder.build());
         }
+    }
+
+    public ContactDAO getContactDAO() {
+        return contactDAO;
+    }
+
+    public void setContactDAO(ContactDAO contactDAO) {
+        this.contactDAO = contactDAO;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 }

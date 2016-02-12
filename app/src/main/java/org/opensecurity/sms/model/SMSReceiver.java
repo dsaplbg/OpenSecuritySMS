@@ -17,6 +17,7 @@ import org.opensecurity.sms.activities.ConversationActivity;
 public class SMSReceiver extends BroadcastReceiver {
 
     private static final String RECEIVED_ACTION = "android.provider.Telephony.SMS_RECEIVED";
+    private Engine engine;
 
     /**
      * an override of BroadcastReceiver function. To execute code when android detect an intent.
@@ -39,10 +40,19 @@ public class SMSReceiver extends BroadcastReceiver {
                     messageContent = messageContent+messages[i].getDisplayMessageBody();
                 }
 
+                setEngine(new Engine(c));
                 Toast.makeText(c, "sms : " + messageContent, Toast.LENGTH_SHORT).show();
-                Engine.getInstance().putSmsIntoDataBase(messages[0], messageContent);
+                getEngine().putSmsIntoDataBase(messages[0], messageContent);
                 ConversationActivity.getInstance().update();
             }
         }
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
     }
 }

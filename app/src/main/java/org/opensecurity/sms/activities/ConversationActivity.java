@@ -68,8 +68,7 @@ public class ConversationActivity extends Activity {
      */
     private EditText textMessage;
 
-    private ContactDAO contactDAO;
-
+    private Engine engine;
     /**
      * the button used to send messages
      */
@@ -126,17 +125,16 @@ public class ConversationActivity extends Activity {
         this.textMessage = (EditText) findViewById(R.id.textMessage);
         this.sendButton = (Button) findViewById(R.id.sendButton);
 
+        setEngine(new Engine(this.getApplicationContext()));
+        getEngine().getContactDAO().openDb();
         listeners();
 
         update(getIntent());
 
-
-
-        contactDAO = new ContactDAO(getApplicationContext());
-        contactDAO.openDb();
-
-        if(contactDAO.findContactByPhoneNumberInOSMSBase(contact.getNumber()) == null)
-            contactDAO.insertContactIntoDB(contact);
+        if(getEngine().getContactDAO().findContactByPhoneNumberInOSMSBase(contact.getNumber()) == null) {
+            System.out.println("il n'y a pas ce contact dans la bdd donc on l'insère");
+            getEngine().getContactDAO().insertContactIntoDB(contact);
+        }
 
         instance = this;
     }
@@ -195,7 +193,7 @@ public class ConversationActivity extends Activity {
         getSendButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textMessage.getText().length() > 0 && Engine.getInstance().sendSMS(getBaseContext(), getContact(),
+                if (textMessage.getText().length() > 0 && getEngine().sendSMS(getBaseContext(), getContact(),
                         textMessage.getText().toString())) {
                     ConversationActivity.getInstance().update();
                     textMessage.setText("");
@@ -270,7 +268,7 @@ public class ConversationActivity extends Activity {
      * This function is used to update a conversation when it's necessary
      */
     public void update() {
-        setBubbleData(Engine.getInstance().loadMessages(this.getContentResolver(), getContact(), 0, 50));
+        setBubbleData(getEngine().loadMessages(this.getContentResolver(), getContact(), 0, 50));
         /*
         bubbleList.setOnScrollListener(new AbsListView.OnScrollListener() {
             private int prevVisibleItem;
@@ -300,16 +298,24 @@ public class ConversationActivity extends Activity {
         return this.adapter;
     }
 
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
     @Override
     protected void onResume() {
-        contactDAO.openDb();
+        getEngine().getContactDAO().openDb();
         this.update();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        contactDAO.closeDb();
+        getEngine().getContactDAO().closeDb();
         super.onPause();
     }
 }
