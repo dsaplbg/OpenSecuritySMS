@@ -193,7 +193,7 @@ public class Engine {
      */
     public ArrayList<ConversationItem> loadMessages(ContentResolver contentResolver,
                                                     Contact contact, int offset, int limit) {
-        ArrayList<ConversationItem> bubbleData = new ArrayList<ConversationItem>();
+        ArrayList<ConversationItem> bubbleData = new ArrayList<>();
         String content;
         boolean isMe;
         Calendar lastDate = Calendar.getInstance();
@@ -201,10 +201,12 @@ public class Engine {
 
         try {
             Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
-                    new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.PERSON, Telephony.Sms.DATE, Telephony.Sms.ADDRESS},
-                    contact.getThreadId() + " = thread_id",
-                    null,
-                    "date ASC");// LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
+                                                  new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE,
+                                                               Telephony.Sms.PERSON, Telephony.Sms.DATE,
+                                                               Telephony.Sms.ADDRESS},
+                                                  "thread_id = " + contact.getThreadId(),
+                                                  null,
+                                                  "date DESC LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
 
             if (cursor.moveToFirst()) {
                 do {
@@ -215,11 +217,11 @@ public class Engine {
                     date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
                     Bubble bubble = new Bubble(content, date, isMe);
                     if (lastDate != date && bubble.hasToManagedDate(lastDate)) {
-                        bubbleData.add(new ConversationItem(date));
+                        bubbleData.add(0, new ConversationItem(date));
                     }
                     lastDate = date;
 
-                    bubbleData.add(bubble);
+                    bubbleData.add(0, bubble);
                 } while (cursor.moveToNext());
             }
             cursor.close();
