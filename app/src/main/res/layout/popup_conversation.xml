@@ -25,11 +25,6 @@
             android:id="@+id/popupMessage"
         android:layout_below="@+id/popupContactImage" />
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/popupMessage"
-        android:layout_alignParentBottom="true">
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +36,6 @@
             android:maxLines="3"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/popupSend"
-            android:allowUndo="true"
             android:layout_below="@+id/popupMessage" />
 
         <Button

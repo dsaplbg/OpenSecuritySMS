@@ -3,7 +3,9 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/layoutBubble">
+    android:id="@+id/layoutBubble"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -11,17 +13,17 @@
         android:id="@+id/imageViewPhotoContact"
         android:minHeight="40dp"
         android:minWidth="40dp"
-        android:layout_margin="10dp" />
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
     <TextView
         android:id="@+id/b_contenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
-        android:textColor="#000000"
         android:text="Lorem ipsum dolor sit amet"
         android:layout_toEndOf="@+id/imageViewPhotoContact"
         android:layout_alignTop="@id/imageViewPhotoContact"
-        android:layout_marginEnd="10dp" />
+        android:textSize="@dimen/material_text_subhead" />
 
 </RelativeLayout>

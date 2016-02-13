@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.discussion.Message;
 
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class ArrayDiscussionAdapter extends ArrayAdapter {
      * @param rep
      */
     public ArrayDiscussionAdapter(Context context, List<Message> rep){
-        super(context, R.layout.listofconvers, rep);
+        super(context, R.layout.list_of_convers, rep);
         this.mLayoutInflater = LayoutInflater.from(context);
         this.contentResolver = context.getContentResolver();
     }
@@ -54,11 +53,11 @@ public class ArrayDiscussionAdapter extends ArrayAdapter {
      * This method is a redefinition of getView in class ArrayAdapter witch is used for
      * calculate one element of our list of widget rowView created by us.
      * permit the recycling (or calculate) and return the personalized view of a line (rowView) witch
-     * will be composed of, thanks to XML, tow entities of the TextView. (ref to R.layout.listofconvers.xml)
+     * will be composed of, thanks to XML, tow entities of the TextView. (ref to R.layout.list_of_conversrs.xml)
      *this method is called every time the program need to generate a rowview.
      *
      * If you want to improve the design of the listOfConvers activity (main activity) refer to
-     * R.layout.listofconvers.xml and R.layout.opensecuritysms.xml
+     * R.layout.list_of_convers.xmlml and R.layout.opensecuritysms.xml
      */
     /**
      * get a view that displays the data at the specified position in the data set.
@@ -80,7 +79,7 @@ public class ArrayDiscussionAdapter extends ArrayAdapter {
         if(rowView == null) {
             //la méthode inflate permet de créer un objet view à partir d'un xml.
             //inflate method permit to create a View object since the xml
-            rowView = this.mLayoutInflater.inflate(R.layout.listofconvers, null);
+            rowView = this.mLayoutInflater.inflate(R.layout.list_of_convers, null);
 
             /*initialization of holder, because convertView is null so holder couldn't know
             members assignment. We have to recreate it with the following lines*/
