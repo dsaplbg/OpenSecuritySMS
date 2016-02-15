@@ -144,10 +144,10 @@ public class Engine {
     }
 
     /**
-     * This function has to load bubbles of one conversation in an ArrayList of object ConversationItem.
+     * This function has to load an array of messages from one contact, or all last messages if contact == null
      *
      * @param contentResolver to manage access to a structured set of data in your phone
-     * @param contact         is the current contact in our selected conversation
+     * @param contact         is the current contact in our selected conversation. Could be null if we want all latest message
      * @param offset          never ised for the moment
      * @param limit           the limit of bubble what we want to load. (to dispence to load all bubbles)
      * @return bubbleData the ArrayList of Bubbles in a conversation.
