@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppThemePopup" parent="android:Theme.Material.Light">
+    <style name="AppThemePopup" parent="AlertDialog.AppCompat.Light">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowSoftInputMode">stateUnchanged</item>
         <item name="android:windowContentOverlay">@null</item>

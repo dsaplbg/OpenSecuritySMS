@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.provider.Telephony;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.database.ContactDAO;
@@ -21,7 +24,7 @@ import java.util.ArrayList;
 /**
  * main activity when we start the application.
  */
-public class OpenSecuritySMS extends Activity {
+public class OpenSecuritySMS extends AppCompatActivity {
 
     public static final String SMS_DEFAULT_APPLICATION = "sms_default_application";
     private MenuItem itemDefaultApp;
@@ -41,6 +44,11 @@ public class OpenSecuritySMS extends Activity {
      * the listView of conversations
      */
     private ListView conversationList;
+
+    /**
+     * The floating action button
+     */
+    private FloatingActionButton fab;
 
     /**
      * The arrayList to keep objects of conversationLine
@@ -76,6 +84,8 @@ public class OpenSecuritySMS extends Activity {
 
         this.conversationList = (ListView) findViewById(R.id.listeConvers);
         this.conversationList.setAdapter(this.adapter);
+
+        this.fab = (FloatingActionButton) findViewById(R.id.fab);
 
         instance = this;
         setEngine(new Engine(this.getApplicationContext()));
@@ -216,7 +226,12 @@ public class OpenSecuritySMS extends Activity {
             }
         });
 
-
+        this.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "Click !", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**

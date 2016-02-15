@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +36,7 @@ import java.util.GregorianCalendar;
  * another contact.
  */
 
-public class ConversationActivity extends Activity {
+public class ConversationActivity extends AppCompatActivity {
 
 
     /**
