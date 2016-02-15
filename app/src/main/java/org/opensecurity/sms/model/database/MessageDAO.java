@@ -21,8 +21,19 @@ import java.util.HashMap;
  * Created by hanriaca on 15/02/16.
  */
 public class MessageDAO {
+    /**
+     * Context currentContext useful to use some native android functions
+     */
     private Context currentContex;
+
+    /**
+     * listContacts. I whould like to delete it but I don't think over for the moment
+     */
     private static HashMap<String, Contact> listContacts = new HashMap<String, Contact>();
+
+    /**
+     * contactDAO is needed to access to android database & openSecurity database
+     */
     private ContactDAO contactDAO;
 
     public static final String ADDRESS = "address";
@@ -153,6 +164,11 @@ public class MessageDAO {
         }
     }
 
+    /**
+     * insert sms sent by us into the default database
+     * @param c the current context
+     * @param message the contains of the sms
+     */
     public void insertSMSSentIntoDefaultDataBase(Context c, String message) {
         TelephonyManager tMgr = (TelephonyManager) c.getSystemService(Context.TELEPHONY_SERVICE);
         String mPhoneNumber = tMgr.getLine1Number();
@@ -169,6 +185,11 @@ public class MessageDAO {
         OpenSecuritySMS.getInstance().getContentResolver().insert(Uri.parse("content://sms/sent"), values);
     }
 
+    /**
+     * insert sms received into default database.
+     * @param sms the sms
+     * @param smsContent the content of the sms
+     */
     public void insertSMSReceivedIntoDefaultDataBase(SmsMessage sms, String smsContent) {
         ContentResolver contentResolver = OpenSecuritySMS.getInstance().getContentResolver();
         ContentValues values = new ContentValues();
