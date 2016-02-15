@@ -269,7 +269,7 @@ public class ConversationActivity extends AppCompatActivity {
      * This function is used to update a conversation when it's necessary
      */
     public void update() {
-        setBubbleData(getEngine().loadMessages(this.getContentResolver(), getContact(), 0, 50));
+        setBubbleData(getEngine().getMessageDAO().loadMessages(this.getContentResolver(), getContact(), 0, 50));
         /*
         bubbleList.setOnScrollListener(new AbsListView.OnScrollListener() {
             private int prevVisibleItem;

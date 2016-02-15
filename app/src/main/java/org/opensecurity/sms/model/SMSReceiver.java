@@ -37,12 +37,12 @@ public class SMSReceiver extends BroadcastReceiver {
                 for(int i = 0; i<pdus.length; i++) {
                     messages[i] =
                             SmsMessage.createFromPdu((byte[])pdus[i]);
-                    messageContent = messageContent+messages[i].getDisplayMessageBody();
+                    messageContent = messageContent + messages[i].getDisplayMessageBody();
                 }
 
                 setEngine(new Engine(c));
                 Toast.makeText(c, "sms : " + messageContent, Toast.LENGTH_SHORT).show();
-                getEngine().putSmsIntoDataBase(messages[0], messageContent);
+                getEngine().getMessageDAO().insertSMSReceivedIntoDefaultDataBase(messages[0], messageContent);
                 ConversationActivity.getInstance().update();
             }
         }
