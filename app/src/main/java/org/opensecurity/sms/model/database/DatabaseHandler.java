@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by calliste on 15/01/16.
+ * @author Calliste Hanriat
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
     private static DatabaseHandler sInstance;
@@ -14,7 +14,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String PHOTO_URL = "photoUrl";
     public static final String PUBLIC_RSA_KEY = "publicRsaKey";
     public static final String CONTACT_NAME = "contactName";
-    public static final String THREAD_ID = "threadId";
+    public static final String ID = "id";
     public static final String NUMBER_OF_MESSAGE = "numberOfMessages";
     public static final String CONTACT_TABLE_NAME =  "CONTACTOSMS";
     private static final String DBNAME = "opensecuritysms.db";
@@ -25,7 +25,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             PUBLIC_RSA_KEY + " TEXT, "+
             PHOTO_URL + " TEXT, " +
             CONTACT_NAME + " TEXT, " +
-            THREAD_ID + " REAL, " +
+                    ID + " REAL, " +
             NUMBER_OF_MESSAGE + " REAL);";
 
     /**

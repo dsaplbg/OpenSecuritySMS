@@ -1,6 +1,0 @@
-<map id="listeners" name="listeners">
-<area shape="rect" id="node2" href="$a00009.html#a0d87654bfa9eb4fd33a79c470d4dc6f3" title="org.opensecurity.sms.model.\lDAO.getInstance" alt="" coords="126,38,317,79"/>
-<area shape="rect" id="node5" href="$a00013.html#adb647c7ae09f1d5755db63d701968925" title="getContact" alt="" coords="178,104,265,131"/>
-<area shape="rect" id="node3" href="$a00009.html#af8530c35cbb3602bcea42535ab31e9a6" title="org.opensecurity.sms.model.\lDAO.DAO" alt="" coords="371,5,562,46"/>
-<area shape="rect" id="node4" href="$a00011.html#a20b99dca6a5147ea92b68f8ce333dc2e" title="org.opensecurity.sms.view.\lOpenSecuritySMS.getInstance" alt="" coords="365,70,568,111"/>
-</map>

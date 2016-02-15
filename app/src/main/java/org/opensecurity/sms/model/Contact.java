@@ -14,34 +14,40 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import org.opensecurity.sms.model.discussion.Message;
+
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
- * The contact class. An object
- * Created by Valentin on 10/11/2015.
+ *
+ * @author Valentin
+ * @author Colas Broux
  */
 public class Contact implements Serializable {
 
     /**
-     * name is the name of contact, number is his phoneNumber and photoUrl is his picture contact
+     * name is the name of contact, phoneNumber is his phoneNumber and photoUrl is his picture contact
      */
-    private String name, number, photoURL;
+    private String name,
+            phoneNumber,
+            photoURL;
 
     /**
-     * threadId is like a primary key for on contact in database
+     * id is like a primary key for on contact in database
      */
-    private int threadId, nbMessages;  // There is only one thread for a contact so we can save it here
+    private int id,
+            nbMessages;
+
+    private ArrayList<Message> messages;
 
     /**
      * constructor
-     * @param number his phoneNumber
+     * @param phoneNumber his phoneNumber
      */
-    public Contact(String number) {
-        setName(number);
-        setNumber(number);
-        setPhotoURL(null);
-        setThreadId(0);
+    public Contact(String phoneNumber) {
+        setPhoneNumber(phoneNumber);
         setNbMessages(0);
     }
 
@@ -90,7 +96,7 @@ public class Contact implements Serializable {
         c.drawColor(Color.DKGRAY);
 
 
-        if (getNumber().equals(getName())) {
+        if (getName() == null) {
             c.drawCircle(25, 15, 8, p);
             c.drawCircle(25, 48, 20, p);
             p.setColor(Color.DKGRAY);
@@ -111,6 +117,12 @@ public class Contact implements Serializable {
         }
 
         return b;
+    }
+
+    @Override
+    public String toString(){
+        return "Name : " + getName()
+                + "\nPhone number : " + getPhoneNumber();
     }
 
     /**
@@ -142,16 +154,16 @@ public class Contact implements Serializable {
      * to get the phoneNumber of our contact
      * @return the phoneNumber of our instance of contact
      */
-    public String getNumber() {
-        return number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     /**
      * to set the phoneNumber of our contact
-     * @param number the phoneNumber in database
+     * @param phoneNumber the phoneNumber in database
      */
-    public void setNumber(String number) {
-        this.number = number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     /**
@@ -172,33 +184,41 @@ public class Contact implements Serializable {
 
     /**
      * to get the primary key of current contact
-     * @return the threadId of one contact
+     * @return the id of one contact
      */
-    public int getThreadId() {
-        return threadId;
+    public int getId() {
+        return id;
     }
 
     /**
-     * to set the threadId of one contact
-     * @param threadId the threadId for the current contact
+     * to set the id of one contact
+     * @param id the id for the current contact
      */
-    public void setThreadId(int threadId) {
-        this.threadId = threadId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
      * to get the numbers of messages between us and our contact
-     * @return the number of messages between us and our contact
+     * @return the phoneNumber of messages between us and our contact
      */
     public int getNbMessages() {
         return nbMessages;
     }
 
     /**
-     * to set the number of messages between us and our contact
-     * @param nbMessages the number of messages between us and our contact
+     * to set the phoneNumber of messages between us and our contact
+     * @param nbMessages the phoneNumber of messages between us and our contact
      */
     public void setNbMessages(int nbMessages) {
         this.nbMessages = nbMessages;
+    }
+
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
     }
 }

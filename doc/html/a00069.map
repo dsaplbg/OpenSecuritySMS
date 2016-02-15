@@ -1,3 +1,0 @@
-<map id="ConversationLine" name="ConversationLine">
-<area shape="rect" id="node4" href="$a00005.html" title="{Contact\n|~ number\l~ photoURL\l~ nbMessages\l&#45; name\l&#45; threadId\l|+ Contact()\l+ getPhoto()\l+ hasPhoto()\l+ getPhotoURL()\l+ setPhotoURL()\l+ getNumber()\l+ setNumber()\l+ getName()\l+ setName()\l+ getThreadId()\l+ setThreadId()\l+ getNbMessages()\l+ setNbMessages()\l&#45; createLetterPhoto()\l}" alt="" coords="52,134,192,461"/>
-</map>

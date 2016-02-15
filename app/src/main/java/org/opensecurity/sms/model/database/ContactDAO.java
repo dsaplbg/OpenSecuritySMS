@@ -7,29 +7,78 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.provider.Telephony;
 import android.util.Log;
 
 import org.opensecurity.sms.model.Contact;
+import org.opensecurity.sms.model.discussion.Message;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 /**
- * Created by loft-2015-asus on 24/01/16.
+ *
+ * @author Colas Broux
+ * @author Calliste Hanriat
  */
 public class ContactDAO {
     private SQLiteDatabase database;
     private Context currentContex;
 
     public ContactDAO(Context context) {
-        currentContex = context;
+        setCurrentContex(context);
     }
 
     public void openDb(){
-        database = DatabaseHandler.getInstance(currentContex.getApplicationContext()).getWritableDatabase();
+        setDatabase(DatabaseHandler.getInstance(getCurrentContex().getApplicationContext())
+                .getWritableDatabase());
     }
 
     public void closeDb() {
-        DatabaseHandler.getInstance(currentContex.getApplicationContext()).close();
+        DatabaseHandler.getInstance(getCurrentContex().getApplicationContext()).close();
+    }
+
+    public Contact fillContact(String phoneNumber) {
+        Contact contact = new Contact(phoneNumber);
+        contact.setName(phoneNumber);
+        ContentResolver cr = getCurrentContex().getContentResolver();
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
+        Cursor cur = cr.query(uri, null, null, null, null);
+        if (cur.getCount() > 0) {
+            while (cur.moveToNext()) {
+                String id = cur.getString(cur.getColumnIndex(ContactsContract.Contacts._ID));
+                String name = cur.getString(cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                contact.setId(Integer.valueOf(id));
+                contact.setName(name);
+            }
+        }
+        cur.close();
+        return contact;
+    }
+
+    public ArrayList<Contact> getAllContacts() {
+        ArrayList<Contact> contactList = new ArrayList<>();
+
+        Cursor cursor = getCurrentContex().getContentResolver().query(Uri.parse("content://sms"),
+                new String[]{"DISTINCT " + Telephony.Sms.ADDRESS, Telephony.Sms.BODY,
+                        Telephony.Sms.TYPE, Telephony.Sms.THREAD_ID, Telephony.Sms.DATE},
+                Telephony.Sms.ADDRESS + " IS NOT NULL)" + "Group by (" + Telephony.Sms.THREAD_ID,
+                null,
+                null);
+
+        if (cursor.moveToFirst()) {
+            String phoneNumber;
+            Contact contact;
+            do {
+                phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
+                contact = fillContact(phoneNumber);
+                contactList.add(contact);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return contactList;
     }
 
     /**
@@ -40,8 +89,9 @@ public class ContactDAO {
     public Contact findContactByPhoneNumberInOSMSBase(String phoneNumber) {
         try {
             Contact c = new Contact(phoneNumber);
-            Cursor cursor = database.rawQuery("Select * FROM " +
-                    DatabaseHandler.CONTACT_TABLE_NAME + " Where phoneNumber = ?", new String[]{phoneNumber});
+            Cursor cursor = getDatabase().rawQuery("Select * FROM " +
+                    DatabaseHandler.CONTACT_TABLE_NAME + " Where phoneNumber = ?",
+                    new String[]{phoneNumber});
             if (cursor.equals(null)) {
                 System.out.println("Je vaut null");
                 return null;
@@ -49,7 +99,7 @@ public class ContactDAO {
             cursor.moveToFirst();
             c.setPhotoURL(cursor.getString(2));
             c.setName(cursor.getString(3));
-            c.setThreadId(cursor.getInt(4));
+            c.setId(cursor.getInt(4));
             c.setNbMessages(cursor.getInt(5));
 
           //  Toast.makeText(currentContex, c.getName() + " found", Toast.LENGTH_LONG).show();
@@ -66,31 +116,33 @@ public class ContactDAO {
      */
     public void insertContactIntoDB(Contact c) {
         try {
-            database.beginTransaction();
+            getDatabase().beginTransaction();
             ContentValues value = new ContentValues();
 
             value.put(DatabaseHandler.CONTACT_NAME, c.getName());
             value.put(DatabaseHandler.NUMBER_OF_MESSAGE, c.getNbMessages());
-            value.put(DatabaseHandler.PHONE_NUMBER, c.getNumber());
+            value.put(DatabaseHandler.PHONE_NUMBER, c.getPhoneNumber());
             value.put(DatabaseHandler.PHOTO_URL, c.getPhotoURL());
-            value.put(DatabaseHandler.THREAD_ID, c.getThreadId());
+            value.put(DatabaseHandler.ID, c.getId());
 
-            database.insert(DatabaseHandler.CONTACT_TABLE_NAME, null, value);
-            database.setTransactionSuccessful();
+            getDatabase().insert(DatabaseHandler.CONTACT_TABLE_NAME, null, value);
+            getDatabase().setTransactionSuccessful();
         } catch (Exception e) {
             System.out.println("ERROR : Cannot insert contact ! ");
         } finally {
             System.out.println("Juste avant endTransaction");
-            database.endTransaction();
-          //  Toast.makeText(currentContex.getApplicationContext(), "Contact inserted", Toast.LENGTH_LONG).show();
+            getDatabase().endTransaction();
+          //  Toast.makeText(currentContex.getApplicationContext(), "Contact inserted",
+          // Toast.LENGTH_LONG).show();
         }
     }
 
     public void deleteAllContactOSMS(){
         try {
-            database.execSQL("DELETE FROM " + DatabaseHandler.CONTACT_TABLE_NAME);
+            getDatabase().execSQL("DELETE FROM " + DatabaseHandler.CONTACT_TABLE_NAME);
         } catch (Exception e) {
-            Log.d("Error", "Dont able to delete all elements of "+DatabaseHandler.CONTACT_TABLE_NAME);
+            Log.d("Error", "Dont able to delete all elements of "+
+                    DatabaseHandler.CONTACT_TABLE_NAME);
         }
     }
 
@@ -102,22 +154,43 @@ public class ContactDAO {
      * @param contentResolver to manage access to a structured set of data in your phone
      * @return the contact who has this phoneNumber
      */
-    public Contact findContactByPhoneNumberInDefaultBase(String phoneNumber, ContentResolver contentResolver, HashMap<String, Contact> listContacts) {
+    public Contact findContactByPhoneNumberInDefaultBase(String phoneNumber, ContentResolver
+            contentResolver, HashMap<String, Contact> listContacts) {
         if (listContacts.containsKey(phoneNumber)) return listContacts.get(phoneNumber);
 
         Contact contact = new Contact(phoneNumber);
-        Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, phoneNumber);
+        Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                phoneNumber);
         Cursor localCursor = contentResolver.query(personUri,
-                new String[]{ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_THUMBNAIL_URI},
+                new String[]{ContactsContract.Contacts.DISPLAY_NAME,
+                        ContactsContract.Contacts.PHOTO_THUMBNAIL_URI},
                 null,
                 null,
                 null);
         if (localCursor.moveToFirst()) {
-            contact.setName(localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)));
-            contact.setPhotoURL(localCursor.getString(localCursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
+            contact.setName(localCursor.getString(localCursor.getColumnIndexOrThrow(
+                    ContactsContract.Contacts.DISPLAY_NAME)));
+            contact.setPhotoURL(localCursor.getString(localCursor.getColumnIndexOrThrow(
+                    ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
         }
         localCursor.close();
 
         return contact;
+    }
+
+    public SQLiteDatabase getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(SQLiteDatabase database) {
+        this.database = database;
+    }
+
+    public Context getCurrentContex() {
+        return currentContex;
+    }
+
+    public void setCurrentContex(Context currentContex) {
+        this.currentContex = currentContex;
     }
 }

@@ -18,7 +18,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 /**
- * Created by hanriaca on 15/02/16.
+ * @author Calliste Hanriat
  */
 public class MessageDAO {
     /**
@@ -92,8 +92,8 @@ public class MessageDAO {
                 phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
                 contact = this.getContactDAO().findContactByPhoneNumberInDefaultBase(phoneNumber, contentResolver, listContacts);
                 // if we don't already have this phoneNumber in the list
-                if ((!listContacts.containsKey(contact.getNumber())) && (phoneNumber.length() >= 1)) {
-                    listContacts.put(contact.getNumber(), contact);
+                if ((!listContacts.containsKey(contact.getPhoneNumber())) && (phoneNumber.length() >= 1)) {
+                    listContacts.put(contact.getPhoneNumber(), contact);
                     // we get the smsContent and the date
                     smsContent = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     //nbMessages = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.MESSAGE_COUNT));
@@ -102,7 +102,7 @@ public class MessageDAO {
                     date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
 
                     // we add a new ConversationLine with an id to send to the conversationActivity.
-                    contact.setThreadId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID))));
+                    contact.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID))));
                     contact.setNbMessages(nbMessages);
                     messages.add(new Message(smsContent, date, contact,
                             cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT));
@@ -139,7 +139,7 @@ public class MessageDAO {
                         new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE,
                                 Telephony.Sms.PERSON, Telephony.Sms.DATE,
                                 Telephony.Sms.ADDRESS},
-                        "thread_id = " + contact.getThreadId(),
+                        "thread_id = " + contact.getId(),
                         null,
                         "date DESC LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
 

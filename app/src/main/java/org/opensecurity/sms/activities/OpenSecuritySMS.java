@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import org.opensecurity.sms.R;
+import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.Engine;
 import org.opensecurity.sms.model.discussion.Message;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
 
 /**
  * main activity when we start the application.
+ *
+ * @author Colas Broux
  */
 public class OpenSecuritySMS extends AppCompatActivity {
 
@@ -90,6 +93,10 @@ public class OpenSecuritySMS extends AppCompatActivity {
         instance = this;
         setEngine(new Engine(this.getApplicationContext()));
         getEngine().getContactDAO().openDb();
+
+//        for (Contact contact: getEngine().getContactDAO().getAllContacts()) {
+//            System.out.println(contact);
+//        }
         update();
         listeners();
 

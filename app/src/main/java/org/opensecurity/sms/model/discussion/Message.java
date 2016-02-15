@@ -8,6 +8,8 @@ import java.util.Calendar;
 
 /**
  * Message contains every elements a message should have
+ *
+ * @author Colas Broux
  */
 public class Message implements Serializable{
 

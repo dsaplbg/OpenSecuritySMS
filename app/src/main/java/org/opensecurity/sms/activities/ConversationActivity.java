@@ -1,6 +1,5 @@
 package org.opensecurity.sms.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -21,19 +20,20 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import org.opensecurity.sms.R;
-import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.Engine;
 import org.opensecurity.sms.model.discussion.ArrayBubbleAdapter;
 import org.opensecurity.sms.model.discussion.Message;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 
 /**
  * This class is an activity for displaying one conversation bitween us and
  * another contact.
+ *
+ * @author Colas Broux
+ * @author Calliste Hanriat
  */
 
 public class ConversationActivity extends AppCompatActivity {
@@ -132,7 +132,7 @@ public class ConversationActivity extends AppCompatActivity {
 
         update(getIntent());
 
-        if(getEngine().getContactDAO().findContactByPhoneNumberInOSMSBase(contact.getNumber()) == null) {
+        if(getEngine().getContactDAO().findContactByPhoneNumberInOSMSBase(contact.getPhoneNumber()) == null) {
             System.out.println("il n'y a pas ce contact dans la bdd donc on l'insère");
             getEngine().getContactDAO().insertContactIntoDB(contact);
         }
@@ -175,7 +175,7 @@ public class ConversationActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_photoContact) {
-            Toast toast = Toast.makeText(getBaseContext(), getContact().getName() + "      " + getContact().getNumber(), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getBaseContext(), getContact().getName() + "      " + getContact().getPhoneNumber(), Toast.LENGTH_SHORT);
             toast.show();
         }
 
