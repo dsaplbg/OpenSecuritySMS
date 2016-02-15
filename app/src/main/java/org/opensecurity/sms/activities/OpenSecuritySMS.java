@@ -206,7 +206,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
      * This function is used to update this activity when it's necessary.
      */
     public void update() {
-        setMessages(this.getEngine().loadLastMessages(this.getContentResolver()));
+        setMessages(this.getEngine().loadMessages(this.getContentResolver(), null, 0, 0));
     }
 
 

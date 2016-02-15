@@ -160,33 +160,37 @@ public class Engine {
         Calendar lastDate = Calendar.getInstance();
         lastDate.set(Calendar.YEAR, 1970);
 
-        try {
-            Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
-                                                  new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE,
-                                                               Telephony.Sms.PERSON, Telephony.Sms.DATE,
-                                                               Telephony.Sms.ADDRESS},
-                                                  "thread_id = " + contact.getThreadId(),
-                                                  null,
-                                                  "date DESC LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
+        if (contact == null) {
+            return loadLastMessages(contentResolver);
+        } else {
+            try {
+                Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
+                        new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE,
+                                Telephony.Sms.PERSON, Telephony.Sms.DATE,
+                                Telephony.Sms.ADDRESS},
+                        "thread_id = " + contact.getThreadId(),
+                        null,
+                        "date DESC LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
 
-            if (cursor.moveToFirst()) {
-                do {
-                    //if it's a recevied message :
-                    isMe = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT;
-                    content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
-                    Calendar date = Calendar.getInstance();
-                    date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
-                    Message message = new Message(content, date, contact, isMe);
+                if (cursor.moveToFirst()) {
+                    do {
+                        //if it's a recevied message :
+                        isMe = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT;
+                        content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                        Calendar date = Calendar.getInstance();
+                        date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
+                        Message message = new Message(content, date, contact, isMe);
 
-                    bubbleData.add(0, message);
-                } while (cursor.moveToNext());
+                        bubbleData.add(0, message);
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
+            } catch (Exception e) {
+                System.out.print("ERROR : Loading messages !");
             }
-            cursor.close();
-        } catch (Exception e) {
-            System.out.print("ERROR : Loading messages !");
-        }
 
-        return bubbleData;
+            return bubbleData;
+        }
     }
 
     public void insertSMSSentIntoDefaultDataBase(Context c, String message) {
