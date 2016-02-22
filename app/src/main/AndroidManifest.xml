@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Service that delivers messages from the phone "quick response" -->
+        <!-- ServiceComunication that delivers messages from the phone "quick response" -->
         <activity
             android:name=".activities.PopupConversationActivity"
             android:theme="@style/AppThemePopup"
@@ -73,9 +73,9 @@
         </receiver>
 
 
-        <!-- BroadcastReceiver that listens to incoming MMS messages -->
+        <!--BroadcastReceiver that listens to incoming MMS messages -->
         <receiver
-            android:name="com.shinobicontrols.messageme.receivers.MMSBroadcastReceiver"
+            android:name="org.opensecurity.sms.model.MMSBroadcastReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH"
             android:enabled="true"
             android:exported="true">
@@ -85,9 +85,10 @@
             </intent-filter>
         </receiver>
 
-        <!-- Service that delivers messages for "Quick Response" -->
+
+        <!-- ServiceComunication that permit to received sms" -->
         <service
-            android:name="com.shinobicontrols.messageme.HeadlessSmsSendService"
+            android:name="org.opensecurity.sms.services.ServiceComunication"
             android:exported="true"
             android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE" >
             <intent-filter>
