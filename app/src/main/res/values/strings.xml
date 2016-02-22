@@ -7,4 +7,5 @@
     <string name="photoContact">Contact</string>
     <string name="title_activity_conversation">Conversation</string>
     <string name="title_activity_popupConversation">Quick answer</string>
+    <string name="defaultApp">Application par défaut</string>
 </resources>

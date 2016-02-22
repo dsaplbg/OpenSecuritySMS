@@ -39,6 +39,11 @@ public class ContactDAO {
         DatabaseHandler.getInstance(getCurrentContex().getApplicationContext()).close();
     }
 
+    /**
+     * this function fill a contact with a given phoneNumber
+     * @param phoneNumber the phone number to fill the contact
+     * @return the recently created contact
+     */
     public Contact fillContact(String phoneNumber) {
         Contact contact = new Contact(phoneNumber);
         contact.setName(phoneNumber);

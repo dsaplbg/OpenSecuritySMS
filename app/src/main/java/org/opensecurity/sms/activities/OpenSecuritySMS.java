@@ -94,25 +94,11 @@ public class OpenSecuritySMS extends AppCompatActivity {
         setEngine(new Engine(this.getApplicationContext()));
         getEngine().getContactDAO().openDb();
 
-//        for (Contact contact: getEngine().getContactDAO().getAllContacts()) {
-//            System.out.println(contact);
-//        }
         update();
         listeners();
 
 
         instance = this;
-
-
-        final String myPackageName = getPackageName();
-        if (!Telephony.Sms.getDefaultSmsPackage(this).equals(myPackageName)) {
-            // App is not default.
-            Intent intent =
-                    new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
-            intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME,
-                    myPackageName);
-            startActivity(intent);
-        }
     }
 
     /**
@@ -148,6 +134,19 @@ public class OpenSecuritySMS extends AppCompatActivity {
 
         if (id == R.id.deleteAllElementsOfTable) {
             this.getEngine().getContactDAO().deleteAllContactOSMS();
+            return true;
+        }
+
+        if(id == R.id.setDefaultApp) {
+            final String myPackageName = getPackageName();
+            if (!Telephony.Sms.getDefaultSmsPackage(this).equals(myPackageName)) {
+                // App is not default.
+                Intent intent =
+                        new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
+                intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME,
+                        myPackageName);
+                startActivity(intent);
+            }
             return true;
         }
 

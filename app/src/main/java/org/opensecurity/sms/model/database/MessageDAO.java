@@ -152,6 +152,7 @@ public class MessageDAO {
                         date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
                         Message message = new Message(content, date, contact, isMe);
 
+                        //insert in the head of the arraylist
                         bubbleData.add(0, message);
                     } while (cursor.moveToNext());
                 }
