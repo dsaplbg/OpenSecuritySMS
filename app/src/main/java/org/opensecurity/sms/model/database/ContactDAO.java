@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.Telephony;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.discussion.Message;
@@ -24,19 +25,21 @@ import java.util.HashMap;
  */
 public class ContactDAO {
     private SQLiteDatabase database;
+    private DatabaseHandler dataHandler;
     private Context currentContex;
 
     public ContactDAO(Context context) {
         setCurrentContex(context);
+        dataHandler = new DatabaseHandler(getCurrentContex());
     }
 
     public void openDb(){
-        setDatabase(DatabaseHandler.getInstance(getCurrentContex().getApplicationContext())
-                .getWritableDatabase());
+        this.database = dataHandler.getWritableDatabase();
+        Log.d("DataBaseHandler", "Open");
     }
 
     public void closeDb() {
-        DatabaseHandler.getInstance(getCurrentContex().getApplicationContext()).close();
+        dataHandler.close();
     }
 
     /**
@@ -97,17 +100,20 @@ public class ContactDAO {
             Cursor cursor = getDatabase().rawQuery("Select * FROM " +
                     DatabaseHandler.CONTACT_TABLE_NAME + " Where phoneNumber = ?",
                     new String[]{phoneNumber});
-            if (cursor.equals(null)) {
+
+            cursor.moveToFirst();
+            //we must use getCount to check if cursor contains something because a cursor is always != null
+            if (cursor.getCount() == 0) {
                 System.out.println("Je vaut null");
                 return null;
             }
-            cursor.moveToFirst();
+            Log.d("cursor", "not null");
             c.setPhotoURL(cursor.getString(2));
             c.setName(cursor.getString(3));
             c.setId(cursor.getInt(4));
             c.setNbMessages(cursor.getInt(5));
 
-          //  Toast.makeText(currentContex, c.getName() + " found", Toast.LENGTH_LONG).show();
+            Toast.makeText(currentContex, c.getName() + " found", Toast.LENGTH_LONG).show();
             return c;
         } catch (Exception e) {
             System.out.println("Erreur : je suis dans le catch" + e.toString());
@@ -145,6 +151,7 @@ public class ContactDAO {
     public void deleteAllContactOSMS(){
         try {
             getDatabase().execSQL("DELETE FROM " + DatabaseHandler.CONTACT_TABLE_NAME);
+            //getDatabase().execSQL(DatabaseHandler.DROP_ALL_CONTACTOSMS_TABLE);
         } catch (Exception e) {
             Log.d("Error", "Dont able to delete all elements of "+
                     DatabaseHandler.CONTACT_TABLE_NAME);
@@ -161,7 +168,7 @@ public class ContactDAO {
      */
     public Contact findContactByPhoneNumberInDefaultBase(String phoneNumber, ContentResolver
             contentResolver, HashMap<String, Contact> listContacts) {
-        if (listContacts.containsKey(phoneNumber)) return listContacts.get(phoneNumber);
+        if (listContacts != null && listContacts.containsKey(phoneNumber)) return listContacts.get(phoneNumber);
 
         Contact contact = new Contact(phoneNumber);
         Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
@@ -185,10 +192,6 @@ public class ContactDAO {
 
     public SQLiteDatabase getDatabase() {
         return database;
-    }
-
-    public void setDatabase(SQLiteDatabase database) {
-        this.database = database;
     }
 
     public Context getCurrentContex() {

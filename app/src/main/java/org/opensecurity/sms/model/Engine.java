@@ -13,6 +13,7 @@ import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import org.opensecurity.sms.R;
+import org.opensecurity.sms.activities.ConversationActivity;
 import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.database.MessageDAO;
 
@@ -30,6 +31,7 @@ public class Engine {
 
     private static final String SMS_SEND_ACTION = "CTS_SMS_SEND_ACTION";
     private static final String SMS_DELIVERY_ACTION = "CTS_SMS_DELIVERY_ACTION";
+    public static final String CONTACT_KEY = "Contact_key";
 
 
     /**
@@ -109,42 +111,26 @@ public class Engine {
 
     /**
      * This function is use to initialize, create and display a notification in Android.
-     *
-     * @param title            the title of the notification.
-     * @param content          the content of the notification
-     * @param icon             the icon of the notification
-     * @param activity         current activity
-     * @param activityRunClass
-     * @param save
      */
-    public void makeNotification(String title, String content, Bitmap icon, Activity activity,
+    public void makeNotificationReceivedMessage(Contact c, String content, Activity activity,
                                  Class activityRunClass, HashMap<String, Serializable> save) {
-        if (activity != null) {
-            Intent intent = new Intent(activity, activityRunClass);
-            for (Map.Entry<String, Serializable> entry : save.entrySet())
-                intent.putExtra(entry.getKey(), entry.getValue());
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(activity);
-            stackBuilder.addParentStack(activityRunClass);
-            stackBuilder.addNextIntent(intent);
+        Intent intent = new Intent(this.getContext(), activityRunClass);
+        intent.putExtra(this.CONTACT_KEY, c);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this.getContext(), (int) System.currentTimeMillis(),
+                intent, 0);
 
-            //specify the action which should be performed once the user select the notification
-            PendingIntent pIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_ONE_SHOT);
+        Notification n = new Notification.Builder(this.getContext())
+                .setContentTitle(c.getName())
+                .setContentText(content)
+                .setContentIntent(pendingIntent)
+                .setLargeIcon(c.getPhoto(this.getContext().getContentResolver()))
+                .setSmallIcon(R.drawable.bulle_not_me)
+                .build();
 
-            //the object use to create the design of a notification
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity);
-            mBuilder.setSmallIcon(R.drawable.bulle_not_me);
-            mBuilder.setLargeIcon(icon);
-            mBuilder.setContentTitle(title);
-            mBuilder.setContentText(content);
-            mBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-            mBuilder.setContentIntent(pIntent);
-            mBuilder.setAutoCancel(true);
-           // mBuilder.setCategory(Notification.CATEGORY_MESSAGE);
-            mBuilder.setDefaults(Notification.DEFAULT_ALL);
+        NotificationManager notificationManager =
+                (NotificationManager) this.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
-            NotificationManager mNotificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
-            mNotificationManager.notify(0, mBuilder.build());
-        }
+        notificationManager.notify(0, n);
     }
 
     public MessageDAO getMessageDAO() {

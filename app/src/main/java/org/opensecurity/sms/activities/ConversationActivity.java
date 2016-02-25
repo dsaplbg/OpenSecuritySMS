@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -126,13 +127,13 @@ public class ConversationActivity extends AppCompatActivity {
         this.textMessage = (EditText) findViewById(R.id.textMessage);
         this.sendButton = (Button) findViewById(R.id.sendButton);
 
-        setEngine(new Engine(this.getApplicationContext()));
+        setEngine(new Engine(this));
         getEngine().getContactDAO().openDb();
         listeners();
 
         update(getIntent());
 
-        if(getEngine().getContactDAO().findContactByPhoneNumberInOSMSBase(contact.getPhoneNumber()) == null) {
+        if(getEngine().getContactDAO().findContactByPhoneNumberInOSMSBase(getContact().getPhoneNumber()) == null) {
             System.out.println("il n'y a pas ce contact dans la bdd donc on l'insère");
             getEngine().getContactDAO().insertContactIntoDB(contact);
         }
@@ -210,9 +211,14 @@ public class ConversationActivity extends AppCompatActivity {
     public void setBubbleData(ArrayList<Message> bubbleData) {
         getBubbleData().clear();
         getBubbleData().addAll(bubbleData);
-
-        this.adapter = new ArrayBubbleAdapter(getBaseContext(), this.getBubbleData());
-        if (!getBubbleData().isEmpty()) this.bubbleList.setAdapter(this.adapter);
+        Log.d("bubbleDataSize", "" + bubbleData.size());
+        this.adapter = new ArrayBubbleAdapter(this, this.getBubbleData());
+        if (!getBubbleData().isEmpty()) {
+            this.bubbleList.setAdapter(this.adapter);
+            Log.d("BubbleList", "Non Vide");
+        } else {
+            Log.d("BubbleList", "Vide");
+        }
     }
 
     /**
@@ -259,8 +265,10 @@ public class ConversationActivity extends AppCompatActivity {
      * @param intent
      */
     public void update(Intent intent) {
-        if (intent.getSerializableExtra("Contact") != null)
-            setContact((Contact) intent.getSerializableExtra("Contact"));
+        if (intent.getSerializableExtra(Engine.CONTACT_KEY) != null) {
+            setContact((Contact) intent.getSerializableExtra(Engine.CONTACT_KEY));
+            Log.d("ContactName", getContact().getName());
+        }
 
         update();
     }

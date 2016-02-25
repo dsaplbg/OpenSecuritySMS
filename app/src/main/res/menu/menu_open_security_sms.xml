@@ -7,4 +7,6 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/setDefaultApp" android:title="@string/defaultApp"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/deleteDataBaseFile" android:title="@string/deleteDataBaseFile"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

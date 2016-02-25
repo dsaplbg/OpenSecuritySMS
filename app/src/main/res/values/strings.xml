@@ -7,5 +7,6 @@
     <string name="photoContact">Contact</string>
     <string name="title_activity_conversation">Conversation</string>
     <string name="title_activity_popupConversation">Quick answer</string>
-    <string name="defaultApp">Application par défaut</string>
+    <string name="defaultApp">Set default app</string>
+    <string name="deleteDataBaseFile">Delete all database</string>
 </resources>

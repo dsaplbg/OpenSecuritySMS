@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.opensecurity.sms.activities.ConversationActivity;
+import org.opensecurity.sms.activities.OpenSecuritySMS;
 
 /**
  * Created by Valentin on 10/11/2015.
@@ -34,16 +36,24 @@ public class SMSReceiver extends BroadcastReceiver {
                 Object[] pdus = (Object[])bundle.get("pdus");
                 SmsMessage[] messages = new SmsMessage[pdus.length];
                 String messageContent = new String();
+
                 for(int i = 0; i<pdus.length; i++) {
                     messages[i] =
                             SmsMessage.createFromPdu((byte[])pdus[i]);
                     messageContent = messageContent + messages[i].getDisplayMessageBody();
                 }
+                String phoneNumber = messages[0].getDisplayOriginatingAddress();
 
                 setEngine(new Engine(c));
                 Toast.makeText(c, "sms : " + messageContent, Toast.LENGTH_SHORT).show();
                 getEngine().getMessageDAO().insertSMSReceivedIntoDefaultDataBase(messages[0], messageContent);
-                ConversationActivity.getInstance().update();
+                Contact contactProvider = this.getEngine().getContactDAO().findContactByPhoneNumberInDefaultBase(
+                                    phoneNumber, c.getContentResolver(), null);
+                Log.d("message from", contactProvider.getName());
+                getEngine().makeNotificationReceivedMessage(contactProvider, messageContent,
+                        null, ConversationActivity.class, null);
+
+                //ConversationActivity.getInstance().update();
             }
         }
     }

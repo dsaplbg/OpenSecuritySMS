@@ -17,6 +17,7 @@ import org.opensecurity.sms.R;
 import org.opensecurity.sms.model.Contact;
 import org.opensecurity.sms.model.database.ContactDAO;
 import org.opensecurity.sms.model.Engine;
+import org.opensecurity.sms.model.database.DatabaseHandler;
 import org.opensecurity.sms.model.discussion.Message;
 import org.opensecurity.sms.model.discussion.ArrayDiscussionAdapter;
 
@@ -150,6 +151,13 @@ public class OpenSecuritySMS extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.deleteDataBaseFile) {
+            getEngine().getContactDAO().closeDb();
+            this.deleteDatabase(DatabaseHandler.DBNAME);
+            Toast.makeText(this, "database deleted", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -227,7 +235,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
-                intent.putExtra("Contact", getMessages().get(position).getContact());
+                intent.putExtra(Engine.CONTACT_KEY, getMessages().get(position).getContact());
                 startActivity(intent);
             }
         });
