@@ -18,6 +18,6 @@ TODO
 ----
 - [ ] Restructure code (partially done)
 - [ ] Add color to a contact
-- [ ] Rounded edges for contact picture
+- [x] Rounded edges for contact picture
 - [ ] Customize color for chat message
 - [ ] Remove singleton pattern in activities
