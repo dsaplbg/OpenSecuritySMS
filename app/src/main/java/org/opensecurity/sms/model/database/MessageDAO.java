@@ -5,9 +5,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.Telephony;
 import android.telephony.SmsMessage;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import org.opensecurity.sms.activities.OpenSecuritySMS;
 import org.opensecurity.sms.model.Contact;
@@ -90,7 +92,7 @@ public class MessageDAO {
             Contact contact;
             do {
                 phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-                contact = this.getContactDAO().findContactByPhoneNumberInDefaultBase(phoneNumber, contentResolver, listContacts);
+                contact = this.getContactDAO().fillContact(phoneNumber);
                 // if we don't already have this phoneNumber in the list
                 if ((!listContacts.containsKey(contact.getPhoneNumber())) && (phoneNumber.length() >= 1)) {
                     listContacts.put(contact.getPhoneNumber(), contact);
@@ -102,7 +104,6 @@ public class MessageDAO {
                     date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)));
 
                     // we add a new ConversationLine with an id to send to the conversationActivity.
-                    contact.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID))));
                     contact.setNbMessages(nbMessages);
                     messages.add(new Message(smsContent, date, contact,
                             cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT));
@@ -135,16 +136,23 @@ public class MessageDAO {
             return loadLastMessages(contentResolver);
         } else {
             try {
-                Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
-                        new String[]{Telephony.Sms.BODY, Telephony.Sms.TYPE,
-                                Telephony.Sms.PERSON, Telephony.Sms.DATE,
-                                Telephony.Sms.ADDRESS},
-                        "thread_id = " + contact.getId(),
+                Cursor cursor = contentResolver.query(Telephony.Sms.CONTENT_URI,
                         null,
-                        "date DESC LIMIT " + String.valueOf(offset) + "," + String.valueOf(limit));
+                        null,
+                        null,
+                        "date DESC LIMIT " + String.valueOf(offset) + "," + String.valueOf(500));
 
+                int  p=0;
                 if (cursor.moveToFirst()) {
                     do {
+                        if(p==0) {
+                            for (int t = 0; t < cursor.getColumnCount(); t++) {
+                                System.out.println(cursor.getColumnName(t));
+                                p++;
+                            }
+                        }
+                        System.out.println(("person" + " = " + cursor.getString(cursor.getColumnIndex(Telephony.Sms.PERSON))));
+                        System.out.println(("Address" + " = " + cursor.getString(cursor.getColumnIndex(Telephony.Sms.ADDRESS))));
                         //if it's a recevied message :
                         isMe = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT;
                         content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
@@ -158,7 +166,7 @@ public class MessageDAO {
                 }
                 cursor.close();
             } catch (Exception e) {
-                System.out.print("ERROR : Loading messages !");
+                System.out.println("ERROR : Loading messages ! " + e.getLocalizedMessage());
             }
 
             return bubbleData;

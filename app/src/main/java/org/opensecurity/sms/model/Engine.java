@@ -35,11 +35,6 @@ public class Engine {
 
 
     /**
-     * uset for paterSingleton
-     */
-    private static volatile Engine instance = null;
-
-    /**
      * the DAO to access to the database with contact functions
      */
     private ContactDAO contactDAO;

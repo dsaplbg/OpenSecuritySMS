@@ -41,7 +41,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d("dataBase", "Created");
         db.execSQL(CONTACT_CREATE_TABLE);
     }
 

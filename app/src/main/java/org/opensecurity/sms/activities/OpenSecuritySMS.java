@@ -236,6 +236,7 @@ public class OpenSecuritySMS extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ConversationActivity.class);
                 intent.putExtra(Engine.CONTACT_KEY, getMessages().get(position).getContact());
+                getMessages().get(position).getContact().toString();
                 startActivity(intent);
             }
         });

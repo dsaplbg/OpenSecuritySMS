@@ -122,7 +122,8 @@ public class Contact implements Serializable {
     @Override
     public String toString(){
         return "Name : " + getName()
-                + "\nPhone number : " + getPhoneNumber();
+                + "\nPhone number : " + getPhoneNumber()
+                + "\nID : " + getId();
     }
 
     /**

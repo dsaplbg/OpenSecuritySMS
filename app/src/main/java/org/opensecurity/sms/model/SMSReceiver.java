@@ -47,9 +47,10 @@ public class SMSReceiver extends BroadcastReceiver {
                 setEngine(new Engine(c));
                 Toast.makeText(c, "sms : " + messageContent, Toast.LENGTH_SHORT).show();
                 getEngine().getMessageDAO().insertSMSReceivedIntoDefaultDataBase(messages[0], messageContent);
-                Contact contactProvider = this.getEngine().getContactDAO().findContactByPhoneNumberInDefaultBase(
-                                    phoneNumber, c.getContentResolver(), null);
+                Contact contactProvider = this.getEngine().getContactDAO().fillContact(
+                                    phoneNumber);
                 Log.d("message from", contactProvider.getName());
+                System.out.println(contactProvider.toString());
                 getEngine().makeNotificationReceivedMessage(contactProvider, messageContent,
                         null, ConversationActivity.class, null);
 

@@ -35,7 +35,6 @@ public class ContactDAO {
 
     public void openDb(){
         this.database = dataHandler.getWritableDatabase();
-        Log.d("DataBaseHandler", "Open");
     }
 
     public void closeDb() {
@@ -55,8 +54,12 @@ public class ContactDAO {
         Cursor cur = cr.query(uri, null, null, null, null);
         if (cur.getCount() > 0) {
             while (cur.moveToNext()) {
-                String id = cur.getString(cur.getColumnIndex(ContactsContract.Contacts._ID));
+                phoneNumber = phoneNumber.replace("+", "");
+                phoneNumber = phoneNumber.replace(" ","");
+                Log.d("phone", phoneNumber);
+                String id = getContactRowIDLookupList(phoneNumber);
                 String name = cur.getString(cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                System.out.println("id of " + name + " is " + id);
                 contact.setId(Integer.valueOf(id));
                 contact.setName(name);
             }
@@ -64,6 +67,44 @@ public class ContactDAO {
         cur.close();
         return contact;
     }
+
+    /**
+     * Gets a list of contact ids that is pointed at the passed contact number
+     * parameter
+     *
+     * @param contactNo
+     *            contact number whose contact Id is requested (no special chars)
+     * @return String representation of a list of contact ids pointing to the
+     *         contact in this format 'ID1','ID2','34','65','12','17'...
+     */
+    public String getContactRowIDLookupList(String contactNo) {
+        String contactNumber = Uri.encode(contactNo);
+        String contactIdList = new String();
+        if (contactNumber != null) {
+            Cursor contactLookupCursor = getCurrentContex().getContentResolver().query(
+                    Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                            Uri.encode(contactNumber)),
+                    new String[] { ContactsContract.PhoneLookup.DISPLAY_NAME, ContactsContract.PhoneLookup._ID },
+                    null, null, null);
+            if (contactLookupCursor != null) {
+                while (contactLookupCursor.moveToNext()) {
+                    int phoneContactID = contactLookupCursor
+                            .getInt(contactLookupCursor
+                                    .getColumnIndexOrThrow(ContactsContract.PhoneLookup._ID));
+                    if (phoneContactID > 0) {
+                        contactIdList = "" + phoneContactID + ",";
+                    }
+                }
+                if (contactIdList.endsWith(",")) {
+                    contactIdList = contactIdList.substring(0,
+                            contactIdList.length() - 1);
+                }
+            }
+            contactLookupCursor.close();
+        }
+        return contactIdList;
+    }
+
 
     public ArrayList<Contact> getAllContacts() {
         ArrayList<Contact> contactList = new ArrayList<>();
@@ -104,10 +145,8 @@ public class ContactDAO {
             cursor.moveToFirst();
             //we must use getCount to check if cursor contains something because a cursor is always != null
             if (cursor.getCount() == 0) {
-                System.out.println("Je vaut null");
                 return null;
             }
-            Log.d("cursor", "not null");
             c.setPhotoURL(cursor.getString(2));
             c.setName(cursor.getString(3));
             c.setId(cursor.getInt(4));
@@ -141,7 +180,6 @@ public class ContactDAO {
         } catch (Exception e) {
             System.out.println("ERROR : Cannot insert contact ! ");
         } finally {
-            System.out.println("Juste avant endTransaction");
             getDatabase().endTransaction();
           //  Toast.makeText(currentContex.getApplicationContext(), "Contact inserted",
           // Toast.LENGTH_LONG).show();

@@ -134,7 +134,6 @@ public class ConversationActivity extends AppCompatActivity {
         update(getIntent());
 
         if(getEngine().getContactDAO().findContactByPhoneNumberInOSMSBase(getContact().getPhoneNumber()) == null) {
-            System.out.println("il n'y a pas ce contact dans la bdd donc on l'insère");
             getEngine().getContactDAO().insertContactIntoDB(contact);
         }
 
@@ -215,9 +214,7 @@ public class ConversationActivity extends AppCompatActivity {
         this.adapter = new ArrayBubbleAdapter(this, this.getBubbleData());
         if (!getBubbleData().isEmpty()) {
             this.bubbleList.setAdapter(this.adapter);
-            Log.d("BubbleList", "Non Vide");
         } else {
-            Log.d("BubbleList", "Vide");
         }
     }
 
@@ -267,7 +264,7 @@ public class ConversationActivity extends AppCompatActivity {
     public void update(Intent intent) {
         if (intent.getSerializableExtra(Engine.CONTACT_KEY) != null) {
             setContact((Contact) intent.getSerializableExtra(Engine.CONTACT_KEY));
-            Log.d("ContactName", getContact().getName());
+            System.out.println(getContact().toString());
         }
 
         update();
