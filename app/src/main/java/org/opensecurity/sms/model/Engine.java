@@ -69,9 +69,9 @@ public class Engine {
      * @param contact to get all informations about our contact
      * @param message to get the message body we want to send
      */
-    public boolean sendSMS(Context c, Contact contact, String message) {
+    public boolean sendSMS(Contact contact, String message) {
         SmsManager smsManager = SmsManager.getDefault();
-
+        Context c = getContext();
         try {
             this.getMessageDAO().insertSMSSentIntoDefaultDataBase(c, message);
             System.out.println("Insertion terminée. ");
@@ -124,7 +124,7 @@ public class Engine {
 
         NotificationManager notificationManager =
                 (NotificationManager) this.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-
+        n.flags |= Notification.FLAG_AUTO_CANCEL;
         notificationManager.notify(0, n);
     }
 

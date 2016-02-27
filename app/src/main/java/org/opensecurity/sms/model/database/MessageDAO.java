@@ -200,7 +200,7 @@ public class MessageDAO {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        OpenSecuritySMS.getInstance().getContentResolver().insert(Uri.parse("content://sms/sent"), values);
+        c.getContentResolver().insert(Uri.parse("content://sms/sent"), values);
     }
 
     /**
@@ -209,7 +209,7 @@ public class MessageDAO {
      * @param smsContent the content of the sms
      */
     public void insertSMSReceivedIntoDefaultDataBase(SmsMessage sms, String smsContent) {
-        ContentResolver contentResolver = OpenSecuritySMS.getInstance().getContentResolver();
+        ContentResolver contentResolver = getCurrentContex().getContentResolver();
         ContentValues values = new ContentValues();
         values.put( ADDRESS, sms.getOriginatingAddress() );
         values.put( DATE, sms.getTimestampMillis() );
@@ -245,5 +245,20 @@ public class MessageDAO {
 
     public void setContactDAO(ContactDAO contactDAO) {
         this.contactDAO = contactDAO;
+    }
+
+    public String findThreadID(String phoneNumber) {
+        Cursor cursor = getCurrentContex().getContentResolver().query(Telephony.Sms.CONTENT_URI,
+                new String[]{Telephony.Sms.THREAD_ID},
+                Telephony.Sms.ADDRESS + "= ? ",
+                new String[]{phoneNumber},
+                null);
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return  cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID));
+        }
+
+        return null;
     }
 }

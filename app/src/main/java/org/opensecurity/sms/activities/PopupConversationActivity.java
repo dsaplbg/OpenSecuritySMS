@@ -74,7 +74,7 @@ public class PopupConversationActivity extends Activity implements GestureDetect
         this.buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textSend.getText().length() > 0 && getEngine().sendSMS(getBaseContext(), getContact(), textSend.getText().toString())) {
+                if (textSend.getText().length() > 0 && getEngine().sendSMS(getContact(), textSend.getText().toString())) {
                     finish();
                 }
             }

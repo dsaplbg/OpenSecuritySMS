@@ -194,7 +194,7 @@ public class ConversationActivity extends AppCompatActivity {
         getSendButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textMessage.getText().length() > 0 && getEngine().sendSMS(getBaseContext(), getContact(),
+                if (textMessage.getText().length() > 0 && getEngine().sendSMS(getContact(),
                         textMessage.getText().toString())) {
                     ConversationActivity.getInstance().update();
                     textMessage.setText("");
