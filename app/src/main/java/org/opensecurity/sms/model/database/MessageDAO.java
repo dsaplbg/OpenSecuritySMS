@@ -184,14 +184,12 @@ public class MessageDAO {
 
     /**
      * insert sms sent by us into the default database
-     * @param c the current context
+     *
      * @param message the contains of the sms
      */
-    public void insertSMSSentIntoDefaultDataBase(Context c, String message) {
-        TelephonyManager tMgr = (TelephonyManager) c.getSystemService(Context.TELEPHONY_SERVICE);
-        String mPhoneNumber = tMgr.getLine1Number();
-        ContentValues values = new ContentValues();
-        values.put("address", mPhoneNumber);
+    public void insertSMSSentIntoDefaultDataBase(String phoneNumber, String message) {
+        TelephonyManager tMgr = (TelephonyManager) getCurrentContex().getSystemService(Context.TELEPHONY_SERVICE);ContentValues values = new ContentValues();
+        values.put("address", phoneNumber);
         values.put("body", message);
         try {
             System.out.println("waiting...");
@@ -200,7 +198,7 @@ public class MessageDAO {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        c.getContentResolver().insert(Uri.parse("content://sms/sent"), values);
+        getCurrentContex().getContentResolver().insert(Uri.parse("content://sms/sent"), values);
     }
 
     /**

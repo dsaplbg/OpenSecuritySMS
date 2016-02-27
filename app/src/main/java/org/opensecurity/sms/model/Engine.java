@@ -65,7 +65,6 @@ public class Engine {
      * We toast a Message nothing to send.
      * Function called from sendButton click event in ConversationActivity.
      *
-     * @param c       the context of ConversationActivity
      * @param contact to get all informations about our contact
      * @param message to get the message body we want to send
      */
@@ -73,7 +72,7 @@ public class Engine {
         SmsManager smsManager = SmsManager.getDefault();
         Context c = getContext();
         try {
-            this.getMessageDAO().insertSMSSentIntoDefaultDataBase(c, message);
+            this.getMessageDAO().insertSMSSentIntoDefaultDataBase(contact.getPhoneNumber(), message);
             System.out.println("Insertion terminée. ");
 
             ArrayList<String> messages = smsManager.divideMessage(message);
@@ -124,7 +123,7 @@ public class Engine {
 
         NotificationManager notificationManager =
                 (NotificationManager) this.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        n.flags |= Notification.FLAG_AUTO_CANCEL;
+        //n.flags |= Notification.FLAG_AUTO_CANCEL;
         notificationManager.notify(0, n);
     }
 

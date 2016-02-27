@@ -163,7 +163,7 @@ public class ContactDAO {
             c.setId(cursor.getInt(4));
             c.setNbMessages(cursor.getInt(5));
 
-            Toast.makeText(currentContex, c.getName() + " found", Toast.LENGTH_LONG).show();
+            //Toast.makeText(currentContex, c.getName() + " found", Toast.LENGTH_LONG).show();
             return c;
         } catch (Exception e) {
             System.out.println("Erreur : je suis dans le catch" + e.toString());
