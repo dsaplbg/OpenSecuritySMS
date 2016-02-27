@@ -32,7 +32,8 @@ public class Contact implements Serializable {
      */
     private String name,
             phoneNumber,
-            photoURL;
+            photoURL,
+            thread_id;
 
     /**
      * id is like a primary key for on contact in database
@@ -215,6 +216,14 @@ public class Contact implements Serializable {
         this.nbMessages = nbMessages;
     }
 
+    public String getThread_id() {
+        return thread_id;
+    }
+
+    public void setThread_id(String thread_id) {
+        this.thread_id = thread_id;
+    }
+
     public ArrayList<Message> getMessages() {
         return messages;
     }
@@ -222,4 +231,6 @@ public class Contact implements Serializable {
     public void setMessages(ArrayList<Message> messages) {
         this.messages = messages;
     }
+
+
 }

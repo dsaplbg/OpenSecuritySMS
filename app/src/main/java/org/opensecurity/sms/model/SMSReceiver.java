@@ -43,7 +43,6 @@ public class SMSReceiver extends BroadcastReceiver {
                     messageContent = messageContent + messages[i].getDisplayMessageBody();
                 }
                 String phoneNumber = messages[0].getDisplayOriginatingAddress();
-
                 setEngine(new Engine(c));
                 Toast.makeText(c, "sms : " + messageContent, Toast.LENGTH_SHORT).show();
                 getEngine().getMessageDAO().insertSMSReceivedIntoDefaultDataBase(messages[0], messageContent);

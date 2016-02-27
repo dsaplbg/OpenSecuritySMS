@@ -49,20 +49,31 @@ public class ContactDAO {
     public Contact fillContact(String phoneNumber) {
         Contact contact = new Contact(phoneNumber);
         contact.setName(phoneNumber);
+
+        Log.d("phoneNumber", phoneNumber);
+
+        /*Cursor cur = getCurrentContex().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                null,
+                ContactsContract.CommonDataKinds.Phone.NUMBER + "=? OR "
+                + ContactsContract.CommonDataKinds.Phone.NUMBER + " =? OR "
+                + ContactsContract.CommonDataKinds.Phone.NUMBER + "=?",
+                new String[]{phoneNumber, phoneNumber.replace(" ", ""), phoneNumber.replace("-", "")},
+                null);*/
+
+
         ContentResolver cr = getCurrentContex().getContentResolver();
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
         Cursor cur = cr.query(uri, null, null, null, null);
+
+        Log.d("getCount", "" + cur.getCount());
         if (cur.getCount() > 0) {
-            while (cur.moveToNext()) {
-                phoneNumber = phoneNumber.replace("+", "");
-                phoneNumber = phoneNumber.replace(" ","");
-                Log.d("phone", phoneNumber);
-                String id = getContactRowIDLookupList(phoneNumber);
-                String name = cur.getString(cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                System.out.println("id of " + name + " is " + id);
-                contact.setId(Integer.valueOf(id));
-                contact.setName(name);
-            }
+            cur.moveToFirst();
+            Log.d("number",  cur.getString(cur.getColumnIndex(ContactsContract.PhoneLookup.NUMBER)));
+            String id = cur.getString(cur.getColumnIndex(ContactsContract.PhoneLookup._ID));
+            String name = cur.getString(cur.getColumnIndex(ContactsContract.PhoneLookup.DISPLAY_NAME));
+            System.out.println("id of " + name + " is " + id);
+            contact.setId(Integer.valueOf(id));
+            contact.setName(name);
         }
         cur.close();
         return contact;
