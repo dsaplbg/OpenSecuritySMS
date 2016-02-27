@@ -123,7 +123,7 @@ public class Engine {
 
         NotificationManager notificationManager =
                 (NotificationManager) this.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        //n.flags |= Notification.FLAG_AUTO_CANCEL;
+        n.flags |= Notification.FLAG_AUTO_CANCEL;
         notificationManager.notify(0, n);
     }
 
