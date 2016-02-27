@@ -94,7 +94,7 @@ public class MessageDAO {
             do {
                 phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
                 contact = this.getContactDAO().fillContact(phoneNumber);
-                contact.setThread_id(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID)));
+
                 // if we don't already have this phoneNumber in the list
                 if ((!listContacts.containsKey(contact.getPhoneNumber())) && (phoneNumber.length() >= 1)) {
                     listContacts.put(contact.getPhoneNumber(), contact);
@@ -107,8 +107,12 @@ public class MessageDAO {
 
                     // we add a new ConversationLine with an id to send to the conversationActivity.
                     contact.setNbMessages(nbMessages);
-                    messages.add(new Message(smsContent, date, contact,
-                            cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT));
+
+                    Message message = new Message(smsContent, date, contact,
+                            cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.MESSAGE_TYPE_SENT);
+                    message.setThread_id(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.THREAD_ID)));
+                    messages.add(message);
+                    contact.addMessage(message);
                 }
             } while (cursor.moveToNext());
         }
@@ -141,7 +145,7 @@ public class MessageDAO {
                 Cursor cursor = contentResolver.query(Telephony.Sms.CONTENT_URI,
                         null,
                         Telephony.Sms.THREAD_ID + " = ? ",
-                        new String[]{contact.getThread_id()},
+                        new String[]{contact.getMessages().get(0).getThread_id()},
                         "date DESC LIMIT " + String.valueOf(offset) + "," + String.valueOf(50));
 
                 int  p=0;

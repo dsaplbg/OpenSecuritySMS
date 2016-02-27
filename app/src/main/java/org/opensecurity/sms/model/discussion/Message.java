@@ -34,6 +34,11 @@ public class Message implements Serializable{
     private Calendar date;
 
     /**
+     * the message thread_id
+     */
+    private String thread_id;
+
+    /**
      * Constructor
      *
      * @param content
@@ -170,5 +175,13 @@ public class Message implements Serializable{
 
     public void setContact(Contact contact) {
         this.contact = contact;
+    }
+
+    public String getThread_id() {
+        return thread_id;
+    }
+
+    public void setThread_id(String thread_id) {
+        this.thread_id = thread_id;
     }
 }
