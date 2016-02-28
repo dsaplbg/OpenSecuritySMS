@@ -8,6 +8,7 @@ import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.v7.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.widget.Toast;
@@ -119,11 +120,14 @@ public class Engine {
                 .setContentIntent(pendingIntent)
                 .setLargeIcon(c.getPhoto(this.getContext().getContentResolver()))
                 .setSmallIcon(R.drawable.bulle_not_me)
+                .setVibrate(new long[]{250, 250, 250, 250})
+                .setLights(Color.BLUE, 5000, 5000)
                 .build();
 
         NotificationManager notificationManager =
                 (NotificationManager) this.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
         n.flags |= Notification.FLAG_AUTO_CANCEL;
+
         notificationManager.notify(0, n);
     }
 

@@ -193,7 +193,7 @@ public class MessageDAO {
         values.put("body", message);
         try {
             System.out.println("waiting...");
-            Thread.sleep(150);
+            Thread.sleep(200);
             System.out.println("Done");
         } catch (InterruptedException e) {
             e.printStackTrace();
