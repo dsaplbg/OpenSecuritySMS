@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import org.opensecurity.sms.model.SMSReceiver;
 
@@ -17,7 +18,6 @@ public class ServiceComunication extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
         smsReceiver = new SMSReceiver();
         intentFilter = new IntentFilter();
         intentFilter.addAction(SMS_RECEIVED);
