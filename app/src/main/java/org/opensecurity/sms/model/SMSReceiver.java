@@ -11,6 +11,7 @@ import android.widget.Toast;
 import org.opensecurity.sms.activities.ConversationActivity;
 import org.opensecurity.sms.activities.OpenSecuritySMS;
 import org.opensecurity.sms.model.discussion.Message;
+import org.opensecurity.sms.services.ServiceComunication;
 
 /**
  * Created by Valentin on 10/11/2015.
@@ -45,15 +46,12 @@ public class SMSReceiver extends BroadcastReceiver {
                 }
                 String phoneNumber = messages[0].getDisplayOriginatingAddress();
                 setEngine(new Engine(c));
-                Toast.makeText(c, "sms : " + messageContent, Toast.LENGTH_SHORT).show();
                 getEngine().getMessageDAO().insertSMSReceivedIntoDefaultDataBase(messages[0], messageContent);
                 Contact contactProvider = this.getEngine().getContactDAO().fillContact(
                                     phoneNumber);
                 Message messageProvider = new Message(messageContent, null, contactProvider, false);
                 messageProvider.setThread_id(getEngine().getMessageDAO().findThreadID(phoneNumber));
                 contactProvider.addMessage(messageProvider);
-                Log.d("message from", contactProvider.getName());
-                System.out.println(contactProvider.toString());
                 getEngine().makeNotificationReceivedMessage(contactProvider, messageContent,
                         null, ConversationActivity.class, null);
 

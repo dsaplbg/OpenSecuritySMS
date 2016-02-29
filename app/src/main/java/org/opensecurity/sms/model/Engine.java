@@ -121,7 +121,7 @@ public class Engine {
                 .setLargeIcon(c.getPhoto(this.getContext().getContentResolver()))
                 .setSmallIcon(R.drawable.bulle_not_me)
                 .setVibrate(new long[]{250, 250, 250, 250})
-                .setLights(Color.BLUE, 5000, 5000)
+                .setLights(Color.BLUE, 1000, 5000)
                 .build();
 
         NotificationManager notificationManager =

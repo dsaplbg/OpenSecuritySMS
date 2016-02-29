@@ -148,25 +148,13 @@ public class MessageDAO {
                         new String[]{contact.getMessages().get(0).getThread_id()},
                         "date DESC LIMIT " + String.valueOf(offset) + "," + String.valueOf(50));
 
-                int  p=0;
                 if (cursor.moveToFirst()) {
                     do {
-                        if(p==0) {
-                            for (int t = 0; t < cursor.getColumnCount(); t++) {
-                                System.out.println(cursor.getColumnName(t));
-                                p++;
-                            }
-                        }
-                        System.out.println(("person" + " = " + cursor.getString(cursor.getColumnIndex(Telephony.TextBasedSmsColumns.PERSON))));
-                        System.out.println(("Address" + " = " + cursor.getString(cursor.getColumnIndex(Telephony.Sms.Conversations.ADDRESS))));
-                        Log.d("thread_id", cursor.getString(cursor.getColumnIndex(Telephony.Sms.Conversations.THREAD_ID)));
                         //if it's a recevied message :
                         isMe = cursor.getInt(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)) == Telephony.Sms.Conversations.MESSAGE_TYPE_SENT;
                         content = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.Conversations.BODY));
-                        System.out.println("body : " + content);
                         Calendar date = Calendar.getInstance();
                         date.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.Conversations.DATE)));
-                        System.out.println("Date : " + date);
                         Message message = new Message(content, date, contact, isMe);
 
                         //insert in the head of the arraylist
@@ -192,9 +180,7 @@ public class MessageDAO {
         values.put("address", phoneNumber);
         values.put("body", message);
         try {
-            System.out.println("waiting...");
             Thread.sleep(200);
-            System.out.println("Done");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -207,6 +193,7 @@ public class MessageDAO {
      * @param smsContent the content of the sms
      */
     public void insertSMSReceivedIntoDefaultDataBase(SmsMessage sms, String smsContent) {
+        Log.d("Passage", "insertSMS");
         ContentResolver contentResolver = getCurrentContex().getContentResolver();
         ContentValues values = new ContentValues();
         values.put( ADDRESS, sms.getOriginatingAddress() );
