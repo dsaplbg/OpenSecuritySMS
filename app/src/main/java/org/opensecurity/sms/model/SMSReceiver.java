@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
@@ -30,7 +31,8 @@ public class SMSReceiver extends BroadcastReceiver {
      */
     @Override
     public void onReceive(Context c, Intent in) {
-        if(in.getAction().equals(RECEIVED_ACTION)) {
+        final String myPackageName = c.getPackageName();
+        if(in.getAction().equals(RECEIVED_ACTION) && Telephony.Sms.getDefaultSmsPackage(c).equals(myPackageName)) {
 
             Bundle bundle = in.getExtras();
             if(bundle!=null) {
