@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    tools:context="org.opensecurity.sms.activities.ConversationActivity"
+    android:orientation="vertical" >
+
+        <com.baoyz.swipemenulistview.SwipeMenuListView
+            android:minHeight="@dimen/activity_vertical_margin"
+            android:id="@+id/bubbleList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stackFromBottom="true"
+            android:transcriptMode="normal"
+            android:smoothScrollbar="true"
+            android:scrollingCache="true"
+            android:layout_alignParentTop="false"
+            android:layout_above="@+id/textMessage"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter text here"
+            android:inputType="textCapSentences|textLongMessage|textAutoComplete|textAutoCorrect|textMultiLine"
+            android:ems="10"
+            android:scrollbarSize="@dimen/activity_vertical_margin"
+            android:id="@+id/textMessage"
+            android:maxLines="3"
+            android:layout_alignParentStart="false"
+            android:layout_toStartOf="@+id/sendButton"
+            android:layout_alignParentBottom="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:id="@+id/sendButton"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
+</RelativeLayout>
