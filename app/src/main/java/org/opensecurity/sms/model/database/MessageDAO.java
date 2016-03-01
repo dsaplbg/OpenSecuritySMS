@@ -74,9 +74,6 @@ public class MessageDAO {
      * @param contentResolver the contentResolver of the activity
      * @return an ArrayList of ConversationLine containing every last message for every contact
      */
-   /* if(ContextCompat.checkSelfPermission(getBaseContext(), "android.permission.READ_SMS") == PackageManager.PERMISSION_GRANTED) {
-        ActivityCompat.requestPermissions(UnlockActivity.this, new String[]{"android.permission.READ_SMS"}, REQUEST_CODE_ASK_PERMISSIONS);
-        */
 
     public ArrayList<Message> loadLastMessages(ContentResolver contentResolver) {
         //Empty all contacts
@@ -86,6 +83,7 @@ public class MessageDAO {
 
         // We want to get the sms  with some of their attributes
         //SELECT distinct ADDRESS, Body, Type, Thread_id, Date FROM content://sms/ WHERE Address is not null  GROUP BY thread_id
+
         if (ContextCompat.checkSelfPermission(getCurrentContex(), "android.permission.READ_SMS") == PackageManager.PERMISSION_GRANTED) {
             Cursor cursor = contentResolver.query(Uri.parse("content://sms"),
                     new String[]{"DISTINCT " + Telephony.Sms.ADDRESS, Telephony.Sms.BODY, Telephony.Sms.TYPE, Telephony.Sms.THREAD_ID, Telephony.Sms.DATE},
@@ -125,9 +123,8 @@ public class MessageDAO {
             }
             cursor.close();
         }
-            return messages;
-        }
-
+        return messages;
+    }
 
     /**
      * This function has to load an array of messages from one contact, or all last messages if contact == null
@@ -150,7 +147,9 @@ public class MessageDAO {
             return loadLastMessages(contentResolver);
         } else {
             try {
+
                 if (ContextCompat.checkSelfPermission(getCurrentContex(), "android.permission.READ_SMS") == PackageManager.PERMISSION_GRANTED){
+
                 Cursor cursor = contentResolver.query(Telephony.Sms.CONTENT_URI,
                         null,
                         Telephony.Sms.THREAD_ID + " = ? ",
@@ -170,7 +169,9 @@ public class MessageDAO {
                         bubbleData.add(0, message);
                     } while (cursor.moveToNext());
                 }
+
                 cursor.close();}
+
             } catch (Exception e) {
                 System.out.println("ERROR : Loading messages ! " + e.getLocalizedMessage());
             }

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <module external.linked.project.id=":swipemenulistview-1.1.0" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="OpenSecuritySMS-master" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+=======
+<module external.linked.project.id=":swipemenulistview-1.1.0" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="OpenSecuritySMS" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+>>>>>>> 5cde6eed1128290ef69090e98dd3272e899703e0
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
