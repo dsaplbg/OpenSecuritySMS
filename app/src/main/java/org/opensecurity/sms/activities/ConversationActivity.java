@@ -137,6 +137,8 @@ public class ConversationActivity extends AppCompatActivity {
             getEngine().getContactDAO().insertContactIntoDB(contact);
         }
 
+        getEngine().getMessageDAO().markAsReadAllMessages(this.getContact());
+
         instance = this;
     }
 
@@ -196,7 +198,7 @@ public class ConversationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (textMessage.getText().length() > 0 && getEngine().sendSMS(getContact(),
                         textMessage.getText().toString())) {
-                    ConversationActivity.getInstance().update();
+                    ConversationActivity.this.update();
                     textMessage.setText("");
                 }
             }
@@ -267,6 +269,7 @@ public class ConversationActivity extends AppCompatActivity {
 
         update();
     }
+
 
     /**
      * This function is used to update a conversation when it's necessary

@@ -216,7 +216,7 @@ public class MessageDAO {
 
         try {
             System.out.println("waiting...");
-            Thread.sleep(150);
+            Thread.sleep(300);
             System.out.println("Done");
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -224,6 +224,39 @@ public class MessageDAO {
 
         // Push row into the SMS table
         contentResolver.insert(Telephony.Sms.CONTENT_URI, values);
+    }
+
+    /**
+     * function used to mark messages as read for one conversation when ConversationActivity is clicked for example.
+     * @param contact the contact of the conversation
+     */
+    public void markAsReadAllMessages(Contact contact) {
+        ContentResolver contentResolver = getCurrentContex().getContentResolver();
+        Cursor cursor = contentResolver.query(Telephony.Sms.CONTENT_URI,
+                null,
+                Telephony.Sms.THREAD_ID + "=? ",
+                new String[]{contact.getMessages().get(0).getThread_id()},
+                "date ASC");
+        try {
+            cursor.moveToFirst();
+            do {
+                ContentValues values = new ContentValues();
+                System.out.println(" ");
+                System.out.println("MessageID : " + cursor.getString(cursor.getColumnIndex(Telephony.Sms._ID)));
+                System.out.println("Envoyeur : " + cursor.getString(cursor.getColumnIndex(Telephony.Sms.PERSON)));
+                System.out.println("SMS : " + cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY)));
+                System.out.println("Readline : " + cursor.getString(cursor.getColumnIndex(Telephony.Sms.READ)) + "\n");
+
+                if(cursor.getString(cursor.getColumnIndex(Telephony.Sms.PERSON)) != null) {
+                    Log.d("Message", "non lu");
+                    values.put("read", true);
+                    contentResolver.update(Telephony.Sms.CONTENT_URI, values, "_ID=?", new String[]{cursor.getString(cursor.getColumnIndex(Telephony.Sms._ID))});
+                    System.out.println("Readline : " + cursor.getString(cursor.getColumnIndex(Telephony.Sms.READ)) + "\n");
+                }
+            } while(cursor.moveToNext());
+        } catch (Exception e) {
+            Toast.makeText(getCurrentContex(), "Error read mark", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public Context getCurrentContex() {
